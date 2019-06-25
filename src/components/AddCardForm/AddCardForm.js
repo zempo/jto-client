@@ -1,24 +1,51 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useInput } from "../../hooks/input-hook";
 import PropTypes from "prop-types";
 
 function AddCard(props) {
-  const [frontMessage, setFrontMessage] = useState(0);
-  const [frontImage, setFrontImage] = useState(0);
+  const { value: theme, bind: bindTheme, reset: resetTheme } = useInput("handwritten");
+  const { value: frontMessage, bind: bindFrontMessage, reset: resetFrontMessage } = useInput("");
+  const { value: frontImage, bind: bindFrontImage, reset: resetFrontImage } = useInput("");
+  const { value: insideMessage, bind: bindInsideMessage, reset: resetInsideMessage } = useInput("");
+  const { value: insideImage, bind: bindInsideImage, reset: resetInsideImage } = useInput("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(theme, frontMessage, frontImage, insideMessage, insideImage);
+    resetTheme();
+    resetFrontMessage();
+    resetFrontImage();
+    resetInsideMessage();
+    resetInsideImage();
+  };
+
   return (
-    <form className="Addcard">
+    <form className="Form Add-Form" onSubmit={handleSubmit}>
       <fieldset>
+        <label htmlFor="frontMessage">What's the Occassion?</label>
+        <input type="text" placeholder="Happy Occasion Day!" name="frontMessage" {...bindFrontMessage} />
+        <label htmlFor="frontImage">Does your Occasion need a Cover Image?</label>
         <input
           type="text"
-          placeholder="A Celebration of Recent Events..."
-          name="frontMessage"
-          onChange={this.handleChange}
-        />
-        <input
-          type="text"
-          placeholder="https://www.your-image.com/images/1"
+          placeholder="URL for image that can be stretched/shrunk to 400px width and 500px height"
           name="frontImage"
-          onChange={this.handleChange}
+          {...bindFrontImage}
         />
+        <textarea placeholder="From yours, truly!" name="insideMessage" {...bindInsideMessage} />
+        <input type="text" placeholder="https://www.your-image.com/images/1" name="frontImage" {...bindInsideImage} />
+        <select className="themes" name="theme" id="theme" {...bindTheme}>
+          <option value="cursive">Cursive</option>
+          <option value="cursive-plus">Cursive+</option>
+          <option value="handwritten">Handwritten</option>
+          <option value="handwritten-bold">Handwritten Bold</option>
+          <option value="indie">Indie</option>
+          <option value="kiddo">Kiddo</option>
+          <option value="pen">Pen</option>
+          <option value="sharpie">Sharpie</option>
+          <option value="robotic">Robotic</option>
+          <option value="typed">Typed</option>
+          <option value="quill">Quill</option>
+        </select>
       </fieldset>
       <button type="submit">Create Occasion</button>
     </form>
