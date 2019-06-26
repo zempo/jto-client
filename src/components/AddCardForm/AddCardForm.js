@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
 import { useInput } from "../../hooks/input-hook";
+import axios from "axios";
+import Config from "../../config";
+import { saveAs } from "file-saver";
 import PropTypes from "prop-types";
 
 function AddCard(props) {
-  const { value: theme, bind: bindTheme, reset: resetTheme } = useInput("handwritten");
+  const { value: theme, bind: bindTheme } = useInput("handwritten");
   const { value: frontMessage, bind: bindFrontMessage, reset: resetFrontMessage } = useInput("");
   const { value: frontImage, bind: bindFrontImage, reset: resetFrontImage } = useInput("");
   const { value: insideMessage, bind: bindInsideMessage, reset: resetInsideMessage } = useInput("");
@@ -11,8 +14,20 @@ function AddCard(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(theme, frontMessage, frontImage, insideMessage, insideImage);
-    resetTheme();
+    axios
+      .post(`${Config.API_ENDPOINT}/api/cards`, { theme, frontMessage, frontImage, insideMessage, insideImage })
+      .then(() => {
+        console.log(theme, frontMessage, frontImage, insideMessage, insideImage);
+        return axios.get(`${Config.API_ENDPOINT}/api/cards/1`, { responseType: "blob" });
+      })
+      .then((res) => {
+        const pdfBlob = new Blob([res.data], { type: "application/pdf" });
+
+        saveAs(pdfBlob, "cardDownload.pdf");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     resetFrontMessage();
     resetFrontImage();
     resetInsideMessage();
@@ -42,7 +57,7 @@ function AddCard(props) {
           <option value="kiddo">Kiddo</option>
           <option value="pen">Pen</option>
           <option value="sharpie">Sharpie</option>
-          <option value="robotic">Robotic</option>
+          <option value="roboto">Roboto</option>
           <option value="typed">Typed</option>
           <option value="quill">Quill</option>
         </select>
