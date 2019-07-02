@@ -8,26 +8,22 @@ import PropTypes from "prop-types";
 function AddCard(props) {
   const { value: theme, bind: bindTheme } = useInput("handwritten");
   const { value: frontMessage, bind: bindFrontMessage, reset: resetFrontMessage } = useInput("");
-  const { value: frontImage, bind: bindFrontImage, reset: resetFrontImage } = useInput("");
   const { value: insideMessage, bind: bindInsideMessage, reset: resetInsideMessage } = useInput("");
-  const { value: insideImage, bind: bindInsideImage, reset: resetInsideImage } = useInput("");
+  const { files: frontImage, fileBind: bindFrontImage, fileReset: resetFrontImage } = useInput(null);
+  const { files: insideImage, fileBind: bindInsideImage, fileReset: resetInsideImage } = useInput(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios
-      .post(`${Config.API_ENDPOINT}/api/cards`, { theme, frontMessage, frontImage, insideMessage, insideImage })
-      .then(() => {
-        console.log(theme, frontMessage, frontImage, insideMessage, insideImage);
-        return axios.get(`${Config.API_ENDPOINT}/api/cards/1`, { responseType: "blob" });
-      })
-      .then((res) => {
-        const pdfBlob = new Blob([res.data], { type: "application/pdf" });
 
-        saveAs(pdfBlob, "cardDownload.pdf");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // if not-null And too big, validate! make hook?
+    if (frontImage.size / 1024 / 1024 > 0.5 || insideImage.size / 1024 / 1024 > 0.5) {
+      console.log('Too big!')
+    }
+    let formData = new FormData()
+    let front = formData.append('front', frontImage)
+    let inside = formData.append('inside', insideImage)
+    console.log(formData.append('front', frontImage))
+    console.log(theme, frontMessage, frontImage, insideMessage, insideImage);
     resetFrontMessage();
     resetFrontImage();
     resetInsideMessage();
@@ -39,15 +35,21 @@ function AddCard(props) {
       <fieldset>
         <label htmlFor="frontMessage">What's the Occassion?</label>
         <input type="text" placeholder="Happy Occasion Day!" name="frontMessage" {...bindFrontMessage} />
+        <br />
         <label htmlFor="frontImage">Does your Occasion need a Cover Image?</label>
         <input
-          type="text"
+          type="file"
           placeholder="URL for image that can be stretched/shrunk to 400px width and 500px height"
           name="frontImage"
           {...bindFrontImage}
         />
+        <br />
+        <label htmlFor="insideMessage">What do you want to say inside the card?</label>
         <textarea placeholder="From yours, truly!" name="insideMessage" {...bindInsideMessage} />
-        <input type="text" placeholder="https://www.your-image.com/images/1" name="frontImage" {...bindInsideImage} />
+        <br />
+        <label htmlFor="frontImage">Do you want a picture inside the card?</label>
+        <input type="file" placeholder="choose file" name="insideImage" {...bindInsideImage} />
+        <br />
         <select className="themes" name="theme" id="theme" {...bindTheme}>
           <option value="cursive">Cursive</option>
           <option value="cursive-plus">Cursive+</option>
@@ -63,6 +65,7 @@ function AddCard(props) {
         </select>
       </fieldset>
       <button type="submit">Create Occasion</button>
+      <p>{frontImage == null ? null : frontImage.name}</p>
     </form>
   );
 }
@@ -70,9 +73,23 @@ function AddCard(props) {
 AddCard.propTypes = {};
 
 export default AddCard;
+// axios
+//   .post(`${Config.API_ENDPOINT}/api/cards`, { theme, frontMessage, frontImage, insideMessage, insideImage })
+//   .then(() => {
+//     return axios.get(`${Config.API_ENDPOINT}/api/cards/1`, { responseType: "blob" });
+//   })
+//   .then((res) => {
+//     const pdfBlob = new Blob([res.data], { type: "application/pdf" });
 
+//     saveAs(pdfBlob, "cardDownload.pdf");
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+////////////////////////////////////
 // state = {
-//     name: "",
+  //     name: "",
 //     recieptID: 0,
 //     price1: 0,
 //     price2: 0
