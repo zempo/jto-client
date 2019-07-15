@@ -12,22 +12,35 @@ function AddCard(props) {
   const { files: frontImage, fileBind: bindFrontImage, fileReset: resetFrontImage } = useInput(null);
   const { files: insideImage, fileBind: bindInsideImage, fileReset: resetInsideImage } = useInput(null);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // if not-null And too big, validate! make hook?
-    if (frontImage.size / 1024 / 1024 > 0.5 || insideImage.size / 1024 / 1024 > 0.5) {
-      console.log('Too big!')
+    // // if not-null And too big, validate! make hook?
+    if (frontImage && frontImage.size / 1024 / 1024 > 0.5) {
+      console.log("selected front image is too big");
     }
-    let formData = new FormData()
-    let front = formData.append('front', frontImage)
-    let inside = formData.append('inside', insideImage)
-    console.log(formData.append('front', frontImage))
-    console.log(theme, frontMessage, frontImage, insideMessage, insideImage);
-    resetFrontMessage();
-    resetFrontImage();
-    resetInsideMessage();
-    resetInsideImage();
+    if (insideImage && insideImage.size / 1024 / 1024 > 0.5) {
+      console.log("selected inside image is too big");
+    }
+    let formData = new FormData();
+    try {
+      // formData.append({ front: frontImage, inside: insideImage });
+      formData.append("front", frontImage);
+      formData.append("inside", insideImage);
+      console.log(formData);
+      console.log(theme, frontMessage, frontImage, insideMessage, insideImage);
+
+      let sendImageData = await axios.post(`${Config.API_ENDPOINT}/api/private/images`, formData);
+
+      if (!sendImageData) return "Sorry, no dice :/";
+
+      resetFrontMessage();
+      resetFrontImage();
+      resetInsideMessage();
+      resetInsideImage();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -89,7 +102,7 @@ export default AddCard;
 
 ////////////////////////////////////
 // state = {
-  //     name: "",
+//     name: "",
 //     recieptID: 0,
 //     price1: 0,
 //     price2: 0
