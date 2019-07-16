@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useInput } from "../../hooks/input-hook";
 import axios from "axios";
 import Config from "../../config";
-import "./AddCard.css";
+import "./AddCardForm.css";
 import { saveAs } from "file-saver";
 import PropTypes from "prop-types";
 
