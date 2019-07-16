@@ -1,0 +1,9 @@
+.front {
+  max-height: 500px;
+  max-width: 400px;
+}
+
+.inside {
+  max-height: 350px;
+  max-width: 350px;
+}

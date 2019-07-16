@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useInput } from "../../hooks/input-hook";
 import axios from "axios";
 import Config from "../../config";
+import "./AddCard.css";
 import { saveAs } from "file-saver";
 import PropTypes from "prop-types";
 
@@ -11,35 +12,52 @@ function AddCard(props) {
   const { value: insideMessage, bind: bindInsideMessage, reset: resetInsideMessage } = useInput("");
   const { files: frontImage, fileBind: bindFrontImage, fileReset: resetFrontImage } = useInput(null);
   const { files: insideImage, fileBind: bindInsideImage, fileReset: resetInsideImage } = useInput(null);
+  const [frontUrl, setFrontUrl] = useState("");
+  const [insideUrl, setInsideUrl] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState([]);
+  const [errorStatus, setErrorStatus] = useState(0);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
 
-    // // if not-null And too big, validate! make hook?
-    if (frontImage && frontImage.size / 1024 / 1024 > 0.5) {
-      console.log("selected front image is too big");
-    }
-    if (insideImage && insideImage.size / 1024 / 1024 > 0.5) {
-      console.log("selected inside image is too big");
-    }
     let formData = new FormData();
     try {
       // formData.append({ front: frontImage, inside: insideImage });
       formData.append("front", frontImage);
       formData.append("inside", insideImage);
-      console.log(formData);
+      // console.log(formData);
       console.log(theme, frontMessage, frontImage, insideMessage, insideImage);
 
       let sendImageData = await axios.post(`${Config.API_ENDPOINT}/api/private/images`, formData);
-
+      // sendImageData returns an array of the urls. conditionally add them to the img data
       if (!sendImageData) return "Sorry, no dice :/";
+      console.log(sendImageData);
+      setLoading(false);
+      setFrontUrl(sendImageData.data[0]);
+      setInsideUrl(sendImageData.data[1]);
 
+      const fullData = { theme };
+      fullData.front_image = frontUrl;
+      fullData.front_message = frontMessage;
+      fullData.inside_image = insideUrl;
+      fullData.inside_message = insideMessage;
+      // let sendImageData2 = await axios.post(`${Config.API_ENDPOINT}/api/private/cards/1`, fullData);
+
+      setErrorStatus(0);
+      setErrorMsg("");
       resetFrontMessage();
       resetFrontImage();
       resetInsideMessage();
       resetInsideImage();
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
+      console.log(error.response.data.error);
+      console.log(error.response.status);
+      setLoading(false);
+      setErrorStatus(error.response.status);
+      setErrorMsg(Object.values(error.response.data.error));
     }
   };
 
@@ -78,7 +96,13 @@ function AddCard(props) {
         </select>
       </fieldset>
       <button type="submit">Create Occasion</button>
-      <p>{frontImage == null ? null : frontImage.name}</p>
+      <br />
+      <p>{errorStatus === 0 ? null : errorStatus}</p>
+      <p>{errorMsg}</p>
+      {loading ? <p>Loading...</p> : null}
+      <img className="front" src={frontUrl} alt="cloudinary output front" srcset="" />
+      <br />
+      <img className="inside" src={insideUrl} alt="cloudinary output inside" srcset="" />
     </form>
   );
 }
