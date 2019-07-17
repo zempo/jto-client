@@ -28,7 +28,7 @@ function AddCard(props) {
       formData.append("front", frontImage);
       formData.append("inside", insideImage);
       // console.log(formData);
-      console.log(theme, frontMessage, frontImage, insideMessage, insideImage);
+      // console.log(theme, frontMessage, frontImage, insideMessage, insideImage);
 
       let sendImageData = await axios.post(`${Config.API_ENDPOINT}/api/private/images`, formData);
       // sendImageData returns an array of the urls. conditionally add them to the img data
@@ -38,11 +38,16 @@ function AddCard(props) {
       setFrontUrl(sendImageData.data[0]);
       setInsideUrl(sendImageData.data[1]);
 
-      const fullData = { theme };
-      fullData.front_image = frontUrl;
+      let fullData = { theme };
+      if (sendImageData.data[0]) {
+        fullData.front_image = sendImageData.data[0];
+      }
+      if (sendImageData.data[1]) {
+        fullData.inside_image = sendImageData.data[1];
+      }
       fullData.front_message = frontMessage;
-      fullData.inside_image = insideUrl;
       fullData.inside_message = insideMessage;
+      console.log("post to db", fullData);
       // let sendImageData2 = await axios.post(`${Config.API_ENDPOINT}/api/private/cards/1`, fullData);
 
       setErrorStatus(0);
@@ -100,9 +105,9 @@ function AddCard(props) {
       <p>{errorStatus === 0 ? null : errorStatus}</p>
       <p>{errorMsg}</p>
       {loading ? <p>Loading...</p> : null}
-      <img className="front" src={frontUrl} alt="cloudinary output front" srcset="" />
+      <img className="front" src={frontUrl} alt="cloudinary output front" />
       <br />
-      <img className="inside" src={insideUrl} alt="cloudinary output inside" srcset="" />
+      <img className="inside" src={insideUrl} alt="cloudinary output inside" />
     </form>
   );
 }
