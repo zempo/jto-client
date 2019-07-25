@@ -7,6 +7,7 @@ function App() {
   return (
     <div className="App">
       <AddCard />
+      {/* create general layout, restructure components folder in forms, utils, nav, content */}
     </div>
   );
 }
