@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useInput } from "../../hooks/input-hook";
 import axios from "axios";
 import Config from "../../config";
-import "./AddCardForm.css";
+import "./css/AddCardForm.css";
 // import { saveAs } from "file-saver";
 // import PropTypes from "prop-types";
 
@@ -67,7 +67,7 @@ function AddCard(props) {
   };
 
   return (
-    <form className="Form Add-Form" onSubmit={handleSubmit}>
+    <form className="jto-form add-card" onSubmit={handleSubmit}>
       <fieldset>
         <label htmlFor="frontMessage">What's the Occassion?</label>
         <input type="text" placeholder="Happy Occasion Day!" name="frontMessage" {...bindFrontMessage} />
@@ -115,54 +115,3 @@ function AddCard(props) {
 AddCard.propTypes = {};
 
 export default AddCard;
-// axios
-//   .post(`${Config.API_ENDPOINT}/api/cards`, { theme, frontMessage, frontImage, insideMessage, insideImage })
-//   .then(() => {
-//     return axios.get(`${Config.API_ENDPOINT}/api/cards/1`, { responseType: "blob" });
-//   })
-//   .then((res) => {
-//     const pdfBlob = new Blob([res.data], { type: "application/pdf" });
-
-//     saveAs(pdfBlob, "cardDownload.pdf");
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
-
-////////////////////////////////////
-// state = {
-//     name: "",
-//     recieptID: 0,
-//     price1: 0,
-//     price2: 0
-//   };
-
-//   handleChange = ({ target: { value, name } }) => {
-//     this.setState({ [name]: value });
-//   };
-//   createAndDownloadPdf = (e) => {
-//     axios
-//       .post("http://localhost:8000/api/pdfs", this.state)
-//       .then(() => {
-//         console.log(this.state);
-//         return axios.get("http://localhost:8000/api/pdfs/1", { responseType: "blob" });
-//       })
-//       .then((res) => {
-//         const pdfBlob = new Blob([res.data], { type: "application/pdf" });
-
-//         saveAs(pdfBlob, "newPdf.pdf");
-//       });
-//   };
-
-//   render() {
-//     return (
-//       <div className="App">
-//         <input type="text" placeholder="Name" name="name" onChange={this.handleChange} />
-//         <input type="number" placeholder="Reciept ID" name="recieptID" onChange={this.handleChange} />
-//         <input type="number" placeholder="Price 1" name="price1" onChange={this.handleChange} />
-//         <input type="number" placeholder="Price 2" name="price2" onChange={this.handleChange} />
-//         <button type="submit" onClick={this.createAndDownloadPdf}>
-//           Download PDF
-//         </button>
-//       </div>
-//     );
