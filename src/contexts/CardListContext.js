@@ -9,9 +9,17 @@ export const CardListContext = createContext({
 });
 
 const CardListProvider = (props) => {
-  const [cards, setCards] = useState([]);
+  const [cardList, setCardList] = useState([]);
   const [error, setError] = useState(null);
-  return <CardListContext.Provider value={{ cards }}>{props.children}</CardListContext.Provider>;
+
+  const value = {
+    cardList,
+    error,
+    setCardList,
+    setError
+  };
+
+  return <CardListContext.Provider value={value}>{props.children}</CardListContext.Provider>;
 };
 
 export default CardListProvider;
