@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "../Header/Header";
-import AddCard from "../AddCardForm/AddCardForm";
+import Nav from "../Static/Nav";
+import AddCard from "../Forms/AddCardForm";
 import "./App.css";
 
 function App() {

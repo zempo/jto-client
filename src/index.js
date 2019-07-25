@@ -1,11 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./components/App/App";
-import "@fortawesome/fontawesome-free/css/all.css";
+import { BrowserRouter as ROUTER } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
+import App from "./components/App/App";
+import "./index.css";
+import "@fortawesome/fontawesome-free/css/all.css";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <ROUTER>
+    <App />
+  </ROUTER>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

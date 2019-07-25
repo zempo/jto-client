@@ -3,8 +3,8 @@ import { useInput } from "../../hooks/input-hook";
 import axios from "axios";
 import Config from "../../config";
 import "./AddCardForm.css";
-import { saveAs } from "file-saver";
-import PropTypes from "prop-types";
+// import { saveAs } from "file-saver";
+// import PropTypes from "prop-types";
 
 function AddCard(props) {
   const { value: theme, bind: bindTheme } = useInput("handwritten");
@@ -30,7 +30,7 @@ function AddCard(props) {
       // console.log(formData);
       // console.log(theme, frontMessage, frontImage, insideMessage, insideImage);
 
-      let sendImageData = await axios.post(`${Config.API_ENDPOINT}/api/private/images`, formData);
+      let sendImageData = await axios.post(`${Config.API_ENDPOINT}/private/images`, formData);
       // sendImageData returns an array of the urls. conditionally add them to the img data
       if (!sendImageData) return "Sorry, no dice :/";
       console.log(sendImageData);

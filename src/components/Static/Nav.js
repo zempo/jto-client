@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 function Header(props) {
   return (
-    <nav className="App-header">
+    <nav className="jto-nav">
       <p>
         <i className="fa fa-user" /> <code>Hello, Boilerplate</code>
       </p>
