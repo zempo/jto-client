@@ -7,7 +7,7 @@ import "./index.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 
 // providers
-import GalleryContextProvider from "./contexts/GalleryContext";
+import { GalleryContextProvider } from "./contexts/GalleryContext";
 
 ReactDOM.render(
   <ROUTER>

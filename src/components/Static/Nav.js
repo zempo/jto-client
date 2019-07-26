@@ -1,19 +1,22 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-function Header(props) {
+function Nav(props) {
   return (
     <nav className="jto-nav">
-      <p>
-        <i className="fa fa-user" /> <code>Hello, Boilerplate</code>
-      </p>
-      <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-        Learn React
-      </a>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/gallery">Gallery</Link>
+        </li>
+        <li>
+          <Link to="/private-gallery">My Cards</Link>
+        </li>
+      </ul>
     </nav>
   );
 }
 
-Header.propTypes = {};
-
-export default Header;
+export default Nav;

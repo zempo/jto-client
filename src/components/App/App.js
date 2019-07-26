@@ -1,19 +1,33 @@
 import React from "react";
-// import Nav from "../Static/Nav";
+// STATIC
+import Nav from "../Static/Nav";
+import Footer from "../Static/Footer";
+
+// FORMS
 import AddCard from "../Forms/AddCardForm";
+
+// ROUTES
+import Landing from "../Routes/Landing";
 import PublicCards from "../Routes/PublicCards";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 
 const App = () => {
   return (
-    <main className="jto-main">
-      <AddCard />
-      {/* create general layout, restructure components folder in forms, utils, nav, content */}
-      <Switch>
-        <Route exact path={"/gallery"} component={PublicCards} />
-      </Switch>
-    </main>
+    <>
+      <header className="jto-header">
+        <Nav />
+      </header>
+      <main className="jto-main">
+        {/* create general layout, restructure components folder in forms, utils, nav, content */}
+        <Switch>
+          <Route exact path={"/"} component={Landing} />
+          <Route exact path={"/add-occasion"} component={AddCard} />
+          <Route exact path={"/gallery"} component={PublicCards} />
+        </Switch>
+        <Footer />
+      </main>
+    </>
   );
 };
 

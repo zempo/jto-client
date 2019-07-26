@@ -1,19 +1,17 @@
 import React, { createContext, useState } from "react";
 
-export const GalleryContext = createContext({
-  cards: "fuck context"
-});
+export const GalleryContext = createContext();
 
-const GalleryContextProvider = (props) => {
-  const [cards, setCards] = useState("fuck context");
-  // const [error, setError] = useState(false);
+export const GalleryContextProvider = (props) => {
+  const [cards, setCards] = useState([]);
+  const [error, setError] = useState(false);
 
-  // const value = {
-  //   cards,
-  //   error
-  // };
+  const value = {
+    cards,
+    error
+  };
 
-  return <GalleryContext.Provider value={{ cards }}>{props.children}</GalleryContext.Provider>;
+  return <GalleryContext.Provider value={{ value }}>{props.children}</GalleryContext.Provider>;
 };
 
-export default GalleryContextProvider;
+// export default GalleryContextProvider;
