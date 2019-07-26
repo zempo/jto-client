@@ -6,7 +6,7 @@ const PublicCards = () => {
   return (
     <section className="jto-public-cards">
       <h2>Occasions Gallery</h2>
-      <p>Showing Occasions</p>
+      <p>Showing Occasions ${cards.length}</p>
     </section>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "../Static/Nav";
+// import Nav from "../Static/Nav";
 import AddCard from "../Forms/AddCardForm";
 import PublicCards from "../Routes/PublicCards";
 import { Route, Switch } from "react-router-dom";
