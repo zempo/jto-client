@@ -12,7 +12,10 @@ function Nav(props) {
           <Link to="/gallery">Gallery</Link>
         </li>
         <li>
-          <Link to="/private-gallery">My Cards</Link>
+          <Link to="/private-gallery">My Occasions</Link>
+        </li>
+        <li>
+          <Link to="/add-occasion">New Occasion</Link>
         </li>
       </ul>
     </nav>

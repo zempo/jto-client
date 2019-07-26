@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useInput } from "../../hooks/input-hook";
-import axios from "axios";
-import Config from "../../config";
+import { newCard } from "../../services/endpoints-service";
 import "./css/AddCardForm.css";
 // import { saveAs } from "file-saver";
 // import PropTypes from "prop-types";
@@ -24,13 +23,10 @@ function AddCard(props) {
 
     let formData = new FormData();
     try {
-      // formData.append({ front: frontImage, inside: insideImage });
       formData.append("front", frontImage);
       formData.append("inside", insideImage);
-      // console.log(formData);
-      // console.log(theme, frontMessage, frontImage, insideMessage, insideImage);
 
-      let sendImageData = await axios.post(`${Config.API_ENDPOINT}/private/images`, formData);
+      let sendImageData = await newCard.post("/", formData);
       // sendImageData returns an array of the urls. conditionally add them to the img data
       if (!sendImageData) return "Sorry, no dice :/";
       console.log(sendImageData);
@@ -57,9 +53,9 @@ function AddCard(props) {
       resetInsideMessage();
       resetInsideImage();
     } catch (error) {
-      console.log(error.response);
-      console.log(error.response.data.error);
-      console.log(error.response.status);
+      // console.log(error.response);
+      // console.log(error.response.data.error);
+      // console.log(error.response.status);
       setLoading(false);
       setErrorStatus(error.response.status);
       setErrorMsg(Object.values(error.response.data.error));
@@ -67,7 +63,7 @@ function AddCard(props) {
   };
 
   return (
-    <form className="jto-form add-card" onSubmit={handleSubmit}>
+    <form className="jto-form add-card-form" onSubmit={handleSubmit}>
       <fieldset>
         <label htmlFor="frontMessage">What's the Occassion?</label>
         <input type="text" placeholder="Happy Occasion Day!" name="frontMessage" {...bindFrontMessage} />
@@ -111,7 +107,5 @@ function AddCard(props) {
     </form>
   );
 }
-
-AddCard.propTypes = {};
 
 export default AddCard;

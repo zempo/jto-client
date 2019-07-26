@@ -5,6 +5,7 @@ import Footer from "../Static/Footer";
 
 // FORMS
 import AddCard from "../Forms/AddCardForm";
+import Register from "../Forms/Register";
 
 // ROUTES
 import Landing from "../Routes/Landing";
@@ -24,6 +25,7 @@ const App = () => {
           <Route exact path={"/"} component={Landing} />
           <Route exact path={"/add-occasion"} component={AddCard} />
           <Route exact path={"/gallery"} component={PublicCards} />
+          <Route exact path={"/authorization"} component={Register} />
         </Switch>
         <Footer />
       </main>
