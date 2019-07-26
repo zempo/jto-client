@@ -6,9 +6,14 @@ import App from "./components/App/App";
 import "./index.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 
+// providers
+import GalleryContextProvider from "./contexts/GalleryContext";
+
 ReactDOM.render(
   <ROUTER>
-    <App />
+    <GalleryContextProvider>
+      <App />
+    </GalleryContextProvider>
   </ROUTER>,
   document.getElementById("root")
 );
