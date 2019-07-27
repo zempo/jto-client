@@ -17,6 +17,9 @@ function Nav(props) {
         <li>
           <Link to="/add-occasion">New Occasion</Link>
         </li>
+        <li>
+          <Link to="/register">Sign Up</Link>
+        </li>
       </ul>
     </nav>
   );

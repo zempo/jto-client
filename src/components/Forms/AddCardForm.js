@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useInput } from "../../hooks/input-hook";
-import { newCardImage } from "../../services/endpoints-service";
+import { newImages } from "../../services/endpoints-service";
 import "./css/AddCardForm.css";
 // import { saveAs } from "file-saver";
 // import PropTypes from "prop-types";
@@ -26,7 +26,7 @@ function AddCard(props) {
       formData.append("front", frontImage);
       formData.append("inside", insideImage);
 
-      let sendImageData = await newCardImage.post("/", formData);
+      let sendImageData = await newImages.post("/", formData);
       // sendImageData returns an array of the urls. conditionally add them to the img data
       if (!sendImageData) return "Sorry, no dice :/";
       console.log(sendImageData);

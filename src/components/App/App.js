@@ -25,7 +25,7 @@ const App = () => {
           <Route exact path={"/"} component={Landing} />
           <Route exact path={"/add-occasion"} component={AddCard} />
           <Route exact path={"/gallery"} component={PublicCards} />
-          <Route exact path={"/authorization"} component={Register} />
+          <Route exact path={"/register"} component={Register} />
         </Switch>
         <Footer />
       </main>

@@ -9,6 +9,10 @@ export const login = axios.create({
   }
 });
 
-export const newCardImage = axios.create({
+export const newImages = axios.create({
   baseURL: `${Config.API_ENDPOINT}/private/images`
+});
+
+export const newCard = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/private/cards/`
 });

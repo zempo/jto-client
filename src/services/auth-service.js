@@ -1,5 +1,3 @@
-import Config from "../config";
-import axios from "axios";
 import { login } from "./endpoints-service";
 
 export const AuthService = {
