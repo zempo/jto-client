@@ -1,33 +1,73 @@
 import React, { useState } from "react";
-import { validatePwd, validateUsername } from "../../services/validation/auth-validation";
+import { validatePwd, validateUsername, validateName, validateEmail } from "../../services/validation/auth-validation";
 import { useRegistrationInput } from "../../hooks/registration-hook";
 
 const Register = () => {
-  const { value: username, error, bind: bindUsername, reset: resetUsername } = useRegistrationInput(
+  const { value: username, error: usernameError, bind: bindUsername, reset: resetUsername } = useRegistrationInput(
     "",
     validateUsername
   );
+  const { value: password, error: pwdError, bind: bindPassword, reset: resetPassword } = useRegistrationInput(
+    "",
+    validatePwd
+  );
+  const { value: fullname, error: nameError, bind: bindFullname, reset: resetFullname } = useRegistrationInput(
+    "",
+    validateName
+  );
+  const { value: email, error: emailError, bind: bindEmail, reset: resetEmail } = useRegistrationInput(
+    "",
+    validateEmail
+  );
+  // const [btn, setBtn] = useState(false)
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    console.log(username, password, fullname, email);
+
+    resetUsername();
+    resetPassword();
+    resetEmail();
+    resetFullname();
+  };
 
   return (
-    <form className="jto-form register-form">
+    <form className="jto-form register-form" onSubmit={handleSubmit}>
       <fieldset>
         <ul>
-          {error.map((err, i) => (
+          <label htmlFor="username">User Name:</label>
+          {usernameError.map((err, i) => (
             <li key={i}>{err}</li>
           ))}
         </ul>
-        <label htmlFor="user_name">User Name:</label>
-        <input type="text" name="user_name" placeholder="paper_cut-27" {...bindUsername} />
+        <input type="text" name="username" placeholder="paper_cut-27" {...bindUsername} />
         <br />
-        <label htmlFor="full_name">Full Name:</label>
-        <input type="text" name="full_name" placeholder="Eric Cardman" />
-        <label htmlFor="email">Email:</label>
-        <input type="text" name="email" placeholder="ecardman@gmail.com" />
-        <label htmlFor="password">Password:</label>
-        <input type="text" name="password" placeholder="Password1@" />
+        <ul>
+          <label htmlFor="fullname">Full Name:</label>
+          {nameError.map((err, i) => (
+            <li key={i}>{err}</li>
+          ))}
+        </ul>
+        <input type="text" name="fullname" placeholder="Eric Cardman" {...bindFullname} />
+        <br />
+        <ul>
+          <label htmlFor="email">Email:</label>
+          {emailError.map((err, i) => (
+            <li key={i}>{err}</li>
+          ))}
+        </ul>
+        <input type="text" name="email" placeholder="ecardman@gmail.com" {...bindEmail} />
+        <br />
+        <ul>
+          <label htmlFor="password">Password:</label>
+          {pwdError.map((err, i) => (
+            <li key={i}>{err}</li>
+          ))}
+        </ul>
+        <input type="text" name="password" placeholder="Password1@" {...bindPassword} />
       </fieldset>
       <button type="submit">Join Our Community</button>
-      {username}
     </form>
   );
 };

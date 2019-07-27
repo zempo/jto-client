@@ -35,10 +35,10 @@ export const validatePwd = (pwd) => {
     ERRORS.push(`Must be less than 72 characters.`);
     ERRORS.push(`Must contain at least 1 upper case letter, number and special character.`);
     ERRORS.push(`Must not contain extra spaces`);
-  } else if (!REGEX_PWD.test(pwd) && pwd.length > 8) {
+  } else if (!REGEX_PWD.test(pwd) && pwd.length < 8) {
     ERRORS.push(`Must be longer than 8 characters.`);
     ERRORS.push(`Must contain at least 1 upper case letter, number and special character.`);
-  } else if (!REGEX_PWD.test(pwd) && pwd.length < 72) {
+  } else if (!REGEX_PWD.test(pwd) && pwd.length > 72) {
     ERRORS.push(`Must be less than 72 characters.`);
     ERRORS.push(`Must contain at least 1 upper case letter, number and special character.`);
   } else if (!REGEX_PWD.test(pwd) && (pwd.startsWith(" ") || pwd.endsWith(" "))) {
@@ -46,9 +46,9 @@ export const validatePwd = (pwd) => {
     ERRORS.push(`Must not contain extra spaces`);
   } else if (!REGEX_PWD.test(pwd)) {
     ERRORS.push(`Must contain at least 1 upper case letter, number and special character.`);
-  } else if (pwd.length > 8) {
+  } else if (pwd.length < 8) {
     ERRORS.push(`Must be longer than 8 characters.`);
-  } else if (pwd.length < 72) {
+  } else if (pwd.length > 72) {
     ERRORS.push(`Must be less than 72 characters.`);
   } else if (pwd.startsWith(" ") || pwd.endsWith(" ")) {
     ERRORS.push(`Must not contain extra spaces`);
@@ -56,5 +56,31 @@ export const validatePwd = (pwd) => {
     ERRORS = [];
   }
 
+  return ERRORS;
+};
+
+export const validateName = (fullname) => {
+  let ERRORS = [];
+  if (fullname.length > 90) {
+    ERRORS.push(`Full names shall be abbreviated to 90 characters based on Minnesota Statutory Law.`);
+    ERRORS.push(
+      ` Please reach out to our support team if you would like to create an account for the kitten who walks across your keyboard.`
+    );
+  } else {
+    ERRORS = [];
+  }
+  return ERRORS;
+};
+
+export const validateEmail = (email) => {
+  // eslint-disable-next-line
+  let REGEX_EMAIL = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  let ERRORS = [];
+
+  if (!REGEX_EMAIL.test(email)) {
+    ERRORS.push(`Must use valid email`);
+  } else {
+    ERRORS = [];
+  }
   return ERRORS;
 };
