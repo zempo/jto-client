@@ -1,6 +1,13 @@
 import Config from "../config";
 import axios from "axios";
 
+export const register = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/users`,
+  headers: {
+    "content-type": "application/json"
+  }
+})
+
 export const login = axios.create({
   baseURL: `${Config.API_ENDPOINT}/auth/login`,
   method: "POST",
