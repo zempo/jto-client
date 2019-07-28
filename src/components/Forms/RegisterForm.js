@@ -25,6 +25,9 @@ const Register = () => {
   const emailRef = useRef()
   const pwdRef = useRef()
   const [validReq, setValidReq] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState([]);
+  const [errorStatus, setErrorStatus] = useState(0);
 
   useEffect(() => {
     if (usernameError.length > 0 || pwdError.length > 0 || nameError.length > 0 || emailError.length > 0) {
@@ -39,12 +42,13 @@ const Register = () => {
     let newUser = { password, email }
     newUser.user_name = username
     newUser.full_name = fullname
-    console.log(newUser);
 
+    setLoading(true)
     try {
       const createdUser = await register.post('/', newUser)
       console.log(createdUser)
 
+      setLoading(false);
       setValidReq(false)
       resetUsername();
       resetPassword();
@@ -52,6 +56,10 @@ const Register = () => {
       resetFullname();
     } catch (error) {
       console.log(error.response)
+      setLoading(false);
+      setErrorStatus(error.response.status);
+      setErrorMsg(Object.values(error.response.data.error));
+      // to-do: conditionally render error notification for 5 seconds
     }
 
 
@@ -94,6 +102,9 @@ const Register = () => {
       </fieldset>
       {/* validReq */}
       <button disabled={!validReq || usernameRef.current.value.length === 0 || fullnameRef.current.value.length === 0 || emailRef.current.value.length === 0 || pwdRef.current.value.length === 0} type="submit">Join Our Community</button>
+      <p>{errorStatus === 0 ? null : errorStatus}</p>
+      <p>{errorMsg}</p>
+      {loading ? <p>Loading...</p> : null}
     </form>
   );
 };
