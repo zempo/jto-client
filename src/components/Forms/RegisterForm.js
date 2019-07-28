@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { validatePwd, validateUsername, validateName, validateEmail } from "../../services/validation/auth-validation";
 import { useRegistrationInput } from "../../hooks/registration-hook";
 import { register } from '../../services/endpoints-service'
+import { jtoNotification } from '../Utils/Utils'
 
 const Register = () => {
   const { value: username, error: usernameError, bind: bindUsername, reset: resetUsername } = useRegistrationInput(
@@ -67,6 +68,7 @@ const Register = () => {
 
   return (
     <form className="jto-form register-form" onSubmit={handleSubmit}>
+      < jtoNotification className="error" />
       <fieldset>
         <ul>
           <label htmlFor="username">User Name:</label>
