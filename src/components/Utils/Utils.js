@@ -3,16 +3,14 @@ import { JtoQuotes } from "./Quotes";
 import { format as formatDate } from "date-fns";
 import "./css/Utils.css";
 
-export const Loader = ({ loading }) => {
+export const Loader = () => {
   const randomQuote = JtoQuotes[~~(Math.random() * JtoQuotes.length)];
 
-  if (loading) {
-    return (
-      <div className="jto-loader">
-        <h3>{randomQuote}</h3>
-      </div>
-    );
-  }
+  return (
+    <div className="jto-loader">
+      <h3>{randomQuote}</h3>
+    </div>
+  );
 };
 
 export const Required = ({ met }) => {
