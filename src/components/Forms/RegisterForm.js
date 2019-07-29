@@ -45,6 +45,7 @@ const Register = () => {
     newUser.full_name = fullname;
 
     setLoading(true);
+    setErrorStatus(0);
     try {
       const createdUser = await register.post("/", newUser);
       console.log(createdUser);
@@ -56,7 +57,7 @@ const Register = () => {
       resetEmail();
       resetFullname();
     } catch (error) {
-      console.log(error.response);
+      console.log(errorStatus);
       setLoading(false);
       setErrorStatus(error.response.status);
       setErrorMsg(Object.values(error.response.data.error));
@@ -127,7 +128,7 @@ const Register = () => {
           Join Our Community
         </button>
       </form>
-      <Loader />
+      {/* <Loader /> */}
     </>
   );
 };

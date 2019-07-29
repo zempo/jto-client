@@ -3,14 +3,22 @@ import { JtoQuotes } from "./Quotes";
 import { format as formatDate } from "date-fns";
 import "./css/Utils.css";
 
-export const Loader = () => {
+export const Loader = ({ loading }) => {
   const randomQuote = JtoQuotes[~~(Math.random() * JtoQuotes.length)];
 
-  return (
-    <div className="jto-loader">
-      <h3>{randomQuote}</h3>
-    </div>
-  );
+  let run = setInterval(() => {
+    console.log("new quote");
+    return (
+      <div className="jto-loader">
+        <h3>{randomQuote}</h3>
+      </div>
+    );
+  }, 2000);
+  if (loading) {
+    return run;
+  } else {
+    clearInterval(run);
+  }
 };
 
 export const Required = ({ met }) => {

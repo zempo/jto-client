@@ -6,7 +6,7 @@ export const register = axios.create({
   headers: {
     "content-type": "application/json"
   }
-})
+});
 
 export const login = axios.create({
   baseURL: `${Config.API_ENDPOINT}/auth/login`,
@@ -15,6 +15,9 @@ export const login = axios.create({
     "content-type": "application/json"
   }
 });
+// .then((res) => {
+//   !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json();
+// });
 
 export const newImages = axios.create({
   baseURL: `${Config.API_ENDPOINT}/private/images`
