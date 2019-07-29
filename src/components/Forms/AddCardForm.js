@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import { useInput } from "../../hooks/input-hook";
+import { validateFrontMessage, validateTheme, validateInsideMessage } from "../../services/validation/card-validation";
 import { newImages } from "../../services/endpoints-service";
-import "./css/AddCardForm.css";
+import { JtoNotification, Required } from "../Utils/Utils";
+import "./css/Forms.css";
 // import { saveAs } from "file-saver";
 // import PropTypes from "prop-types";
 
 function AddCard(props) {
-  const { value: theme, bind: bindTheme } = useInput("handwritten");
-  const { value: frontMessage, bind: bindFrontMessage, reset: resetFrontMessage } = useInput("");
-  const { value: insideMessage, bind: bindInsideMessage, reset: resetInsideMessage } = useInput("");
+  const { value: theme, error: themeError, bind: bindTheme, reset: resetTheme } = useInput("", validateTheme);
+  const { value: frontMessage, error: frontMsgError, bind: bindFrontMessage, reset: resetFrontMessage } = useInput(
+    "",
+    validateFrontMessage
+  );
+  const { value: insideMessage, error: inMsgError, bind: bindInsideMessage, reset: resetInsideMessage } = useInput(
+    "",
+    validateInsideMessage
+  );
   const { files: frontImage, fileBind: bindFrontImage, fileReset: resetFrontImage } = useInput(null);
   const { files: insideImage, fileBind: bindInsideImage, fileReset: resetInsideImage } = useInput(null);
   const [frontUrl, setFrontUrl] = useState("");
@@ -52,6 +60,7 @@ function AddCard(props) {
       resetFrontImage();
       resetInsideMessage();
       resetInsideImage();
+      resetTheme();
     } catch (error) {
       // console.log(error.response);
       // console.log(error.response.data.error);
@@ -64,8 +73,12 @@ function AddCard(props) {
 
   return (
     <form className="jto-form add-card-form" onSubmit={handleSubmit}>
+      {errorStatus === 0 ? null : <JtoNotification type={errorStatus} msg={errorMsg} />}
       <fieldset>
-        <label htmlFor="frontMessage">What's the Occassion?</label>
+        <label htmlFor="frontMessage">
+          <Required met={frontMessage.length === 0 ? false : true} />
+          What's the Occassion?
+        </label>
         <input type="text" placeholder="Happy Occasion Day!" name="frontMessage" {...bindFrontMessage} />
         <br />
         <label htmlFor="frontImage">Does your Occasion need a Cover Image?</label>
@@ -76,13 +89,20 @@ function AddCard(props) {
           {...bindFrontImage}
         />
         <br />
-        <label htmlFor="insideMessage">What do you want to say inside the card?</label>
+        <label htmlFor="insideMessage">
+          <Required met={insideMessage.length === 0 ? false : true} />
+          What do you want to say inside the card?
+        </label>
         <textarea placeholder="From yours, truly!" name="insideMessage" {...bindInsideMessage} />
         <br />
         <label htmlFor="frontImage">Do you want a picture inside the card?</label>
         <input type="file" placeholder="choose file" name="insideImage" {...bindInsideImage} />
         <br />
-        <select className="themes" name="theme" id="theme" {...bindTheme}>
+        <Required met={theme.length === 0 ? false : true} />
+        <select className="themes" name="theme" id="theme" {...bindTheme} required>
+          <option value="" disabled selected>
+            Please Choose Theme...
+          </option>
           <option value="cursive">Cursive</option>
           <option value="cursive-plus">Cursive+</option>
           <option value="handwritten">Handwritten</option>
@@ -98,9 +118,6 @@ function AddCard(props) {
       </fieldset>
       <button type="submit">Create Occasion</button>
       <br />
-      <p>{errorStatus === 0 ? null : errorStatus}</p>
-      <p>{errorMsg}</p>
-      {loading ? <p>Loading...</p> : null}
       <img className="front" src={frontUrl} alt="cloudinary output front" />
       <br />
       <img className="inside" src={insideUrl} alt="cloudinary output inside" />
