@@ -6,19 +6,17 @@ import "./css/Utils.css";
 export const Loader = ({ loading }) => {
   const randomQuote = JtoQuotes[~~(Math.random() * JtoQuotes.length)];
 
-  let run = setInterval(() => {
-    console.log("new quote");
-    return (
-      <div className="jto-loader">
-        <h3>{randomQuote}</h3>
-      </div>
-    );
-  }, 2000);
-  if (loading) {
-    return run;
-  } else {
-    clearInterval(run);
-  }
+  setInterval(
+    () => {
+      return (
+        <div className="jto-loader">
+          <h3>{randomQuote}</h3>
+        </div>
+      );
+    },
+    2000,
+    [loading]
+  );
 };
 
 export const Required = ({ met }) => {

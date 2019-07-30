@@ -57,7 +57,7 @@ const Register = () => {
       resetEmail();
       resetFullname();
     } catch (error) {
-      console.log(errorStatus);
+      // console.log(errorStatus);
       setLoading(false);
       setErrorStatus(error.response.status);
       setErrorMsg(Object.values(error.response.data.error));

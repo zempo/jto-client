@@ -26,8 +26,8 @@ function AddCard(props) {
   // references
   const [validReq, setValidReq] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState([]);
-  const [errorStatus, setErrorStatus] = useState(0);
+  const [resMsg, setResMsg] = useState("");
+  const [resStatus, setResStatus] = useState(0);
   const frontMsgRef = useRef();
   const insideMsgRef = useRef();
   const themeRef = useRef();
@@ -69,8 +69,8 @@ function AddCard(props) {
       console.log("post to db", fullData);
       // let sendImageData2 = await axios.post(`${Config.API_ENDPOINT}/api/private/cards/1`, fullData);
 
-      setErrorStatus(0);
-      setErrorMsg("");
+      setResStatus(0);
+      setResMsg("");
       resetFrontMessage();
       resetFrontImage();
       resetInsideMessage();
@@ -81,15 +81,16 @@ function AddCard(props) {
       // console.log(error.response.data.error);
       // console.log(error.response.status);
       setLoading(false);
-      setErrorStatus(error.response.status);
-      setErrorMsg(Object.values(error.response.data.error));
+      setResStatus(error.response.status);
+      setResMsg(Object.values(error.response.data.error));
     }
   };
 
   return (
     <>
       <form className="jto-form add-card-form" onSubmit={handleSubmit}>
-        {errorStatus === 0 ? null : <JtoNotification type={errorStatus} msg={errorMsg} />}
+        {}
+        {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
         <fieldset>
           <label htmlFor="frontMessage">
             <Required met={frontMessage.length === 0 ? false : true} />
@@ -164,7 +165,7 @@ function AddCard(props) {
         <br />
         <img className="inside" src={insideUrl} alt="cloudinary output inside" />
       </form>
-      {/* {!loading ? null : <Loader loading={loading} />} */}
+      {!loading ? null : <Loader loading={loading} />}
     </>
   );
 }
