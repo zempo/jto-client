@@ -4,18 +4,16 @@ import { format as formatDate } from "date-fns";
 import "./css/Utils.css";
 
 export const Loader = ({ loading }) => {
-  const randomQuote = JtoQuotes[~~(Math.random() * JtoQuotes.length)];
+  const [quote, setQuote] = useState("");
+  useEffect(() => {
+    let randomQuote = JtoQuotes[~~(Math.random() * JtoQuotes.length)];
+    setInterval(() => {}, 2000, [loading]);
+  }, [loading]);
 
-  setInterval(
-    () => {
-      return (
-        <div className="jto-loader">
-          <h3>{randomQuote}</h3>
-        </div>
-      );
-    },
-    2000,
-    [loading]
+  return (
+    <div className="jto-loader">
+      <h3>{quote}</h3>
+    </div>
   );
 };
 
