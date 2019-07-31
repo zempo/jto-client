@@ -165,7 +165,7 @@ function AddCard(props) {
         <br />
         <img className="inside" src={insideUrl} alt="cloudinary output inside" />
       </form>
-      {!loading ? null : <Loader loading={loading} />}
+      {loading ? <Loader loading={true} /> : <Loader loading={false} />}
     </>
   );
 }

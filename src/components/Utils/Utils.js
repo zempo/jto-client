@@ -4,17 +4,27 @@ import { format as formatDate } from "date-fns";
 import "./css/Utils.css";
 
 export const Loader = ({ loading }) => {
-  const [quote, setQuote] = useState("");
-  useEffect(() => {
-    let randomQuote = JtoQuotes[~~(Math.random() * JtoQuotes.length)];
-    setInterval(() => {}, 2000, [loading]);
-  }, [loading]);
+  // have quotes fade in and out with dynamic styling
+  let randomQuote1 = JtoQuotes[~~(Math.random() * JtoQuotes.length)];
+  const [quote, setQuote] = useState(randomQuote1);
 
-  return (
-    <div className="jto-loader">
-      <h3>{quote}</h3>
-    </div>
-  );
+  useEffect(() => {
+    let randomQuote2 = JtoQuotes[~~(Math.random() * JtoQuotes.length)];
+    setTimeout(() => {
+      setQuote(randomQuote2);
+    }, 2000);
+    // eslint-disable-next-line
+  }, [loading == true]);
+
+  if (loading) {
+    return (
+      <div className="jto-loader">
+        <h3>{quote}</h3>
+      </div>
+    );
+  } else {
+    return null;
+  }
 };
 
 export const Required = ({ met }) => {
@@ -26,6 +36,8 @@ export const Required = ({ met }) => {
 };
 
 export const JtoNotification = ({ type, msg }) => {
+  // created centered checkmark or x
+  // below display message and surround with colored border
   const [displaying, setDisplaying] = useState(false);
   useEffect(() => {
     setDisplaying(true);
