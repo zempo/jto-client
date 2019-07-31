@@ -54,7 +54,7 @@ export const JtoNotification = ({ type, msg }) => {
   };
   if (displaying) {
     return (
-      <div className={["jto-notification", type].join(" ")}>
+      <div id={type} className="jto-notification">
         <h2>
           <i className="fas fa-exclamation" />
           {msg}
@@ -68,3 +68,8 @@ export const JtoNotification = ({ type, msg }) => {
     return null;
   }
 };
+
+export function JtoSection({ className, list, ...props }) {
+  const classes = ["Section", list && "Section--list", className].filter(Boolean).join(" ");
+  return <section className={classes} {...props} />;
+}

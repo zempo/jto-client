@@ -1,7 +1,32 @@
+/* Loader utility */
+/* /////////////////////////////// */
+/* fade in and out, 2 second animation cycle */
+
+/* Required utility  */
+/* ////////////////////////////// */
+/* surround by circle, or add "pop/lines coming out" when this changes */
 .required {
   color: rgb(199, 58, 48);
 }
 
 .met {
   color: rgb(48, 199, 81);
+}
+
+/* Notification utility  */
+/* //////////////////////////// */
+div[id="200"],
+div[id="201"] {
+  /* green checkmark in center */
+  background: rgb(33, 170, 86, 0.9);
+  border: 2px solid rgb(33, 170, 86);
+}
+
+div[id="400"],
+div[id="403"],
+div[id="404"],
+div[id="413"] {
+  /* green checkmark in center */
+  background: rgba(170, 33, 74, 0.37);
+  border: 2px solid rgb(177, 30, 74);
 }

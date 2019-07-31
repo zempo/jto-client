@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { validatePwd, validateUsername, validateName, validateEmail } from "../../services/validation/auth-validation";
 import { useRegistrationInput } from "../../hooks/registration-hook";
 import { register } from "../../services/endpoints-service";
+import { AuthService } from "../../services/auth-service";
 import { JtoNotification, Required, Loader } from "../Utils/Utils";
 
-const Register = () => {
+const Register = (props) => {
   const { value: username, error: usernameError, bind: bindUsername, reset: resetUsername } = useRegistrationInput(
     "",
     validateUsername
@@ -27,8 +28,8 @@ const Register = () => {
   const pwdRef = useRef();
   const [validReq, setValidReq] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState([]);
-  const [errorStatus, setErrorStatus] = useState(0);
+  const [resMsg, setResMsg] = useState("");
+  const [resStatus, setResStatus] = useState(0);
 
   useEffect(() => {
     if (usernameError.length > 0 || pwdError.length > 0 || nameError.length > 0 || emailError.length > 0) {
@@ -45,11 +46,16 @@ const Register = () => {
     newUser.full_name = fullname;
 
     setLoading(true);
-    setErrorStatus(0);
+    setResStatus(0);
+    setResMsg("");
     try {
-      const createdUser = await register.post("/", newUser);
+      // const createdUser = await register.post("/", newUser);
+      const createdUser = await AuthService.postUser(newUser);
       console.log(createdUser);
 
+      props.onRegistrationSuccess();
+      setResStatus(createdUser.status);
+      setResMsg("Account Sucessfully Created!");
       setLoading(false);
       setValidReq(false);
       resetUsername();
@@ -59,8 +65,8 @@ const Register = () => {
     } catch (error) {
       // console.log(errorStatus);
       setLoading(false);
-      setErrorStatus(error.response.status);
-      setErrorMsg(Object.values(error.response.data.error));
+      setResStatus(error.response.status);
+      setResMsg(Object.values(error.response.data.error));
       // to-do: conditionally render error notification for 5 seconds
     }
   };
@@ -68,7 +74,7 @@ const Register = () => {
   return (
     <>
       <form className="jto-form register-form" onSubmit={handleSubmit}>
-        {errorStatus === 0 ? null : <JtoNotification type={errorStatus} msg={errorMsg} />}
+        {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
         <fieldset>
           <label htmlFor="username">
             <Required met={username.length === 0 ? false : true} />
@@ -128,9 +134,13 @@ const Register = () => {
           Join Our Community
         </button>
       </form>
-      {/* <Loader /> */}
+      {loading ? <Loader loading={true} /> : <Loader loading={false} />}
     </>
   );
+};
+
+Register.defaultProps = {
+  onRegistrationSuccess: () => {}
 };
 
 export default Register;

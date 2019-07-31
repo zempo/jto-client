@@ -45,6 +45,8 @@ function AddCard(props) {
     setLoading(true);
 
     let formData = new FormData();
+    setResStatus(0);
+    setResMsg("");
     try {
       formData.append("front", frontImage);
       formData.append("inside", insideImage);
@@ -69,8 +71,8 @@ function AddCard(props) {
       console.log("post to db", fullData);
       // let sendImageData2 = await axios.post(`${Config.API_ENDPOINT}/api/private/cards/1`, fullData);
 
-      setResStatus(0);
-      setResMsg("");
+      setResStatus(sendImageData.status);
+      setResMsg("New Occasion Created");
       resetFrontMessage();
       resetFrontImage();
       resetInsideMessage();
@@ -89,7 +91,6 @@ function AddCard(props) {
   return (
     <>
       <form className="jto-form add-card-form" onSubmit={handleSubmit}>
-        {}
         {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
         <fieldset>
           <label htmlFor="frontMessage">
