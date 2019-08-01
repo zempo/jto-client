@@ -7,12 +7,14 @@ const _TEN_SECONDS_IN_MS = 10000;
 const TokenService = {
   saveAuthToken(token) {
     window.localStorage.setItem(Config.TOKEN_KEY, token);
+    window.location.reload();
   },
   getAuthToken() {
     return window.localStorage.getItem(Config.TOKEN_KEY);
   },
   clearAuthToken() {
     window.localStorage.removeItem(Config.TOKEN_KEY);
+    window.location.reload();
   },
   hasAuthToken() {
     return !!TokenService.getAuthToken();
@@ -25,6 +27,10 @@ const TokenService = {
   },
   readJwtToken() {
     return TokenService.parseJwt(TokenService.getAuthToken());
+  },
+  getId() {
+    const currentUser = TokenService.readJwtToken().user_id;
+    return currentUser;
   },
   _getMsUntilExpiry(payload) {
     /*

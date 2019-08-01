@@ -25,11 +25,11 @@ const LoginForm = (props) => {
       });
 
       if (!validLogin) {
-        console.log("fail");
+        console.log("Failed Login");
       }
 
       setResStatus(200);
-      setResMsg("Successful Log-in!");
+      setResMsg("Successful Login");
       resetEmail();
       resetPwd();
       props.onLoginSuccess();

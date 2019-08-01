@@ -1,5 +1,6 @@
 import Config from "../config";
 import axios from "axios";
+import TokenService from "./token-service";
 
 // AUTHENTICATION
 export const register = axios.create({
@@ -40,6 +41,14 @@ export const newCard = axios.create({
 });
 
 // READ CONTENT (R)
+export const readUser = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/users/${TokenService.getId()}`,
+  method: "GET",
+  headers: {
+    authorization: `Bearer ${TokenService.getAuthToken()}`
+  }
+});
+
 export const listCards = axios.create({
   baseURL: `${Config.API_ENDPOINT}/cards`,
   method: "GET"

@@ -84,3 +84,7 @@ export function JtoSection({ className, list, ...props }) {
   const classes = ["Section", list && "Section--list", className].filter(Boolean).join(" ");
   return <section className={classes} {...props} />;
 }
+
+export function Hyph() {
+  return <span className="Hyph">{" - "}</span>;
+}
