@@ -49,6 +49,14 @@ export const readUser = axios.create({
   }
 });
 
+export const listUserCards = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/private/cards/${TokenService.getId()}`,
+  method: "GET",
+  headers: {
+    authorization: `Bearer ${TokenService.getAuthToken()}`
+  }
+});
+
 export const listCards = axios.create({
   baseURL: `${Config.API_ENDPOINT}/cards`,
   method: "GET"

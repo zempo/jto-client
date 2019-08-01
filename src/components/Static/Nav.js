@@ -13,7 +13,7 @@ class Nav extends Component {
   };
 
   renderLogoutLink() {
-    console.log(TokenService.getId());
+    // console.log(TokenService.getId());
     // window.location.reload();
     return (
       <div className="logged-in">
@@ -26,7 +26,7 @@ class Nav extends Component {
 
   renderLoginLink() {
     // window.location.reload();
-    console.log("reload");
+    // console.log("reload");
     return (
       <div className="logged-out">
         <Link to="/login">Login</Link>
@@ -48,33 +48,5 @@ class Nav extends Component {
     );
   }
 }
-
-//  function Nav(props) {
-//   const handleLogoutClick = () => {
-//     TokenService.clearAuthToken();
-//     TokenService.clearCallbackBeforeExpiry();
-//     IdleService.unRegisterIdleResets();
-//   };
-
-//   const renderLogoutLink = () => {
-//     const LogoutLink = (
-//       <div className="logged-in">
-//         <Link onClick={handleLogoutClick} to="/logout">
-//           Logout
-//         </Link>
-//       </div>
-//     );
-//     return LogoutLink;
-//   };
-//   const renderLoginLink = () => {
-//     const LoginLink = (
-//       <div className="logged-out">
-//         <Link to="/login">Login</Link>
-//         <Link to="/register">Sign Up</Link>
-//       </div>
-//     );
-
-//     return LoginLink;
-//   };
 
 export default Nav;

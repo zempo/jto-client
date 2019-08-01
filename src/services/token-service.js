@@ -23,14 +23,19 @@ const TokenService = {
     return window.btoa(`${email}:${password}`);
   },
   parseJwt(jwt) {
-    return jwtDecode(jwt);
+    if (jwt) {
+      return jwtDecode(jwt);
+    }
   },
   readJwtToken() {
     return TokenService.parseJwt(TokenService.getAuthToken());
   },
   getId() {
-    const currentUser = TokenService.readJwtToken().user_id;
-    return currentUser;
+    if (TokenService.hasAuthToken()) {
+      const currentUser = TokenService.readJwtToken().user_id;
+
+      return currentUser;
+    }
   },
   _getMsUntilExpiry(payload) {
     /*
