@@ -84,3 +84,11 @@ export const validateEmail = (email) => {
   }
   return ERRORS;
 };
+
+export const validateLogin = (input) => {
+  let ERRORS = [];
+  if (input.length === 0) {
+    ERRORS.push("Please enter value");
+  }
+  return ERRORS;
+};

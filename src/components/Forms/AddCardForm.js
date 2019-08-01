@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useInput } from "../../hooks/input-hook";
 import { validateFrontMessage, validateTheme, validateInsideMessage } from "../../services/validation/card-validation";
+import { useInput } from "../../hooks/file-input-hook";
 import { newImages } from "../../services/endpoints-service";
 import { JtoNotification, Required, Loader } from "../Utils/Utils";
 import "./css/Forms.css";
-// import { saveAs } from "file-saver";
-// import PropTypes from "prop-types";
 
 function AddCard(props) {
   // data binding

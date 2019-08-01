@@ -1,29 +1,38 @@
-import React, { useEffect } from "react";
+// SETUP + UTILS
+import React, { Component } from "react";
+import { Route, Switch } from "react-router-dom";
+import PublicOnlyRoute from "../Utils/PublicOnlyRoute";
+import PrivateRoute from "../Utils/PrivateRoute";
+import "./App.css";
+
+// SERVICES
+import { AuthService } from "../../services/auth-service";
+import IdleService from "../../services/idle-service";
+import TokenService from "../../services/token-service";
+
 // STATIC
 import Nav from "../Static/Nav";
 import Footer from "../Static/Footer";
 
 // FORMS
 import AddCard from "../Forms/AddCardForm";
-import RegisterForm from "../Forms/RegisterForm";
 
-// ROUTES + Utils + Services
-import "./App.css";
+// ROUTES
 import Landing from "../Routes/Landing";
 import PublicCards from "../Routes/PublicCards";
-import { Route, Switch } from "react-router-dom";
-import TokenService from "../../services/token-service";
-import IdleService from "../../services/idle-service";
-import { AuthService } from "../../services/auth-service";
+import Registration from "../Routes/Registration";
+import Login from "../Routes/Login";
 
-const App = () => {
-  useEffect(() => {
-    const unmount = () => {
-      IdleService.unRegisterIdleResets();
-      TokenService.clearCallbackBeforeExpiry();
-    };
+class App extends Component {
+  state = { hasError: false };
 
-    IdleService.setIdleCallback(logoutFromIdle);
+  static getDerivedStateFromError(error) {
+    console.log(error);
+    return { hasError: true };
+  }
+
+  componentDidMount() {
+    IdleService.setIdleCallback(this.logoutFromIdle);
 
     if (TokenService.hasAuthToken()) {
       IdleService.regiserIdleTimerResets();
@@ -32,40 +41,41 @@ const App = () => {
         AuthService.postRefreshToken();
       });
     }
+  }
 
-    return unmount;
-  }, []);
-
-  const logoutFromIdle = () => {
-    /* remove the token from localStorage */
-    TokenService.clearAuthToken();
-    /* remove any queued calls to the refresh endpoint */
-    TokenService.clearCallbackBeforeExpiry();
-    /* remove the timeouts that auto logout when idle */
+  componentWillUnmount() {
     IdleService.unRegisterIdleResets();
-    /*
-      react won't know the token has been removed from local storage,
-      so we need to tell React to rerender
-    */
+    TokenService.clearCallbackBeforeExpiry();
+  }
+
+  logoutFromIdle = () => {
+    TokenService.clearAuthToken();
+    TokenService.clearCallbackBeforeExpiry();
+    IdleService.unRegisterIdleResets();
+
     this.forceUpdate();
   };
-  return (
-    <>
-      <header className="jto-header">
-        <Nav />
-      </header>
-      <main className="jto-main">
-        {/* create general layout, restructure components folder in forms, utils, nav, content */}
-        <Switch>
-          <Route exact path={"/"} component={Landing} />
-          <Route exact path={"/add-occasion"} component={AddCard} />
-          <Route exact path={"/gallery"} component={PublicCards} />
-          <Route exact path={"/register"} component={RegisterForm} />
-        </Switch>
-        <Footer />
-      </main>
-    </>
-  );
-};
+
+  render() {
+    return (
+      <>
+        <header className="jto-header">
+          <Nav />
+        </header>
+        <main className="jto-main">
+          {/* create general layout, restructure components folder in forms, utils, nav, content */}
+          <Switch>
+            <Route exact path={"/"} component={Landing} />
+            <Route exact path={"/add-occasion"} component={AddCard} />
+            <Route exact path={"/gallery"} component={PublicCards} />
+            <PublicOnlyRoute exact path={"/login"} component={Login} />
+            <PublicOnlyRoute exact path={"/register"} component={Registration} />
+          </Switch>
+          <Footer />
+        </main>
+      </>
+    );
+  }
+}
 
 export default App;

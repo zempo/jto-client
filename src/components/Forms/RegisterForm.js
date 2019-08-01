@@ -1,43 +1,30 @@
 import React, { useState, useEffect, useRef } from "react";
 import { validatePwd, validateUsername, validateName, validateEmail } from "../../services/validation/auth-validation";
-import { useRegistrationInput } from "../../hooks/registration-hook";
-import { register } from "../../services/endpoints-service";
+import { useInput } from "../../hooks/input-hook";
 import { AuthService } from "../../services/auth-service";
-import { JtoNotification, Required, Loader } from "../Utils/Utils";
+import { JtoNotification, Required } from "../Utils/Utils";
+import "./css/Forms.css";
 
 const Register = (props) => {
-  const { value: username, error: usernameError, bind: bindUsername, reset: resetUsername } = useRegistrationInput(
-    "",
-    validateUsername
-  );
-  const { value: password, error: pwdError, bind: bindPassword, reset: resetPassword } = useRegistrationInput(
-    "",
-    validatePwd
-  );
-  const { value: fullname, error: nameError, bind: bindFullname, reset: resetFullname } = useRegistrationInput(
-    "",
-    validateName
-  );
-  const { value: email, error: emailError, bind: bindEmail, reset: resetEmail } = useRegistrationInput(
-    "",
-    validateEmail
-  );
+  const { value: username, error: usrError, bind: bindUsername, reset: resetUsername } = useInput("", validateUsername);
+  const { value: password, error: pwdError, bind: bindPassword, reset: resetPassword } = useInput("", validatePwd);
+  const { value: fullname, error: nameError, bind: bindFullname, reset: resetFullname } = useInput("", validateName);
+  const { value: email, error: emailError, bind: bindEmail, reset: resetEmail } = useInput("", validateEmail);
   const usernameRef = useRef();
   const fullnameRef = useRef();
   const emailRef = useRef();
   const pwdRef = useRef();
   const [validReq, setValidReq] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [resMsg, setResMsg] = useState("");
   const [resStatus, setResStatus] = useState(0);
 
   useEffect(() => {
-    if (usernameError.length > 0 || pwdError.length > 0 || nameError.length > 0 || emailError.length > 0) {
+    if (usrError.length > 0 || pwdError.length > 0 || nameError.length > 0 || emailError.length > 0) {
       return setValidReq(false);
     } else {
       return setValidReq(true);
     }
-  }, [usernameError, pwdError, nameError, emailError]);
+  }, [usrError, pwdError, nameError, emailError]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -45,26 +32,22 @@ const Register = (props) => {
     newUser.user_name = username;
     newUser.full_name = fullname;
 
-    setLoading(true);
     setResStatus(0);
     setResMsg("");
     try {
-      // const createdUser = await register.post("/", newUser);
       const createdUser = await AuthService.postUser(newUser);
       console.log(createdUser);
 
-      props.onRegistrationSuccess();
       setResStatus(createdUser.status);
       setResMsg("Account Sucessfully Created!");
-      setLoading(false);
       setValidReq(false);
       resetUsername();
       resetPassword();
       resetEmail();
       resetFullname();
+      props.onRegistrationSuccess();
     } catch (error) {
       // console.log(errorStatus);
-      setLoading(false);
       setResStatus(error.response.status);
       setResMsg(Object.values(error.response.data.error));
       // to-do: conditionally render error notification for 5 seconds
@@ -81,7 +64,7 @@ const Register = (props) => {
             User Name:
           </label>
           <ul>
-            {usernameError.map((err, i) => (
+            {usrError.map((err, i) => (
               <li key={i}>{err}</li>
             ))}
           </ul>
@@ -134,7 +117,6 @@ const Register = (props) => {
           Join Our Community
         </button>
       </form>
-      {loading ? <Loader loading={true} /> : <Loader loading={false} />}
     </>
   );
 };

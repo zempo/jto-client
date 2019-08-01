@@ -8,13 +8,24 @@ export const Loader = ({ loading }) => {
   let randomQuote1 = JtoQuotes[~~(Math.random() * JtoQuotes.length)];
   const [quote, setQuote] = useState(randomQuote1);
 
+  // useEffect(() => {
+  //   // clear on mount
+  //   const cleanup = () => {
+  //     console.clear();
+  //   };
+  //   return cleanup;
+  // }, []);
+
   useEffect(() => {
-    let randomQuote2 = JtoQuotes[~~(Math.random() * JtoQuotes.length)];
-    setTimeout(() => {
-      setQuote(randomQuote2);
-    }, 2000);
+    // conditional prevents memory leak
+    if (loading === true) {
+      let randomQuote2 = JtoQuotes[~~(Math.random() * JtoQuotes.length)];
+      setTimeout(() => {
+        setQuote(randomQuote2);
+      }, 2000);
+    }
     // eslint-disable-next-line
-  }, [loading == true]);
+  }, [loading]);
 
   if (loading) {
     return (
