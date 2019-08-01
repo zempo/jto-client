@@ -10,18 +10,18 @@ export const AuthService = {
     return login
       .post("/", JSON.stringify(creds))
       .then((res) => {
-        if (!res.ok) {
-          res.json().then((e) => Promise.reject(e));
+        if (res.status !== 200) {
+          return res.data.then((e) => Promise.reject(e));
         }
-        res.json();
+        return res.data;
       })
       .then((res) => {
         /*
-        whenever a logint is performed:
-        1. save the token in local storage
-        2. queue auto logout when the user goes idle
-        3. queue a call to the refresh endpoint based on the JWT's exp value
-      */
+      whenever a logint is performed:
+      1. save the token in local storage
+      2. queue auto logout when the user goes idle
+      3. queue a call to the refresh endpoint based on the JWT's exp value
+    */
         TokenService.saveAuthToken(res.authToken);
         IdleService.regiserIdleTimerResets();
         TokenService.queueCallbackBeforeExpiry(() => {
