@@ -1,9 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { JtoSection } from "../Utils/Utils";
-import { listUserCards } from "../../services/endpoints-service";
-import TokenService from "../../services/token-service";
 import { CardContext } from "../../contexts/CardContext";
-import Config from "../../config";
+import "./css/Cards.css";
 
 const PrivateCards = () => {
   const { value } = useContext(CardContext);
@@ -12,7 +10,7 @@ const PrivateCards = () => {
     <JtoSection className="jto-cards private-cards">
       {value.cards.map((card, i) => {
         return (
-          <div key={i} className="jto-card from-list">
+          <div key={i} className="jto-card list-card">
             <input type="checkbox" id={`card-toggle-${i}`} class="card-toggle" value="selected" />
             <label class="card-container" for={`card-toggle-${i}`}>
               <div class="front face">
