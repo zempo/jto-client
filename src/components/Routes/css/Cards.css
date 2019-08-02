@@ -1,11 +1,12 @@
 .jto-cards {
+  background: rgb(124, 120, 120);
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
 }
 
 .list-card {
-  padding: 4vw;
+  padding: 5vw;
 }
 
 .list-card img {
@@ -21,7 +22,7 @@
   display: block;
   width: 180px;
   height: 180px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 20px rgba(248, 246, 246, 0.219);
   position: relative;
   perspective: 700;
   -webkit-perspective: 700;
@@ -68,19 +69,26 @@
 }
 
 .inner-left {
+  background: rgb(248, 245, 245);
   -webkit-transform: rotateY(-20deg);
   transform: rotateY(-20deg);
   z-index: 2;
 }
 
-.inner-left > img {
-  height: 180px;
-  width: 180px;
+.front > img {
+  height: 130px;
+  width: 130px;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.inner-left > p {
   -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
 
 .inner-right {
+  background: rgb(248, 245, 245);
   -webkit-transform: rotateY(0deg);
   transform: rotateY(0deg);
   z-index: 1;

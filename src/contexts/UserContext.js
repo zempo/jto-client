@@ -1,25 +1,34 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
+import { readUser } from "../services/endpoints-service";
 
 export const UserContext = createContext();
 
 export const UserContextProvider = (props) => {
   const [user, setUser] = useState({});
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const getUser = (data) => {
-    setUser(data);
-    return user;
-  };
+  useEffect(() => {
+    const getUser = async () => {
+      setLoading(true);
+      try {
+        const result = await readUser.get("/");
 
-  const catchError = (err) => {
-    setError(err);
-  };
+        setLoading(false);
+        setUser(result.data);
+      } catch (err) {
+        setError(err);
+        setLoading(false);
+      }
+    };
+
+    getUser();
+  }, []);
 
   const value = {
     user,
-    getUser,
     error,
-    catchError
+    loading
   };
 
   return <UserContext.Provider value={{ value }}>{props.children}</UserContext.Provider>;

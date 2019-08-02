@@ -11,16 +11,16 @@ const PrivateCards = () => {
       {value.cards.map((card, i) => {
         return (
           <div key={i} className="jto-card list-card">
-            <input type="checkbox" id={`card-toggle-${i}`} class="card-toggle" value="selected" />
-            <label class="card-container" for={`card-toggle-${i}`}>
-              <div class="front face">
+            <input type="checkbox" id={`card-toggle-${i}`} className="card-toggle" value="selected" />
+            <label className="card-container" htmlFor={`card-toggle-${i}`}>
+              <div className="front face">
                 <p>{card.front_message}</p>
                 {card.front_image !== "" ? <img src={card.front_image} alt="front background" /> : null}
               </div>
-              <div class="inner-left face">
+              <div className="inner-left face">
                 <p>{card.inside_message}</p>
               </div>
-              <div class="inner-right face">
+              <div className="inner-right face">
                 {card.inside_image !== "" ? <img src={card.inside_image} alt="card interior background" /> : null}
               </div>
             </label>
