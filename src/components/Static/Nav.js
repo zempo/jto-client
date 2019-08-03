@@ -38,7 +38,7 @@ class Nav extends Component {
 
   render() {
     return (
-      <nav className="jto-nav">
+      <nav className="jto-nav-menu">
         <Link to="/">Home</Link>
         <Link to="/gallery">Gallery</Link>
         <Link to="/private">My Occasions</Link>

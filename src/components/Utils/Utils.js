@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { JtoQuotes } from "./Quotes";
-import { format as formatDate } from "date-fns";
+import { Link } from "react-router-dom";
+// import { format as formatDate } from "date-fns";
 import "./css/Utils.css";
 
 export const Loader = ({ loading }) => {
@@ -87,4 +88,20 @@ export function JtoSection({ className, list, ...props }) {
 
 export function Hyph() {
   return <span className="Hyph">{" - "}</span>;
+}
+
+export function SettingsIcon() {
+  return (
+    <div className="settings">
+      <i className="fas fa-cog fa-2x" />
+    </div>
+  );
+}
+
+export function MenuOption({ to, text }) {
+  return (
+    <div className="menu-option">
+      <Link to={to}>{text}</Link>
+    </div>
+  );
 }
