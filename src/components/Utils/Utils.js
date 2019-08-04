@@ -90,11 +90,12 @@ export function Hyph() {
   return <span className="Hyph">{" - "}</span>;
 }
 
-export function SettingsIcon() {
+export function CheckCard() {
   return (
-    <div className="settings">
-      <i className="fas fa-cog fa-2x" />
-    </div>
+    <label class="container">
+      <input type="checkbox" />
+      <span class="checkmark" />
+    </label>
   );
 }
 
