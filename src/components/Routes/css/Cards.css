@@ -8,31 +8,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 }
-
 .list-card {
   padding: 100px;
 }
-
-.card-toggle {
-  display: block;
-  position: relative;
-  top: -1%;
-  left: 40%;
-  height: 2em;
-  width: 2em;
-  background-color: rgb(204, 204, 204, 0.3);
-  border: 1px solid rgba(46, 44, 44, 0.4);
-  border-radius: 50%;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
 .card-container {
   display: block;
   width: 180px;
@@ -42,6 +20,67 @@
   -webkit-perspective: 700;
   margin: auto;
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.card-toggle {
+  display: block;
+  position: relative;
+  top: -1%;
+  left: 40%;
+  opacity: 0;
+  height: 2em;
+  width: 2em;
+  /* background-color: rgb(204, 204, 204, 0.3);
+  border: 1px solid rgba(46, 44, 44, 0.4); */ 
+  /* border-radius: 50%; */
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.checkmark {
+  border-radius: 50%;
+  position: absolute;
+  top: -25%;
+  left: 40%;
+  height: 2.5em;
+  width: 2.5em;
+  background-color: rgba(126, 119, 113, 0); 
+  border: 1px solid rgba(126, 119, 113, 0); 
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;  
+  -webkit-transition: all 0.3s ease-out;     
+}
+
+.checkmark:after {
+  display: block;
+  left: 35%;
+  top: 5%;
+  width: 30%; 
+  height: 60%;
+  border: solid rgb(17, 73, 17); 
+  border-width: 0 10px 10px 0; 
+  -webkit-transform: rotate(45deg); 
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}  
+
+.card-toggle:not(:checked) + .card-container .checkmark, .card-toggle:not(:checked) + .card-container .menu-option {
+  opacity: 0;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;    
+}
+  
+.card-container:checked + .card-container .checkmark, .card-toggle:not(:checked) + .card-container .menu-option {
+  opacity: 1; 
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;    
 }
 
 .card-container:hover .face {
@@ -74,18 +113,19 @@
   transform-origin: 0 0;
 }
 
-.jto-options-menu {
+.jto-mini-menu {
   position: relative;
-  top: -30%;
-  left: 40%;
-  width: 100%;
-  /* border: 2px solid black; */
-  /* display: grid;
-  grid-template-columns: 1fr;
-  text-align: center;
-  -webkit-transition: all 0.5s ease-out;
-  -o-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out; */
+  top: 110%; 
+  left: -50%;
+  width: 200%;
+  display: flex;
+  border: 2px solid black;
+  justify-content: space-evenly;
+}
+
+.menu-option { 
+  text-decoration: none;
+  border: 2px solid blue;
 }
 
 /* .jto-options-menu > .menu-option {
