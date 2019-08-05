@@ -34,7 +34,7 @@
   height: 2em;
   width: 2em;
   /* background-color: rgb(204, 204, 204, 0.3);
-  border: 1px solid rgba(46, 44, 44, 0.4); */ 
+  border: 1px solid rgba(46, 44, 44, 0.4); */
   /* border-radius: 50%; */
   padding-left: 35px;
   margin-bottom: 12px;
@@ -49,42 +49,40 @@
   left: 40%;
   height: 2.5em;
   width: 2.5em;
-  background-color: rgba(126, 119, 113, 0); 
-  border: 1px solid rgba(126, 119, 113, 0); 
+  background-color: rgba(126, 119, 113, 0);
+  border: 1px solid rgba(126, 119, 113, 0);
   -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;  
-  -webkit-transition: all 0.3s ease-out;     
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
 }
 
 .checkmark:after {
   display: block;
   left: 30%;
   top: 5%;
-  width: 30%; 
+  width: 30%;
   height: 60%;
-  border: solid rgb(17, 73, 17); 
-  border-width: 0 10px 10px 0; 
-  -webkit-transform: rotate(45deg); 
+  border: solid rgb(17, 73, 17);
+  border-width: 0 10px 10px 0;
+  -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
-}  
-
-.card-toggle:not(:checked) + .card-container .checkmark, .card-toggle:not(:checked) + .card-container .jto-mini-menu {
-  opacity: 0;
-  /* -webkit-animation-name: fadeInUp;
-  animation-name: fadeInUp; */
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
-  -webkit-transition: all 0.3s ease-out;    
 }
-  
-.card-container:checked + .card-container .checkmark, .card-toggle:not(:checked) + .card-container .jto-mini-menu .jto-option {
-  /* opacity: 1;  */
-  -webkit-animation-name: fadeInUp;
-  animation-name: fadeInUp;  
+
+.card-toggle:not(:checked) + .card-container .checkmark,
+.card-toggle:not(:checked) + .card-container .jto-mini-menu {
+  opacity: 0;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
-  -webkit-transition: all 0.3s ease-out;    
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.card-container:checked + .card-container .checkmark,
+.card-toggle:not(:checked) + .card-container .jto-mini-menu .jto-option {
+  opacity: 1;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
 }
 
 .card-container:hover .face {
@@ -119,7 +117,7 @@
 
 .jto-mini-menu {
   position: relative;
-  top: 110%; 
+  top: 110%;
   left: -55%;
   width: 200%;
   padding: 5%;
@@ -129,17 +127,19 @@
   justify-content: space-evenly;
 }
 
-.menu-option > a { 
+.menu-option > a {
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.781);
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.7);
   -webkit-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
 
-.menu-option:hover > a { 
+.menu-option:hover > a {
   color: rgba(255, 255, 255);
-  font-weight: bold;
+  text-decoration: underline;
+  font-weight: bolder;
   -webkit-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
@@ -230,34 +230,6 @@
 
 .card-toggle:checked + .card-container .face {
   margin-left: 90px;
-}
-
-@-webkit-keyframes fadeInUp {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
 }
 
 @media screen and (max-width: 1120px) {

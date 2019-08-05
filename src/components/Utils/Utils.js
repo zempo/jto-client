@@ -92,9 +92,9 @@ export function Hyph() {
 
 export function CheckCard() {
   return (
-    <label class="container">
+    <label className="container">
       <input type="checkbox" />
-      <span class="checkmark" />
+      <span className="checkmark" />
     </label>
   );
 }

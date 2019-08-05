@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
-import Config from "../../config";
-import TokenService from "../../services/token-service";
 import { UserContext } from "../../contexts/UserContext";
-import { CardContextProvider as CardProvider } from "../../contexts/CardContext";
+import { CardsContextProvider as CardsProvider } from "../../contexts/CardsContext";
 import { JtoSection } from "../Utils/Utils";
 import PrivateCards from "./PrivateCards";
 
@@ -12,9 +10,9 @@ const UserHome = () => {
   return (
     <JtoSection className="jto-page home">
       <h1>Welcome, {value.user.full_name}</h1>
-      <CardProvider>
+      <CardsProvider>
         <PrivateCards />
-      </CardProvider>
+      </CardsProvider>
     </JtoSection>
   );
 };
