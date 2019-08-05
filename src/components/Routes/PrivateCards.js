@@ -10,6 +10,8 @@ const PrivateCards = () => {
 
   return !value.error ? (
     <JtoSection className="jto-cards private-cards">
+      {/* make empty card with question mark and big "start creating Occasions button" */}
+      {value.cards.length === 0 ? <button>Start Creating Occasions</button> : null}
       {value.cards.map((card, i) => {
         return (
           <div key={i} className="jto-card list-card">
@@ -38,7 +40,7 @@ const PrivateCards = () => {
       })}
     </JtoSection>
   ) : (
-    <Redirect to="/login" />
+    <Redirect from="/private" to="/login" />
   );
 };
 

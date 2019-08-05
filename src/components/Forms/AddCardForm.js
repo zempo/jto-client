@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { validateFrontMessage, validateTheme, validateInsideMessage } from "../../services/validation/card-validation";
 import { useInput } from "../../hooks/file-input-hook";
 import { newImages } from "../../services/endpoints-service";
-import { JtoNotification, Required, Loader } from "../Utils/Utils";
+import { JtoNotification, Required, Loader, ThemesList } from "../Utils/Utils";
 import "./css/Forms.css";
 
 function AddCard(props) {
@@ -135,17 +135,7 @@ function AddCard(props) {
             <option value="" disabled>
               Please Choose Theme...
             </option>
-            <option value="cursive">Cursive</option>
-            <option value="cursive-plus">Cursive+</option>
-            <option value="handwritten">Handwritten</option>
-            <option value="handwritten-bold">Handwritten Bold</option>
-            <option value="indie">Indie</option>
-            <option value="kiddo">Kiddo</option>
-            <option value="pen">Pen</option>
-            <option value="sharpie">Sharpie</option>
-            <option value="roboto">Roboto</option>
-            <option value="typed">Typed</option>
-            <option value="quill">Quill</option>
+            <ThemesList />
           </select>
         </fieldset>
         <button

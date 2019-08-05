@@ -106,3 +106,21 @@ export function MenuOption({ to, text }) {
     </div>
   );
 }
+
+export function ThemesList() {
+  return (
+    <>
+      <option value="cursive">Cursive</option>
+      <option value="cursive-plus">Cursive+</option>
+      <option value="handwritten">Handwritten</option>
+      <option value="handwritten-bold">Handwritten Bold</option>
+      <option value="indie">Indie</option>
+      <option value="kiddo">Kiddo</option>
+      <option value="pen">Pen</option>
+      <option value="sharpie">Sharpie</option>
+      <option value="roboto">Roboto</option>
+      <option value="typed">Typed</option>
+      <option value="quill">Quill</option>
+    </>
+  );
+}
