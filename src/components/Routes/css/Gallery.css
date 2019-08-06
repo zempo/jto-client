@@ -5,8 +5,8 @@
 #998D7C */
   /* background-color: rgb(232, 201, 155);
   background-image: linear-gradient(315deg, rgb(232, 201, 155) 0%, rgb(232, 188, 133) 74%); */
-  background-color: #000000;
-  background-image: linear-gradient(315deg, #000000 0%, #958e69 74%);
+  background-color: #b6a99e;
+  background-image: linear-gradient(315deg, #7a6b61 0%, #807368 20%, #8c7d71 40%, #a6998e 60%, #b6a99e 80%);
   /* border: 2px solid rgb(91, 55, 41);
   border-image-repeat: linear-gradient(315deg, rgb(91, 56, 43) 0%, rgb(116, 70, 56) 74%);
   box-shadow: 0 0 1px 1px rgb(68, 39, 30); */
@@ -55,9 +55,9 @@
   left: 40%;
   height: 2.5em;
   width: 2.5em;
-  background-color: rgba(255, 254, 216, 0.5);
-  border: 2px solid rgba(255, 254, 216, 0);
-  box-shadow: 120px 60px 80px 180px rgb(255, 254, 216, 0.5);
+  background-color: rgba(236, 236, 227, 0.4);
+  border: 2px solid rgba(236, 236, 227, 0);
+  box-shadow: 80px 60px 80px 240px rgba(236, 236, 227, 0.4);
   -webkit-transform: rotate(55deg);
   -ms-transform: rotate(55deg);
   transform: rotate(55deg);
