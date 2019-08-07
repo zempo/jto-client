@@ -50,7 +50,7 @@ class Nav extends Component {
         </Link>
         <Link to="/gallery">Gallery</Link>
         <Link to="/private">My Occasions</Link>
-        <Link to="/add-occasion">New Occasion</Link>
+        <Link to="/faq">Help & FAQs</Link>
         {TokenService.hasAuthToken() ? this.renderLogoutLink() : this.renderLoginLink()}
       </nav>
     );

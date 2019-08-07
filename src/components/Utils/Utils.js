@@ -99,21 +99,30 @@ export function CheckCard() {
   );
 }
 
-export function MenuOption({ to, text }) {
+export function MenuOption({ to, text, item_id }) {
   return (
     <div className="menu-option">
-      <Link to={to}>{text}</Link>
+      <Link
+        to={{
+          pathname: to,
+          state: {
+            item: item_id
+          }
+        }}
+      >
+        {text}
+      </Link>
     </div>
   );
 }
 
 export function AddBtn() {
   return (
-    <div className="btn btn-add">
-      <Link to="/add-occasion">
+    <Link to="/add-occasion">
+      <div className="btn btn-add">
         <i className="fas fa-plus fa-3x" />
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 }
 

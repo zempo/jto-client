@@ -7,9 +7,11 @@
   position: relative;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 }
+
 .list-card {
   padding: 100px;
 }
+
 .card-container,
 .card-container2 {
   display: block;

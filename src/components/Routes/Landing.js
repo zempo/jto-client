@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "../../images/jto-logo.svg";
 
 const Landing = () => {
+  // useEffect(() => {
+  //   console.log();
+  // }, []);
   return (
     <div className="jto-landing">
       <img src={Logo} alt="jto-logo" width="100" height="100" />
