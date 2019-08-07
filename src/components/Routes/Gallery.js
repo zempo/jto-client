@@ -32,10 +32,12 @@ const Gallery = () => {
                   {card.inside_image !== "" ? <img src={card.inside_image} alt="card interior background" /> : null}
                 </div>
                 <nav className="jto-mini-menu">
-                  <MenuOption to="/public-card" text="Visit" />
-                  {userValue.user.admin ? <MenuOption to="/" text="Delete" /> : null}
-                  <MenuOption to="/" text="Download" />
-                  {card.user.user_name === userValue.user.user_name ? <MenuOption to="/" text="Make-Private" /> : null}
+                  <MenuOption to="/gallery-card" text="Visit" item_id={card.id} />
+                  {userValue.user.admin ? <MenuOption to="/delete" text="Delete" item_id={card.id} /> : null}
+                  <MenuOption to="/download" text="Download" item_id={card.id} />
+                  {card.user.user_name === userValue.user.user_name ? (
+                    <MenuOption to="/toggle-privacy" text="Make-Private" item_id={card.id} />
+                  ) : null}
                 </nav>
                 <div className="jto-counter">
                   <span className="fa-stack">

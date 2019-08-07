@@ -23,7 +23,7 @@ export const refresh = axios.create({
   baseURL: `${Config.API_ENDPOINT}/auth/refresh`,
   method: "POST",
   headers: {
-    "content-type": "application/json"
+    authorization: `Bearer ${TokenService.getAuthToken()}`
   }
 });
 
@@ -69,6 +69,22 @@ export const listCardComments = axios.create({
 export const listReactions = axios.create({
   baseURL: `${Config.API_ENDPOINT}/reactions`,
   method: "GET"
+});
+
+export const listHearts = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/reactions/hearts`,
+  method: "GET",
+  headers: {
+    authorization: `Bearer ${TokenService.getAuthToken()}`
+  }
+});
+
+export const listShares = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/reactions/shares`,
+  method: "GET",
+  headers: {
+    authorization: `Bearer ${TokenService.getAuthToken()}`
+  }
 });
 
 // UPDATE CONTENT (U)

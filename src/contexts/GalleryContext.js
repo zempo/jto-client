@@ -5,7 +5,6 @@ export const GalleryContext = createContext();
 
 export const GalleryContextProvider = (props) => {
   const [cards, setCards] = useState([]);
-  const [cardsComments, setCardsComments] = useState([]);
   const [cardsReacts, setCardsReacts] = useState([]);
   const [error, setError] = useState(false);
 
@@ -16,7 +15,6 @@ export const GalleryContextProvider = (props) => {
         // filter and map results based on their id
         const reactsResult = await listReactions.get("/");
         setCards(cardsResult.data);
-        console.log(reactsResult.data);
         setCardsReacts(reactsResult.data);
       } catch (err) {
         if (err.response.status === 401) {
