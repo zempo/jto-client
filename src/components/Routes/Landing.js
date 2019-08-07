@@ -1,8 +1,10 @@
 import React from "react";
+import Logo from "../../images/jto-logo.svg";
 
 const Landing = () => {
   return (
     <div className="jto-landing">
+      <img src={Logo} alt="jto-logo" width="100" height="100" />
       <section>
         <h3>Experience A Greeting Card Platform</h3>
         <p>

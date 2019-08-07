@@ -107,6 +107,16 @@ export function MenuOption({ to, text }) {
   );
 }
 
+export function AddBtn() {
+  return (
+    <div className="btn btn-add">
+      <Link to="/add-occasion">
+        <i className="fas fa-plus fa-3x" />
+      </Link>
+    </div>
+  );
+}
+
 export function ThemesList() {
   return (
     <>

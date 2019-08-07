@@ -4,6 +4,7 @@ import TokenService from "../../services/token-service";
 import IdleService from "../../services/idle-service";
 import { Hyph } from "../Utils/Utils";
 import { UserContext } from "../../contexts/UserContext";
+import Logo from "../../images/jto-logo.svg";
 import "./css/Static.css";
 
 class Nav extends Component {
@@ -44,7 +45,9 @@ class Nav extends Component {
   render() {
     return (
       <nav className="jto-nav-menu">
-        <Link to="/">Home</Link>
+        <Link to="/">
+          <img src={Logo} alt="site logo" width="50" height="50" />
+        </Link>
         <Link to="/gallery">Gallery</Link>
         <Link to="/private">My Occasions</Link>
         <Link to="/add-occasion">New Occasion</Link>

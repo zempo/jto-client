@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
-import { JtoSection, MenuOption } from "../Utils/Utils";
+import { JtoSection, MenuOption, AddBtn } from "../Utils/Utils";
 import { CardsContext } from "../../contexts/CardsContext";
 import TextPlaceholder from "../../images/writing-placeholder.jpg";
 import "./css/Cards.css";
@@ -11,7 +11,6 @@ const PrivateCards = () => {
   return !value.error ? (
     <JtoSection className="jto-cards private-cards">
       {/* make empty card with question mark and big "start creating Occasions button" */}
-      {value.cards.length === 0 ? <button>Start Creating Occasions</button> : null}
       {value.cards.map((card, i) => {
         return (
           <div key={i} className="jto-card list-card">
@@ -38,6 +37,9 @@ const PrivateCards = () => {
           </div>
         );
       })}
+      <div className="card-container">
+        <AddBtn />
+      </div>
     </JtoSection>
   ) : (
     <Redirect from="/private" to="/login" />

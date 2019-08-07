@@ -10,11 +10,6 @@ const Gallery = () => {
   const { value } = useContext(GalleryContext);
   const { value: userValue } = useContext(UserContext);
 
-  // create a search form
-  // "showing 5 of 60 occasions"
-  // run array methods on all queried results
-  // using context array methods from context
-  console.log(userValue.user);
   return (
     <>
       <SearchGallery />
@@ -40,7 +35,7 @@ const Gallery = () => {
                   {userValue.user.admin ? <MenuOption to="/" text="Delete" /> : null}
                   {card.user.user_name === userValue.user.user_name ? <MenuOption to="/" text="Make-Private" /> : null}
                   <MenuOption to="/" text="Download" />
-                  <MenuOption to="/" text="View" />
+                  <MenuOption to="/public-card" text="View" />
                 </nav>
               </label>
             </div>
