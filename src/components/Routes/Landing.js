@@ -6,7 +6,7 @@ const Landing = () => {
     <div className="jto-landing">
       <img src={Logo} alt="jto-logo" width="100" height="100" />
       <section>
-        <h3>Experience A Greeting Card Platform</h3>
+        <h3>Experience the Greeting Card Platform</h3>
         <p>
           [<em>placeholder for screenshot of the interface</em>]
         </p>

@@ -32,11 +32,32 @@ const Gallery = () => {
                   {card.inside_image !== "" ? <img src={card.inside_image} alt="card interior background" /> : null}
                 </div>
                 <nav className="jto-mini-menu">
+                  <MenuOption to="/public-card" text="Visit" />
                   {userValue.user.admin ? <MenuOption to="/" text="Delete" /> : null}
-                  {card.user.user_name === userValue.user.user_name ? <MenuOption to="/" text="Make-Private" /> : null}
                   <MenuOption to="/" text="Download" />
-                  <MenuOption to="/public-card" text="View" />
+                  {card.user.user_name === userValue.user.user_name ? <MenuOption to="/" text="Make-Private" /> : null}
                 </nav>
+                <div className="jto-counter">
+                  <span className="fa-stack">
+                    <i className="fas fa-heart">
+                      <strong className="fa-stack-1x fa-stack-text fa-inverse">
+                        {value.getHeartsForCard(value.cardsReacts, i)}
+                      </strong>
+                    </i>
+                  </span>
+                  <span className="fa-stack">
+                    <i className="fas fa-comment-alt">
+                      <strong className="fa-stack-1x fa-stack-text fa-inverse">{card.number_of_comments}</strong>
+                    </i>
+                  </span>
+                  <span className="fa-stack">
+                    <i className="fas fa-bookmark">
+                      <strong className="fa-stack-1x fa-stack-text fa-inverse">
+                        {value.getSharesForCard(value.cardsReacts, i)}
+                      </strong>
+                    </i>
+                  </span>
+                </div>
               </label>
             </div>
           );

@@ -37,7 +37,7 @@ const PrivateCards = () => {
           </div>
         );
       })}
-      <div className="card-container">
+      <div className="card-container2">
         <AddBtn />
       </div>
     </JtoSection>
