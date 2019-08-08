@@ -33,6 +33,7 @@ const LoginForm = (props) => {
       resetEmail();
       resetPwd();
       props.onLoginSuccess();
+      console.clear();
     } catch (error) {
       setResStatus(error.response.status);
       setResMsg(Object.values(error.response.data.error));

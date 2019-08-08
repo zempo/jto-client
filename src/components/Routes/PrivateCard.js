@@ -1,11 +1,9 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Redirect } from "react-router-dom";
 // import { CardContext, CardContextProvider } from "../../contexts/CardContext";
 import { UserContext } from "../../contexts/UserContext";
 import { listCards, listCardComments, listReactions, listHearts, listShares } from "../../services/endpoints-service";
-import TokenService from "../../services/token-service";
 // create back-button
-import { JtoSection, JtoNotification } from "../Utils/Utils";
+import { JtoSection } from "../Utils/Utils";
 import "./css/Card.css";
 
 const PublicCard = (props) => {
@@ -19,7 +17,7 @@ const PublicCard = (props) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    if (props.location.state !== undefined) {
+    if (props.location.state.item !== null) {
       const { item } = props.location.state;
       setCardId(item);
 
@@ -51,9 +49,9 @@ const PublicCard = (props) => {
     // eslint-disable-next-line
   }, []);
 
-  return props.state !== undefined ? (
+  return (
     <>
-      <JtoSection className="jto-card public-card">
+      <JtoSection className="jto-card private-card">
         {/* load an array of custom styles from a utilities page. style={getTheme(card.theme, themes context)} */}
         <h2>Written by {cardAuthor.user_name}</h2>
         <div className="">
@@ -67,32 +65,7 @@ const PublicCard = (props) => {
           {card.inside_image !== "" ? <img src={card.inside_image} alt="card interior background" /> : null}
         </div>
       </JtoSection>
-      <JtoSection className="jto-reactions">
-        Hearts {hearts.length}
-        Shares {shares.length}
-      </JtoSection>
-      <JtoSection className="jto-comments">
-        <ul>
-          {comments.map((comment, i) => {
-            return (
-              <li className="jto-comment" key={i}>
-                {/* add admin icon if admin */}
-                {comment.user.user_name}
-                <ul>
-                  <li>{comment.body}</li>
-                  {/* create a date utility */}
-                  <li>{comment.date_created}</li>
-                  {/* {comment.date_modified ? } */}
-                  {/* to do: mini dot list menu */}
-                </ul>
-              </li>
-            );
-          })}
-        </ul>
-      </JtoSection>
     </>
-  ) : (
-    <Redirect from="/gallery-card" to="/login" />
   );
 };
 
