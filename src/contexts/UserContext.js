@@ -5,7 +5,6 @@ export const UserContext = createContext();
 
 export const UserContextProvider = (props) => {
   const [user, setUser] = useState({});
-  const [queriedUser, setQueriedUser] = useState({});
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 

@@ -51,7 +51,7 @@ const PublicCard = (props) => {
     // eslint-disable-next-line
   }, []);
 
-  return props.state !== undefined ? (
+  return (
     <>
       <JtoSection className="jto-card public-card">
         {/* load an array of custom styles from a utilities page. style={getTheme(card.theme, themes context)} */}
@@ -91,8 +91,6 @@ const PublicCard = (props) => {
         </ul>
       </JtoSection>
     </>
-  ) : (
-    <Redirect from="/gallery-card" to="/login" />
   );
 };
 

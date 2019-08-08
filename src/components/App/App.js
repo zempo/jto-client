@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import PublicOnlyRoute from "../Utils/PublicOnlyRoute";
 import PrivateRoute from "../Utils/PrivateRoute";
+import ErrorPage from "../Utils/ErrorPage";
 import "./App.css";
 
 // SERVICES
@@ -66,15 +67,17 @@ class App extends Component {
         </header>
         <main className="jto-main">
           {/* create general layout, restructure components folder in forms, utils, nav, content */}
-          <Switch>
-            <Route exact path={"/"} component={Landing} />
-            <Route exact path={"/add-occasion"} component={AddCard} />
-            <Route exact path={"/gallery"} component={Gallery} />
-            <Route exact path={"/gallery-card"} component={PublicCard} />
-            <PrivateRoute exact path={"/private"} component={UserHome} />
-            <PublicOnlyRoute exact path={"/login"} component={Login} />
-            <PublicOnlyRoute exact path={"/register"} component={Registration} />
-          </Switch>
+          <ErrorPage>
+            <Switch>
+              <Route exact path={"/"} component={Landing} />
+              <Route exact path={"/add-occasion"} component={AddCard} />
+              <Route exact path={"/gallery"} component={Gallery} />
+              <Route exact path={"/gallery-card"} component={PublicCard} />
+              <PrivateRoute exact path={"/private"} component={UserHome} />
+              <PublicOnlyRoute exact path={"/login"} component={Login} />
+              <PublicOnlyRoute exact path={"/register"} component={Registration} />
+            </Switch>
+          </ErrorPage>
           <Footer />
         </main>
       </>

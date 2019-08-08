@@ -8,7 +8,7 @@ import "./css/Cards.css";
 const PrivateCards = () => {
   const { value } = useContext(CardsContext);
 
-  return !value.error ? (
+  return (
     <JtoSection className="jto-cards private-cards">
       {/* make empty card with question mark and big "start creating Occasions button" */}
       {value.cards.map((card, i) => {
@@ -41,8 +41,6 @@ const PrivateCards = () => {
         <AddBtn />
       </div>
     </JtoSection>
-  ) : (
-    <Redirect from="/private" to="/login" />
   );
 };
 
