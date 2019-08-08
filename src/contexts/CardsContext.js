@@ -6,6 +6,7 @@ export const CardsContext = createContext();
 export const CardsContextProvider = (props) => {
   const [cards, setCards] = useState([]);
   const [error, setError] = useState(false);
+  // write error message or status state, if exists for notification
 
   useEffect(() => {
     const cardsFound = async () => {
@@ -14,9 +15,7 @@ export const CardsContextProvider = (props) => {
 
         setCards(result.data);
       } catch (err) {
-        if (err.response.status === 401) {
-          setError(true);
-        }
+        setError(true);
       }
     };
 

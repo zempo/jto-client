@@ -7,6 +7,7 @@ export const GalleryContextProvider = (props) => {
   const [cards, setCards] = useState([]);
   const [cardsReacts, setCardsReacts] = useState([]);
   const [error, setError] = useState(false);
+  // write error status and message state if exists, for notification
 
   useEffect(() => {
     const cardsFound = async () => {
@@ -17,9 +18,7 @@ export const GalleryContextProvider = (props) => {
         setCards(cardsResult.data);
         setCardsReacts(reactsResult.data);
       } catch (err) {
-        if (err.response.status === 401) {
-          setError(true);
-        }
+        setError(true);
       }
     };
 
