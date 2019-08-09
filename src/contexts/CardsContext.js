@@ -6,6 +6,8 @@ export const CardsContext = createContext();
 export const CardsContextProvider = (props) => {
   const [cards, setCards] = useState([]);
   const [error, setError] = useState(false);
+  const [currentPg, setCurrentPg] = useState(1);
+  const [cardsPerPg, setCardsPerPg] = useState(7);
   // write error message or status state, if exists for notification
 
   useEffect(() => {
@@ -23,8 +25,14 @@ export const CardsContextProvider = (props) => {
     // eslint-disable-next-line
   }, []);
 
+  const indexOfLastCard = currentPg * cardsPerPg;
+  const indexOfFirstCard = indexOfLastCard - cardsPerPg;
+  const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
+
   const value = {
     cards,
+    currentPg,
+    currentCards,
     error
   };
 

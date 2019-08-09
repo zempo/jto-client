@@ -5,7 +5,7 @@ import { UserContext } from "../../contexts/UserContext";
 import { listCards, listCardComments, listReactions, listHearts, listShares } from "../../services/endpoints-service";
 import TokenService from "../../services/token-service";
 // create back-button
-import { JtoSection, JtoNotification } from "../Utils/Utils";
+import { JtoSection, JtoNotification, DotMenuOption } from "../Utils/Utils";
 import "./css/Card.css";
 
 const PublicCard = (props) => {
@@ -78,12 +78,23 @@ const PublicCard = (props) => {
               <li className="jto-comment" key={i}>
                 {/* add admin icon if admin */}
                 {comment.user.user_name}
-                <ul>
-                  <li>{comment.body}</li>
+                {comment.user.admin ? <i class="fas fa-shield-alt" /> : null}
+                <ul className="comment-items">
+                  <li className="comment-item body">{comment.body}</li>
                   {/* create a date utility */}
-                  <li>{comment.date_created}</li>
-                  {/* {comment.date_modified ? } */}
+                  <li className="comment-item date">{comment.date_created}</li>
+                  {comment.date_modified ? <li className="comment-item date">{comment.date_modified}</li> : null}
                   {/* to do: mini dot list menu */}
+                  {value.user.admin || comment.user.user_name === value.user.user_name ? (
+                    <nav className="jto-dot-menu">
+                      <input type="checkbox" id={`comment-toggle-${i}`} className="comment-toggle" value="selected" />
+                      <label className="comment-menu-container" htmlFor={`comment-toggle-${i}`}>
+                        <i class="fas fa-ellipsis-h" />
+                        <DotMenuOption to="/edit-comment" text="Edit" item_id={comment.id} />
+                        <DotMenuOption to="/delete-comment" text="Delete" item_id={comment.id} />
+                      </label>
+                    </nav>
+                  ) : null}
                 </ul>
               </li>
             );

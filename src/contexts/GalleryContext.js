@@ -6,6 +6,8 @@ export const GalleryContext = createContext();
 export const GalleryContextProvider = (props) => {
   const [cards, setCards] = useState([]);
   const [cardsReacts, setCardsReacts] = useState([]);
+  const [currentPg, setCurrentPg] = useState(1);
+  const [cardsPerPg, setCardsPerPg] = useState(1);
   const [error, setError] = useState(false);
   // write error status and message state if exists, for notification
 
@@ -25,6 +27,10 @@ export const GalleryContextProvider = (props) => {
     cardsFound();
     // eslint-disable-next-line
   }, []);
+
+  const indexOfLastCard = currentPg * cardsPerPg;
+  const indexOfFirstCard = indexOfLastCard - cardsPerPg;
+  const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
 
   const getHeartsForCard = (reactionsValue, cardIndex) => {
     // eslint-disable-next-line
@@ -46,6 +52,9 @@ export const GalleryContextProvider = (props) => {
 
   const value = {
     cards,
+    currentPg,
+    cardsPerPg,
+    currentCards,
     cardsReacts,
     getHeartsForCard,
     getSharesForCard,

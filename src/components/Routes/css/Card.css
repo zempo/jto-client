@@ -1,0 +1,21 @@
+.menu_option > a {
+  color: black;
+}
+
+.jto-dot-menu .jto_option {
+  color: black;
+}
+
+.comment-toggle:not(:checked) + .comment-menu-container .dot-menu-option {
+  display: none;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.comment-toggle:checked + .comment-menu-container .dot-menu-option {
+  display: block;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}

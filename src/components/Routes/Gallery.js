@@ -1,21 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { GalleryContext } from "../../contexts/GalleryContext";
 import { UserContext } from "../../contexts/UserContext";
 import SearchGallery from "../Forms/SearchGallery";
-import { JtoSection, MenuOption } from "../Utils/Utils";
+import { JtoSection, MenuOption, PaginateCards } from "../Utils/Utils";
 import TextPlaceholder from "../../images/writing-placeholder.jpg";
 import "./css/Gallery.css";
 
 const Gallery = () => {
-  const { value } = useContext(GalleryContext);
+  const {
+    value: { cards, currentPg, cardsPerPg, currentCards, cardsReacts, getHeartsForCard, getSharesForCard, error }
+  } = useContext(GalleryContext);
   const { value: userValue } = useContext(UserContext);
 
   return (
     <>
       <SearchGallery />
-      <p>Showing Occasions {value.cards.length}</p>
+      <p>
+        Showing {currentCards.length} of {cards.length} Occasions
+      </p>
       <JtoSection className="jto-cards public-cards">
-        {value.cards.map((card, i) => {
+        {currentCards.map((card, i) => {
           return (
             <div key={i} className="jto-card list-card">
               <input type="checkbox" id={`card-toggle-${i}`} className="card-toggle" value="selected" />
@@ -43,7 +47,7 @@ const Gallery = () => {
                   <span className="fa-stack">
                     <i className="fas fa-heart">
                       <strong className="fa-stack-1x fa-stack-text fa-inverse">
-                        {value.getHeartsForCard(value.cardsReacts, i)}
+                        {getHeartsForCard(cardsReacts, i)}
                       </strong>
                     </i>
                   </span>
@@ -55,7 +59,7 @@ const Gallery = () => {
                   <span className="fa-stack">
                     <i className="fas fa-bookmark">
                       <strong className="fa-stack-1x fa-stack-text fa-inverse">
-                        {value.getSharesForCard(value.cardsReacts, i)}
+                        {getSharesForCard(cardsReacts, i)}
                       </strong>
                     </i>
                   </span>
@@ -65,6 +69,7 @@ const Gallery = () => {
           );
         })}
       </JtoSection>
+      <PaginateCards cardsPerPg={cardsPerPg} currentPg={currentPg} totalCards={cards.length} />
     </>
   );
 };

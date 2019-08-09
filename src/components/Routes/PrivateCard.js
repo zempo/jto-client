@@ -1,12 +1,14 @@
 import React, { useEffect, useState, useContext } from "react";
+import { Redirect } from "react-router-dom";
 // import { CardContext, CardContextProvider } from "../../contexts/CardContext";
 import { UserContext } from "../../contexts/UserContext";
 import { listCards, listCardComments, listReactions, listHearts, listShares } from "../../services/endpoints-service";
+import TokenService from "../../services/token-service";
 // create back-button
-import { JtoSection } from "../Utils/Utils";
+import { JtoSection, JtoNotification, DotMenuOption } from "../Utils/Utils";
 import "./css/Card.css";
 
-const PublicCard = (props) => {
+const Private = (props) => {
   const { value } = useContext(UserContext);
   const [cardId, setCardId] = useState(0);
   const [card, setCard] = useState({});
@@ -17,26 +19,17 @@ const PublicCard = (props) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    if (props.location.state.item !== null) {
+    if (props.location.state !== undefined) {
       const { item } = props.location.state;
       setCardId(item);
 
       const cardFound = async () => {
         try {
           const cardResult = await listCards.get(`/${item}`);
-          const commentsResult = await listCardComments.get(`/${item}`);
-          const heartsResult = await listHearts.get(`/${item}`);
-          const sharesResult = await listShares.get(`/${item}`);
 
           setCard(cardResult.data);
           setCardAuthor(cardResult.data.user);
-          setComments(commentsResult.data);
-          setHearts(heartsResult.data);
-          setShares(sharesResult.data);
           console.log(cardResult.data);
-          console.log(heartsResult.data);
-          console.log(sharesResult.data);
-          console.log(commentsResult.data);
         } catch (err) {
           if (err.response.status === 401) {
             setError(true);
@@ -51,17 +44,17 @@ const PublicCard = (props) => {
 
   return (
     <>
-      <JtoSection className="jto-card private-card">
+      <JtoSection className="jto-card public-card">
         {/* load an array of custom styles from a utilities page. style={getTheme(card.theme, themes context)} */}
         <h2>Written by {cardAuthor.user_name}</h2>
-        <div className="">
+        <div className="card-face front-pg">
           <p>{card.front_message}</p>
           {card.front_image !== "" ? <img src={card.front_image} alt="front background" /> : null}
         </div>
-        <div className="">
+        <div className="card-face inner-left-pg">
           <p>{card.inside_message}</p>
         </div>
-        <div className="">
+        <div className="card-face inner-right-pg">
           {card.inside_image !== "" ? <img src={card.inside_image} alt="card interior background" /> : null}
         </div>
       </JtoSection>
@@ -69,4 +62,4 @@ const PublicCard = (props) => {
   );
 };
 
-export default PublicCard;
+export default Private;
