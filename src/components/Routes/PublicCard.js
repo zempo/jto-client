@@ -78,7 +78,7 @@ const PublicCard = (props) => {
               <li className="jto-comment" key={i}>
                 {/* add admin icon if admin */}
                 {comment.user.user_name}
-                {comment.user.admin ? <i class="fas fa-shield-alt" /> : null}
+                {comment.user.admin ? <i className="fas fa-shield-alt" /> : null}
                 <ul className="comment-items">
                   <li className="comment-item body">{comment.body}</li>
                   {/* create a date utility */}

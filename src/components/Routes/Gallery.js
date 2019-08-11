@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { GalleryContext } from "../../contexts/GalleryContext";
 import { UserContext } from "../../contexts/UserContext";
 import SearchGallery from "../Forms/SearchGallery";
-import { JtoSection, MenuOption, PaginateCards } from "../Utils/Utils";
+import { JtoSection, MenuOption, PaginateCards, ProcessMsg } from "../Utils/Utils";
 import TextPlaceholder from "../../images/writing-placeholder.jpg";
 import "./css/Gallery.css";
 
@@ -27,11 +27,11 @@ const Gallery = () => {
               <label className="card-container" htmlFor={`card-toggle-${i}`}>
                 <span className="checkmark2" />
                 <div className="front face">
-                  <p>{card.front_message}</p>
+                  <p>{ProcessMsg(card.front_message, 20)}</p>
                   {card.front_image !== "" ? <img src={card.front_image} alt="front background" /> : null}
                 </div>
                 <div className="inner-left face">
-                  <img src={TextPlaceholder} alt="front background" />
+                  <p>{ProcessMsg(card.inside_message, 100)}</p>
                 </div>
                 <div className="inner-right face">
                   {card.inside_image !== "" ? <img src={card.inside_image} alt="card interior background" /> : null}

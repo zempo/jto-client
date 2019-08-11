@@ -175,6 +175,14 @@ export function PaginateCardFaces({ face, faces }) {
   return "hello";
 }
 
+export function ProcessMsg(message, maxLength) {
+  if (message.length > maxLength) {
+    return message.substring(0, maxLength) + '...'
+  } else {
+    return message
+  }
+}
+
 export function ThemesList() {
   return (
     <>

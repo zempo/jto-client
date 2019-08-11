@@ -213,7 +213,9 @@
 
 .front p,
 .inner-left p {
-  margin: 10px;
+  width: 160px;
+  overflow: hidden;
+  text-overflow:ellipsis;
 }
 
 .inner-left {
@@ -239,9 +241,7 @@
   height: 240px;
 }
 
-.inner-left > img {
-  width: 180px;
-  height: 240px;
+.inner-left > p {
   -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
