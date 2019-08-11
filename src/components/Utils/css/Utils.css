@@ -132,3 +132,25 @@ div[id="413"] {
 .btn:hover > * {
   color: #0060a4;
 }
+
+/* pagination  */
+/* ///////////////////// */
+.jto-page-menu ul {
+list-style-type: none;
+display: flex;
+justify-content: center;
+}
+
+.jto-page-menu .page-menu-counter {
+  font-size: 2em;
+  width: 2em; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-btn {
+font-size: 2em;
+width: 2em;
+height: 1.5em;
+}

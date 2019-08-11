@@ -1,13 +1,24 @@
 import React, { useContext } from "react";
-import { JtoSection, MenuOption, AddBtn } from "../Utils/Utils";
+import { JtoSection, MenuOption, AddBtn, PaginateCards } from "../Utils/Utils";
 import { CardsContext } from "../../contexts/CardsContext";
 import TextPlaceholder from "../../images/writing-placeholder.jpg";
 import "./css/Cards.css";
 
 const PrivateCards = () => {
   const {
-    value: { cards, currentPg, currentCards, error }
+    value: {
+      cards,
+      cardsPerPg,
+      paginate,
+      currentPg,
+      currentCards,
+      lastPg,
+      loading,
+      error
+    }
   } = useContext(CardsContext);
+
+  const noPagination = cards.length / lastPg
 
   return (
     <>
@@ -16,6 +27,7 @@ const PrivateCards = () => {
       </h2>
       <JtoSection className="jto-cards private-cards">
         {/* make empty card with question mark and big "start creating Occasions button" */}
+        {loading ? 'loading' : null}
         {currentCards.map((card, i) => {
           return (
             <div key={i} className="jto-card list-card">
@@ -46,6 +58,7 @@ const PrivateCards = () => {
           <AddBtn />
         </div>
       </JtoSection>
+      {cards.length > cardsPerPg ? <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} /> : null}
     </>
   );
 };

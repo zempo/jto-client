@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { GalleryContext } from "../../contexts/GalleryContext";
 import { UserContext } from "../../contexts/UserContext";
 import SearchGallery from "../Forms/SearchGallery";
@@ -8,7 +8,7 @@ import "./css/Gallery.css";
 
 const Gallery = () => {
   const {
-    value: { cards, currentPg, cardsPerPg, currentCards, cardsReacts, getHeartsForCard, getSharesForCard, error }
+    value: { cards, cardsPerPg, paginate, currentPg, currentCards, lastPg, cardsReacts, getHeartsForCard, getSharesForCard, loading, error }
   } = useContext(GalleryContext);
   const { value: userValue } = useContext(UserContext);
 
@@ -19,6 +19,7 @@ const Gallery = () => {
         Showing {currentCards.length} of {cards.length} Occasions
       </p>
       <JtoSection className="jto-cards public-cards">
+        {loading ? 'loading' : null}
         {currentCards.map((card, i) => {
           return (
             <div key={i} className="jto-card list-card">
@@ -69,7 +70,7 @@ const Gallery = () => {
           );
         })}
       </JtoSection>
-      <PaginateCards cardsPerPg={cardsPerPg} currentPg={currentPg} totalCards={cards.length} />
+      {cards.length > cardsPerPg ? <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} /> : null}
     </>
   );
 };

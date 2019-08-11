@@ -89,7 +89,7 @@ const PublicCard = (props) => {
                     <nav className="jto-dot-menu">
                       <input type="checkbox" id={`comment-toggle-${i}`} className="comment-toggle" value="selected" />
                       <label className="comment-menu-container" htmlFor={`comment-toggle-${i}`}>
-                        <i class="fas fa-ellipsis-h" />
+                        <i className="fas fa-ellipsis-h" />
                         <DotMenuOption to="/edit-comment" text="Edit" item_id={comment.id} />
                         <DotMenuOption to="/delete-comment" text="Delete" item_id={comment.id} />
                       </label>
