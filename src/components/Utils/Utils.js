@@ -9,14 +9,6 @@ export const Loader = ({ loading }) => {
   let randomQuote1 = JtoQuotes[~~(Math.random() * JtoQuotes.length)];
   const [quote, setQuote] = useState(randomQuote1);
 
-  // useEffect(() => {
-  //   // clear on mount
-  //   const cleanup = () => {
-  //     console.clear();
-  //   };
-  //   return cleanup;
-  // }, []);
-
   useEffect(() => {
     // conditional prevents memory leak
     if (loading === true) {
@@ -34,6 +26,14 @@ export const Loader = ({ loading }) => {
         <h3>{quote}</h3>
       </div>
     );
+  } else {
+    return null;
+  }
+};
+
+export const SkeletonLoader = ({ loading }) => {
+  if (loading) {
+    return <div class="skeleton-card" />;
   } else {
     return null;
   }
@@ -86,20 +86,20 @@ export function JtoSection({ className, list, ...props }) {
   return <section className={classes} {...props} />;
 }
 
-export function Hyph() {
+export const Hyph = () => {
   return <span className="Hyph">{" - "}</span>;
-}
+};
 
-export function CheckCard() {
+export const CheckCard = () => {
   return (
     <label className="container">
       <input type="checkbox" />
       <span className="checkmark" />
     </label>
   );
-}
+};
 
-export function MenuOption({ to, text, item_id }) {
+export const MenuOption = ({ to, text, item_id }) => {
   return (
     <div className="menu-option">
       <Link
@@ -114,9 +114,9 @@ export function MenuOption({ to, text, item_id }) {
       </Link>
     </div>
   );
-}
+};
 
-export function DotMenuOption({ to, text, item_id }) {
+export const DotMenuOption = ({ to, text, item_id }) => {
   return (
     <div className="dot-menu-option">
       <Link
@@ -131,9 +131,9 @@ export function DotMenuOption({ to, text, item_id }) {
       </Link>
     </div>
   );
-}
+};
 
-export function AddBtn() {
+export const AddBtn = () => {
   return (
     <Link to="/add-occasion">
       <div className="btn btn-add">
@@ -141,49 +141,74 @@ export function AddBtn() {
       </div>
     </Link>
   );
-}
+};
 
-export function PaginateCards({ currentCards, paginate, currentPg, lastPg }) {
-
+export const PaginateCards = ({ currentCards, paginate, currentPg, lastPg }) => {
   return (
     <JtoSection className="paginate-cards">
       <nav className="jto-page-menu">
         <ul>
           <li className="page-menu-item">
-            <button id="first" disabled={!currentCards || currentPg === 1} onClick={e => paginate(e)} className="page-btn">&#171;</button>
+            <button
+              id="first"
+              disabled={!currentCards || currentPg === 1}
+              onClick={(e) => paginate(e)}
+              className="page-btn"
+            >
+              &#171;
+            </button>
           </li>
           <li className="page-menu-item">
-            <button id="prev" disabled={!currentCards || currentPg === 1} onClick={e => paginate(e)} className="page-btn">&#60;</button>
+            <button
+              id="prev"
+              disabled={!currentCards || currentPg === 1}
+              onClick={(e) => paginate(e)}
+              className="page-btn"
+            >
+              &#60;
+            </button>
           </li>
-          <li className="page-menu-counter">
-            {Number(currentPg)}
+          <li className="page-menu-counter">{Number(currentPg)}</li>
+          <li className="page-menu-item">
+            <button
+              id="next"
+              disabled={!currentCards || currentPg === lastPg}
+              onClick={(e) => paginate(e)}
+              className="page-btn"
+            >
+              &#62;
+            </button>
           </li>
           <li className="page-menu-item">
-            <button id="next" disabled={!currentCards || currentPg === lastPg} onClick={e => paginate(e)} className="page-btn">&#62;</button>
-          </li>
-          <li className="page-menu-item">
-            <button id="last" disabled={!currentCards || lastPg === currentPg} onClick={e => paginate(e)} className="page-btn">&#187;</button>
+            <button
+              id="last"
+              disabled={!currentCards || lastPg === currentPg}
+              onClick={(e) => paginate(e)}
+              className="page-btn"
+            >
+              &#187;
+            </button>
           </li>
         </ul>
       </nav>
     </JtoSection>
   );
-}
+};
 
-export function PaginateCardFaces({ face, faces }) {
+export const PaginateCardFaces = ({ face, faces }) => {
   // paginate card faces differently than cards
   return "hello";
-}
+};
 
-export function ProcessMsg(message, maxLength) {
+export const ProcessMsg = (message, maxLength) => {
   if (message.length > maxLength) {
-    return message.substring(0, maxLength) + '...'
+    return message.substring(0, maxLength) + "...";
   } else {
-    return message
+    return message;
   }
-}
+};
 
-export function ThemesList() {
+export const ThemesList = () => {
   return (
     <>
       <option value="cursive">Cursive</option>
@@ -199,4 +224,4 @@ export function ThemesList() {
       <option value="quill">Quill</option>
     </>
   );
-}
+};

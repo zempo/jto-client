@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { GalleryContext } from "../../contexts/GalleryContext";
 import { UserContext } from "../../contexts/UserContext";
 import SearchGallery from "../Forms/SearchGallery";
-import { JtoSection, MenuOption, PaginateCards, ProcessMsg } from "../Utils/Utils";
+import { JtoSection, MenuOption, PaginateCards, ProcessMsg, SkeletonLoader } from "../Utils/Utils";
 import TextPlaceholder from "../../images/writing-placeholder.jpg";
 import "./css/Gallery.css";
 
@@ -35,6 +35,7 @@ const Gallery = () => {
       ) : null}
       <JtoSection className="jto-cards public-cards">
         {loading ? "loading" : null}
+        <SkeletonLoader loading={true} />
         {currentCards.map((card, i) => {
           return (
             <div key={i} className="jto-card list-card">
