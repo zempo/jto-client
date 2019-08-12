@@ -8,7 +8,19 @@ import "./css/Gallery.css";
 
 const Gallery = () => {
   const {
-    value: { cards, cardsPerPg, paginate, currentPg, currentCards, lastPg, cardsReacts, getHeartsForCard, getSharesForCard, loading, error }
+    value: {
+      cards,
+      cardsPerPg,
+      paginate,
+      currentPg,
+      currentCards,
+      lastPg,
+      cardsReacts,
+      getHeartsForCard,
+      getSharesForCard,
+      loading,
+      error
+    }
   } = useContext(GalleryContext);
   const { value: userValue } = useContext(UserContext);
 
@@ -18,8 +30,11 @@ const Gallery = () => {
       <p>
         Showing {currentCards.length} of {cards.length} Occasions
       </p>
+      {cards.length > cardsPerPg ? (
+        <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
+      ) : null}
       <JtoSection className="jto-cards public-cards">
-        {loading ? 'loading' : null}
+        {loading ? "loading" : null}
         {currentCards.map((card, i) => {
           return (
             <div key={i} className="jto-card list-card">
@@ -70,7 +85,9 @@ const Gallery = () => {
           );
         })}
       </JtoSection>
-      {cards.length > cardsPerPg ? <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} /> : null}
+      {cards.length > cardsPerPg ? (
+        <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
+      ) : null}
     </>
   );
 };

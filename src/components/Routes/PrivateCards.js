@@ -6,28 +6,22 @@ import "./css/Cards.css";
 
 const PrivateCards = () => {
   const {
-    value: {
-      cards,
-      cardsPerPg,
-      paginate,
-      currentPg,
-      currentCards,
-      lastPg,
-      loading,
-      error
-    }
+    value: { cards, cardsPerPg, paginate, currentPg, currentCards, lastPg, loading, error }
   } = useContext(CardsContext);
 
-  const noPagination = cards.length / lastPg
+  const noPagination = cards.length / lastPg;
 
   return (
     <>
       <h2>
         Showing {currentCards.length} of Your {cards.length} Occasions
       </h2>
+      {cards.length > cardsPerPg ? (
+        <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
+      ) : null}
       <JtoSection className="jto-cards private-cards">
         {/* make empty card with question mark and big "start creating Occasions button" */}
-        {loading ? 'loading' : null}
+        {loading ? "loading" : null}
         {currentCards.map((card, i) => {
           return (
             <div key={i} className="jto-card list-card">
@@ -58,7 +52,9 @@ const PrivateCards = () => {
           <AddBtn />
         </div>
       </JtoSection>
-      {cards.length > cardsPerPg ? <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} /> : null}
+      {cards.length > cardsPerPg ? (
+        <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
+      ) : null}
     </>
   );
 };
