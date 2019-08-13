@@ -155,7 +155,13 @@ div[id="413"] {
   height: 1.5em;
 }
 
-.public-card .page-btn {
+.public-card .jto-page-menu,
+.private-card .jto-page-menu {
+  margin-right: 2em;
+}
+
+.public-card .page-btn,
+.private-card .page-btn {
   width: 5.5em;
   height: 3em;
 }

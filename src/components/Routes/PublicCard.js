@@ -62,9 +62,9 @@ const PublicCard = (props) => {
 
   return (
     <>
-      <h2>
+      <h3>
         Created by {cardAuthor.user_name} on {<TimeStamp date={cardAuthor.date_created} />}
-      </h2>
+      </h3>
       {/* {loading ? (
         <Loader loading={true} />
       ) : (
@@ -79,16 +79,6 @@ const PublicCard = (props) => {
         {/* style={Object.assign({}, ThemeStyles[`${cardTheme}`].all, ThemeStyles[`${cardTheme}`].front) */}
         <CardPages card={card} themes={ThemeStyles} cardTheme={cardTheme} cardPg={cardPg} />
         <PaginateCardFaces currentPg={cardPg} setCurrentPg={setCardPg} />
-        {/* <div className="front-pg" style={ThemeStyles[`${cardTheme}`].front}>
-          <h3>{card.front_message}</h3>
-          {card.front_image !== "" ? <img src={card.front_image} alt="front background" /> : null}
-        </div>
-        <div className="inner-left-pg" style={ThemeStyles[`${cardTheme}`].innerLeft}>
-          <p>{card.inside_message}</p>
-        </div>
-        <div className="inner-right-pg" style={ThemeStyles[`${cardTheme}`].innerRight}>
-          {card.inside_image !== "" ? <img src={card.inside_image} alt="card interior background" /> : null}
-        </div> */}
       </JtoSection>
       <JtoSection className="jto-reactions">
         Hearts {hearts.length}

@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Amatic+SC|Cutive+Mono|Gaegu|Nanum+Pen+Script|Permanent+Marker|Roboto|Shadows+Into+Light+Two|Tangerine&display=swap");
 
+h3 {
+  text-align: center;
+}
+
 .pg {
   max-width: 504px;
   height: 704px;
@@ -46,4 +50,11 @@
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
+}
+
+.jto-comments,
+.jto-reactions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

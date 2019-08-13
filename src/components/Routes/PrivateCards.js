@@ -36,10 +36,19 @@ const PrivateCards = () => {
                   {card.inside_image !== "" ? <img src={card.inside_image} alt="card interior background" /> : null}
                 </div>
                 <nav className="jto-mini-menu">
-                  <MenuOption to="/edit" text="Edit" item_id={card.id} />
-                  <MenuOption to="/delete" text="Delete" item_id={card.id} />
-                  <MenuOption to="/download" text="Download" item_id={card.id} />
-                  <MenuOption to="/make-public" text="Make-Public" item_id={card.id} />
+                  <MenuOption to="/private-card" text={<i className="far fa-eye" title="view" />} item_id={card.id} />
+                  <MenuOption to="/edit" text={<i className="fas fa-pencil-alt" title="edit" />} item_id={card.id} />
+                  <MenuOption to="/delete" text={<i className="far fa-trash-alt" title="delete" />} item_id={card.id} />
+                  <MenuOption
+                    to="/download"
+                    text={<i className="fas fa-file-download" title="download" />}
+                    item_id={card.id}
+                  />
+                  <MenuOption
+                    to="/make-public"
+                    text={<i className="fas fa-user-friends" title="publish" />}
+                    item_id={card.id}
+                  />
                 </nav>
               </label>
             </div>

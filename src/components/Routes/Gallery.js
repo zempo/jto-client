@@ -51,11 +51,25 @@ const Gallery = () => {
                   {card.inside_image !== "" ? <img src={card.inside_image} alt="card interior background" /> : null}
                 </div>
                 <nav className="jto-mini-menu">
-                  <MenuOption to="/gallery-card" text="Visit" item_id={card.id} />
-                  {userValue.user.admin ? <MenuOption to="/delete" text="Delete" item_id={card.id} /> : null}
-                  <MenuOption to="/download" text="Download" item_id={card.id} />
+                  <MenuOption to="/gallery-card" text={<i className="far fa-eye" title="view" />} item_id={card.id} />
+                  {userValue.user.admin ? (
+                    <MenuOption
+                      to="/delete"
+                      text={<i className="far fa-trash-alt" title="delete" />}
+                      item_id={card.id}
+                    />
+                  ) : null}
+                  <MenuOption
+                    to="/download"
+                    text={<i className="fas fa-file-download" title="download" />}
+                    item_id={card.id}
+                  />
                   {card.user.user_name === userValue.user.user_name ? (
-                    <MenuOption to="/toggle-privacy" text="Make-Private" item_id={card.id} />
+                    <MenuOption
+                      to="/toggle-privacy"
+                      text={<i class="fas fa-user-lock" title="make private" />}
+                      item_id={card.id}
+                    />
                   ) : null}
                 </nav>
                 <div className="jto-counter">

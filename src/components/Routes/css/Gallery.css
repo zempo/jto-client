@@ -129,6 +129,9 @@
   background: rgb(48, 58, 69, 1);
   border-radius: 10px;
   justify-content: space-evenly;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
 }
 
 .card-toggle:not(:checked) + .card-container .jto-counter {
@@ -215,7 +218,7 @@
 .inner-left p {
   width: 160px;
   overflow: hidden;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
 }
 
 .inner-left {

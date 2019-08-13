@@ -22,6 +22,7 @@ import AddCard from "../Forms/AddCardForm";
 import Landing from "../Routes/Landing";
 import Gallery from "../Routes/Gallery";
 import PublicCard from "../Routes/PublicCard";
+import PrivateCard from "../Routes/PrivateCard";
 import UserHome from "../Routes/UserHome";
 import Registration from "../Routes/Registration";
 import Login from "../Routes/Login";
@@ -74,6 +75,7 @@ class App extends Component {
               <Route exact path={"/gallery"} component={Gallery} />
               <PrivateRoute exact path={"/gallery-card"} component={PublicCard} />
               <PrivateRoute exact path={"/private"} component={UserHome} />
+              <PrivateRoute exact path={"/private-card"} component={PrivateCard} />
               <PublicOnlyRoute exact path={"/login"} component={Login} />
               <PublicOnlyRoute exact path={"/register"} component={Registration} />
             </Switch>

@@ -5,3 +5,8 @@
   padding: 1em;
   border: 1px solid black;
 }
+
+.jto-footer {
+  display: flex;
+  justify-content: center;
+}
