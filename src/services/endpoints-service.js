@@ -29,14 +29,18 @@ export const refresh = axios.create({
 
 // CREATE CONTENT (C)
 export const newImages = axios.create({
-  baseURL: `${Config.API_ENDPOINT}/private/images`
+  baseURL: `${Config.API_ENDPOINT}/private/images`,
+  headers: {
+    authorization: `Bearer ${TokenService.getAuthToken()}`
+  }
 });
 
 export const newCard = axios.create({
-  baseURL: `${Config.API_ENDPOINT}/private/cards`,
+  baseURL: `${Config.API_ENDPOINT}/private/cards/${TokenService.getId()}`,
   method: "POST",
   headers: {
-    "content-type": "application/json"
+    "content-type": "application/json",
+    authorization: `Bearer ${TokenService.getAuthToken()}`
   }
 });
 

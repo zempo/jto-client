@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { validateFrontMessage, validateTheme, validateInsideMessage } from "../../services/validation/card-validation";
 import { useInput } from "../../hooks/file-input-hook";
-import { newImages } from "../../services/endpoints-service";
+import { newImages, newCard } from "../../services/endpoints-service";
 import { JtoNotification, Required, Loader, ThemesList } from "../Utils/Utils";
 import "./css/Forms.css";
 
@@ -67,9 +67,9 @@ function AddCard(props) {
       fullData.front_message = frontMessage;
       fullData.inside_message = insideMessage;
       console.log("post to db", fullData);
-      // let sendImageData2 = await axios.post(`${Config.API_ENDPOINT}/api/private/cards/1`, fullData);
+      let sendFullData = await newCard.post("/", fullData);
 
-      setResStatus(sendImageData.status);
+      setResStatus(sendFullData.status);
       setResMsg("New Occasion Created");
       resetFrontMessage();
       resetFrontImage();
@@ -149,10 +149,6 @@ function AddCard(props) {
         >
           Create Occasion
         </button>
-        <br />
-        <img className="front" src={frontUrl} alt="cloudinary output front" />
-        <br />
-        <img className="inside" src={insideUrl} alt="cloudinary output inside" />
       </form>
       {loading ? <Loader loading={true} /> : <Loader loading={false} />}
     </>

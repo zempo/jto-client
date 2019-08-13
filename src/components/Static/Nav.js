@@ -21,11 +21,13 @@ class Nav extends Component {
     // window.location.reload();
     return (
       <div className="logged-in">
-        {this.context.value.user.user_name}
-        <Hyph />
-        <Link onClick={this.handleLogoutClick} to="/">
-          Logout
-        </Link>
+        <h3>
+          {this.context.value.user.user_name}
+          <Hyph />
+          <Link onClick={this.handleLogoutClick} to="/">
+            Logout
+          </Link>
+        </h3>
       </div>
     );
   }
@@ -35,9 +37,13 @@ class Nav extends Component {
     // console.log("reload");
     return (
       <div className="logged-out">
-        <Link to="/login">Login</Link>
+        <Link to="/login">
+          <h3>Login</h3>
+        </Link>
         <Hyph />
-        <Link to="/register">Register</Link>
+        <Link to="/register">
+          <h3>Register</h3>
+        </Link>
       </div>
     );
   }
@@ -48,9 +54,15 @@ class Nav extends Component {
         <Link to="/">
           <img src={Logo} alt="site logo" width="50" height="50" />
         </Link>
-        <Link to="/gallery">Gallery</Link>
-        <Link to="/private">My Occasions</Link>
-        <Link to="/faq">Help & FAQs</Link>
+        <Link to="/gallery">
+          <h3>Gallery</h3>
+        </Link>
+        <Link to="/private">
+          <h3>My Occasions</h3>
+        </Link>
+        <Link to="/faq">
+          <h3>Help & FAQs</h3>
+        </Link>
         {TokenService.hasAuthToken() ? this.renderLogoutLink() : this.renderLoginLink()}
       </nav>
     );
