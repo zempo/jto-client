@@ -158,25 +158,30 @@ div[id="413"] {
 /* skeleton loader */
 
 :root {
-  --card-padding: 10px;
+  --card-padding: 20px;
   --card-height: 240px;
-  --card-skeleton: linear-gradient(lightgrey var(--card-height), transparent 0);
-  --avatar-size: 32px;
-  --avatar-position: var(--card-padding) var(--card-padding);
-  --avatar-skeleton: radial-gradient(circle 16px at center, white 99%, transparent 0);
-  --title-height: 32px;
-  --title-width: 160px;
-  --title-position: var(--card-padding) 180px;
-  --title-skeleton: linear-gradient(white var(--title-height), transparent 0);
-  --desc-line-height: 16px;
-  --desc-line-skeleton: linear-gradient(white var(--desc-line-height), transparent 0);
+  --card-skeleton: linear-gradient(rgb(248, 245, 245) var(--card-height), transparent 0);
+  --card-fade1: linear-gradient(rgb(224, 218, 218) var(--title-height), transparent 0);
+  --card-fade2: linear-gradient(rgb(199, 194, 194) var(--title-height), transparent 0);
+  --pic-size: 130px;
+  --pic-height: 130px;
+  --pic-position: 25px 70px;
+  --pic-skeleton: linear-gradient(rgb(199, 194, 194) var(--pic-size), transparent 0);
+  --title-height: 20px;
+  --title-width: 140px;
+  --title-position: var(--card-padding) 10px;
+  --title-skeleton: linear-gradient(rgb(199, 194, 194) var(--title-height), transparent 0);
+  --title-skeleton-fade1: linear-gradient(rgb(224, 218, 218) var(--title-height), transparent 0);
+  --title-skeleton-fade2: linear-gradient(rgb(248, 245, 245) var(--title-height), transparent 0);
+  --desc-line-height: 0px;
+  --desc-line-skeleton: linear-gradient(rgb(199, 194, 194) var(--desc-line-height), transparent 0);
   --desc-line-1-width: 230px;
-  --desc-line-1-position: var(--card-padding) 50px;
+  --desc-line-1-position: var(--card-padding) 130px;
   --desc-line-2-width: 180px;
-  --desc-line-2-position: var(--card-padding) 70px;
-  --footer-height: 40px;
+  --desc-line-2-position: var(--card-padding) 150px;
+  --footer-height: 0px;
   --footer-position: 0 calc(var(--card-height) - var(--footer-height));
-  --footer-skeleton: linear-gradient(white var(--footer-height), transparent 0);
+  --footer-skeleton: linear-gradient(rgb(199, 194, 194) var(--footer-height), transparent 0);
   --blur-width: 200px;
   --blur-size: var(--blur-width) calc(var(--card-height) - var(--footer-height));
 }
@@ -186,8 +191,10 @@ div[id="413"] {
  */
 .skeleton-card {
   position: relative;
-  padding: 150px;
-  width: 180px;
+  padding: 100px;
+  width: 200px;
+  top: -200px;
+  left: -120px;
   height: var(--card-height);
   perspective: 700;
   -webkit-perspective: 700;
@@ -200,28 +207,76 @@ div[id="413"] {
   -ms-user-select: none;
   user-select: none;
 }
+
+.skeleton-card-inside {
+  background: rgb(248, 245, 245);
+  border: 1px solid rgba(41, 39, 39, 0.1);
+  position: relative;
+  top: 127px;
+  left: 0;
+  margin: 100px;
+  width: 180px;
+  height: 220px;
+  perspective: 700;
+  -webkit-perspective: 700;
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+  margin: auto;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.skeleton-nav {
+  position: relative;
+  background: #2f3a44;
+  border: 1px solid rgba(41, 39, 39, 0.1);
+  position: relative;
+  top: -220px;
+  left: 0;
+  margin: auto;
+  width: 180px;
+  height: 25px;
+  border-radius: 10px;
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+  -webkit-animation: loading 1.5s infinite;
+  animation: loading 1.5s infinite;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.loader {
+  padding: 100px;
+}
+
 .skeleton-card:empty::after {
   content: "";
   display: block;
   width: 100%;
   height: 100%;
-  box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 3px 10px rgba(49, 47, 47, 0.349);
+  border: 1px solid rgba(41, 39, 39, 0.1);
   background-image: linear-gradient(
       90deg,
-      rgba(211, 211, 211, 0) 0,
-      rgba(211, 211, 211, 0.8) 50%,
-      rgba(211, 211, 211, 0) 100%
+      rgb(248, 245, 245, 0) 0,
+      rgba(248, 245, 245, 0) 50%,
+      rgb(248, 245, 245, 0) 100%
     ),
-    var(--title-skeleton), var(--desc-line-skeleton), var(--desc-line-skeleton), var(--avatar-skeleton),
-    var(--footer-skeleton), var(--card-skeleton);
-  background-size: var(--blur-size), var(--title-width) var(--title-height),
-    var(--desc-line-1-width) var(--desc-line-height), var(--desc-line-2-width) var(--desc-line-height),
-    var(--avatar-size) var(--avatar-size), 100% var(--footer-height), 100% 100%;
-  background-position: -150% 0, var(--title-position), var(--desc-line-1-position), var(--desc-line-2-position),
-    var(--avatar-position), var(--footer-position), 0 0;
+    var(--title-skeleton), var(--pic-skeleton), var(--footer-skeleton), var(--card-skeleton);
+  background-size: var(--blur-size), var(--title-width) var(--title-height), var(--pic-size) var(--pic-size),
+    100% var(--footer-height), 100% 100%;
+  background-position: -150% 0, var(--title-position), var(--pic-position), var(--footer-position), 0 0;
   background-repeat: no-repeat;
   -webkit-animation: loading 1.5s infinite;
   animation: loading 1.5s infinite;
+  animation-delay: 1.5s;
+  -webkit-animation-delay: 1.5s;
   perspective: 700;
   -webkit-perspective: 700;
   -webkit-transform: rotateY(-20deg);
@@ -235,15 +290,19 @@ div[id="413"] {
 }
 
 @-webkit-keyframes loading {
-  to {
-    background-position: 350% 0, var(--title-position), var(--desc-line-1-position), var(--desc-line-2-position),
-      var(--avatar-position), var(--footer-position), 0 0;
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
 @keyframes loading {
-  to {
-    background-position: 350% 0, var(--title-position), var(--desc-line-1-position), var(--desc-line-2-position),
-      var(--avatar-position), var(--footer-position), 0 0;
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

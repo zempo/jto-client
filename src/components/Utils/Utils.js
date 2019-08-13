@@ -33,7 +33,58 @@ export const Loader = ({ loading }) => {
 
 export const SkeletonLoader = ({ loading }) => {
   if (loading) {
-    return <div class="skeleton-card" />;
+    return (
+      <>
+        <div className="card-container loader">
+          <div className="skeleton-card-inside" />
+          <div className="skeleton-card" />
+          <div className="skeleton-nav" />
+          <div className="spacer" />
+        </div>
+        <div className="card-container loader">
+          <div className="skeleton-card-inside" />
+          <div className="skeleton-card" />
+          <div className="skeleton-nav" />
+          <div className="spacer" />
+        </div>
+        <div className="card-container loader">
+          <div className="skeleton-card-inside" />
+          <div className="skeleton-card" />
+          <div className="skeleton-nav" />
+          <div className="spacer" />
+        </div>
+        <div className="card-container loader">
+          <div className="skeleton-card-inside" />
+          <div className="skeleton-card" />
+          <div className="skeleton-nav" />
+          <div className="spacer" />
+        </div>
+        <div className="card-container loader">
+          <div className="skeleton-card-inside" />
+          <div className="skeleton-card" />
+          <div className="skeleton-nav" />
+          <div className="spacer" />
+        </div>
+        <div className="card-container loader">
+          <div className="skeleton-card-inside" />
+          <div className="skeleton-card" />
+          <div className="skeleton-nav" />
+          <div className="spacer" />
+        </div>
+        <div className="card-container loader">
+          <div className="skeleton-card-inside" />
+          <div className="skeleton-card" />
+          <div className="skeleton-nav" />
+          <div className="spacer" />
+        </div>
+        <div className="card-container loader">
+          <div className="skeleton-card-inside" />
+          <div className="skeleton-card" />
+          <div className="skeleton-nav" />
+          <div className="spacer" />
+        </div>
+      </>
+    );
   } else {
     return null;
   }

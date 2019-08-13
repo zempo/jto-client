@@ -34,8 +34,7 @@ const Gallery = () => {
         <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
       ) : null}
       <JtoSection className="jto-cards public-cards">
-        {loading ? "loading" : null}
-        <SkeletonLoader loading={true} />
+        <SkeletonLoader loading={loading} />
         {currentCards.map((card, i) => {
           return (
             <div key={i} className="jto-card list-card">

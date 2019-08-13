@@ -8,19 +8,19 @@ export const GalleryContextProvider = (props) => {
   const [cardsReacts, setCardsReacts] = useState([]);
   const [currentPg, setCurrentPg] = useState(1);
   const [cardsPerPg, setCardsPerPg] = useState(8);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   // write error status and message state if exists, for notification
 
   useEffect(() => {
     const cardsFound = async () => {
-      setLoading(true)
+      setLoading(true);
       try {
         const cardsResult = await listCards.get("/");
         // filter and map results based on their id
         const reactsResult = await listReactions.get("/");
 
-        setLoading(false)
+        setLoading(false);
         setCards(cardsResult.data);
         setCardsReacts(reactsResult.data);
       } catch (err) {
@@ -36,7 +36,7 @@ export const GalleryContextProvider = (props) => {
   const indexOfLastCard = currentPg * cardsPerPg;
   const indexOfFirstCard = indexOfLastCard - cardsPerPg;
   const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
-  const lastPg = (cards.length / cardsPerPg)
+  const lastPg = cards.length / cardsPerPg;
 
   const getHeartsForCard = (reactionsValue, cardIndex) => {
     // eslint-disable-next-line
@@ -57,18 +57,18 @@ export const GalleryContextProvider = (props) => {
   };
 
   const paginate = (e) => {
-    const { id } = e.target
+    const { id } = e.target;
 
-    if (id === 'first') {
-      setCurrentPg(1)
-    } else if (id === 'prev') {
-      setCurrentPg(currentPg - 1)
-    } else if (id === 'next') {
-      setCurrentPg(currentPg + 1)
-    } else if (id === 'last') {
-      setCurrentPg(lastPg)
+    if (id === "first") {
+      setCurrentPg(1);
+    } else if (id === "prev") {
+      setCurrentPg(currentPg - 1);
+    } else if (id === "next") {
+      setCurrentPg(currentPg + 1);
+    } else if (id === "last") {
+      setCurrentPg(lastPg);
     }
-  }
+  };
 
   const value = {
     cards,
