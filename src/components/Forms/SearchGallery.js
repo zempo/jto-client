@@ -1,8 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { useInput2 } from "../../hooks/input-hook2";
+import { GalleryContext } from "../../contexts/GalleryContext";
 import { ThemesList } from "../Utils/Utils";
 
 const SearchGallery = () => {
+  const {
+    value: { cards, arrangeByKeyword }
+  } = useContext(GalleryContext);
   const { value: keyword, bind: bindKeyword, reset: resetKeyword } = useInput2("");
   const { checked: arrange, bindBtn: bindArrange, resetChecked: resetArrange } = useInput2("");
   const { value: themeSort, bind: bindThemeSort, reset: resetThemeSort } = useInput2("");
@@ -10,8 +14,12 @@ const SearchGallery = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    arrangeByKeyword(cards, keyword);
     console.log(keyword, arrange, themeSort);
+    // console.log(arrangeByKeyword(cards));
+    resetKeyword();
+    resetArrange();
+    resetThemeSort();
   };
 
   return (

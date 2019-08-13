@@ -61,6 +61,7 @@ const PrivateCards = () => {
       {cards.length > cardsPerPg ? (
         <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
       ) : null}
+      {lastPg}
     </>
   );
 };

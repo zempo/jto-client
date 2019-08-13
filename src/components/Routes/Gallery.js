@@ -25,7 +25,7 @@ const Gallery = () => {
 
   return (
     <>
-      <SearchGallery />
+      <SearchGallery cards={cards} />
       <p>
         Showing {currentCards.length} of {cards.length} Occasions
       </p>
@@ -67,7 +67,7 @@ const Gallery = () => {
                   {card.user.user_name === userValue.user.user_name ? (
                     <MenuOption
                       to="/toggle-privacy"
-                      text={<i class="fas fa-user-lock" title="make private" />}
+                      text={<i className="fas fa-user-lock" title="make private" />}
                       item_id={card.id}
                     />
                   ) : null}

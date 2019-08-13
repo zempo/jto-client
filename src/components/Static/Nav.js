@@ -37,13 +37,11 @@ class Nav extends Component {
     // console.log("reload");
     return (
       <div className="logged-out">
-        <Link to="/login">
-          <h3>Login</h3>
-        </Link>
-        <Hyph />
-        <Link to="/register">
-          <h3>Register</h3>
-        </Link>
+        <h3>
+          <Link to="/login">Login</Link>
+          <Hyph />
+          <Link to="/register">Register</Link>
+        </h3>
       </div>
     );
   }

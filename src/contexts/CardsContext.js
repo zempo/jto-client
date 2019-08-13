@@ -33,7 +33,7 @@ export const CardsContextProvider = (props) => {
   const indexOfLastCard = currentPg * cardsPerPg;
   const indexOfFirstCard = indexOfLastCard - cardsPerPg;
   const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
-  const lastPg = cards.length / cardsPerPg;
+  const lastPg = Math.ceil(cards.length / cardsPerPg);
 
   const paginate = (e) => {
     const { id } = e.target;

@@ -37,7 +37,7 @@ export const GalleryContextProvider = (props) => {
   const indexOfLastCard = currentPg * cardsPerPg;
   const indexOfFirstCard = indexOfLastCard - cardsPerPg;
   const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
-  const lastPg = cards.length / cardsPerPg;
+  const lastPg = Math.ceil(cards.length / cardsPerPg);
 
   const getHeartsForCard = (reactionsValue, cardIndex) => {
     // eslint-disable-next-line
@@ -71,6 +71,28 @@ export const GalleryContextProvider = (props) => {
     }
   };
 
+  const arrangeByKeyword = (cardsValue, keyword) => {
+    const byKeyword = cardsValue.filter((card) => {
+      // card["inside_mesage"].includes(keyword) || card["front_message"].includes(keyword)
+      if (card.front_message.includes(keyword)) {
+        // console.log(card.front_message);
+        return 1;
+      } else if (card.inside_message.includes(keyword)) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+    // .map((card) => {
+    //   // console.log(card["inside_message"]);
+    //   return card;
+    // });
+
+    // console.log(byKeyword);
+
+    setCards(byKeyword);
+  };
+
   const value = {
     cards,
     paginate,
@@ -81,6 +103,7 @@ export const GalleryContextProvider = (props) => {
     lastPg,
     getHeartsForCard,
     getSharesForCard,
+    arrangeByKeyword,
     loading,
     error
   };
