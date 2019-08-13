@@ -4,153 +4,155 @@ export const ThemeStyles = {
       fontFamily: `'Great Vibes', cursive`
     },
     front: {
-      backgroundColor: "yellow"
+      background: "rgb(248, 245, 245)"
     },
     innerLeft: {
-      backgroundColor: "blue"
+      background: "rgb(248, 245, 245)"
     },
     innerRight: {
-      backgroundColor: "green"
+      background: "rgb(248, 245, 245)"
     }
   },
   "cursive-plus": {
     all: {
-      fontFamily: `'Great Vibes', cursive`
+      fontFamily: `'Great Vibes', cursive`,
+      fontWeight: "bold"
     },
     front: {
-      backgroundColor: "yellow"
+      background: "rgb(248, 245, 245)"
     },
     innerLeft: {
-      backgroundColor: "blue"
+      background: "rgb(248, 245, 245)"
     },
     innerRight: {
-      backgroundColor: "green"
+      background: "rgb(248, 245, 245)"
     }
   },
   handwritten: {
     all: {
-      fontFamily: `'Great Vibes', cursive`
+      fontFamily: `'Shadows Into Light Two', cursive`
     },
     front: {
-      backgroundColor: "yellow"
+      background: "rgb(248, 245, 245)"
     },
     innerLeft: {
-      backgroundColor: "blue"
+      background: "rgb(248, 245, 245)"
     },
     innerRight: {
-      backgroundColor: "green"
+      background: "rgb(248, 245, 245)"
     }
   },
   "handwritten-bold": {
     all: {
-      fontFamily: `'Great Vibes', cursive`
+      fontFamily: `'Great Vibes', cursive`,
+      fontWeight: "bold"
     },
     front: {
-      backgroundColor: "yellow"
+      background: "rgb(248, 245, 245)"
     },
     innerLeft: {
-      backgroundColor: "blue"
+      background: "rgb(248, 245, 245)"
     },
     innerRight: {
-      backgroundColor: "green"
+      background: "rgb(248, 245, 245)"
     }
   },
   indie: {
     all: {
-      fontFamily: `'Great Vibes', cursive`
+      fontFamily: `'Amatic SC', cursive;`
     },
     front: {
-      backgroundColor: "yellow"
+      background: "rgb(248, 245, 245)"
     },
     innerLeft: {
-      backgroundColor: "blue"
+      background: "rgb(248, 245, 245)"
     },
     innerRight: {
-      backgroundColor: "green"
+      background: "rgb(248, 245, 245)"
     }
   },
   kiddo: {
     all: {
-      fontFamily: `'Great Vibes', cursive`
+      fontFamily: `'Gaegu', cursive`
     },
     front: {
-      backgroundColor: "yellow"
+      background: "rgb(248, 245, 245)"
     },
     innerLeft: {
-      backgroundColor: "blue"
+      background: "rgb(248, 245, 245)"
     },
     innerRight: {
-      backgroundColor: "green"
+      background: "rgb(248, 245, 245)"
     }
   },
   pen: {
     all: {
-      fontFamily: `'Great Vibes', cursive`
+      fontFamily: `'Nanum Pen Script', cursive`
     },
     front: {
-      backgroundColor: "yellow"
+      background: "rgb(248, 245, 245)"
     },
     innerLeft: {
-      backgroundColor: "blue"
+      background: "rgb(248, 245, 245)"
     },
     innerRight: {
-      backgroundColor: "green"
+      background: "rgb(248, 245, 245)"
     }
   },
   sharpie: {
     all: {
-      fontFamily: `'Great Vibes', cursive`
+      fontFamily: `'Permanent Marker', cursive`
     },
     front: {
-      backgroundColor: "yellow"
+      background: "rgb(248, 245, 245)"
     },
     innerLeft: {
-      backgroundColor: "blue"
+      background: "rgb(248, 245, 245)"
     },
     innerRight: {
-      backgroundColor: "green"
+      background: "rgb(248, 245, 245)"
     }
   },
   roboto: {
     all: {
-      fontFamily: `'Great Vibes', cursive`
+      fontFamily: `'Roboto', sans-serif`
     },
     front: {
-      backgroundColor: "yellow"
+      background: "rgb(248, 245, 245)"
     },
     innerLeft: {
-      backgroundColor: "blue"
+      background: "rgb(248, 245, 245)"
     },
     innerRight: {
-      backgroundColor: "green"
+      background: "rgb(248, 245, 245)"
     }
   },
   typed: {
     all: {
-      fontFamily: `'Great Vibes', cursive`
+      fontFamily: `'Cutive Mono', monospace`
     },
     front: {
-      backgroundColor: "yellow"
+      background: "rgb(248, 245, 245)"
     },
     innerLeft: {
-      backgroundColor: "blue"
+      background: "rgb(248, 245, 245)"
     },
     innerRight: {
-      backgroundColor: "green"
+      background: "rgb(248, 245, 245)"
     }
   },
   quill: {
     all: {
-      fontFamily: `'Great Vibes', cursive`
+      fontFamily: `'Tangerine', cursive`
     },
     front: {
-      backgroundColor: "yellow"
+      background: "rgb(248, 245, 245)"
     },
     innerLeft: {
-      backgroundColor: "blue"
+      background: "rgb(248, 245, 245)"
     },
     innerRight: {
-      backgroundColor: "green"
+      background: "rgb(248, 245, 245)"
     }
   }
 };

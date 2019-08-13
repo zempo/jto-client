@@ -245,6 +245,69 @@ export const AddBtn = () => {
   );
 };
 
+export const CardPages = ({ card, themes, cardTheme, cardPg }) => {
+  if (cardPg === 1) {
+    return (
+      <div className="front-pg pg" style={themes[`${cardTheme}`].front}>
+        <h2>{card.front_message}</h2>
+        {card.front_image !== "" ? <img src={card.front_image} alt="front background" /> : null}
+      </div>
+    );
+  } else if (cardPg === 2) {
+    return (
+      <div className="inner-left-pg pg" style={themes[`${cardTheme}`].innerLeft}>
+        <p>{card.inside_message}</p>
+      </div>
+    );
+  } else if (cardPg === 3) {
+    return (
+      <div className="inner-right-pg pg" style={themes[`${cardTheme}`].innerRight}>
+        {card.inside_image !== "" ? <img src={card.inside_image} alt="card interior background" /> : null}
+      </div>
+    );
+  } else {
+    return null;
+  }
+};
+
+export const PaginateCardFaces = ({ currentPg, setCurrentPg }) => {
+  const handleClickFront = (e) => {
+    setCurrentPg(1);
+  };
+
+  const handleClickInnerLeft = (e) => {
+    setCurrentPg(2);
+  };
+
+  const handleClickInnerRight = (e) => {
+    setCurrentPg(3);
+  };
+  // paginate card faces differently than cards
+  return (
+    <JtoSection className="paginate-cards">
+      <nav className="jto-page-menu">
+        <ul>
+          <li className="page-menu-item">
+            <button id={1} disabled={currentPg === 1} onClick={(e) => handleClickFront(e)} className="page-btn">
+              Front
+            </button>
+          </li>
+          <li className="page-menu-item">
+            <button id={2} disabled={currentPg === 2} onClick={(e) => handleClickInnerLeft(e)} className="page-btn">
+              Inner Message
+            </button>
+          </li>
+          <li className="page-menu-item">
+            <button id={3} disabled={currentPg === 3} onClick={(e) => handleClickInnerRight(e)} className="page-btn">
+              Inner Image
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </JtoSection>
+  );
+};
+
 export const PaginateCards = ({ currentCards, paginate, currentPg, lastPg }) => {
   return (
     <JtoSection className="paginate-cards">
@@ -299,11 +362,6 @@ export const PaginateCards = ({ currentCards, paginate, currentPg, lastPg }) => 
 
 export const TimeStamp = ({ date, format = "MMMM Do YYYY" }) => {
   return formatDate(date, format);
-};
-
-export const PaginateCardFaces = ({ currentFace }) => {
-  // paginate card faces differently than cards
-  return "hello";
 };
 
 export const ProcessMsg = (message, maxLength) => {

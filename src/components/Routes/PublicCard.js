@@ -3,12 +3,14 @@ import React, { useEffect, useState, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { listCards, listCardComments, listReactions, listHearts, listShares } from "../../services/endpoints-service";
 // create back-button
-import { JtoSection, JtoNotification, DotMenuOption, TimeStamp } from "../Utils/Utils";
+import { JtoSection, Loader, DotMenuOption, TimeStamp, CardPages, PaginateCardFaces } from "../Utils/Utils";
 import { ThemeStyles } from "../Utils/Themes";
 import "./css/Card.css";
 
 const PublicCard = (props) => {
-  const { value } = useContext(UserContext);
+  const {
+    value: { user }
+  } = useContext(UserContext);
   const [cardId, setCardId] = useState(0);
   const [card, setCard] = useState({});
   const [comments, setComments] = useState([]);
@@ -16,6 +18,7 @@ const PublicCard = (props) => {
   const [shares, setShares] = useState([]);
   const [cardAuthor, setCardAuthor] = useState({});
   const [cardTheme, setCardTheme] = useState("handwritten");
+  const [cardPg, setCardPg] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -57,30 +60,35 @@ const PublicCard = (props) => {
     // eslint-disable-next-line
   }, []);
 
-  const handlePaginate = (e) => {
-    const { id } = e.target;
-  };
-
   return (
     <>
-      <JtoSection className="jto-card public-card">
-        {/* load an array of custom styles from a utilities page. style={getTheme(card.theme, themes context)} */}
-        <h2>
-          Created by {cardAuthor.user_name} on {<TimeStamp date={cardAuthor.date_created} />}
-        </h2>
-        <div
-          className="front-pg"
-          style={Object.assign({}, ThemeStyles[`${cardTheme}`].all, ThemeStyles[`${cardTheme}`].front)}
-        >
-          <p>{card.front_message}</p>
+      <h2>
+        Created by {cardAuthor.user_name} on {<TimeStamp date={cardAuthor.date_created} />}
+      </h2>
+      {/* {loading ? (
+        <Loader loading={true} />
+      ) : (
+        <>
+          <h2>
+            Created by {cardAuthor.user_name} on {<TimeStamp date={cardAuthor.date_created} />}
+          </h2>
+          <Loader loading={false} />
+        </>
+      )} */}
+      <JtoSection className="jto-card public-card" style={ThemeStyles[`${cardTheme}`].all}>
+        {/* style={Object.assign({}, ThemeStyles[`${cardTheme}`].all, ThemeStyles[`${cardTheme}`].front) */}
+        <CardPages card={card} themes={ThemeStyles} cardTheme={cardTheme} cardPg={cardPg} />
+        <PaginateCardFaces currentPg={cardPg} setCurrentPg={setCardPg} />
+        {/* <div className="front-pg" style={ThemeStyles[`${cardTheme}`].front}>
+          <h3>{card.front_message}</h3>
           {card.front_image !== "" ? <img src={card.front_image} alt="front background" /> : null}
         </div>
-        <div className="inner-left-pg">
+        <div className="inner-left-pg" style={ThemeStyles[`${cardTheme}`].innerLeft}>
           <p>{card.inside_message}</p>
         </div>
-        <div className="inner-right-pg">
+        <div className="inner-right-pg" style={ThemeStyles[`${cardTheme}`].innerRight}>
           {card.inside_image !== "" ? <img src={card.inside_image} alt="card interior background" /> : null}
-        </div>
+        </div> */}
       </JtoSection>
       <JtoSection className="jto-reactions">
         Hearts {hearts.length}
@@ -100,7 +108,7 @@ const PublicCard = (props) => {
                   <li className="comment-item date">{comment.date_created}</li>
                   {comment.date_modified ? <li className="comment-item date">{comment.date_modified}</li> : null}
                   {/* to do: mini dot list menu */}
-                  {value.user.admin || comment.user.user_name === value.user.user_name ? (
+                  {user.admin || comment.user.user_name === user.user_name ? (
                     <nav className="jto-dot-menu">
                       <input type="checkbox" id={`comment-toggle-${i}`} className="comment-toggle" value="selected" />
                       <label className="comment-menu-container" htmlFor={`comment-toggle-${i}`}>

@@ -155,6 +155,11 @@ div[id="413"] {
   height: 1.5em;
 }
 
+.public-card .page-btn {
+  width: 5.5em;
+  height: 3em;
+}
+
 /* skeleton loader */
 
 :root {
