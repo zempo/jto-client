@@ -3,7 +3,6 @@ import { GalleryContext } from "../../contexts/GalleryContext";
 import { UserContext } from "../../contexts/UserContext";
 import SearchGallery from "../Forms/SearchGallery";
 import { JtoSection, MenuOption, PaginateCards, ProcessMsg, SkeletonLoader } from "../Utils/Utils";
-import TextPlaceholder from "../../images/writing-placeholder.jpg";
 import "./css/Gallery.css";
 
 const Gallery = () => {
@@ -42,7 +41,7 @@ const Gallery = () => {
               <label className="card-container" htmlFor={`card-toggle-${i}`}>
                 <span className="checkmark2" />
                 <div className="front face">
-                  <p>{ProcessMsg(card.front_message, 20)}</p>
+                  <p>{ProcessMsg(card.front_message, 30)}</p>
                   {card.front_image !== "" ? <img src={card.front_image} alt="front background" /> : null}
                 </div>
                 <div className="inner-left face">

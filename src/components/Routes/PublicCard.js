@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Redirect } from "react-router-dom";
 // import { CardContext, CardContextProvider } from "../../contexts/CardContext";
 import { UserContext } from "../../contexts/UserContext";
 import { listCards, listCardComments, listReactions, listHearts, listShares } from "../../services/endpoints-service";
-import TokenService from "../../services/token-service";
 // create back-button
-import { JtoSection, JtoNotification, DotMenuOption } from "../Utils/Utils";
+import { JtoSection, JtoNotification, DotMenuOption, TimeStamp } from "../Utils/Utils";
+import { ThemeStyles } from "../Utils/Themes";
 import "./css/Card.css";
 
 const PublicCard = (props) => {
@@ -16,6 +15,8 @@ const PublicCard = (props) => {
   const [hearts, setHearts] = useState([]);
   const [shares, setShares] = useState([]);
   const [cardAuthor, setCardAuthor] = useState({});
+  const [cardTheme, setCardTheme] = useState("handwritten");
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -24,14 +25,17 @@ const PublicCard = (props) => {
       setCardId(item);
 
       const cardFound = async () => {
+        setLoading(true);
         try {
           const cardResult = await listCards.get(`/${item}`);
           const commentsResult = await listCardComments.get(`/${item}`);
           const heartsResult = await listHearts.get(`/${item}`);
           const sharesResult = await listShares.get(`/${item}`);
 
+          setLoading(false);
           setCard(cardResult.data);
           setCardAuthor(cardResult.data.user);
+          setCardTheme(cardResult.data.theme);
           setComments(commentsResult.data);
           setHearts(heartsResult.data);
           setShares(sharesResult.data);
@@ -39,8 +43,10 @@ const PublicCard = (props) => {
           console.log(heartsResult.data);
           console.log(sharesResult.data);
           console.log(commentsResult.data);
+          console.log(ThemeStyles[`${cardResult.data.theme}`]);
         } catch (err) {
           if (err.response.status === 401) {
+            setLoading(false);
             setError(true);
           }
         }
@@ -51,19 +57,28 @@ const PublicCard = (props) => {
     // eslint-disable-next-line
   }, []);
 
+  const handlePaginate = (e) => {
+    const { id } = e.target;
+  };
+
   return (
     <>
       <JtoSection className="jto-card public-card">
         {/* load an array of custom styles from a utilities page. style={getTheme(card.theme, themes context)} */}
-        <h2>Written by {cardAuthor.user_name}</h2>
-        <div className="">
+        <h2>
+          Created by {cardAuthor.user_name} on {<TimeStamp date={cardAuthor.date_created} />}
+        </h2>
+        <div
+          className="front-pg"
+          style={Object.assign({}, ThemeStyles[`${cardTheme}`].all, ThemeStyles[`${cardTheme}`].front)}
+        >
           <p>{card.front_message}</p>
           {card.front_image !== "" ? <img src={card.front_image} alt="front background" /> : null}
         </div>
-        <div className="">
+        <div className="inner-left-pg">
           <p>{card.inside_message}</p>
         </div>
-        <div className="">
+        <div className="inner-right-pg">
           {card.inside_image !== "" ? <img src={card.inside_image} alt="card interior background" /> : null}
         </div>
       </JtoSection>
@@ -77,8 +92,8 @@ const PublicCard = (props) => {
             return (
               <li className="jto-comment" key={i}>
                 {/* add admin icon if admin */}
-                {comment.user.user_name}
                 {comment.user.admin ? <i className="fas fa-shield-alt" /> : null}
+                {comment.user.user_name}
                 <ul className="comment-items">
                   <li className="comment-item body">{comment.body}</li>
                   {/* create a date utility */}

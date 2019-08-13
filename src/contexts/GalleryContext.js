@@ -7,6 +7,7 @@ export const GalleryContextProvider = (props) => {
   const [cards, setCards] = useState([]);
   const [cardsReacts, setCardsReacts] = useState([]);
   const [currentPg, setCurrentPg] = useState(1);
+  // eslint-disable-next-line
   const [cardsPerPg, setCardsPerPg] = useState(8);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);

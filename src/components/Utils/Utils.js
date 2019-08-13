@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { JtoQuotes } from "./Quotes";
 import { Link } from "react-router-dom";
-// import { format as formatDate } from "date-fns";
+import { format as formatDate } from "date-fns";
 import "./css/Utils.css";
 
 export const Loader = ({ loading }) => {
@@ -81,6 +81,57 @@ export const SkeletonLoader = ({ loading }) => {
           <div className="skeleton-card-inside" />
           <div className="skeleton-card" />
           <div className="skeleton-nav" />
+          <div className="spacer" />
+        </div>
+      </>
+    );
+  } else {
+    return null;
+  }
+};
+
+export const SkeletonLoader2 = ({ loading }) => {
+  if (loading) {
+    return (
+      <>
+        <div className="card-container loader">
+          <div className="skeleton-card-inside" />
+          <div className="skeleton-card" />
+          <div className="spacer" />
+        </div>
+        <div className="card-container loader">
+          <div className="skeleton-card-inside" />
+          <div className="skeleton-card" />
+          <div className="spacer" />
+        </div>
+        <div className="card-container loader">
+          <div className="skeleton-card-inside" />
+          <div className="skeleton-card" />
+          <div className="spacer" />
+        </div>
+        <div className="card-container loader">
+          <div className="skeleton-card-inside" />
+          <div className="skeleton-card" />
+          <div className="spacer" />
+        </div>
+        <div className="card-container loader">
+          <div className="skeleton-card-inside" />
+          <div className="skeleton-card" />
+          <div className="spacer" />
+        </div>
+        <div className="card-container loader">
+          <div className="skeleton-card-inside" />
+          <div className="skeleton-card" />
+          <div className="spacer" />
+        </div>
+        <div className="card-container loader">
+          <div className="skeleton-card-inside" />
+          <div className="skeleton-card" />
+          <div className="spacer" />
+        </div>
+        <div className="card-container loader">
+          <div className="skeleton-card-inside" />
+          <div className="skeleton-card" />
           <div className="spacer" />
         </div>
       </>
@@ -246,7 +297,11 @@ export const PaginateCards = ({ currentCards, paginate, currentPg, lastPg }) => 
   );
 };
 
-export const PaginateCardFaces = ({ face, faces }) => {
+export const TimeStamp = ({ date, format = "MMMM Do YYYY" }) => {
+  return formatDate(date, format);
+};
+
+export const PaginateCardFaces = ({ currentFace }) => {
   // paginate card faces differently than cards
   return "hello";
 };

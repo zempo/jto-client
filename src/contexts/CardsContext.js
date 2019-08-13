@@ -7,22 +7,22 @@ export const CardsContextProvider = (props) => {
   const [cards, setCards] = useState([]);
   const [error, setError] = useState(false);
   const [currentPg, setCurrentPg] = useState(1);
+  // eslint-disable-next-line
   const [cardsPerPg, setCardsPerPg] = useState(7);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   // write error message or status state, if exists for notification
 
   useEffect(() => {
     const cardsFound = async () => {
-      setLoading(true)
+      setLoading(true);
       try {
         const result = await listUserCards.get("/");
 
-        setLoading(false)
+        setLoading(false);
         setCards(result.data);
       } catch (err) {
-        setLoading(false)
+        setLoading(false);
         setError(true);
-
       }
     };
 
@@ -33,21 +33,21 @@ export const CardsContextProvider = (props) => {
   const indexOfLastCard = currentPg * cardsPerPg;
   const indexOfFirstCard = indexOfLastCard - cardsPerPg;
   const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
-  const lastPg = (cards.length / cardsPerPg)
+  const lastPg = cards.length / cardsPerPg;
 
   const paginate = (e) => {
-    const { id } = e.target
+    const { id } = e.target;
 
-    if (id === 'first') {
-      setCurrentPg(1)
-    } else if (id === 'prev') {
-      setCurrentPg(currentPg - 1)
-    } else if (id === 'next') {
-      setCurrentPg(currentPg + 1)
-    } else if (id === 'last') {
-      setCurrentPg(lastPg)
+    if (id === "first") {
+      setCurrentPg(1);
+    } else if (id === "prev") {
+      setCurrentPg(currentPg - 1);
+    } else if (id === "next") {
+      setCurrentPg(currentPg + 1);
+    } else if (id === "last") {
+      setCurrentPg(lastPg);
     }
-  }
+  };
 
   const value = {
     cards,

@@ -1,15 +1,12 @@
 import React, { useContext } from "react";
-import { JtoSection, MenuOption, AddBtn, PaginateCards } from "../Utils/Utils";
+import { JtoSection, MenuOption, AddBtn, PaginateCards, ProcessMsg, SkeletonLoader2 } from "../Utils/Utils";
 import { CardsContext } from "../../contexts/CardsContext";
-import TextPlaceholder from "../../images/writing-placeholder.jpg";
 import "./css/Cards.css";
 
 const PrivateCards = () => {
   const {
     value: { cards, cardsPerPg, paginate, currentPg, currentCards, lastPg, loading, error }
   } = useContext(CardsContext);
-
-  const noPagination = cards.length / lastPg;
 
   return (
     <>
@@ -21,7 +18,7 @@ const PrivateCards = () => {
       ) : null}
       <JtoSection className="jto-cards private-cards">
         {/* make empty card with question mark and big "start creating Occasions button" */}
-        {loading ? "loading" : null}
+        <SkeletonLoader2 loading={loading} />
         {currentCards.map((card, i) => {
           return (
             <div key={i} className="jto-card list-card">
@@ -29,11 +26,11 @@ const PrivateCards = () => {
               <label className="card-container" htmlFor={`card-toggle-${i}`}>
                 <span className="checkmark" />
                 <div className="front face">
-                  <p>{card.front_message}</p>
+                  <p>{ProcessMsg(card.front_message, 30)}</p>
                   {card.front_image !== "" ? <img src={card.front_image} alt="front background" /> : null}
                 </div>
                 <div className="inner-left face">
-                  <img src={TextPlaceholder} alt="front background" />
+                  <p>{ProcessMsg(card.inside_message, 100)}</p>
                 </div>
                 <div className="inner-right face">
                   {card.inside_image !== "" ? <img src={card.inside_image} alt="card interior background" /> : null}

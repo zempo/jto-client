@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Logo from "../../images/jto-logo.svg";
 
 const Landing = (props) => {
