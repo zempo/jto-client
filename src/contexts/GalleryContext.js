@@ -5,11 +5,11 @@ export const GalleryContext = createContext();
 
 export const GalleryContextProvider = (props) => {
   const [cards, setCards] = useState([]);
-  const [searchCards, setSearchCards] = useState([]);
-  const [cardsReacts, setCardsReacts] = useState([]);
   const [currentPg, setCurrentPg] = useState(1);
-  // eslint-disable-next-line
   const [cardsPerPg, setCardsPerPg] = useState(8);
+  const [searchCards, setSearchCards] = useState([]);
+  const [currentSearchPg, setCurrentSearchPg] = useState(1);
+  const [searchCardsPerPg, setSearchCardsPerPg] = useState(8);
   const [searching, setSearching] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -22,10 +22,10 @@ export const GalleryContextProvider = (props) => {
         const cardsResult = await listCards.get("/");
         // filter and map results based on their id
         const reactsResult = await listReactions.get("/");
+        const mergeData = await mergeResults(cardsResult.data, reactsResult.data);
 
         setLoading(false);
-        setCards(cardsResult.data);
-        setCardsReacts(reactsResult.data);
+        setCards(mergeData);
       } catch (err) {
         setLoading(false);
         setError(true);
@@ -36,28 +36,26 @@ export const GalleryContextProvider = (props) => {
     // eslint-disable-next-line
   }, []);
 
+  const mergeResults = (cardsValue, reactionsValue) => {
+    let mergeValues = [];
+    for (let i = 0; i < cardsValue.length; i++) {
+      mergeValues.push({
+        ...cardsValue[i],
+        ...reactionsValue.find((itmInner) => itmInner.id === cardsValue[i].id)
+      });
+    }
+    return mergeValues;
+  };
+
   let indexOfLastCard = currentPg * cardsPerPg;
   let indexOfFirstCard = indexOfLastCard - cardsPerPg;
   let currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
   let lastPg = Math.ceil(cards.length / cardsPerPg);
 
-  const getHeartsForCard = (reactionsValue, cardIndex) => {
-    // eslint-disable-next-line
-    return reactionsValue.map((reaction, i) => {
-      if (i === cardIndex) {
-        return reaction.number_of_hearts;
-      }
-    });
-  };
-
-  const getSharesForCard = (reactionsValue, cardIndex) => {
-    // eslint-disable-next-line
-    return reactionsValue.map((reaction, i) => {
-      if (i === cardIndex) {
-        return reaction.number_of_shares;
-      }
-    });
-  };
+  let indexOfLastSearch = currentSearchPg * searchCardsPerPg;
+  let indexOfFirstSearch = indexOfLastSearch - searchCardsPerPg;
+  let currentSearchCards = searchCards.slice(indexOfFirstSearch, indexOfLastSearch);
+  let lastSearchPg = Math.ceil(searchCards.length / searchCardsPerPg);
 
   const paginate = (e) => {
     const { id } = e.target;
@@ -70,6 +68,20 @@ export const GalleryContextProvider = (props) => {
       setCurrentPg(currentPg + 1);
     } else if (id === "last") {
       setCurrentPg(lastPg);
+    }
+  };
+
+  const paginateSearch = (e) => {
+    const { id } = e.target;
+
+    if (id === "first") {
+      setCurrentSearchPg(1);
+    } else if (id === "prev") {
+      setCurrentSearchPg(currentSearchPg - 1);
+    } else if (id === "next") {
+      setCurrentSearchPg(currentSearchPg + 1);
+    } else if (id === "last") {
+      setCurrentSearchPg(lastSearchPg);
     }
   };
 
@@ -152,22 +164,23 @@ export const GalleryContextProvider = (props) => {
           ...reactionsValue.find((itmInner) => itmInner.id === cardsValue[i].id)
         });
       }
-      let sortByFields = [{prop: "number_of_hearts", direction: -1}, {prop: "number_of_shares", direction: -1}, {prop: "number_of_comments", direction: -1}]
-// let sortAll = mergeValues.sort((a, b) => {
-//   let i = 0, result = 0
-//   while(i < sortByFields.length && result === 0) {
-//     result = sortByFields[i].direction
-//   }
-// })
+      let sortByFields = [
+        { prop: "number_of_hearts", direction: -1 },
+        { prop: "number_of_shares", direction: -1 },
+        { prop: "number_of_comments", direction: -1 }
+      ];
+      // let sortAll = mergeValues.sort((a, b) => {
+      //   let i = 0, result = 0
+      //   while(i < sortByFields.length && result === 0) {
+      //     result = sortByFields[i].direction
+      //   }
+      // })
       let sortByHearts = mergeValues.sort(compareReactions("number_of_hearts", "desc"));
       let sortByShares = sortByHearts.sort(compareReactions("number_of_shares", "desc"));
       let sortByComments = sortByShares.sort(compareReactions("number_of_comments", "desc"));
-      // exclude reaction props
-      // let sortedGallery = sortByComments.map(({ number_of_hearts, number_of_shares, user_id, ...rest }) => rest);
 
-      console.log(sortByComments)
-      return sortByComments
-      // setSearchCards(sortedGallery);
+      console.log(sortByComments);
+      return sortByComments;
     } else if (selection === "ancient") {
       let sortedGallery = cardsValue.sort(compareDatesAsc);
       setSearchCards(sortedGallery);
@@ -194,21 +207,24 @@ export const GalleryContextProvider = (props) => {
 
   const value = {
     cards,
-    paginate,
     currentPg,
-    setCurrentPg,
-    cardsPerPg,
-    setCardsPerPg,
     currentCards,
-    cardsReacts,
+    cardsPerPg,
+    setCurrentPg,
+    setCardsPerPg,
+    paginate,
     lastPg,
-    getHeartsForCard,
-    getSharesForCard,
+    searchCards,
+    currentSearchCards,
+    setSearchCards,
+    paginateSearch,
+    searchCardsPerPg,
+    currentSearchPg,
+    lastSearchPg,
+    mergeResults,
     arrangeByKeyword,
     arrangeBySelection,
     arrangeByTheme,
-    searchCards,
-    setSearchCards,
     searching,
     setSearching,
     loading,

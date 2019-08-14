@@ -1,7 +1,7 @@
 import React from "react";
 import { MenuOption, ProcessMsg } from "./Utils";
 
-const ListCard = ({ card, admin, user_name, getHeartsForCard, getSharesForCard, cardsReacts }) => {
+const ListCard = ({ card, admin, user_name }) => {
   return (
     <div className="jto-card list-card">
       <input type="checkbox" id={`card-toggle-${card.id}`} className="card-toggle" value="selected" />
@@ -27,14 +27,14 @@ const ListCard = ({ card, admin, user_name, getHeartsForCard, getSharesForCard, 
             <MenuOption
               to="/toggle-privacy"
               text={<i className="fas fa-user-lock" title="make private" />}
-              item_id={card.id} 
+              item_id={card.id}
             />
           ) : null}
         </nav>
         <div className="jto-counter">
           <span className="fa-stack">
             <i className="fas fa-heart">
-              <strong className="fa-stack-1x fa-stack-text fa-inverse">{getHeartsForCard(cardsReacts, card.id)}</strong>
+              <strong className="fa-stack-1x fa-stack-text fa-inverse">{card.number_of_hearts}</strong>
             </i>
           </span>
           <span className="fa-stack">
@@ -44,7 +44,7 @@ const ListCard = ({ card, admin, user_name, getHeartsForCard, getSharesForCard, 
           </span>
           <span className="fa-stack">
             <i className="fas fa-bookmark">
-              <strong className="fa-stack-1x fa-stack-text fa-inverse">{getSharesForCard(cardsReacts, card.id)}</strong>
+              <strong className="fa-stack-1x fa-stack-text fa-inverse">{card.number_of_shares}</strong>
             </i>
           </span>
         </div>

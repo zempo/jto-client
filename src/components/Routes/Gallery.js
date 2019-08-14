@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import { GalleryContext } from "../../contexts/GalleryContext";
 import { UserContext } from "../../contexts/UserContext";
 import SearchGallery from "../Forms/SearchGallery";
-import { JtoSection, MenuOption, PaginateCards, ProcessMsg, SkeletonLoader } from "../Utils/Utils";
-import ListCard from '../Utils/ListCard'
-import SearchCard from '../Utils/SearchCard'
+import { JtoSection, PaginateCards, SkeletonLoader } from "../Utils/Utils";
+import ListCard from "../Utils/ListCard";
+import SearchCard from "../Utils/SearchCard";
 import "./css/Gallery.css";
 
 const Gallery = () => {
@@ -13,13 +13,15 @@ const Gallery = () => {
       cards,
       searchCards,
       cardsPerPg,
+      searchCardsPerPg,
       paginate,
+      paginateSearch,
       currentPg,
+      currentSearchPg,
       currentCards,
+      currentSearchCards,
       lastPg,
-      cardsReacts,
-      getHeartsForCard,
-      getSharesForCard,
+      lastSearchPg,
       searching,
       loading,
       error
@@ -38,11 +40,20 @@ const Gallery = () => {
         </JtoSection>
       ) : (
         <JtoSection className="cards-counter">
-        <p>Found {searchCards.length} results</p>
+          <p>
+            Showing {currentSearchCards.length} of {searchCards.length} Results
+          </p>
         </JtoSection>
       )}
-      {cards.length > cardsPerPg ? (
+      {cards.length > cardsPerPg && !searching ? (
         <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
+      ) : searchCards.length > searchCardsPerPg && searching ? (
+        <PaginateCards
+          currentCards={currentSearchCards}
+          paginate={paginateSearch}
+          currentPg={currentSearchPg}
+          lastPg={lastSearchPg}
+        />
       ) : null}
       <JtoSection className="jto-cards public-cards">
         <SkeletonLoader loading={loading} />
@@ -50,34 +61,27 @@ const Gallery = () => {
           ? currentCards.map((card, i) => {
               return (
                 <div key={i}>
-              < ListCard
-                  card={card}
-                  admin={userValue.user.admin}
-                  user_name={userValue.user.user_name}
-                  cardsReacts={cardsReacts}
-                  getHeartsForCard={getHeartsForCard}
-                  getSharesForCard={getSharesForCard}
-                  />
-                  </div>
-                )
-          }): searchCards.map((card, i) => {
+                  <ListCard card={card} admin={userValue.user.admin} user_name={userValue.user.user_name} />
+                </div>
+              );
+            })
+          : currentSearchCards.map((card, i) => {
               return (
                 <div key={i}>
-                < SearchCard
-                card={card}
-                index={i}
-                admin={userValue.user.admin}
-                user_name={userValue.user.user_name}
-                cardsReacts={cardsReacts}
-                getHeartsForCard={getHeartsForCard}
-                getSharesForCard={getSharesForCard}
-                />
+                  <SearchCard card={card} admin={userValue.user.admin} user_name={userValue.user.user_name} />
                 </div>
               );
             })}
       </JtoSection>
-      {cards.length > cardsPerPg ? (
+      {cards.length > cardsPerPg && !searching ? (
         <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
+      ) : searchCards.length > searchCardsPerPg && searching ? (
+        <PaginateCards
+          currentCards={currentSearchCards}
+          paginate={paginateSearch}
+          currentPg={currentSearchPg}
+          lastPg={lastSearchPg}
+        />
       ) : null}
     </>
   );

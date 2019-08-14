@@ -6,17 +6,7 @@ import { ThemesList } from "../Utils/Utils";
 
 const SearchGallery = () => {
   const {
-    value: {
-      arrangeByKeyword,
-      arrangeBySelection,
-      arrangeByTheme,
-      setCurrentPg,
-      setCardsPerPg,
-      searching,
-      setSearching,
-      searchCards,
-      setSearchCards
-    }
+    value: { searchCards, arrangeByKeyword, arrangeBySelection, arrangeByTheme, setSearching, setSearchCards }
   } = useContext(GalleryContext);
   const { value: keyword, bind: bindKeyword, reset: resetKeyword } = useInput2("");
   const { radio: arrange, bindBtn: bindArrange, resetChecked: resetArrange } = useInput2("");
@@ -26,11 +16,9 @@ const SearchGallery = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setCurrentPg(1);
     setSearching(true);
     try {
       const resetCards = await listCards.get("/");
-      setCardsPerPg(resetCards.data.length);
       const resetReactions = await listReactions.get("/");
 
       const sortedKeyword = await arrangeByKeyword(resetCards.data, keyword);
@@ -38,8 +26,8 @@ const SearchGallery = () => {
 
       const sortedSelect = await arrangeBySelection(sortedTheme, resetReactions.data, arrange);
 
-      console.log(sortedSelect)
-      setSearchCards(sortedSelect)
+      console.log(sortedSelect);
+      setSearchCards(sortedSelect);
       resetKeyword();
       resetArrange();
       resetThemeSort();
