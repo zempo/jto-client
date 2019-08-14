@@ -5,10 +5,12 @@ export const GalleryContext = createContext();
 
 export const GalleryContextProvider = (props) => {
   const [cards, setCards] = useState([]);
+  const [searchCards, setSearchCards] = useState([]);
   const [cardsReacts, setCardsReacts] = useState([]);
   const [currentPg, setCurrentPg] = useState(1);
   // eslint-disable-next-line
   const [cardsPerPg, setCardsPerPg] = useState(8);
+  const [searching, setSearching] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   // write error status and message state if exists, for notification
@@ -34,10 +36,10 @@ export const GalleryContextProvider = (props) => {
     // eslint-disable-next-line
   }, []);
 
-  const indexOfLastCard = currentPg * cardsPerPg;
-  const indexOfFirstCard = indexOfLastCard - cardsPerPg;
-  const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
-  const lastPg = Math.ceil(cards.length / cardsPerPg);
+  let indexOfLastCard = currentPg * cardsPerPg;
+  let indexOfFirstCard = indexOfLastCard - cardsPerPg;
+  let currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
+  let lastPg = Math.ceil(cards.length / cardsPerPg);
 
   const getHeartsForCard = (reactionsValue, cardIndex) => {
     // eslint-disable-next-line
@@ -72,20 +74,24 @@ export const GalleryContextProvider = (props) => {
   };
 
   const arrangeByKeyword = (cardsValue, keyword) => {
-    const byKeyword = cardsValue.filter((card) => {
-      let front = card.front_message.toLowerCase();
-      let inside = card.inside_message.toLowerCase();
-      let searchTerm = keyword.toLowerCase();
-      if (front.includes(searchTerm)) {
-        return 1;
-      } else if (inside.includes(searchTerm)) {
-        return 1;
-      } else {
-        return 0;
-      }
-    });
+    if (keyword) {
+      const byKeyword = cardsValue.filter((card) => {
+        let front = card.front_message.toLowerCase();
+        let inside = card.inside_message.toLowerCase();
+        let searchTerm = keyword.toLowerCase();
+        if (front.includes(searchTerm)) {
+          return 1;
+        } else if (inside.includes(searchTerm)) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
 
-    setCards(byKeyword);
+      return byKeyword;
+    } else {
+      return cardsValue;
+    }
   };
 
   const arrangeBySelection = (cardsValue, reactionsValue, selection) => {
@@ -136,49 +142,54 @@ export const GalleryContextProvider = (props) => {
       };
     };
     if (selection === "recent") {
-      // let dates = cardsValue.map((card, i) => `${i} ${Date.parse(card.date_created)}`);
-      // let sortedDates = dates.sort((a, b) => {
-      //   return a - b;
-      // });
-      // console.log(sortedDates);
-      // setCards(bySelection);
+      let sortedGallery = cardsValue.sort(compareDatesDesc);
+      setSearchCards(sortedGallery);
     } else if (selection === "popular") {
-      let sortByHearts = reactionsValue.sort(compareReactions("number_of_hearts", "desc"));
+      let mergeValues = [];
+      for (let i = 0; i < cardsValue.length; i++) {
+        mergeValues.push({
+          ...cardsValue[i],
+          ...reactionsValue.find((itmInner) => itmInner.id === cardsValue[i].id)
+        });
+      }
+      let sortByHearts = mergeValues.sort(compareReactions("number_of_hearts", "desc"));
       let sortByShares = sortByHearts.sort(compareReactions("number_of_shares", "desc"));
-      let sortByComments = cardsValue.sort(compareReactions("number_of_comments", "desc"));
-      let getReactionIds = sortByShares.map((card) => card.id);
-      // let matchedCardIds = getReactionIds.forEach(id => {
-      //   cardsValue.forEach(card => {
+      let sortByComments = sortByShares.sort(compareReactions("number_of_comments", "desc"));
+      // exclude reaction props
+      let sortedGallery = sortByComments.map(({ number_of_hearts, number_of_shares, user_id, ...rest }) => rest);
 
-      //   })
-      // })
-      // let getCardIds = cardsValue.map((card) => card.id)
-      // let matchedGalleryCards =
-      // cardsValue.forEach((card, i, cards) => {
-
-      // })
-      console.log(sortByComments);
+      setSearchCards(sortedGallery);
     } else if (selection === "ancient") {
+      let sortedGallery = cardsValue.sort(compareDatesAsc);
+      setSearchCards(sortedGallery);
+    } else {
+      setSearchCards(cardsValue);
     }
   };
 
   const arrangeByTheme = (cardsValue, theme) => {
-    const byTheme = cardsValue.filter((card) => {
-      if (card.theme === theme) {
-        return 1;
-      } else {
-        return 0;
-      }
-    });
+    if (theme) {
+      const byTheme = cardsValue.filter((card) => {
+        if (card.theme === theme) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
 
-    setCards(byTheme);
+      return byTheme;
+    } else {
+      return cardsValue;
+    }
   };
 
   const value = {
     cards,
     paginate,
     currentPg,
+    setCurrentPg,
     cardsPerPg,
+    setCardsPerPg,
     currentCards,
     cardsReacts,
     lastPg,
@@ -187,11 +198,13 @@ export const GalleryContextProvider = (props) => {
     arrangeByKeyword,
     arrangeBySelection,
     arrangeByTheme,
+    searchCards,
+    setSearchCards,
+    searching,
+    setSearching,
     loading,
     error
   };
 
   return <GalleryContext.Provider value={{ value }}>{props.children}</GalleryContext.Provider>;
 };
-
-// export default GalleryContextProvider;
