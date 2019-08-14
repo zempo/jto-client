@@ -73,24 +73,105 @@ export const GalleryContextProvider = (props) => {
 
   const arrangeByKeyword = (cardsValue, keyword) => {
     const byKeyword = cardsValue.filter((card) => {
-      // card["inside_mesage"].includes(keyword) || card["front_message"].includes(keyword)
-      if (card.front_message.includes(keyword)) {
-        // console.log(card.front_message);
+      let front = card.front_message.toLowerCase();
+      let inside = card.inside_message.toLowerCase();
+      let searchTerm = keyword.toLowerCase();
+      if (front.includes(searchTerm)) {
         return 1;
-      } else if (card.inside_message.includes(keyword)) {
+      } else if (inside.includes(searchTerm)) {
         return 1;
       } else {
         return 0;
       }
     });
-    // .map((card) => {
-    //   // console.log(card["inside_message"]);
-    //   return card;
-    // });
-
-    // console.log(byKeyword);
 
     setCards(byKeyword);
+  };
+
+  const arrangeBySelection = (cardsValue, reactionsValue, selection) => {
+    const compareDatesAsc = (a, b) => {
+      const dateA = Date.parse(a.date_created);
+      const dateB = Date.parse(b.date_created);
+
+      let comparison = 0;
+      if (dateA > dateB) {
+        comparison = 1;
+      } else if (dateA < dateB) {
+        comparison = -1;
+      }
+      return comparison;
+    };
+
+    const compareDatesDesc = (a, b) => {
+      const dateA = Date.parse(a.date_created);
+      const dateB = Date.parse(b.date_created);
+
+      let comparison = 0;
+      if (dateA > dateB) {
+        comparison = 1;
+      } else if (dateA < dateB) {
+        comparison = -1;
+      }
+      return comparison * -1;
+    };
+
+    const compareReactions = (key, order = "asc") => {
+      return function(a, b) {
+        if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+          // property doesn't exist on either object
+          return 0;
+        }
+
+        const varA = typeof a[key] === "string" ? a[key].toUpperCase() : a[key];
+        const varB = typeof b[key] === "string" ? b[key].toUpperCase() : b[key];
+
+        let comparison = 0;
+        if (varA > varB) {
+          comparison = 1;
+        } else if (varA < varB) {
+          comparison = -1;
+        }
+        // eslint-disable-next-line
+        return order == "desc" ? comparison * -1 : comparison;
+      };
+    };
+    if (selection === "recent") {
+      // let dates = cardsValue.map((card, i) => `${i} ${Date.parse(card.date_created)}`);
+      // let sortedDates = dates.sort((a, b) => {
+      //   return a - b;
+      // });
+      // console.log(sortedDates);
+      // setCards(bySelection);
+    } else if (selection === "popular") {
+      let sortByHearts = reactionsValue.sort(compareReactions("number_of_hearts", "desc"));
+      let sortByShares = sortByHearts.sort(compareReactions("number_of_shares", "desc"));
+      let sortByComments = cardsValue.sort(compareReactions("number_of_comments", "desc"));
+      let getReactionIds = sortByShares.map((card) => card.id);
+      // let matchedCardIds = getReactionIds.forEach(id => {
+      //   cardsValue.forEach(card => {
+
+      //   })
+      // })
+      // let getCardIds = cardsValue.map((card) => card.id)
+      // let matchedGalleryCards =
+      // cardsValue.forEach((card, i, cards) => {
+
+      // })
+      console.log(sortByComments);
+    } else if (selection === "ancient") {
+    }
+  };
+
+  const arrangeByTheme = (cardsValue, theme) => {
+    const byTheme = cardsValue.filter((card) => {
+      if (card.theme === theme) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+
+    setCards(byTheme);
   };
 
   const value = {
@@ -104,6 +185,8 @@ export const GalleryContextProvider = (props) => {
     getHeartsForCard,
     getSharesForCard,
     arrangeByKeyword,
+    arrangeBySelection,
+    arrangeByTheme,
     loading,
     error
   };

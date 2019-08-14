@@ -1,42 +1,53 @@
 import React, { useContext, useRef } from "react";
 import { useInput2 } from "../../hooks/input-hook2";
 import { GalleryContext } from "../../contexts/GalleryContext";
+import { listCards, listReactions } from "../../services/endpoints-service";
 import { ThemesList } from "../Utils/Utils";
 
 const SearchGallery = () => {
   const {
-    value: { cards, arrangeByKeyword }
+    value: { arrangeByKeyword, arrangeBySelection, arrangeByTheme }
   } = useContext(GalleryContext);
   const { value: keyword, bind: bindKeyword, reset: resetKeyword } = useInput2("");
-  const { checked: arrange, bindBtn: bindArrange, resetChecked: resetArrange } = useInput2("");
+  const { radio: arrange, bindBtn: bindArrange, resetChecked: resetArrange } = useInput2("");
   const { value: themeSort, bind: bindThemeSort, reset: resetThemeSort } = useInput2("");
   const themeRef = useRef();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    arrangeByKeyword(cards, keyword);
+
     console.log(keyword, arrange, themeSort);
-    // console.log(arrangeByKeyword(cards));
-    resetKeyword();
-    resetArrange();
-    resetThemeSort();
+
+    try {
+      const resetCards = await listCards.get("/");
+      const resetReactions = await listReactions.get("/");
+
+      arrangeByKeyword(resetCards.data, keyword);
+      arrangeBySelection(resetCards.data, resetReactions.data, arrange);
+
+      resetKeyword();
+      resetArrange();
+      resetThemeSort();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <form className="jto-form search-form" onSubmit={handleSubmit}>
       <h1>Explore Our Gallery</h1>
-      <fieldset>
+      <fieldset className="searchTerm">
         <input type="text" className="keyword" placeholder="International Lefthanders Day" {...bindKeyword} />
       </fieldset>
-      <fieldset>
-        <input type="radio" name="arrange" id="date" value="date" {...bindArrange} />
-        Date
-        <input type="radio" name="arrange" id="popularity" value="popularity" {...bindArrange} />
-        Popularity
-        <input type="radio" name="arrange" id="user" value="user" {...bindArrange} />
-        User
+      <fieldset className="sortBy">
+        <input type="radio" name="arrange" id="recent" value="recent" {...bindArrange} />
+        Recent
+        <input type="radio" name="arrange" id="popular" value="popular" {...bindArrange} />
+        Popular
+        <input type="radio" name="arrange" id="ancient" value="ancient" {...bindArrange} />
+        Ancient
       </fieldset>
-      <fieldset>
+      <fieldset className="themeSelect">
         <select ref={themeRef} className="themes" name="theme" id="theme" {...bindThemeSort}>
           <option value="Any">Any</option>
           <ThemesList />
