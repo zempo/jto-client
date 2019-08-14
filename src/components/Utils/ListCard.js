@@ -1,9 +1,9 @@
 import React from "react";
 import { MenuOption, ProcessMsg } from "./Utils";
 
-const ListCard = ({ card, index, admin, user_name, getHeartsForCard, getSharesForCard, cardsReacts }) => {
+const ListCard = ({ card, admin, user_name, getHeartsForCard, getSharesForCard, cardsReacts }) => {
   return (
-    <div key={index} className="jto-card list-card">
+    <div className="jto-card list-card">
       <input type="checkbox" id={`card-toggle-${card.id}`} className="card-toggle" value="selected" />
       <label className="card-container" htmlFor={`card-toggle-${card.id}`}>
         <span className="checkmark2" />

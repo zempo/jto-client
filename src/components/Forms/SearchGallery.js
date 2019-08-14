@@ -13,7 +13,9 @@ const SearchGallery = () => {
       setCurrentPg,
       setCardsPerPg,
       searching,
-      setSearching
+      setSearching,
+      searchCards,
+      setSearchCards
     }
   } = useContext(GalleryContext);
   const { value: keyword, bind: bindKeyword, reset: resetKeyword } = useInput2("");
@@ -34,8 +36,10 @@ const SearchGallery = () => {
       const sortedKeyword = await arrangeByKeyword(resetCards.data, keyword);
       const sortedTheme = await arrangeByTheme(sortedKeyword, themeSort);
 
-      arrangeBySelection(sortedTheme, resetReactions.data, arrange);
+      const sortedSelect = await arrangeBySelection(sortedTheme, resetReactions.data, arrange);
 
+      console.log(sortedSelect)
+      setSearchCards(sortedSelect)
       resetKeyword();
       resetArrange();
       resetThemeSort();

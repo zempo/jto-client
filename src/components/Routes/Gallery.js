@@ -49,18 +49,20 @@ const Gallery = () => {
         {!searching
           ? currentCards.map((card, i) => {
               return (
+                <div key={i}>
               < ListCard
                   card={card}
-                  index={i}
                   admin={userValue.user.admin}
                   user_name={userValue.user.user_name}
                   cardsReacts={cardsReacts}
                   getHeartsForCard={getHeartsForCard}
                   getSharesForCard={getSharesForCard}
                   />
+                  </div>
                 )
           }): searchCards.map((card, i) => {
               return (
+                <div key={i}>
                 < SearchCard
                 card={card}
                 index={i}
@@ -70,6 +72,7 @@ const Gallery = () => {
                 getHeartsForCard={getHeartsForCard}
                 getSharesForCard={getSharesForCard}
                 />
+                </div>
               );
             })}
       </JtoSection>

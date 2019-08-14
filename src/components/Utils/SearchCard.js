@@ -3,11 +3,12 @@ import { MenuOption, ProcessMsg } from "./Utils";
 
 const SearchCard = ({ card, index, admin, user_name, getHeartsForCard, getSharesForCard, cardsReacts }) => {
   return (
-    <div key={card.id} className="jto-card list-card">
+    <div className="jto-card list-card">
     <input type="checkbox" id={`card-toggle-${card.id}`} className="card-toggle" value="selected" />
     <label className="card-container" htmlFor={`card-toggle-${card.id}`}>
       <span className="checkmark2" />
       <div className="front face">
+        {card.id}
         <p>{ProcessMsg(card.front_message, 30)}</p>
         {card.front_image !== "" ? <img src={card.front_image} alt="front background" /> : null}
       </div>
@@ -47,7 +48,7 @@ const SearchCard = ({ card, index, admin, user_name, getHeartsForCard, getShares
         <span className="fa-stack">
           <i className="fas fa-heart">
             <strong className="fa-stack-1x fa-stack-text fa-inverse">
-              {getHeartsForCard(cardsReacts, card.id)}
+              {card.number_of_hearts}
             </strong>
           </i>
         </span>
@@ -59,7 +60,7 @@ const SearchCard = ({ card, index, admin, user_name, getHeartsForCard, getShares
         <span className="fa-stack">
           <i className="fas fa-bookmark">
             <strong className="fa-stack-1x fa-stack-text fa-inverse">
-              {getSharesForCard(cardsReacts, card.id)}
+              {card.number_of_shares}
             </strong>
           </i>
         </span>

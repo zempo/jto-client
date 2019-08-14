@@ -152,13 +152,22 @@ export const GalleryContextProvider = (props) => {
           ...reactionsValue.find((itmInner) => itmInner.id === cardsValue[i].id)
         });
       }
+      let sortByFields = [{prop: "number_of_hearts", direction: -1}, {prop: "number_of_shares", direction: -1}, {prop: "number_of_comments", direction: -1}]
+// let sortAll = mergeValues.sort((a, b) => {
+//   let i = 0, result = 0
+//   while(i < sortByFields.length && result === 0) {
+//     result = sortByFields[i].direction
+//   }
+// })
       let sortByHearts = mergeValues.sort(compareReactions("number_of_hearts", "desc"));
       let sortByShares = sortByHearts.sort(compareReactions("number_of_shares", "desc"));
       let sortByComments = sortByShares.sort(compareReactions("number_of_comments", "desc"));
       // exclude reaction props
-      let sortedGallery = sortByComments.map(({ number_of_hearts, number_of_shares, user_id, ...rest }) => rest);
+      // let sortedGallery = sortByComments.map(({ number_of_hearts, number_of_shares, user_id, ...rest }) => rest);
 
-      setSearchCards(sortedGallery);
+      console.log(sortByComments)
+      return sortByComments
+      // setSearchCards(sortedGallery);
     } else if (selection === "ancient") {
       let sortedGallery = cardsValue.sort(compareDatesAsc);
       setSearchCards(sortedGallery);
