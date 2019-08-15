@@ -23,8 +23,8 @@ export const useInput2 = (initialValue) => {
       checked,
       radio,
       onChange: (event) => {
-        setRadio(event.target.id);
         setChecked(event.target.checked);
+        setRadio(event.target.id);
       }
     }
   };

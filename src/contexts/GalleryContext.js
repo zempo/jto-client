@@ -106,11 +106,10 @@ export const GalleryContextProvider = (props) => {
     }
   };
 
-  const arrangeBySelection = (cardsValue, reactionsValue, selection) => {
+  const arrangeBySelection = (cardsValue, selection) => {
     const compareDatesAsc = (a, b) => {
       const dateA = Date.parse(a.date_created);
       const dateB = Date.parse(b.date_created);
-
       let comparison = 0;
       if (dateA > dateB) {
         comparison = 1;
@@ -119,11 +118,9 @@ export const GalleryContextProvider = (props) => {
       }
       return comparison;
     };
-
     const compareDatesDesc = (a, b) => {
       const dateA = Date.parse(a.date_created);
       const dateB = Date.parse(b.date_created);
-
       let comparison = 0;
       if (dateA > dateB) {
         comparison = 1;
@@ -132,17 +129,14 @@ export const GalleryContextProvider = (props) => {
       }
       return comparison * -1;
     };
-
     const compareReactions = (key, order = "asc") => {
       return function(a, b) {
         if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
           // property doesn't exist on either object
           return 0;
         }
-
         const varA = typeof a[key] === "string" ? a[key].toUpperCase() : a[key];
         const varB = typeof b[key] === "string" ? b[key].toUpperCase() : b[key];
-
         let comparison = 0;
         if (varA > varB) {
           comparison = 1;
@@ -153,39 +147,25 @@ export const GalleryContextProvider = (props) => {
         return order == "desc" ? comparison * -1 : comparison;
       };
     };
-    if (selection === "recent") {
-      let sortedGallery = cardsValue.sort(compareDatesDesc);
-      setSearchCards(sortedGallery);
-    } else if (selection === "popular") {
-      let mergeValues = [];
-      for (let i = 0; i < cardsValue.length; i++) {
-        mergeValues.push({
-          ...cardsValue[i],
-          ...reactionsValue.find((itmInner) => itmInner.id === cardsValue[i].id)
-        });
-      }
-      let sortByFields = [
-        { prop: "number_of_hearts", direction: -1 },
-        { prop: "number_of_shares", direction: -1 },
-        { prop: "number_of_comments", direction: -1 }
-      ];
-      // let sortAll = mergeValues.sort((a, b) => {
-      //   let i = 0, result = 0
-      //   while(i < sortByFields.length && result === 0) {
-      //     result = sortByFields[i].direction
-      //   }
-      // })
-      let sortByHearts = mergeValues.sort(compareReactions("number_of_hearts", "desc"));
-      let sortByShares = sortByHearts.sort(compareReactions("number_of_shares", "desc"));
-      let sortByComments = sortByShares.sort(compareReactions("number_of_comments", "desc"));
 
-      console.log(sortByComments);
+    console.log(selection);
+    if (selection === "new") {
+      let sortedGallery = cardsValue.sort(compareDatesDesc);
+      return sortedGallery;
+    } else if (selection === "hearts") {
+      let sortByHearts = cardsValue.sort(compareReactions("number_of_hearts", "desc"));
+      return sortByHearts;
+    } else if (selection === "shares") {
+      let sortByShares = cardsValue.sort(compareReactions("number_of_shares", "desc"));
+      return sortByShares;
+    } else if (selection === "comments") {
+      let sortByComments = cardsValue.sort(compareReactions("number_of_comments", "desc"));
       return sortByComments;
-    } else if (selection === "ancient") {
+    } else if (selection === "old") {
       let sortedGallery = cardsValue.sort(compareDatesAsc);
-      setSearchCards(sortedGallery);
+      return sortedGallery;
     } else {
-      setSearchCards(cardsValue);
+      return cardsValue;
     }
   };
 

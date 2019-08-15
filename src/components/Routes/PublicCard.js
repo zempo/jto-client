@@ -25,6 +25,7 @@ const PublicCard = (props) => {
   useEffect(() => {
     if (props.location.state !== undefined) {
       const { item } = props.location.state;
+      console.log(item);
       setCardId(item);
 
       const cardFound = async () => {
@@ -42,11 +43,11 @@ const PublicCard = (props) => {
           setComments(commentsResult.data);
           setHearts(heartsResult.data);
           setShares(sharesResult.data);
-          console.log(cardResult.data);
+          // console.log(cardResult.data);
           console.log(heartsResult.data);
-          console.log(sharesResult.data);
-          console.log(commentsResult.data);
-          console.log(ThemeStyles[`${cardResult.data.theme}`]);
+          // console.log(sharesResult.data);
+          // console.log(commentsResult.data);
+          // console.log(ThemeStyles[`${cardResult.data.theme}`]);
         } catch (err) {
           if (err.response.status === 401) {
             setLoading(false);
@@ -76,13 +77,14 @@ const PublicCard = (props) => {
         </>
       )} */}
       <JtoSection className="jto-card public-card" style={ThemeStyles[`${cardTheme}`].all}>
-        {/* style={Object.assign({}, ThemeStyles[`${cardTheme}`].all, ThemeStyles[`${cardTheme}`].front) */}
         <CardPages card={card} themes={ThemeStyles} cardTheme={cardTheme} cardPg={cardPg} />
         <PaginateCardFaces currentPg={cardPg} setCurrentPg={setCardPg} />
       </JtoSection>
       <JtoSection className="jto-reactions">
-        Hearts {hearts.length}
-        Shares {shares.length}
+        {/* specific to user id */}
+        Current user likes? {hearts.length > 0 ? "true" : "false"}
+        <br />
+        Current user has downloaded {shares.length > 0 ? "true" : "false"}
       </JtoSection>
       <JtoSection className="jto-comments">
         <ul>

@@ -6,10 +6,18 @@ import { ThemesList } from "../Utils/Utils";
 
 const SearchGallery = () => {
   const {
-    value: { searchCards, arrangeByKeyword, arrangeBySelection, arrangeByTheme, setSearching, setSearchCards }
+    value: {
+      searchCards,
+      mergeResults,
+      arrangeByKeyword,
+      arrangeBySelection,
+      arrangeByTheme,
+      setSearching,
+      setSearchCards
+    }
   } = useContext(GalleryContext);
   const { value: keyword, bind: bindKeyword, reset: resetKeyword } = useInput2("");
-  const { radio: arrange, bindBtn: bindArrange, resetChecked: resetArrange } = useInput2("");
+  const { check: arranged, radio: arrange, bindBtn: bindArrange, resetChecked: resetArrange } = useInput2("");
   const { value: themeSort, bind: bindThemeSort, reset: resetThemeSort } = useInput2("");
   const themeRef = useRef();
 
@@ -20,13 +28,11 @@ const SearchGallery = () => {
     try {
       const resetCards = await listCards.get("/");
       const resetReactions = await listReactions.get("/");
-
-      const sortedKeyword = await arrangeByKeyword(resetCards.data, keyword);
+      const mergedData = await mergeResults(resetCards.data, resetReactions.data);
+      const sortedKeyword = await arrangeByKeyword(mergedData, keyword);
       const sortedTheme = await arrangeByTheme(sortedKeyword, themeSort);
+      const sortedSelect = await arrangeBySelection(sortedTheme, arrange);
 
-      const sortedSelect = await arrangeBySelection(sortedTheme, resetReactions.data, arrange);
-
-      console.log(sortedSelect);
       setSearchCards(sortedSelect);
       resetKeyword();
       resetArrange();
@@ -43,12 +49,26 @@ const SearchGallery = () => {
         <input type="text" className="keyword" placeholder="International Lefthanders Day" {...bindKeyword} />
       </fieldset>
       <fieldset className="sortBy">
-        <input type="radio" name="arrange" id="recent" value="recent" {...bindArrange} />
-        Recent
-        <input type="radio" name="arrange" id="popular" value="popular" {...bindArrange} />
-        Popular
-        <input type="radio" name="arrange" id="ancient" value="ancient" {...bindArrange} />
-        Ancient
+        <label htmlFor="new">
+          <input type="radio" name="arrange" id="new" value="new" {...bindArrange} />
+          Newest
+        </label>
+        <label>
+          <input type="radio" name="arrange" id="hearts" value="hearts" {...bindArrange} />
+          Likes
+        </label>
+        <label>
+          <input type="radio" name="arrange" id="comments" value="comments" {...bindArrange} />
+          Comments
+        </label>
+        <label>
+          <input type="radio" name="arrange" id="shares" value="shares" {...bindArrange} />
+          Downloads
+        </label>
+        <label>
+          <input type="radio" name="arrange" id="old" value="old" {...bindArrange} />
+          Oldest
+        </label>
       </fieldset>
       <fieldset className="themeSelect">
         <select ref={themeRef} className="themes" name="theme" id="theme" {...bindThemeSort}>
