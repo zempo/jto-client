@@ -63,7 +63,6 @@ function AddCard(props) {
       }
       fullData.front_message = frontMessage;
       fullData.inside_message = insideMessage;
-      console.log("post to db", fullData);
       let sendFullData = await newCard.post("/", fullData);
 
       setResStatus(sendFullData.status);
