@@ -1,52 +1,34 @@
 import { useState } from "react";
 
-export const useInput2 = (initialValue) => {
-  const [value, setValue] = useState(initialValue);
-  const [checked, setChecked] = useState(false);
-  const [radio, setRadio] = useState(initialValue);
+export const useForm = (initialValues, initialErrors, initialFiles, validators) => {
+  const [values, setValues] = useState(initialValues);
+  const [files, setFiles] = useState(initialFiles);
+  const [errors, setErrors] = useState(initialErrors);
+
   return {
-    value,
-    setValue,
-    checked,
-    setChecked,
-    radio,
-    setRadio,
-    reset: () => setValue(""),
-    resetChecked: () => setChecked(false),
-    bind: {
-      value,
-      onChange: (event) => {
-        setValue(event.target.value);
+    values,
+    files,
+    errors,
+    handleChange: (e) => {
+      if (e.target.files) {
+        let file = e.target.files[0];
+        setFiles({ ...files, [e.target.name]: file });
+      } else {
+        let error = validators[`${e.target.id}`](e.target.value);
+        setErrors({ ...errors, [e.target.id]: error });
+        setValues({
+          ...values,
+          [e.target.name]: e.target.value
+        });
       }
     },
-    bindBtn: {
-      checked,
-      radio,
-      onChange: (event) => {
-        // setChecked(event.target.checked);
-        console.log(event.target.checked, event.target.id);
-        setChecked(true);
-        setRadio(event.target.id);
-      }
+    reset: () => {
+      setValues(initialValues);
+      setFiles(initialFiles);
+      setErrors(initialErrors);
     }
   };
 };
-
-// import { useState } from 'react';
-
-// export const useForm = initialValues => { const [values, setValues] = useState(initialValues);
-
-// return {
-// 	values,
-// 	handleChange: e => {
-// 		setValues({
-// 			...values,
-// 			[e.target.name]: e.target.value,
-// 		});
-// 	},
-// 	reset: () => setValues(initialValues),
-// };
-// };
 
 // import React from 'react';
 // import { useForm } from '../hooks/useForm';
