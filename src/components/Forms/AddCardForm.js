@@ -47,7 +47,6 @@ function AddCard(props) {
       let sendImageData = await newImages.post("/", formData);
       // sendImageData returns an array of the urls. conditionally add them to the img data
       if (!sendImageData) return "Sorry, no dice :/";
-      console.log(sendImageData);
       setLoading(false);
       setFrontUrl(sendImageData.data[0]);
       setInsideUrl(sendImageData.data[1]);

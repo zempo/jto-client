@@ -92,3 +92,8 @@ export const validateLogin = (input) => {
   }
   return ERRORS;
 };
+
+export const validationSpacer = (input) => {
+  let ERRORS = []
+  return ERRORS
+}

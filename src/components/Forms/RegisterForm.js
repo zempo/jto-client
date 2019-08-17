@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { validatePwd, validateUsername, validateName, validateEmail } from "../../services/validation/auth-validation";
-import { useInput } from "../../hooks/input-hook";
 import { useForm } from '../../hooks/get-files'
 import { AuthService } from "../../services/auth-service";
 import { JtoNotification, Required } from "../Utils/Utils";
