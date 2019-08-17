@@ -1,13 +1,17 @@
 import React, { useState, useRef } from "react";
-import { useInput } from "../../hooks/input-hook";
+import { useForm } from '../../hooks/get-files'
 import { AuthService } from "../../services/auth-service";
 import { validateLogin } from "../../services/validation/auth-validation";
 import { JtoNotification, Required } from "../Utils/Utils";
 import "./css/Forms.css";
 
 const LoginForm = (props) => {
-  const { value: email, bind: bindEmail, reset: resetEmail } = useInput("", validateLogin);
-  const { value: pwd, bind: bindPwd, reset: resetPwd } = useInput("", validateLogin);
+  const { values, errors, handleChange, reset } = useForm(
+    { email: "", password: "" },
+    { 1: [], 2: [] },
+    {},
+    { 1: validateLogin, 2: validateLogin }
+  );
   const [resMsg, setResMsg] = useState("");
   const [resStatus, setResStatus] = useState(0);
   const emailRef = useRef();
@@ -16,12 +20,13 @@ const LoginForm = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const { email, password } = values
     setResStatus(0);
     setResMsg("");
     try {
       const validLogin = await AuthService.postLogin({
         email,
-        password: pwd
+        password
       });
 
       if (!validLogin) {
@@ -30,8 +35,7 @@ const LoginForm = (props) => {
 
       setResStatus(200);
       setResMsg("Successful Login");
-      resetEmail();
-      resetPwd();
+      reset()
       props.onLoginSuccess();
       console.clear();
     } catch (error) {
@@ -45,24 +49,24 @@ const LoginForm = (props) => {
       {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
       <fieldset>
         <label htmlFor="email">
-          <Required met={email.length === 0 ? false : true} />
+          <Required met={values.email.length === 0 ? false : true} />
           Email
         </label>
-        <input ref={emailRef} name="email" type="text" {...bindEmail} />
+        <input ref={emailRef} name="email" type="text" id={1} value={values.email} onChange={handleChange} />
         <br />
-        <label htmlFor="pwd">
-          <Required met={pwd.length === 0 ? false : true} />
+        <label htmlFor="password">
+          <Required met={values.password.length === 0 ? false : true} />
           Password
         </label>
-        <input ref={pwdRef} name="pwd" type="text" {...bindPwd} />
+        <input ref={pwdRef} name="password" type="text" id={2} value={values.password} onChange={handleChange} />
       </fieldset>
-      <button disabled={email.length === 0 || pwd.length === 0}>Login</button>
+      <button disabled={values.email.length === 0 || values.password.length === 0}>Login</button>
     </form>
   );
 };
 
 LoginForm.defaultProps = {
-  onLoginSuccess: () => {}
+  onLoginSuccess: () => { }
 };
 
 export default LoginForm;

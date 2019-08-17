@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { validateFrontMessage, validateTheme, validateInsideMessage } from "../../services/validation/card-validation";
-import { useInput } from "../../hooks/file-input-hook";
 import { useForm } from "../../hooks/get-files";
 import { newImages, newCard } from "../../services/endpoints-service";
 import { JtoNotification, Required, Loader, ThemesList } from "../Utils/Utils";
@@ -98,7 +97,6 @@ function AddCard(props) {
             name="frontMessage"
             onChange={handleChange}
             value={values.frontMessage}
-            // {...bindFrontMessage}
           />
           <br />
           <label htmlFor="frontImage">Does your Occasion need a Cover Image?</label>
@@ -108,7 +106,6 @@ function AddCard(props) {
             name="frontImage"
             id={2}
             onChange={handleChange}
-            // {...bindFrontImage}
           />
           <br />
           <label htmlFor="insideMessage">
