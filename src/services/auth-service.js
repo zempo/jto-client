@@ -26,12 +26,8 @@ export const AuthService = {
       });
   },
   postRefreshToken() {
-    return fetch(`${Config.API_ENDPOINT}/auth/refresh`, {
-      method: 'POST',
-      headers: {
-        'authorization': `Bearer ${TokenService.getAuthToken()}`,
-      }
-    })
+    return refresh
+      .post("/")
       .then((res) => {
         if (!res.ok) {
           res.json().then((e) => Promise.reject(e));

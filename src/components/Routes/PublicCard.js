@@ -64,7 +64,7 @@ const PublicCard = (props) => {
   return (
     <>
       <h3>
-        Created by {cardAuthor.user_name} on {<TimeStamp date={cardAuthor.date_created} />}
+        Posted by <span className="username">{cardAuthor.user_name}</span> {<TimeStamp date={cardAuthor.date_created} />} Ago
       </h3>
       <JtoSection className="jto-card public-card" style={ThemeStyles[`${cardTheme}`].all}>
         <CardPages card={card} themes={ThemeStyles} cardTheme={cardTheme} cardPg={cardPg} />

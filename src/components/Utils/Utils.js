@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { JtoQuotes } from "./Quotes";
 import { Link } from "react-router-dom";
-import { format as formatDate } from "date-fns";
+import { distanceInWordsToNow as formatDate } from "date-fns";
 import "./css/Utils.css";
 
 export const Loader = ({ loading }) => {
