@@ -61,7 +61,7 @@ class Nav extends Component {
         <Link to="/faq">
           <h3>Help & FAQs</h3>
         </Link>
-        {TokenService.hasAuthToken() && this.context.value.user.user_name ? this.renderLogoutLink() : this.renderLoginLink()}
+        {TokenService.hasAuthToken() ? this.renderLogoutLink() : this.renderLoginLink()}
       </nav>
     );
   }

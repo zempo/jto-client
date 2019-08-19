@@ -1,3 +1,4 @@
+import Config from "../config";
 import TokenService from "./token-service";
 import IdleService from "./idle-service";
 import { login, register, refresh } from "./endpoints-service";
@@ -25,8 +26,12 @@ export const AuthService = {
       });
   },
   postRefreshToken() {
-    return refresh
-      .post("/")
+    return fetch(`${Config.API_ENDPOINT}/auth/refresh`, {
+      method: 'POST',
+      headers: {
+        'authorization': `Bearer ${TokenService.getAuthToken()}`,
+      }
+    })
       .then((res) => {
         if (!res.ok) {
           res.json().then((e) => Promise.reject(e));

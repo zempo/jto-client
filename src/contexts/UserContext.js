@@ -21,7 +21,6 @@ export const UserContextProvider = (props) => {
         setLoading(false);
       }
     };
-
     getUser();
   }, []);
 
