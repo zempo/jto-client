@@ -2,7 +2,7 @@ import React, { useState, useContext, useRef } from 'react'
 import { CardsContext } from '../../contexts/CardsContext';
 import { useForm } from '../../hooks/get-files'
 import { listUserCards } from "../../services/endpoints-service";
-import { validationSpacer } from '../../services/validation/card-validation'
+import { validationSpacer } from '../../services/validation/auth-validation'
 import { ThemesList } from '../Utils/Utils'
 
 const SearchPrivateCards = () => {
@@ -52,18 +52,6 @@ const SearchPrivateCards = () => {
                 <label htmlFor="new">
                     <input type="radio" name="new" value="new" checked={arrange === 'new'} onChange={handleRadio} />
                     Newest
-        </label>
-                <label>
-                    <input type="radio" name="hearts" value="hearts" checked={arrange === 'hearts'} onChange={handleRadio} />
-                    Likes
-        </label>
-                <label>
-                    <input type="radio" name="comments" value="comments" checked={arrange === 'comments'} onChange={handleRadio} />
-                    Comments
-        </label>
-                <label>
-                    <input type="radio" name="shares" value="shares" checked={arrange === 'shares'} onChange={handleRadio} />
-                    Downloads
         </label>
                 <label>
                     <input type="radio" name="old" value="old" checked={arrange === 'old'} onChange={handleRadio} />

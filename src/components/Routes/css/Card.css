@@ -5,8 +5,9 @@ h3 {
 }
 
 .pg {
-  max-width: 504px;
-  height: 704px;
+  width: 500px;
+  height: 700px;
+  padding: 15px;
   margin: 20px auto;
   border: 1px solid #eee;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
@@ -18,7 +19,6 @@ h3 {
 .pg h2 {
   font-size: 30px;
   text-align: center;
-  border: 2px solid black;
 }
 
 .pg p {
@@ -28,6 +28,8 @@ h3 {
 
 .pg img {
   margin: auto;
+  max-width: 500px;
+  max-height: 600px;
 }
 
 .menu_option > a {

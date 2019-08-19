@@ -1,7 +1,7 @@
 import React from "react";
 import { MenuOption, ProcessMsg } from "./Utils";
 
-const PrivateListCard = ({ card }) => {
+const PrivateSearchCard = ({ card }) => {
     return (
         <div className="jto-card list-card">
             <input type="checkbox" id={`card-toggle-${card.id}`} className="card-toggle" value="selected" />
@@ -37,4 +37,4 @@ const PrivateListCard = ({ card }) => {
     );
 };
 
-export default PrivateListCard;
+export default PrivateSearchCard;

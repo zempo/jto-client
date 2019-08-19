@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import SearchPrivateCards from '../Forms/SearchPrivateCards'
 import PrivateListCard from '../Utils/PrivateListCard'
 import PrivateSearchCard from '../Utils/PrivateSearchCard'
 import { JtoSection, AddBtn, PaginateCards, SkeletonLoader2 } from "../Utils/Utils";
@@ -28,6 +29,7 @@ const PrivateCards = () => {
 
   return (
     <>
+      <SearchPrivateCards cards={cards} />
       {!searching ? (
         <JtoSection className="cards-counter">
           <p>
@@ -54,10 +56,16 @@ const PrivateCards = () => {
       <JtoSection className="jto-cards private-cards">
         {/* make empty card with question mark and big "start creating Occasions button" */}
         <SkeletonLoader2 loading={loading} />
-        {currentCards.map((card, i) => {
+        {!searching ? currentCards.map((card, i) => {
           return (
             <div key={i}>
               < PrivateListCard card={card} />
+            </div>
+          );
+        }) : searchCards.map((card, i) => {
+          return (
+            <div key={i}>
+              < PrivateSearchCard card={card} />
             </div>
           );
         })}
@@ -65,10 +73,16 @@ const PrivateCards = () => {
           <AddBtn />
         </div>
       </JtoSection>
-      {cards.length > cardsPerPg ? (
+      {cards.length > cardsPerPg && !searching ? (
         <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
+      ) : searchCards.length > searchCardsPerPg && searching ? (
+        <PaginateCards
+          currentCards={currentSearchCards}
+          paginate={paginateSearch}
+          currentPg={currentSearchPg}
+          lastPg={lastSearchPg}
+        />
       ) : null}
-      {lastPg}
     </>
   );
 };
