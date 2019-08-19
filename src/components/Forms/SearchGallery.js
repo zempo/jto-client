@@ -1,6 +1,6 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { useForm } from '../../hooks/get-files'
-import {useRadio} from '../../hooks/get-radio'
+import { useRadio } from '../../hooks/get-radio'
 import { GalleryContext } from "../../contexts/GalleryContext";
 import { listCards, listReactions } from "../../services/endpoints-service";
 import { validationSpacer } from '../../services/validation/auth-validation'
@@ -25,8 +25,8 @@ const SearchGallery = () => {
     {},
     { 1: validationSpacer, 2: validationSpacer }
   );
-
-  // const {values: radioValues, handleChange, reset} = useRadio({})
+  const [arrange, setArrange] = useState('')
+  const handleRadio = (e) => setArrange(e.target.name)
 
   const themeRef = useRef();
 
@@ -40,7 +40,7 @@ const SearchGallery = () => {
       const mergedData = await mergeResults(resetCards.data, resetReactions.data);
       const sortedKeyword = await arrangeByKeyword(mergedData, values.keyword);
       const sortedTheme = await arrangeByTheme(sortedKeyword, values.themeSort);
-      const sortedSelect = await arrangeBySelection(sortedTheme, values.arrange);
+      const sortedSelect = await arrangeBySelection(sortedTheme, arrange);
 
       setSearchCards(sortedSelect);
       reset()
@@ -57,33 +57,34 @@ const SearchGallery = () => {
       </fieldset>
       <fieldset className="sortBy">
         <label htmlFor="new">
-          <input type="radio" name="new"  value="new" onClick={e => console.log(e.target)}/>
+          <input type="radio" name="new" value="new" checked={arrange === 'new'} onChange={handleRadio} />
           Newest
         </label>
         <label>
-          <input type="radio" name="hearts" value="heart" />
+          <input type="radio" name="hearts" value="hearts" checked={arrange === 'hearts'} onChange={handleRadio} />
           Likes
         </label>
         <label>
-          <input type="radio" name="comments" value="comments" />
+          <input type="radio" name="comments" value="comments" checked={arrange === 'comments'} onChange={handleRadio} />
           Comments
         </label>
         <label>
-          <input type="radio" name="shares" value="shares" />
+          <input type="radio" name="shares" value="shares" checked={arrange === 'shares'} onChange={handleRadio} />
           Downloads
         </label>
         <label>
-          <input type="radio" name="old" value="old" />
+          <input type="radio" name="old" value="old" checked={arrange === 'old'} onChange={handleRadio} />
           Oldest
         </label>
       </fieldset>
+      {arrange}
       <fieldset className="themeSelect">
         <select ref={themeRef} className="themes" name="themeSort" id={2} value={values.themeSort} onChange={handleChange}>
           <option value="Any">Any</option>
           <ThemesList />
         </select>
       </fieldset>
-      {values.arrange} 
+      {values.arrange}
       <button>Browse Occasions</button>
     </form>
   );
