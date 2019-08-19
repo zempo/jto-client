@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState } from "react";
 import { useForm } from '../../hooks/get-files'
-import { useRadio } from '../../hooks/get-radio'
+// import { useRadio } from '../../hooks/get-radio' 
 import { GalleryContext } from "../../contexts/GalleryContext";
 import { listCards, listReactions } from "../../services/endpoints-service";
 import { validationSpacer } from '../../services/validation/auth-validation'
@@ -9,7 +9,6 @@ import { ThemesList } from "../Utils/Utils";
 const SearchGallery = () => {
   const {
     value: {
-      searchCards,
       mergeResults,
       arrangeByKeyword,
       arrangeBySelection,
@@ -77,14 +76,12 @@ const SearchGallery = () => {
           Oldest
         </label>
       </fieldset>
-      {arrange}
       <fieldset className="themeSelect">
         <select ref={themeRef} className="themes" name="themeSort" id={2} value={values.themeSort} onChange={handleChange}>
           <option value="Any">Any</option>
           <ThemesList />
         </select>
       </fieldset>
-      {values.arrange}
       <button>Browse Occasions</button>
     </form>
   );

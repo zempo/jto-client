@@ -97,14 +97,28 @@ export const listShares = axios.create({
 });
 
 // UPDATE CONTENT (U)
+export const updateCard = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/private/cards/${TokenService.getId()}`,
+  method: "PATCH",
+  headers: {
+    authorization: `Bearer ${TokenService.getAuthToken()}`
+  }
+})
+
 export const makePublic = axios.create({
   baseURL: `${Config.API_ENDPOINT}/private/make-public`,
-  method: "PATCH"
+  method: "PATCH",
+  headers: {
+    authorization: `Bearer ${TokenService.getAuthToken()}`
+  }
 });
 
 export const makePrivate = axios.create({
   baseURL: `${Config.API_ENDPOINT}/cards/make-private`,
-  method: "PATCH"
+  method: "PATCH",
+  headers: {
+    authorization: `Bearer ${TokenService.getAuthToken()}`
+  }
 });
 
 // DELETE CONTENT (D)

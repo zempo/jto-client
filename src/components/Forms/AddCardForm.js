@@ -139,7 +139,7 @@ function AddCard(props) {
             required
           >
             <option value="" disabled>
-              Please Choose Theme...
+              Please Choose Font...
             </option>
             <ThemesList />
           </select>

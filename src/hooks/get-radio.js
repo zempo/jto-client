@@ -1,18 +1,18 @@
 import { useState } from "react";
 
-export const useRadio = (initialValues) => {
-    const [values, setValues] = useState(initialValues);
+export const useRadio = (initialRadios) => {
+    const [radios, setRadios] = useState(initialRadios);
 
     return {
-        values,
+        radios,
         handleChange: (e) => {
-            setValues({
-                ...values,
+            setRadios({
+                ...radios,
                 [e.target.name]: e.target.value
             });
         },
         reset: () => {
-            setValues(initialValues);
+            setRadios(initialRadios);
         }
     };
 };

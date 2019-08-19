@@ -66,16 +66,6 @@ const PublicCard = (props) => {
       <h3>
         Created by {cardAuthor.user_name} on {<TimeStamp date={cardAuthor.date_created} />}
       </h3>
-      {/* {loading ? (
-        <Loader loading={true} />
-      ) : (
-        <>
-          <h2>
-            Created by {cardAuthor.user_name} on {<TimeStamp date={cardAuthor.date_created} />}
-          </h2>
-          <Loader loading={false} />
-        </>
-      )} */}
       <JtoSection className="jto-card public-card" style={ThemeStyles[`${cardTheme}`].all}>
         <CardPages card={card} themes={ThemeStyles} cardTheme={cardTheme} cardPg={cardPg} />
         <PaginateCardFaces currentPg={cardPg} setCurrentPg={setCardPg} />
