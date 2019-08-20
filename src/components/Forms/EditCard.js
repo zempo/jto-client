@@ -12,7 +12,7 @@ import { listCards, updateCard, newImages } from "../../services/endpoints-servi
 import { JtoNotification, Required, Loader, ThemesList } from "../Utils/Utils";
 import "./css/Forms.css";
 
-const EditCard = (props) => {
+const EditCard = ({ item, cancel }) => {
     const {
         value: { user }
     } = useContext(UserContext);
@@ -30,20 +30,21 @@ const EditCard = (props) => {
     const [resStatus, setResStatus] = useState(0);
 
     useEffect(() => {
-        if (props.location.state !== undefined) {
-            const { item } = props.location.state;
+        if (item) {
+            // const { item } = props.location.state;
             console.log(item);
-            setCardId(item);
+            // setCardId(item);
 
             const cardFound = async () => {
-                setLoading(true);
+                // setLoading(true);
                 try {
                     const cardResult = await listCards.get(`/${item}`);
-                    setCard(cardResult.data);
+                    // setCard(cardResult.data);
+                    console.log(cardResult.data)
                 } catch (err) {
-                    setError(true);
-                    setResStatus(err.response.status);
-                    setResMsg(Object.values(err.response.data.error));
+                    // setError(true);
+                    // setResStatus(err.response.status);
+                    // setResMsg(Object.values(err.response.data.error));
                 }
             };
 
@@ -51,6 +52,7 @@ const EditCard = (props) => {
         }
         // eslint-disable-next-line
     }, []);
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();

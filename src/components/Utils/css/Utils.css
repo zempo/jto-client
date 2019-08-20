@@ -20,6 +20,13 @@ div[id="201"] {
   /* green checkmark in center */
   background: rgb(33, 170, 86, 0.9);
   border: 2px solid rgb(33, 170, 86);
+  color: white;
+}
+
+div[id="204"] {
+  background: rgba(33, 138, 170, 0.9);
+  border: 2px solid rgb(33, 127, 170); 
+  color: white;
 }
 
 div[id="400"],
@@ -29,6 +36,7 @@ div[id="413"] {
   /* green checkmark in center */
   background: rgba(170, 33, 74, 0.37);
   border: 2px solid rgb(177, 30, 74);
+  color: white;
 }
 
 /* Menu Options utilities */

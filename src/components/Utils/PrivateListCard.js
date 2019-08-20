@@ -1,7 +1,11 @@
 import React from "react";
+import { useModal } from '../../hooks/use-modal'
+import Modal from '../../modals/Modal'
 import { MenuOption, ProcessMsg } from "./Utils";
 
 const PrivateListCard = ({ card }) => {
+    const { isShowing, toggle } = useModal();
+
     return (
         <div className="jto-card list-card">
             <input type="checkbox" id={`card-toggle-${card.id}`} className="card-toggle" value="selected" />

@@ -5,6 +5,7 @@ import { MenuOption, ProcessMsg } from "./Utils";
 
 const ListCard = ({ card, admin, user_name }) => {
   const { isShowing, toggle } = useModal();
+  const { isShowing: isShowing2, toggle: toggle2 } = useModal();
 
   return (
     <div className="jto-card list-card">
@@ -29,12 +30,11 @@ const ListCard = ({ card, admin, user_name }) => {
           < Modal isShowing={isShowing} hide={toggle} item={card.id} action="delete-card" />
           <MenuOption to="/download" text={<i className="fas fa-file-download" title="download" />} item_id={card.id} />
           {card.user.user_name === user_name ? (
-            <MenuOption
-              to="/toggle-privacy"
-              text={<i className="fas fa-user-lock" title="make private" />}
-              item_id={card.id}
-            />
+            <div className="menu-option toggle-modal">
+              <i className="fas fa-user-lock" title="make private" onClick={toggle2} />
+            </div>
           ) : null}
+          <Modal isShowing={isShowing2} hide={toggle2} item={card.id} action="make-private" />
         </nav>
         <div className="jto-counter">
           <span className="fa-stack">

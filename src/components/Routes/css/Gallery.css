@@ -179,14 +179,16 @@
   position: relative;
 }
 
-.toggle-modal > .far {
+.toggle-modal > .far, 
+.toggle-modal > .fas {
   color: rgba(255, 255, 255, 0.7);
   -webkit-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out; 
 }  
 
-.toggle-modal:hover > .far {
+.toggle-modal:hover > .far,
+.toggle-modal:hover > .fas {
   color: rgba(255, 255, 255);
   -webkit-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;

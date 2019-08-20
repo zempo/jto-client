@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { JtoNotification } from '../Utils/Utils'
-import { deleteCard } from '../../services/endpoints-service'
+import { deleteUserCard } from '../../services/endpoints-service'
 
-const DeleteCard = ({ item, cancel }) => {
+const DeleteUserCard = ({ item, cancel }) => {
 
     const [error, setError] = useState(false);
     const [resMsg, setResMsg] = useState("");
@@ -12,7 +12,7 @@ const DeleteCard = ({ item, cancel }) => {
         setResStatus(0);
         setResMsg("");
         try {
-            const deleted = await deleteCard.delete(`/${item}`)
+            const deleted = await deleteUserCard.delete(`/${item}`)
 
             setResStatus(deleted.status);
             setResMsg("Occasion Deleted");
@@ -34,4 +34,4 @@ const DeleteCard = ({ item, cancel }) => {
     )
 }
 
-export default DeleteCard
+export default DeleteUserCard
