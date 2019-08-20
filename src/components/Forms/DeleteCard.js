@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { listCards } from '../../services/endpoints-service'
 
-const DeleteCard = ({ item }) => {
+const DeleteCard = ({ item, cancel }) => {
 
     useEffect(() => {
         if (item) {
@@ -41,7 +41,7 @@ const DeleteCard = ({ item }) => {
     return (
         <>
             <button onClick={handleDelete}>Delete</button>
-            <Link to='/'>Cancel</Link>
+            <button onClick={cancel}>Cancel</button>
         </>
     )
 }

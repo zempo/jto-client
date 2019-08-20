@@ -23,12 +23,9 @@ const ListCard = ({ card, admin, user_name }) => {
         </div>
         <nav className="jto-mini-menu">
           <MenuOption to="/gallery-card" text={<i className="far fa-eye" title="view" />} item_id={card.id} />
-          {admin ? (
-            <MenuOption to="/delete" text={<i className="far fa-trash-alt" title="delete" />} item_id={card.id} />
-          ) : null}
-          <div className="menu-option toggle-modal">
+          {admin ? <div className="menu-option toggle-modal">
             <i className="far fa-trash-alt" title="delete" onClick={toggle} />
-          </div>
+          </div> : null}
           < Modal isShowing={isShowing} hide={toggle} item={card.id} action="delete-card" />
           <MenuOption to="/download" text={<i className="fas fa-file-download" title="download" />} item_id={card.id} />
           {card.user.user_name === user_name ? (
