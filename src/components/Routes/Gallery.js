@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { GalleryContext } from "../../contexts/GalleryContext";
 import { UserContext } from "../../contexts/UserContext";
-import SearchGallery from "../Forms/SearchGallery";
 import { JtoSection, PaginateCards, SkeletonLoader } from "../Utils/Utils";
 import ListCard from "../Utils/ListCard";
 import SearchCard from "../Utils/SearchCard";
+import SearchGallery from "../Forms/SearchGallery";
 import "./css/Gallery.css";
 
 const Gallery = () => {
@@ -39,12 +39,12 @@ const Gallery = () => {
           </p>
         </JtoSection>
       ) : (
-        <JtoSection className="cards-counter">
-          <p>
-            Showing {currentSearchCards.length} of {searchCards.length} Results
+          <JtoSection className="cards-counter">
+            <p>
+              Showing {currentSearchCards.length} of {searchCards.length} Results
           </p>
-        </JtoSection>
-      )}
+          </JtoSection>
+        )}
       {cards.length > cardsPerPg && !searching ? (
         <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
       ) : searchCards.length > searchCardsPerPg && searching ? (
@@ -59,19 +59,19 @@ const Gallery = () => {
         <SkeletonLoader loading={loading} />
         {!searching
           ? currentCards.map((card, i) => {
-              return (
-                <div key={i}>
-                  <ListCard card={card} admin={userValue.user.admin} user_name={userValue.user.user_name} />
-                </div>
-              );
-            })
+            return (
+              <div key={i}>
+                <ListCard card={card} admin={userValue.user.admin} user_name={userValue.user.user_name} />
+              </div>
+            );
+          })
           : currentSearchCards.map((card, i) => {
-              return (
-                <div key={i}>
-                  <SearchCard card={card} admin={userValue.user.admin} user_name={userValue.user.user_name} />
-                </div>
-              );
-            })}
+            return (
+              <div key={i}>
+                <SearchCard card={card} admin={userValue.user.admin} user_name={userValue.user.user_name} />
+              </div>
+            );
+          })}
       </JtoSection>
       {cards.length > cardsPerPg && !searching ? (
         <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />

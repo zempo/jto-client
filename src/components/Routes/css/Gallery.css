@@ -179,10 +179,19 @@
   position: relative;
 }
 
-/* .fa-stack-text {
-  padding-top: 0.15em;
-  font-size: 0.6em;
-} */
+.toggle-modal > .far {
+  color: rgba(255, 255, 255, 0.7);
+  -webkit-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out; 
+}  
+
+.toggle-modal:hover > .far {
+  color: rgba(255, 255, 255);
+  -webkit-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out; 
+}
 
 .menu-option > a {
   text-decoration: none;
@@ -201,7 +210,7 @@
   transition: all 0.2s ease-out;
 }
 
-.front {
+.front { 
   width: 180px;
   height: 242px;
   background: rgb(248, 245, 245);

@@ -1,7 +1,11 @@
 import React from "react";
+import { useModal } from '../../hooks/use-modal'
+import Modal from '../../modals/Modal'
 import { MenuOption, ProcessMsg } from "./Utils";
 
 const ListCard = ({ card, admin, user_name }) => {
+  const { isShowing, toggle } = useModal();
+
   return (
     <div className="jto-card list-card">
       <input type="checkbox" id={`card-toggle-${card.id}`} className="card-toggle" value="selected" />
@@ -22,6 +26,10 @@ const ListCard = ({ card, admin, user_name }) => {
           {admin ? (
             <MenuOption to="/delete" text={<i className="far fa-trash-alt" title="delete" />} item_id={card.id} />
           ) : null}
+          <div className="menu-option toggle-modal">
+            <i className="far fa-trash-alt" title="delete" onClick={toggle} />
+          </div>
+          < Modal isShowing={isShowing} hide={toggle} item={card.id} action="delete-card" />
           <MenuOption to="/download" text={<i className="fas fa-file-download" title="download" />} item_id={card.id} />
           {card.user.user_name === user_name ? (
             <MenuOption

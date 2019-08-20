@@ -218,6 +218,17 @@ export const MenuOption = ({ to, text, item_id }) => {
   );
 };
 
+export const ModalOption = ({ text, toggle }) => {
+  return (
+    <div className="menu-option">
+      <button onClick={toggle}
+      >
+        {text}
+      </button>
+    </div>
+  );
+};
+
 export const DotMenuOption = ({ to, text, item_id }) => {
   return (
     <div className="dot-menu-option">
