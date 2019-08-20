@@ -21,7 +21,7 @@ background-color: rgba(0, 0, 0, 0.4);
     left: 0;
     right: 0;
     display: grid;
-    padding: 0 100px;
+    padding: 20px 100px;
     outline: 0;
     border: 1px #777 solid;
     text-align: justify;

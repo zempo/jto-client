@@ -32,9 +32,11 @@ export const AuthService = {
         if (!res.ok) {
           res.data.then((e) => Promise.reject(e));
         }
+        console.log(res.data)
         return res.data;
       })
       .then((res) => {
+        console.log(res)
         TokenService.saveAuthToken(res.authToken);
         TokenService.queueCallbackBeforeExpiry(() => {
           AuthService.postRefreshToken();

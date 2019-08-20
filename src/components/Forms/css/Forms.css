@@ -7,3 +7,16 @@
   max-height: 350px;
   max-width: 350px;
 }
+
+form {
+text-align: center;
+width: 100%;
+}
+
+.frontMessage {
+  /* height: ; */
+}
+
+form button {
+ width: 100%;
+}

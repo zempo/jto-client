@@ -77,20 +77,27 @@ const EditCard = ({ item, cancel }) => {
 
             const { theme, insideMessage, frontMessage } = values;
             let fullData = { theme };
-            if (sendImageData.data[0]) {
+            if (sendImageData.data[0] && files.frontImage !== '') {
                 fullData.front_image = sendImageData.data[0];
             }
-            if (sendImageData.data[1]) {
+            if (sendImageData.data[1] && files.insideImage !== '') {
                 fullData.inside_image = sendImageData.data[1];
             }
-            fullData.front_message = frontMessage;
-            fullData.inside_message = insideMessage;
+            if (frontMessage !== '') {
+                fullData.front_message = frontMessage;
+            }
+            if (insideMessage !== '') {
+                fullData.inside_message = insideMessage;
+            }
+            if (theme === '') {
+                fullData.theme = card.theme
+            }
             console.log(fullData)
-            let sendFullData = await updateCard.patch(`/${item}`, fullData);
-            setResStatus(sendFullData.status);
-            setResMsg("Occasion Updated");
-            reset();
-            window.location.reload();
+            // let sendFullData = await updateCard.patch(`/${item}`, fullData);
+            // setResStatus(sendFullData.status);
+            // setResMsg("Occasion Updated");
+            // reset();
+            // window.location.reload();
         } catch (err) {
             setLoading(false);
             setResStatus(err.response.status);
@@ -117,10 +124,11 @@ const EditCard = ({ item, cancel }) => {
                         id={1}
                         name="frontMessage"
                         onChange={handleChange}
-                        value={values.frontMessage}
+                        defaultValue={card.front_message}
                     />
                     <br />
                     <label htmlFor="frontImage">Want a new Cover?</label>
+                    <br />
                     <input
                         type="file"
                         placeholder="URL for image that can be stretched/shrunk to 400px width and 500px height"
@@ -138,14 +146,15 @@ const EditCard = ({ item, cancel }) => {
                         ))}
                     </ul>
                     <textarea
-                        placeholder="From yours, truly!"
+                        placeholder={card.inside_message}
                         name="insideMessage"
                         onChange={handleChange}
                         id={3}
-                        value={values.insideMessage}
-                    />
+                        defaultValue={card.inside_message}
+                    ></textarea>
                     <br />
                     <label htmlFor="frontImage">Want a new inside picture?</label>
+                    <br />
                     <input type="file" placeholder="choose file" name="insideImage" id={4} onChange={handleChange} />
                     <br />
                     <select
@@ -169,7 +178,6 @@ const EditCard = ({ item, cancel }) => {
                     Edit Occasion
             </button>
             </form>
-            {cardTheme}
             <button onClick={cancel}>cancel</button>
             {loading ? <Loader loading={true} /> : <Loader loading={false} />}
         </>
