@@ -157,14 +157,14 @@ export const JtoNotification = ({ type, msg }) => {
     setDisplaying(true);
     setTimeout(() => {
       setDisplaying(false);
-      console.clear();
+      // console.clear();
     }, 5000);
   }, []);
 
   const handleClick = (e) => {
     e.preventDefault();
     setDisplaying(false);
-    console.clear();
+    // console.clear();
   };
   if (displaying) {
     return (
@@ -386,6 +386,25 @@ export const ProcessMsg = (message, maxLength) => {
 export const ThemesList = () => {
   return (
     <>
+      <option value="cursive">Cursive</option>
+      <option value="cursive-plus">Cursive+</option>
+      <option value="handwritten">Handwritten</option>
+      <option value="handwritten-bold">Handwritten Bold</option>
+      <option value="indie">Indie</option>
+      <option value="kiddo">Kiddo</option>
+      <option value="pen">Pen</option>
+      <option value="sharpie">Sharpie</option>
+      <option value="roboto">Roboto</option>
+      <option value="typed">Typed</option>
+      <option value="quill">Quill</option>
+    </>
+  );
+};
+
+export const EditThemesList = ({ current }) => {
+  return (
+    <>
+      <option value={current}>Current Font: {current}</option>
       <option value="cursive">Cursive</option>
       <option value="cursive-plus">Cursive+</option>
       <option value="handwritten">Handwritten</option>

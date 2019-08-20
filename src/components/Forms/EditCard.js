@@ -8,22 +8,23 @@ import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { validateFrontMessage, validateTheme, validateInsideMessage } from "../../services/validation/card-validation";
 import { useForm } from "../../hooks/get-files";
-import { listCards, updateCard, newImages } from "../../services/endpoints-service";
-import { JtoNotification, Required, Loader, ThemesList } from "../Utils/Utils";
+import { listUserCards, updateCard, newImages } from "../../services/endpoints-service";
+import { JtoNotification, Loader, EditThemesList } from "../Utils/Utils";
 import "./css/Forms.css";
 
 const EditCard = ({ item, cancel }) => {
     const {
         value: { user }
     } = useContext(UserContext);
+    const [card, setCard] = useState({});
     const { values, files, errors, handleChange, reset } = useForm(
-        { frontMessage: "", insideMessage: "", theme: "" },
+        { frontMessage: "", insideMessage: "", theme: card.theme || "" },
         { 1: [], 3: [], 5: [] },
         { frontImage: "", insideImage: "" },
         { 1: validateFrontMessage, 2: "", 3: validateInsideMessage, 4: "", 5: validateTheme }
     );
-    const [cardId, setCardId] = useState(0);
-    const [card, setCard] = useState({});
+    const [selectedFont, setSelectedFont] = useState('')
+    const [validReq, setValidReq] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [resMsg, setResMsg] = useState("");
@@ -38,13 +39,15 @@ const EditCard = ({ item, cancel }) => {
             const cardFound = async () => {
                 // setLoading(true);
                 try {
-                    const cardResult = await listCards.get(`/${item}`);
-                    // setCard(cardResult.data);
+                    const cardResult = await listUserCards.get(`/${item}`);
+                    setCard(cardResult.data);
+                    setSelectedFont(cardResult.data.theme)
+                    console.log(selectedFont)
                     console.log(cardResult.data)
                 } catch (err) {
-                    // setError(true);
-                    // setResStatus(err.response.status);
-                    // setResMsg(Object.values(err.response.data.error));
+                    setError(true);
+                    setResStatus(err.response.status);
+                    setResMsg(Object.values(err.response.data.error));
                 }
             };
 
@@ -52,6 +55,14 @@ const EditCard = ({ item, cancel }) => {
         }
         // eslint-disable-next-line
     }, []);
+
+    useEffect(() => {
+        if (errors["1"].length > 0 || errors["3"].length > 0) {
+            return setValidReq(false);
+        } else {
+            return setValidReq(true);
+        }
+    }, [errors]);
 
 
     const handleSubmit = async (event) => {
@@ -80,16 +91,17 @@ const EditCard = ({ item, cancel }) => {
             }
             fullData.front_message = frontMessage;
             fullData.inside_message = insideMessage;
-            let sendFullData = await updateCard.post(`/${cardId}`, fullData);
-
+            let sendFullData = await updateCard.patch(`/${item}`, fullData);
+            console.log(fullData)
             setResStatus(sendFullData.status);
-            setResMsg("New Occasion Created");
-            // resetFrontMessage();
+            setResMsg("Occasion Updated");
             reset();
-        } catch (error) {
+            window.location.reload();
+        } catch (err) {
             setLoading(false);
-            setResStatus(error.response.status);
-            setResMsg(Object.values(error.response.data.error));
+            setResStatus(err.response.status);
+            console.log(err.response)
+            setResMsg(Object.values(err.response.data.error));
         }
     };
 
@@ -99,7 +111,6 @@ const EditCard = ({ item, cancel }) => {
                 {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
                 <fieldset>
                     <label htmlFor="frontMessage">
-                        <Required met={values.frontMessage.length === 0 ? false : true} />
                         Want to Change the Occasion?
               </label>
                     <ul>
@@ -113,7 +124,7 @@ const EditCard = ({ item, cancel }) => {
                         id={1}
                         name="frontMessage"
                         onChange={handleChange}
-                        value={values.insideMessage}
+                        value={values.frontMessage}
                     />
                     <br />
                     <label htmlFor="frontImage">Want a new Cover?</label>
@@ -126,7 +137,6 @@ const EditCard = ({ item, cancel }) => {
                     />
                     <br />
                     <label htmlFor="insideMessage">
-                        <Required met={values.insideMessage.length === 0 ? false : true} />
                         Want to change the Inside?
               </label>
                     <ul>
@@ -145,23 +155,25 @@ const EditCard = ({ item, cancel }) => {
                     <label htmlFor="frontImage">Want a new inside picture?</label>
                     <input type="file" placeholder="choose file" name="insideImage" id={4} onChange={handleChange} />
                     <br />
-                    <Required met={values.theme.length === 0 ? false : true} />
                     <select
                         className="themes"
-                        value={values.theme}
+                        defaultValue={card.theme}
+                        defaultChecked={card.theme}
                         name="theme"
                         id={5}
                         onChange={handleChange}
-                        required
                     >
                         <option value="" disabled>
                             Want a new font?
                 </option>
-                        <ThemesList />
+                        <option defaultValue={selectedFont}>
+                            {selectedFont}
+                        </option>
+                        <EditThemesList current={selectedFont} />
                     </select>
                 </fieldset>
                 <button
-                    disabled={errors['1'].length > 0 || errors['2'].length > 0 || errors['3'].length > 0}
+                    disabled={!validReq || errors['1'].length > 0 || errors['3'].length > 0 || errors['5'].length > 0}
                     type="submit"
                 >
                     Edit Occasion

@@ -18,14 +18,13 @@ const Modal = ({ item, action, isShowing, hide }) => {
                         <DeleteCard item={item} cancel={hide} /> :
                         action === 'delete-user-card' ?
                             <DeleteUserCard item={item} cancel={hide} /> :
-                            action === 'edit-card' ?
+                            action === 'edit-user-card' ?
                                 < EditCard item={item} /> :
                                 action === 'make-private' ?
                                     <MakePrivate item={item} /> :
                                     action === 'make-public' ?
                                         <MakePublic item={item} /> :
                                         'other modal'}
-                    modal
                 </div>
             </div>,
             document.querySelector('#modal'),
