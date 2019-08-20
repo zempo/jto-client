@@ -4,8 +4,7 @@
 // // create back-button
 // import { JtoSection, Loader, DotMenuOption, TimeStamp, CardPages, PaginateCardFaces } from "../Utils/Utils";
 // import "./css/Card.css";
-import React, { useState, useEffect, useContext } from "react";
-import { UserContext } from "../../contexts/UserContext";
+import React, { useState, useEffect } from "react";
 import { validateFrontMessage, validateTheme, validateInsideMessage } from "../../services/validation/card-validation";
 import { useForm } from "../../hooks/get-files";
 import { listUserCards, updateCard, newImages } from "../../services/endpoints-service";
@@ -13,17 +12,15 @@ import { JtoNotification, Loader, EditThemesList } from "../Utils/Utils";
 import "./css/Forms.css";
 
 const EditCard = ({ item, cancel }) => {
-    const {
-        value: { user }
-    } = useContext(UserContext);
+
     const [card, setCard] = useState({});
+    const [cardTheme, setCardTheme] = useState('')
     const { values, files, errors, handleChange, reset } = useForm(
-        { frontMessage: "", insideMessage: "", theme: card.theme || "" },
+        { frontMessage: "", insideMessage: "", theme: "" },
         { 1: [], 3: [], 5: [] },
         { frontImage: "", insideImage: "" },
         { 1: validateFrontMessage, 2: "", 3: validateInsideMessage, 4: "", 5: validateTheme }
     );
-    const [selectedFont, setSelectedFont] = useState('')
     const [validReq, setValidReq] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -32,18 +29,15 @@ const EditCard = ({ item, cancel }) => {
 
     useEffect(() => {
         if (item) {
-            // const { item } = props.location.state;
             console.log(item);
-            // setCardId(item);
 
             const cardFound = async () => {
                 // setLoading(true);
                 try {
                     const cardResult = await listUserCards.get(`/${item}`);
-                    setCard(cardResult.data);
-                    setSelectedFont(cardResult.data.theme)
-                    console.log(selectedFont)
-                    console.log(cardResult.data)
+                    setCard(cardResult.data[0]);
+                    setCardTheme(cardResult.data[0].theme)
+                    console.log(cardResult.data[0])
                 } catch (err) {
                     setError(true);
                     setResStatus(err.response.status);
@@ -91,8 +85,8 @@ const EditCard = ({ item, cancel }) => {
             }
             fullData.front_message = frontMessage;
             fullData.inside_message = insideMessage;
-            let sendFullData = await updateCard.patch(`/${item}`, fullData);
             console.log(fullData)
+            let sendFullData = await updateCard.patch(`/${item}`, fullData);
             setResStatus(sendFullData.status);
             setResMsg("Occasion Updated");
             reset();
@@ -100,7 +94,6 @@ const EditCard = ({ item, cancel }) => {
         } catch (err) {
             setLoading(false);
             setResStatus(err.response.status);
-            console.log(err.response)
             setResMsg(Object.values(err.response.data.error));
         }
     };
@@ -166,10 +159,7 @@ const EditCard = ({ item, cancel }) => {
                         <option value="" disabled>
                             Want a new font?
                 </option>
-                        <option defaultValue={selectedFont}>
-                            {selectedFont}
-                        </option>
-                        <EditThemesList current={selectedFont} />
+                        <EditThemesList current={card.theme} />
                     </select>
                 </fieldset>
                 <button
@@ -179,6 +169,8 @@ const EditCard = ({ item, cancel }) => {
                     Edit Occasion
             </button>
             </form>
+            {cardTheme}
+            <button onClick={cancel}>cancel</button>
             {loading ? <Loader loading={true} /> : <Loader loading={false} />}
         </>
     );

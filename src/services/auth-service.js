@@ -30,9 +30,9 @@ export const AuthService = {
       .post("/")
       .then((res) => {
         if (!res.ok) {
-          res.json().then((e) => Promise.reject(e));
+          res.data.then((e) => Promise.reject(e));
         }
-        res.json();
+        return res.data;
       })
       .then((res) => {
         TokenService.saveAuthToken(res.authToken);
