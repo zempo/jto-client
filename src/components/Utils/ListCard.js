@@ -4,8 +4,8 @@ import Modal from '../../modals/Modal'
 import { MenuOption, ProcessMsg } from "./Utils";
 
 const ListCard = ({ card, admin, user_name }) => {
-  const { isShowing, toggle } = useModal();
-  const { isShowing: isShowing2, toggle: toggle2 } = useModal();
+  const { isShowing: isShowingDelete, toggle: toggleDelete } = useModal();
+  const { isShowing: isShowingPrivacy, toggle: togglePrivacy } = useModal();
 
   return (
     <div className="jto-card list-card">
@@ -25,16 +25,16 @@ const ListCard = ({ card, admin, user_name }) => {
         <nav className="jto-mini-menu">
           <MenuOption to="/gallery-card" text={<i className="far fa-eye" title="view" />} item_id={card.id} />
           {admin ? <div className="menu-option toggle-modal">
-            <i className="far fa-trash-alt" title="delete" onClick={toggle} />
+            <i className="far fa-trash-alt" title="delete" onClick={toggleDelete} />
           </div> : null}
-          < Modal isShowing={isShowing} hide={toggle} item={card.id} action="delete-card" />
+          < Modal isShowing={isShowingDelete} hide={toggleDelete} item={card.id} action="delete-card" />
           <MenuOption to="/download" text={<i className="fas fa-file-download" title="download" />} item_id={card.id} />
           {card.user.user_name === user_name ? (
             <div className="menu-option toggle-modal">
-              <i className="fas fa-user-lock" title="make private" onClick={toggle2} />
+              <i className="fas fa-user-lock" title="make private" onClick={togglePrivacy} />
             </div>
           ) : null}
-          <Modal isShowing={isShowing2} hide={toggle2} item={card.id} action="make-private" />
+          <Modal isShowing={isShowingPrivacy} hide={togglePrivacy} item={card.id} action="make-private" />
         </nav>
         <div className="jto-counter">
           <span className="fa-stack">

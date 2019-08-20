@@ -4,7 +4,7 @@ import Modal from '../../modals/Modal'
 import { MenuOption, ProcessMsg } from "./Utils";
 
 const PrivateListCard = ({ card }) => {
-    const { isShowing, toggle } = useModal();
+    const { isShowing: isShowingDelete, toggle: toggleDelete } = useModal();
 
     return (
         <div className="jto-card list-card">
@@ -24,7 +24,10 @@ const PrivateListCard = ({ card }) => {
                 <nav className="jto-mini-menu">
                     <MenuOption to="/private-card" text={<i className="far fa-eye" title="view" />} item_id={card.id} />
                     <MenuOption to="/edit" text={<i className="fas fa-pencil-alt" title="edit" />} item_id={card.id} />
-                    <MenuOption to="/delete" text={<i className="far fa-trash-alt" title="delete" />} item_id={card.id} />
+                    <div className="menu-option toggle-modal">
+                        <i className="far fa-trash-alt" title="delete" onClick={toggleDelete} />
+                    </div>
+                    < Modal isShowing={isShowingDelete} hide={toggleDelete} item={card.id} action="delete-user-card" />
                     <MenuOption
                         to="/download"
                         text={<i className="fas fa-file-download" title="download" />}

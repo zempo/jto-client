@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import DeleteCard from '../components/Forms/DeleteCard';
+import DeleteUserCard from '../components/Forms/DeleteUserCard';
 import EditCard from '../components/Forms/EditCard'
 import MakePrivate from '../components/Forms/MakePrivate';
 import MakePublic from '../components/Forms/MakePublic';
@@ -15,13 +16,15 @@ const Modal = ({ item, action, isShowing, hide }) => {
                 <div onClick={e => e.stopPropagation()} className='Modal__inner'>
                     {action === 'delete-card' ?
                         <DeleteCard item={item} cancel={hide} /> :
-                        action === 'edit-card' ?
-                            < EditCard item={item} /> :
-                            action === 'make-private' ?
-                                <MakePrivate item={item} /> :
-                                action === 'make-public' ?
-                                    <MakePublic item={item} /> :
-                                    'other modal'}
+                        action === 'delete-user-card' ?
+                            <DeleteUserCard item={item} cancel={hide} /> :
+                            action === 'edit-card' ?
+                                < EditCard item={item} /> :
+                                action === 'make-private' ?
+                                    <MakePrivate item={item} /> :
+                                    action === 'make-public' ?
+                                        <MakePublic item={item} /> :
+                                        'other modal'}
                     modal
                 </div>
             </div>,
