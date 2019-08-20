@@ -44,7 +44,7 @@ export const AuthService = {
         return res;
       })
       .catch((err) => {
-        console.log("refresh token request error");
+        console.log('refresh token error', err);
         console.error(err);
       });
   }
