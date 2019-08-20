@@ -92,12 +92,12 @@ const EditCard = ({ item, cancel }) => {
             if (theme === '') {
                 fullData.theme = card.theme
             }
-            console.log(fullData)
-            // let sendFullData = await updateCard.patch(`/${item}`, fullData);
-            // setResStatus(sendFullData.status);
-            // setResMsg("Occasion Updated");
-            // reset();
-            // window.location.reload();
+            // console.log(fullData)
+            let sendFullData = await updateCard.patch(`/${item}`, fullData);
+            setResStatus(sendFullData.status);
+            setResMsg("Occasion Updated");
+            reset();
+            window.location.reload();
         } catch (err) {
             setLoading(false);
             setResStatus(err.response.status);
