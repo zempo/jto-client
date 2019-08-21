@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { JtoNotification } from "../Utils/Utils";
-import { makePublic } from "../../services/endpoints-service";
+import { JtoNotification } from "../../Utils/Utils";
+import { makePrivate } from "../../../services/endpoints-service";
 
-const MakePublic = ({ item, cancel }) => {
+const MakePrivate = ({ item, cancel }) => {
   const [error, setError] = useState(false);
   const [resMsg, setResMsg] = useState("");
   const [resStatus, setResStatus] = useState(0);
@@ -11,10 +11,10 @@ const MakePublic = ({ item, cancel }) => {
     setResStatus(0);
     setResMsg("");
     try {
-      const deleted = await makePublic.patch(`/${item}`);
+      const deleted = await makePrivate.patch(`/${item}`);
 
       setResStatus(deleted.status);
-      setResMsg("Occasion Sent to Gallery");
+      setResMsg("Occasion Unpublished");
       window.location.reload();
     } catch (err) {
       setError(true);
@@ -25,16 +25,16 @@ const MakePublic = ({ item, cancel }) => {
 
   return (
     <div className="jto-privacy">
-      <h1>Are you ready to Publish your Occasion?</h1>
+      <h1>Are you sure you want to make your Occasion Private?</h1>
       <p>
-        Once your publish your occasion, other users will be able see it. <br />
-        However, you can remove your occasion from the gallery anytime you wish!
+        Other users won't be able to view your occasion. <br />
+        However, you can bring your occasion back to the Gallery anytime!
       </p>
       {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
-      <button onClick={handlePrivacy}>Make Occasion Public</button>
+      <button onClick={handlePrivacy}>Make Occasion Private</button>
       <button onClick={cancel}>Cancel</button>
     </div>
   );
 };
 
-export default MakePublic;
+export default MakePrivate;

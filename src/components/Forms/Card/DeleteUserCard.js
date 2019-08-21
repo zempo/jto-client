@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { JtoNotification } from "../Utils/Utils";
-import { deleteUserCard } from "../../services/endpoints-service";
+import { JtoNotification } from "../../Utils/Utils";
+import { deleteUserCard } from "../../../services/endpoints-service";
 
 const DeleteUserCard = ({ item, cancel }) => {
   const [error, setError] = useState(false);

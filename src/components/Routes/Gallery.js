@@ -4,7 +4,7 @@ import { UserContext } from "../../contexts/UserContext";
 import { JtoSection, PaginateCards, SkeletonLoader } from "../Utils/Utils";
 import ListCard from "../Utils/ListCard";
 import SearchCard from "../Utils/SearchCard";
-import SearchGallery from "../Forms/SearchGallery";
+import SearchGallery from "../Forms/Search/SearchGallery";
 import "./css/Gallery.css";
 
 const Gallery = () => {

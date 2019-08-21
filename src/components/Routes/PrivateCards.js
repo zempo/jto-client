@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import SearchPrivateCards from '../Forms/SearchPrivateCards'
-import PrivateListCard from '../Utils/PrivateListCard'
-import PrivateSearchCard from '../Utils/PrivateSearchCard'
+import SearchPrivateCards from "../Forms/Search/SearchPrivateCards";
+import PrivateListCard from "../Utils/PrivateListCard";
+import PrivateSearchCard from "../Utils/PrivateSearchCard";
 import { JtoSection, AddBtn, PaginateCards, SkeletonLoader2 } from "../Utils/Utils";
 import { CardsContext } from "../../contexts/CardsContext";
 import "./css/Cards.css";
@@ -37,12 +37,12 @@ const PrivateCards = () => {
           </p>
         </JtoSection>
       ) : (
-          <JtoSection className="cards-counter">
-            <p>
-              Showing {currentSearchCards.length} of {searchCards.length} Results
+        <JtoSection className="cards-counter">
+          <p>
+            Showing {currentSearchCards.length} of {searchCards.length} Results
           </p>
-          </JtoSection>
-        )}
+        </JtoSection>
+      )}
       {cards.length > cardsPerPg && !searching ? (
         <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
       ) : searchCards.length > searchCardsPerPg && searching ? (
@@ -56,19 +56,21 @@ const PrivateCards = () => {
       <JtoSection className="jto-cards private-cards">
         {/* make empty card with question mark and big "start creating Occasions button" */}
         <SkeletonLoader2 loading={loading} />
-        {!searching ? currentCards.map((card, i) => {
-          return (
-            <div key={i}>
-              < PrivateListCard card={card} />
-            </div>
-          );
-        }) : searchCards.map((card, i) => {
-          return (
-            <div key={i}>
-              < PrivateSearchCard card={card} />
-            </div>
-          );
-        })}
+        {!searching
+          ? currentCards.map((card, i) => {
+              return (
+                <div key={i}>
+                  <PrivateListCard card={card} />
+                </div>
+              );
+            })
+          : searchCards.map((card, i) => {
+              return (
+                <div key={i}>
+                  <PrivateSearchCard card={card} />
+                </div>
+              );
+            })}
         <div className="card-container2">
           <AddBtn />
         </div>

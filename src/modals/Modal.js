@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import AddCard from "../components/Forms/Card/AddCardForm";
-import DeleteCard from "../components/Forms/DeleteCard";
-import DeleteUserCard from "../components/Forms/DeleteUserCard";
-import EditCard from "../components/Forms/EditCard";
-import EditPublicCard from "../components/Forms/EditPublicCard";
-import MakePrivate from "../components/Forms/MakePrivate";
-import MakePublic from "../components/Forms/MakePublic";
+import DeleteCard from "../components/Forms/Card/DeleteCard";
+import DeleteUserCard from "../components/Forms/Card/DeleteUserCard";
+import EditCard from "../components/Forms/Card/EditCard";
+import EditPublicCard from "../components/Forms/Card/EditPublicCard";
+import MakePrivate from "../components/Forms/Card/MakePrivate";
+import MakePublic from "../components/Forms/Card/MakePublic";
 // import DeleteComment from '../components/Forms/DeleteComment'
 // import EditComment from '../components/Forms/EditComment'
 import "./css/Modal.css";

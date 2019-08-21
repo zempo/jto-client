@@ -5,11 +5,15 @@
 // import { JtoSection, Loader, DotMenuOption, TimeStamp, CardPages, PaginateCardFaces } from "../Utils/Utils";
 // import "./css/Card.css";
 import React, { useState, useEffect } from "react";
-import { validateFrontMessage, validateTheme, validateInsideMessage } from "../../services/validation/card-validation";
-import { useForm } from "../../hooks/get-files";
-import { listCards, updateCard, newImages } from "../../services/endpoints-service";
-import { JtoNotification, Loader, EditThemesList } from "../Utils/Utils";
-import "./css/Forms.css";
+import {
+  validateFrontMessage,
+  validateTheme,
+  validateInsideMessage
+} from "../../../services/validation/card-validation";
+import { useForm } from "../../../hooks/get-files";
+import { listCards, updateCard, newImages } from "../../../services/endpoints-service";
+import { JtoNotification, Loader, EditThemesList } from "../../Utils/Utils";
+import "../css/Forms.css";
 
 const EditPublicCard = ({ item, cancel }) => {
   const [card, setCard] = useState({});

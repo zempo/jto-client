@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { validateFrontMessage, validateTheme, validateInsideMessage } from "../../services/validation/card-validation";
-import { useForm } from "../../hooks/get-files";
-import { listUserCards, updateUserCard, newImages } from "../../services/endpoints-service";
-import { JtoNotification, Loader, EditThemesList } from "../Utils/Utils";
-import "./css/Forms.css";
+import {
+  validateFrontMessage,
+  validateTheme,
+  validateInsideMessage
+} from "../../../services/validation/card-validation";
+import { useForm } from "../../../hooks/get-files";
+import { listUserCards, updateUserCard, newImages } from "../../../services/endpoints-service";
+import { JtoNotification, Loader, EditThemesList } from "../../Utils/Utils";
+import "../css/Forms.css";
 
 const EditCard = ({ item, cancel }) => {
   const [card, setCard] = useState({});

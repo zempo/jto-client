@@ -1,21 +1,13 @@
 import React, { useContext, useRef, useState } from "react";
-import { useForm } from '../../hooks/get-files'
-// import { useRadio } from '../../hooks/get-radio' 
-import { GalleryContext } from "../../contexts/GalleryContext";
-import { listCards, listReactions } from "../../services/endpoints-service";
-import { validationSpacer } from '../../services/validation/auth-validation'
-import { ThemesList } from "../Utils/Utils";
+import { useForm } from "../../../hooks/get-files";
+import { GalleryContext } from "../../../contexts/GalleryContext";
+import { listCards, listReactions } from "../../../services/endpoints-service";
+import { validationSpacer } from "../../../services/validation/auth-validation";
+import { ThemesList } from "../../Utils/Utils";
 
 const SearchGallery = () => {
   const {
-    value: {
-      mergeResults,
-      arrangeByKeyword,
-      arrangeBySelection,
-      arrangeByTheme,
-      setSearching,
-      setSearchCards
-    }
+    value: { mergeResults, arrangeByKeyword, arrangeBySelection, arrangeByTheme, setSearching, setSearchCards }
   } = useContext(GalleryContext);
 
   const { values, handleChange, reset } = useForm(
@@ -24,8 +16,8 @@ const SearchGallery = () => {
     {},
     { 1: validationSpacer, 2: validationSpacer }
   );
-  const [arrange, setArrange] = useState('')
-  const handleRadio = (e) => setArrange(e.target.name)
+  const [arrange, setArrange] = useState("");
+  const handleRadio = (e) => setArrange(e.target.name);
 
   const themeRef = useRef();
 
@@ -42,7 +34,7 @@ const SearchGallery = () => {
       const sortedSelect = await arrangeBySelection(sortedTheme, arrange);
 
       setSearchCards(sortedSelect);
-      reset()
+      reset();
     } catch (error) {
       console.log(error);
     }
@@ -52,32 +44,53 @@ const SearchGallery = () => {
     <form className="jto-form search-form" onSubmit={handleSubmit}>
       <h1>Explore Our Gallery</h1>
       <fieldset className="searchTerm">
-        <input type="text" className="keyword" placeholder="International Lefthanders Day" name="keyword" id={1} value={values.keyword} onChange={handleChange} />
+        <input
+          type="text"
+          className="keyword"
+          placeholder="International Lefthanders Day"
+          name="keyword"
+          id={1}
+          value={values.keyword}
+          onChange={handleChange}
+        />
       </fieldset>
       <fieldset className="sortBy">
         <label htmlFor="new">
-          <input type="radio" name="new" value="new" checked={arrange === 'new'} onChange={handleRadio} />
+          <input type="radio" name="new" value="new" checked={arrange === "new"} onChange={handleRadio} />
           Newest
         </label>
         <label>
-          <input type="radio" name="hearts" value="hearts" checked={arrange === 'hearts'} onChange={handleRadio} />
+          <input type="radio" name="hearts" value="hearts" checked={arrange === "hearts"} onChange={handleRadio} />
           Likes
         </label>
         <label>
-          <input type="radio" name="comments" value="comments" checked={arrange === 'comments'} onChange={handleRadio} />
+          <input
+            type="radio"
+            name="comments"
+            value="comments"
+            checked={arrange === "comments"}
+            onChange={handleRadio}
+          />
           Comments
         </label>
         <label>
-          <input type="radio" name="shares" value="shares" checked={arrange === 'shares'} onChange={handleRadio} />
+          <input type="radio" name="shares" value="shares" checked={arrange === "shares"} onChange={handleRadio} />
           Downloads
         </label>
         <label>
-          <input type="radio" name="old" value="old" checked={arrange === 'old'} onChange={handleRadio} />
+          <input type="radio" name="old" value="old" checked={arrange === "old"} onChange={handleRadio} />
           Oldest
         </label>
       </fieldset>
       <fieldset className="themeSelect">
-        <select ref={themeRef} className="themes" name="themeSort" id={2} value={values.themeSort} onChange={handleChange}>
+        <select
+          ref={themeRef}
+          className="themes"
+          name="themeSort"
+          id={2}
+          value={values.themeSort}
+          onChange={handleChange}
+        >
           <option value="Any">Any</option>
           <ThemesList />
         </select>
