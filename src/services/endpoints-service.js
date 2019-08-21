@@ -114,7 +114,7 @@ export const updateUserCard = axios.create({
 });
 
 export const makePublic = axios.create({
-  baseURL: `${Config.API_ENDPOINT}/private/make-public`,
+  baseURL: `${Config.API_ENDPOINT}/private/make-public/${TokenService.getId()}`,
   method: "PATCH",
   headers: {
     authorization: `Bearer ${TokenService.getAuthToken()}`

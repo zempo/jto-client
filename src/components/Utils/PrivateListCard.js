@@ -34,11 +34,10 @@ const PrivateListCard = ({ card }) => {
           </div>
           <Modal isShowing={isShowingDelete} hide={toggleDelete} item={card.id} action="delete-user-card" />
           <MenuOption to="/download" text={<i className="fas fa-file-download" title="download" />} item_id={card.id} />
-          <MenuOption
-            to="/make-public"
-            text={<i className="fas fa-user-friends" title="publish" />}
-            item_id={card.id}
-          />
+          <div className="menu-option toggle-modal">
+            <i className="fas fa-user-friends" title="publish" onClick={togglePublic} />
+          </div>
+          <Modal isShowing={isShowingPublic} hide={togglePublic} item={card.id} action="make-public" />
         </nav>
       </label>
     </div>

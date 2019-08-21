@@ -8,7 +8,7 @@ const SearchCard = ({ card, admin, user_name }) => {
       <label className="card-container" htmlFor={`card-toggle-${card.id}`}>
         <span className="checkmark2" />
         <div className="front face">
-          {card.id}
+          {/* {card.id} */}
           <p>{ProcessMsg(card.front_message, 30)}</p>
           {card.front_image !== "" ? <img src={card.front_image} alt="front background" /> : null}
         </div>
