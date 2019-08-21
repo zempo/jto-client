@@ -6,11 +6,11 @@ export const CardsContext = createContext();
 export const CardsContextProvider = (props) => {
   const [cards, setCards] = useState([]);
   const [currentPg, setCurrentPg] = useState(1);
-  const [cardsPerPg, setCardsPerPg] = useState(7);
+  const [cardsPerPg, setCardsPerPg] = useState(8);
   const [searching, setSearching] = useState(false);
-  const [searchCards, setSearchCards] = useState([])
+  const [searchCards, setSearchCards] = useState([]);
   const [currentSearchPg, setCurrentSearchPg] = useState(1);
-  const [searchCardsPerPg, setSearchCardsPerPg] = useState(7);
+  const [searchCardsPerPg, setSearchCardsPerPg] = useState(8);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   // write error message or status state, if exists for notification

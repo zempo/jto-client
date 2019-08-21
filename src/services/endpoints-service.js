@@ -98,12 +98,20 @@ export const listShares = axios.create({
 
 // UPDATE CONTENT (U)
 export const updateCard = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/cards`,
+  method: "PATCH",
+  headers: {
+    authorization: `Bearer ${TokenService.getAuthToken()}`
+  }
+});
+
+export const updateUserCard = axios.create({
   baseURL: `${Config.API_ENDPOINT}/private/cards/${TokenService.getId()}`,
   method: "PATCH",
   headers: {
     authorization: `Bearer ${TokenService.getAuthToken()}`
   }
-})
+});
 
 export const makePublic = axios.create({
   baseURL: `${Config.API_ENDPOINT}/private/make-public`,
