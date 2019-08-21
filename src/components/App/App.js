@@ -1,9 +1,9 @@
 // SETUP + UTILS
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-import PublicOnlyRoute from "../Utils/PublicOnlyRoute";
-import PrivateRoute from "../Utils/PrivateRoute";
-import ErrorPage from "../Utils/ErrorPage";
+import PublicOnlyRoute from "../Utils/Auth/PublicOnlyRoute";
+import PrivateRoute from "../Utils/Auth/PrivateRoute";
+import ErrorPage from "../Errors/ErrorPage";
 import "./App.css";
 
 // SERVICES

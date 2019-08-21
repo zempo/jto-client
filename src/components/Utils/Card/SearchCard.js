@@ -1,7 +1,7 @@
 import React from "react";
-import { useModal } from "../../hooks/use-modal";
-import Modal from "../../modals/Modal";
-import { MenuOption, ProcessMsg } from "./Utils";
+import { useModal } from "../../../hooks/use-modal";
+import Modal from "../../../modals/Modal";
+import { MenuOption, ProcessMsg } from "../Utils";
 
 const SearchCard = ({ card, admin, user_name }) => {
   const { isShowing: isShowingDelete, toggle: toggleDelete } = useModal();

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import SearchPrivateCards from "../Forms/Search/SearchPrivateCards";
-import PrivateListCard from "../Utils/PrivateListCard";
-import PrivateSearchCard from "../Utils/PrivateSearchCard";
+import PrivateListCard from "../Utils/Card/PrivateListCard";
+import PrivateSearchCard from "../Utils/Card/PrivateSearchCard";
 import { JtoSection, AddBtn, PaginateCards, SkeletonLoader2 } from "../Utils/Utils";
 import { CardsContext } from "../../contexts/CardsContext";
 import "./css/Cards.css";

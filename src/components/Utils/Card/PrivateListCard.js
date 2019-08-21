@@ -1,7 +1,7 @@
 import React from "react";
-import Modal from "../../modals/Modal";
-import { useModal } from "../../hooks/use-modal";
-import { MenuOption, ProcessMsg } from "./Utils";
+import Modal from "../../../modals/Modal";
+import { useModal } from "../../../hooks/use-modal";
+import { MenuOption, ProcessMsg } from "../Utils";
 
 const PrivateListCard = ({ card }) => {
   const { isShowing: isShowingDelete, toggle: toggleDelete } = useModal();
