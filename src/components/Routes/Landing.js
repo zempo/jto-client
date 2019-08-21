@@ -1,7 +1,12 @@
 import React from "react";
 import Logo from "../../images/jto-logo.svg";
+import { AuthService } from "../../services/auth-service";
 
 const Landing = (props) => {
+  const handleRefresh = (e) => {
+    AuthService.postRefreshToken();
+  };
+
   return (
     <div className="jto-landing">
       <img src={Logo} alt="jto-logo" width="100" height="100" />
@@ -57,6 +62,8 @@ const Landing = (props) => {
       <section>
         <h3>Registration Form</h3>
       </section>
+      {/* to-do: build modal that checks if you're still logged in after 30 mins of inactivity */}
+      {/* <button onClick={handleRefresh}>Refresh Checker</button> */}
     </div>
   );
 };

@@ -29,22 +29,18 @@ export const AuthService = {
     return refresh
       .post("/")
       .then((res) => {
-        if (!res.ok) {
+        // console.log(res);
+        if (!res.statusText) {
           res.data.then((e) => Promise.reject(e));
         }
-        console.log(res.data)
+        TokenService.saveAuthToken(res.data.authToken);
+        TokenService.queueCallbackBeforeExpiry(() => {
+          AuthService.postRefreshToken2();
+        });
         return res.data;
       })
-      .then((res) => {
-        console.log(res)
-        TokenService.saveAuthToken(res.authToken);
-        TokenService.queueCallbackBeforeExpiry(() => {
-          AuthService.postRefreshToken();
-        });
-        return res;
-      })
       .catch((err) => {
-        console.log('refresh token error', err);
+        console.log("refresh token error", err);
         console.error(err);
       });
   }
