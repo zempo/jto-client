@@ -179,20 +179,20 @@
   position: relative;
 }
 
-.toggle-modal > .far, 
+.toggle-modal > .far,
 .toggle-modal > .fas {
   color: rgba(255, 255, 255, 0.7);
   -webkit-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out; 
-}  
+  transition: all 0.2s ease-out;
+}
 
 .toggle-modal:hover > .far,
 .toggle-modal:hover > .fas {
   color: rgba(255, 255, 255);
   -webkit-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out; 
+  transition: all 0.2s ease-out;
 }
 
 .menu-option > a {
@@ -212,7 +212,7 @@
   transition: all 0.2s ease-out;
 }
 
-.front { 
+.front {
   width: 180px;
   height: 242px;
   background: rgb(248, 245, 245);
@@ -245,8 +245,8 @@
   padding: 5%;
   max-height: 200px;
   max-width: 180px;
-  -webkit-transform: rotateY(180deg);
-  transform: rotateY(180deg);
+  /* -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg); */
   -webkit-backface-visibility: visible;
   backface-visibility: visible;
   -moz-backface-visibility: visible;

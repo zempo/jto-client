@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import { validatePwd, validateUsername, validateName, validateEmail } from "../../services/validation/auth-validation";
-import { useForm } from '../../hooks/get-files'
-import { AuthService } from "../../services/auth-service";
-import { JtoNotification, Required } from "../Utils/Utils";
-import "./css/Forms.css";
+import {
+  validatePwd,
+  validateUsername,
+  validateName,
+  validateEmail
+} from "../../../services/validation/auth-validation";
+import { useForm } from "../../../hooks/get-files";
+import { AuthService } from "../../../services/auth-service";
+import { JtoNotification, Required } from "../../Utils/Utils";
+import "../css/Forms.css";
 
 const Register = (props) => {
   const { values, errors, handleChange, reset } = useForm(
@@ -30,7 +35,7 @@ const Register = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const { password, email, username, fullname } = values
+    const { password, email, username, fullname } = values;
     let newUser = { password, email };
     newUser.user_name = username;
     newUser.full_name = fullname;
@@ -43,7 +48,7 @@ const Register = (props) => {
       setResStatus(createdUser.status);
       setResMsg("Account Sucessfully Created!");
       setValidReq(false);
-      reset()
+      reset();
       props.onRegistrationSuccess();
     } catch (error) {
       setResStatus(error.response.status);
@@ -61,44 +66,76 @@ const Register = (props) => {
             User Name:
           </label>
           <ul>
-            {errors['1'].map((err, i) => (
+            {errors["1"].map((err, i) => (
               <li key={i}>{err}</li>
             ))}
           </ul>
-          <input ref={usernameRef} type="text" name="username" placeholder="paper_cut-27" id={1} value={values.username} onChange={handleChange} />
+          <input
+            ref={usernameRef}
+            type="text"
+            name="username"
+            placeholder="paper_cut-27"
+            id={1}
+            value={values.username}
+            onChange={handleChange}
+          />
           <br />
           <label htmlFor="fullname">
             <Required met={values.fullname.length === 0 ? false : true} />
             Full Name:
           </label>
           <ul>
-            {errors['2'].map((err, i) => (
+            {errors["2"].map((err, i) => (
               <li key={i}>{err}</li>
             ))}
           </ul>
-          <input ref={fullnameRef} type="text" name="fullname" placeholder="Eric Cardman" id={2} value={values.fullname} onChange={handleChange} />
+          <input
+            ref={fullnameRef}
+            type="text"
+            name="fullname"
+            placeholder="Eric Cardman"
+            id={2}
+            value={values.fullname}
+            onChange={handleChange}
+          />
           <br />
           <label htmlFor="email">
             <Required met={values.email.length === 0 ? false : true} />
             Email:
           </label>
           <ul>
-            {errors['3'].map((err, i) => (
+            {errors["3"].map((err, i) => (
               <li key={i}>{err}</li>
             ))}
           </ul>
-          <input ref={emailRef} type="text" name="email" placeholder="ecardman@gmail.com" id={3} value={values.email} onChange={handleChange} />
+          <input
+            ref={emailRef}
+            type="text"
+            name="email"
+            placeholder="ecardman@gmail.com"
+            id={3}
+            value={values.email}
+            onChange={handleChange}
+          />
           <br />
           <label htmlFor="password">
             <Required met={values.password.length === 0 ? false : true} />
             Password:
           </label>
           <ul>
-            {errors['4'].map((err, i) => (
+            {errors["4"].map((err, i) => (
               <li key={i}>{err}</li>
             ))}
           </ul>
-          <input ref={pwdRef} type="text" name="password" placeholder="Password1@" id={4} value={values.password} onChange={handleChange} />
+          <input
+            ref={pwdRef}
+            type="text"
+            name="password"
+            placeholder="Password1@"
+            id={4}
+            value={values.password}
+            onChange={handleChange}
+          />
         </fieldset>
         {/* validReq */}
         <button
@@ -119,7 +156,7 @@ const Register = (props) => {
 };
 
 Register.defaultProps = {
-  onRegistrationSuccess: () => { }
+  onRegistrationSuccess: () => {}
 };
 
 export default Register;

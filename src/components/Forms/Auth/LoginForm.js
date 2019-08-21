@@ -1,9 +1,9 @@
 import React, { useState, useRef } from "react";
-import { useForm } from '../../hooks/get-files'
-import { AuthService } from "../../services/auth-service";
-import { validateLogin } from "../../services/validation/auth-validation";
-import { JtoNotification, Required } from "../Utils/Utils";
-import "./css/Forms.css";
+import { useForm } from "../../../hooks/get-files";
+import { AuthService } from "../../../services/auth-service";
+import { validateLogin } from "../../../services/validation/auth-validation";
+import { JtoNotification, Required } from "../../Utils/Utils";
+import "../css/Forms.css";
 
 const LoginForm = (props) => {
   const { values, errors, handleChange, reset } = useForm(
@@ -20,7 +20,7 @@ const LoginForm = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { email, password } = values
+    const { email, password } = values;
     setResStatus(0);
     setResMsg("");
     try {
@@ -35,7 +35,7 @@ const LoginForm = (props) => {
 
       setResStatus(200);
       setResMsg("Successful Login");
-      reset()
+      reset();
       props.onLoginSuccess();
       console.clear();
     } catch (error) {
@@ -66,7 +66,7 @@ const LoginForm = (props) => {
 };
 
 LoginForm.defaultProps = {
-  onLoginSuccess: () => { }
+  onLoginSuccess: () => {}
 };
 
 export default LoginForm;

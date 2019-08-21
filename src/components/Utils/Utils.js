@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import Modal from "../../modals/Modal";
+import { useModal } from "../../hooks/use-modal";
 import { JtoQuotes } from "./Quotes";
 import { Link } from "react-router-dom";
 import { distanceInWordsToNow as formatDate } from "date-fns";
@@ -221,10 +223,7 @@ export const MenuOption = ({ to, text, item_id }) => {
 export const ModalOption = ({ text, toggle }) => {
   return (
     <div className="menu-option">
-      <button onClick={toggle}
-      >
-        {text}
-      </button>
+      <button onClick={toggle}>{text}</button>
     </div>
   );
 };
@@ -247,12 +246,14 @@ export const DotMenuOption = ({ to, text, item_id }) => {
 };
 
 export const AddBtn = () => {
+  const { isShowing: isShowingAdd, toggle: toggleAdd } = useModal();
   return (
-    <Link to="/add-occasion">
+    <>
       <div className="btn btn-add">
-        <i className="fas fa-plus fa-3x" />
+        <i className="fas fa-plus fa-3x" title="add card" onClick={toggleAdd} />
       </div>
-    </Link>
+      <Modal isShowing={isShowingAdd} hide={toggleAdd} action="add-card" />
+    </>
   );
 };
 
@@ -419,4 +420,3 @@ export const EditThemesList = ({ current }) => {
     </>
   );
 };
-

@@ -7,7 +7,7 @@
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   row-gap: 5em;
 }
- 
+
 .list-card {
   padding: 100px;
 }
@@ -172,8 +172,8 @@
   padding: 5%;
   max-height: 160px;
   max-width: 180px;
-  -webkit-transform: rotateY(180deg);
-  transform: rotateY(180deg);
+  /* -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg); */
   -webkit-backface-visibility: visible;
   backface-visibility: visible;
   -moz-backface-visibility: visible;

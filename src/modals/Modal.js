@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import AddCard from "../components/Forms/Card/AddCardForm";
 import DeleteCard from "../components/Forms/DeleteCard";
 import DeleteUserCard from "../components/Forms/DeleteUserCard";
 import EditCard from "../components/Forms/EditCard";
@@ -15,7 +16,9 @@ const Modal = ({ item, action, isShowing, hide }) => {
     return ReactDOM.createPortal(
       <div onClick={hide} className="Modal">
         <div onClick={(e) => e.stopPropagation()} className="Modal__inner">
-          {action === "delete-card" ? (
+          {action === "add-card" ? (
+            <AddCard cancel={hide} />
+          ) : action === "delete-card" ? (
             <DeleteCard item={item} cancel={hide} />
           ) : action === "delete-user-card" ? (
             <DeleteUserCard item={item} cancel={hide} />

@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
-import { validateFrontMessage, validateTheme, validateInsideMessage } from "../../services/validation/card-validation";
-import { useForm } from "../../hooks/get-files";
-import { newImages, newCard } from "../../services/endpoints-service";
-import { JtoNotification, Required, Loader, ThemesList } from "../Utils/Utils";
-import "./css/Forms.css";
+import {
+  validateFrontMessage,
+  validateTheme,
+  validateInsideMessage
+} from "../../../services/validation/card-validation";
+import { useForm } from "../../../hooks/get-files";
+import { newImages, newCard } from "../../../services/endpoints-service";
+import { JtoNotification, Required, Loader, ThemesList } from "../../Utils/Utils";
+import "../css/Forms.css";
 
-function AddCard(props) {
+function AddCard({ item, cancel }) {
   // data binding
   const { values, files, errors, handleChange, reset } = useForm(
     { frontMessage: "", insideMessage: "", theme: "" },
@@ -65,8 +69,8 @@ function AddCard(props) {
 
       setResStatus(sendFullData.status);
       setResMsg("New Occasion Created");
-      // resetFrontMessage();
       reset();
+      window.location.reload();
     } catch (error) {
       setLoading(false);
       setResStatus(error.response.status);
@@ -156,6 +160,7 @@ function AddCard(props) {
           Create Occasion
         </button>
       </form>
+      <button onClick={cancel}>Cancel</button>
       {loading ? <Loader loading={true} /> : <Loader loading={false} />}
     </>
   );
