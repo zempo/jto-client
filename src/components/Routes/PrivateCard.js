@@ -5,7 +5,7 @@ import { listUserCards } from "../../services/endpoints-service";
 import TokenService from "../../services/token-service";
 // create back-button
 import { JtoSection, TimeStamp, CardPages, PaginateCardFaces } from "../Utils/Utils";
-import { ThemeStyles } from "../Utils/Themes";
+import { ThemeStyles } from "../Utils/Store/Themes";
 import "./css/Card.css";
 
 const Private = (props) => {

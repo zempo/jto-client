@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Modal from "../../modals/Modal";
 import { useModal } from "../../hooks/use-modal";
-import { JtoQuotes } from "./Quotes";
+import { JtoQuotes } from "./Store/Quotes";
 import { Link } from "react-router-dom";
 import { distanceInWordsToNow as formatDate } from "date-fns";
 import "./css/Utils.css";

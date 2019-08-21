@@ -4,7 +4,7 @@ import { UserContext } from "../../contexts/UserContext";
 import { listCards, listCardComments, listReactions, listHearts, listShares } from "../../services/endpoints-service";
 // create back-button
 import { JtoSection, Loader, DotMenuOption, TimeStamp, CardPages, PaginateCardFaces } from "../Utils/Utils";
-import { ThemeStyles } from "../Utils/Themes";
+import { ThemeStyles } from "../Utils/Store/Themes";
 import "./css/Card.css";
 
 const PublicCard = (props) => {
