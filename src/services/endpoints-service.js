@@ -129,6 +129,14 @@ export const makePrivate = axios.create({
   }
 });
 
+export const toggleLike = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/reactions/hearts`,
+  method: "PATCH",
+  headers: {
+    authorization: `Bearer ${TokenService.getAuthToken()}`
+  }
+});
+
 // DELETE CONTENT (D)
 export const deleteCard = axios.create({
   baseURL: `${Config.API_ENDPOINT}/cards`,

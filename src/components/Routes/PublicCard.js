@@ -15,8 +15,8 @@ const PublicCard = (props) => {
   const [cardId, setCardId] = useState(0);
   const [card, setCard] = useState({});
   const [comments, setComments] = useState([]);
-  const [hearts, setHearts] = useState([]);
-  const [shares, setShares] = useState([]);
+  const [heart, setHeart] = useState("inactive");
+  const [share, setShare] = useState("inactive");
   const [cardAuthor, setCardAuthor] = useState({});
   const [cardTheme, setCardTheme] = useState("handwritten");
   const [cardPg, setCardPg] = useState(1);
@@ -26,7 +26,6 @@ const PublicCard = (props) => {
   useEffect(() => {
     if (props.location.state !== undefined) {
       const { item } = props.location.state;
-      console.log(item);
       setCardId(item);
 
       const cardFound = async () => {
@@ -35,19 +34,22 @@ const PublicCard = (props) => {
           const cardResult = await listCards.get(`/${item}`);
           const commentsResult = await listCardComments.get(`/${item}`);
           const heartsResult = await listHearts.get(`/${item}`);
+          if (heartsResult.data.length > 0) {
+            setHeart(heartsResult.data[0].heart_react);
+          }
           const sharesResult = await listShares.get(`/${item}`);
+          if (sharesResult.data.length > 0) {
+            setShare(sharesResult.data[0].share_react);
+          }
 
           setLoading(false);
           setCard(cardResult.data);
           setCardAuthor(cardResult.data.user);
           setCardTheme(cardResult.data.theme);
           setComments(commentsResult.data);
-          setHearts(heartsResult.data);
-          setShares(sharesResult.data);
-          // console.log(cardResult.data);
-          console.log(heartsResult.data);
-          // console.log(sharesResult.data);
-          // console.log(commentsResult.data);
+          setHeart("inactive");
+          setShare("inactive");
+          console.log(sharesResult.data);
           // console.log(ThemeStyles[`${cardResult.data.theme}`]);
         } catch (err) {
           if (err.response.status === 401) {
@@ -73,10 +75,9 @@ const PublicCard = (props) => {
         <PaginateCardFaces currentPg={cardPg} setCurrentPg={setCardPg} />
       </JtoSection>
       <JtoSection className="jto-reactions">
-        {/* specific to user id */}
-        <Heart liked={hearts.length > 0} item={card.id} />
+        <Heart liked={heart} item={card.id} />
         <br />
-        Current user has downloaded {shares.length > 0 ? "true" : "false"}
+        Current user has downloaded {share}
       </JtoSection>
       <JtoSection className="jto-comments">
         <ul>

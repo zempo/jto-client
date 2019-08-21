@@ -1,30 +1,30 @@
-import React from "react";
-import {} from "../../../services/endpoints-service";
+import React, { useState } from "react";
+import { toggleLike } from "../../../services/endpoints-service";
 
 const Heart = ({ liked, item }) => {
-  // const [] = useState(liked)
+  const [status, setStatus] = useState("inactive");
 
-  const sendLike = () => {
+  const updateLike = async () => {
     console.log("like", item);
-  };
+    try {
+      const sentLike = await toggleLike.patch(`/${item}`);
+      console.log(sentLike);
+      setStatus("active");
+      //   if (sentLike) {
 
-  const unlike = () => {
-    console.log("unlike", item);
+      //   } else {
+
+      //   }
+    } catch (error) {
+      console.log(error);
+    }
   };
-  if (!liked) {
-    return (
-      <button className="heart" onClick={sendLike}>
-        {/* use css empty selector to style */}
-      </button>
-    );
-  } else {
-    return (
-      <button className="heart" onClick={unlike}>
-        {/* use css empty selector to style */}
-        <p>Already Liked</p>
-      </button>
-    );
-  }
+  return (
+    <button className="heart" onClick={updateLike}>
+      {/* use css empty selector to style */}
+      {liked || status === "active" ? "like" : null}
+    </button>
+  );
 };
 
 export default Heart;
