@@ -59,7 +59,7 @@ export const ThemeStyles = {
   },
   indie: {
     all: {
-      fontFamily: `'Amatic SC', cursive;`
+      fontFamily: `'Amatic SC', cursive`
     },
     front: {
       background: "rgb(248, 245, 245)"
