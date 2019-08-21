@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import TokenService from "../../services/token-service";
 import IdleService from "../../services/idle-service";
 import { Hyph } from "../Utils/Utils";
@@ -38,9 +38,9 @@ class Nav extends Component {
     return (
       <div className="logged-out">
         <h3>
-          <Link to="/login">Login</Link>
+          <NavLink exact activeClassName="active-auth" to="/login">Login</NavLink>
           <Hyph />
-          <Link to="/register">Register</Link>
+          <NavLink exact activeClassName="active-auth" to="/register">Register</NavLink>
         </h3>
       </div>
     );
@@ -49,18 +49,18 @@ class Nav extends Component {
   render() {
     return (
       <nav className="jto-nav-menu">
-        <Link to="/">
+        <NavLink exact activeClassName="active" to="/">
           <img src={Logo} alt="site logo" width="50" height="50" />
-        </Link>
-        <Link to="/gallery">
+        </NavLink>
+        <NavLink exact activeClassName="active" to="/gallery">
           <h3>Gallery</h3>
-        </Link>
-        <Link to="/private">
+        </NavLink>
+        <NavLink exact activeClassName="active" to="/private">
           <h3>My Occasions</h3>
-        </Link>
-        <Link to="/faq">
+        </NavLink>
+        <NavLink exact activeClassName="active" to="/faq">
           <h3>Help & FAQs</h3>
-        </Link>
+        </NavLink>
         {TokenService.hasAuthToken() ? this.renderLogoutLink() : this.renderLoginLink()}
       </nav>
     );

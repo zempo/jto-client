@@ -18,3 +18,11 @@ h2 {
 .jto-landing {
     text-align: center;
 }
+
+.active {
+    border: 2px solid blue;
+}
+
+.active-auth {
+    border: 2px solid green;
+}

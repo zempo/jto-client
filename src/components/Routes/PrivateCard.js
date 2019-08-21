@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Redirect } from "react-router-dom";
 // import { CardContext, CardContextProvider } from "../../contexts/CardContext";
 import { UserContext } from "../../contexts/UserContext";
 import { listUserCards } from "../../services/endpoints-service";
