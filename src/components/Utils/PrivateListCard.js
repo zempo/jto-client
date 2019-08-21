@@ -1,6 +1,6 @@
 import React from "react";
-import { useModal } from "../../hooks/use-modal";
 import Modal from "../../modals/Modal";
+import { useModal } from "../../hooks/use-modal";
 import { MenuOption, ProcessMsg } from "./Utils";
 
 const PrivateListCard = ({ card }) => {

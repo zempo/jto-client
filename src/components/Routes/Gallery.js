@@ -34,17 +34,17 @@ const Gallery = () => {
       <SearchGallery cards={cards} />
       {!searching ? (
         <JtoSection className="cards-counter">
-          <p>
+          <h3>
             Showing {currentCards.length} of {cards.length} Occasions
-          </p>
+          </h3>
         </JtoSection>
       ) : (
-          <JtoSection className="cards-counter">
-            <p>
-              Showing {currentSearchCards.length} of {searchCards.length} Results
-          </p>
-          </JtoSection>
-        )}
+        <JtoSection className="cards-counter">
+          <h3>
+            Showing {currentSearchCards.length} of {searchCards.length} Results
+          </h3>
+        </JtoSection>
+      )}
       {cards.length > cardsPerPg && !searching ? (
         <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
       ) : searchCards.length > searchCardsPerPg && searching ? (
@@ -59,19 +59,19 @@ const Gallery = () => {
         <SkeletonLoader loading={loading} />
         {!searching
           ? currentCards.map((card, i) => {
-            return (
-              <div key={i}>
-                <ListCard card={card} admin={userValue.user.admin} user_name={userValue.user.user_name} />
-              </div>
-            );
-          })
+              return (
+                <div key={i}>
+                  <ListCard card={card} admin={userValue.user.admin} user_name={userValue.user.user_name} />
+                </div>
+              );
+            })
           : currentSearchCards.map((card, i) => {
-            return (
-              <div key={i}>
-                <SearchCard card={card} admin={userValue.user.admin} user_name={userValue.user.user_name} />
-              </div>
-            );
-          })}
+              return (
+                <div key={i}>
+                  <SearchCard card={card} admin={userValue.user.admin} user_name={userValue.user.user_name} />
+                </div>
+              );
+            })}
       </JtoSection>
       {cards.length > cardsPerPg && !searching ? (
         <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
