@@ -2,7 +2,8 @@ import React, { useEffect, useState, useContext } from "react";
 // import { CardContext, CardContextProvider } from "../../contexts/CardContext";
 import { UserContext } from "../../contexts/UserContext";
 import { listCards, listCardComments, listReactions, listHearts, listShares } from "../../services/endpoints-service";
-// create back-button
+// create nice back-button
+import Heart from "../Forms/Social/Heart";
 import { JtoSection, Loader, DotMenuOption, TimeStamp, CardPages, PaginateCardFaces } from "../Utils/Utils";
 import { ThemeStyles } from "../Utils/Store/Themes";
 import "./css/Card.css";
@@ -73,7 +74,7 @@ const PublicCard = (props) => {
       </JtoSection>
       <JtoSection className="jto-reactions">
         {/* specific to user id */}
-        Current user likes? {hearts.length > 0 ? "true" : "false"}
+        <Heart liked={hearts.length > 0} item={card.id} />
         <br />
         Current user has downloaded {shares.length > 0 ? "true" : "false"}
       </JtoSection>
