@@ -80,6 +80,14 @@ export const listReactions = axios.create({
   method: "GET"
 });
 
+export const listCardReacts = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/reactions/hearts`,
+  method: "GET",
+  headers: {
+    authorization: `Bearer ${TokenService.getAuthToken()}`
+  }
+});
+
 export const listHearts = axios.create({
   baseURL: `${Config.API_ENDPOINT}/reactions/hearts`,
   method: "GET",
@@ -123,6 +131,14 @@ export const makePublic = axios.create({
 
 export const makePrivate = axios.create({
   baseURL: `${Config.API_ENDPOINT}/cards/make-private`,
+  method: "PATCH",
+  headers: {
+    authorization: `Bearer ${TokenService.getAuthToken()}`
+  }
+});
+
+export const toggleShare = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/reactions/shares`,
   method: "PATCH",
   headers: {
     authorization: `Bearer ${TokenService.getAuthToken()}`

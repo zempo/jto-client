@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from "react";
 // import { CardContext, CardContextProvider } from "../../contexts/CardContext";
 import { UserContext } from "../../contexts/UserContext";
-import { listCards, listCardComments, listReactions, listHearts, listShares } from "../../services/endpoints-service";
+import { listCards, listCardComments, listCardReacts } from "../../services/endpoints-service";
 // create nice back-button
-import Heart from "../Forms/Social/Heart";
+import { PostReaction, ToggleReaction } from "../Forms/Social/Reaction";
 import { JtoSection, Loader, DotMenuOption, TimeStamp, CardPages, PaginateCardFaces } from "../Utils/Utils";
 import { ThemeStyles } from "../Utils/Store/Themes";
 import "./css/Card.css";
@@ -15,8 +15,7 @@ const PublicCard = (props) => {
   const [cardId, setCardId] = useState(0);
   const [card, setCard] = useState({});
   const [comments, setComments] = useState([]);
-  const [heart, setHeart] = useState("inactive");
-  const [share, setShare] = useState("inactive");
+  const [hasReacted, setHasReacted] = useState({});
   const [cardAuthor, setCardAuthor] = useState({});
   const [cardTheme, setCardTheme] = useState("handwritten");
   const [cardPg, setCardPg] = useState(1);
@@ -33,13 +32,10 @@ const PublicCard = (props) => {
         try {
           const cardResult = await listCards.get(`/${item}`);
           const commentsResult = await listCardComments.get(`/${item}`);
-          const heartsResult = await listHearts.get(`/${item}`);
-          if (heartsResult.data.length > 0) {
-            setHeart(heartsResult.data[0].heart_react);
-          }
-          const sharesResult = await listShares.get(`/${item}`);
-          if (sharesResult.data.length > 0) {
-            setShare(sharesResult.data[0].share_react);
+          const hasReacted = await listCardReacts.get(`/${item}`);
+          if (hasReacted.data.length > 0) {
+            console.log("has reacted");
+            setHasReacted(hasReacted.data[0]);
           }
 
           setLoading(false);
@@ -47,9 +43,7 @@ const PublicCard = (props) => {
           setCardAuthor(cardResult.data.user);
           setCardTheme(cardResult.data.theme);
           setComments(commentsResult.data);
-          setHeart("inactive");
-          setShare("inactive");
-          console.log(sharesResult.data);
+          console.log(hasReacted.data[0]);
           // console.log(ThemeStyles[`${cardResult.data.theme}`]);
         } catch (err) {
           if (err.response.status === 401) {
@@ -75,9 +69,16 @@ const PublicCard = (props) => {
         <PaginateCardFaces currentPg={cardPg} setCurrentPg={setCardPg} />
       </JtoSection>
       <JtoSection className="jto-reactions">
-        <Heart liked={heart} item={card.id} />
+        {/* <Heart liked={heart} item={card.id} /> */}
+        {hasReacted.react_heart ? hasReacted.react_heart : "no heart"}
         <br />
-        Current user has downloaded {share}
+        {hasReacted.react_share ? "yes share" : "no share"}
+        {hasReacted.length > 0 ? (
+          <PostReaction item={card.id} />
+        ) : (
+          <ToggleReaction item={card.id} liked={hasReacted.react_heart} shared={hasReacted.react_share} />
+        )}
+        {/* Current user has downloaded. {share ? "true" : "false"} */}
       </JtoSection>
       <JtoSection className="jto-comments">
         <ul>
