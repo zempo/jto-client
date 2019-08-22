@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import AddCard from "../components/Forms/Card/AddCardForm";
+import Download from "../components/Forms/Download/Download";
 import DeleteCard from "../components/Forms/Card/DeleteCard";
 import DeleteUserCard from "../components/Forms/Card/DeleteUserCard";
 import EditCard from "../components/Forms/Card/EditCard";
@@ -18,6 +19,8 @@ const Modal = ({ item, action, isShowing, hide }) => {
         <div onClick={(e) => e.stopPropagation()} className="Modal__inner">
           {action === "add-card" ? (
             <AddCard cancel={hide} />
+          ) : action === "download-card" ? (
+            <Download item={item} cancel={hide} />
           ) : action === "delete-card" ? (
             <DeleteCard item={item} cancel={hide} />
           ) : action === "delete-user-card" ? (
@@ -31,8 +34,8 @@ const Modal = ({ item, action, isShowing, hide }) => {
           ) : action === "make-public" ? (
             <MakePublic item={item} cancel={hide} />
           ) : (
-            "other modal"
-          )}
+                            "other modal"
+                          )}
         </div>
       </div>,
       document.querySelector("#modal")

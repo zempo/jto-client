@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { toggleLike, toggleShare, listCardReacts } from "../../../services/endpoints-service";
+import { useModal } from "../../../hooks/use-modal";
+import Modal from '../../../modals/Modal'
 
 export const PostReaction = ({ item }) => {
   const [status, setStatus] = useState("inactive");
   const [heart, setHeart] = useState(false)
   const [share, setShare] = useState(false)
+  const { isShowing: isShowingDownload, toggle: toggleDownload } = useModal()
 
   const createAndSendHeart = async () => {
     try {
       const createReact = await toggleLike.post(`/${item}`);
-      console.log(createReact);
       setStatus("active");
       setHeart(true)
     } catch (error) {
@@ -20,21 +22,18 @@ export const PostReaction = ({ item }) => {
   const createAndSendShare = async () => {
     try {
       const createReact = await toggleShare.post(`/${item}`);
-      console.log(createReact);
       setStatus("active");
       setShare(true)
+      toggleDownload()
     } catch (error) {
       console.log(error);
     }
   };
 
   const updateHeart = async () => {
-    console.log("like", item);
     try {
       const sentLike = await toggleLike.patch(`/${item}`);
       const readLike = await listCardReacts.get(`/${item}`)
-      console.log(sentLike);
-      console.log(readLike);
       setHeart(readLike.data[0].react_heart)
     } catch (error) {
       console.log(error);
@@ -42,13 +41,12 @@ export const PostReaction = ({ item }) => {
   };
 
   const updateShare = async () => {
-    console.log("like", item);
     try {
       const sentShare = await toggleShare.patch(`/${item}`);
       const readShare = await listCardReacts.get(`/${item}`)
-      console.log(sentShare);
-      console.log(readShare);
+
       setShare(readShare.data[0].react_share)
+      toggleDownload()
     } catch (error) {
       console.log(error);
     }
@@ -65,6 +63,7 @@ export const PostReaction = ({ item }) => {
         {/* use css empty selector to style */}
         create and send
       </button>
+      < Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
     </>
   ) : (
       <>
@@ -78,6 +77,7 @@ export const PostReaction = ({ item }) => {
           toggle
         {share ? 'on' : 'off'}
         </button>
+        < Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
       </>
     );
 };
@@ -85,14 +85,12 @@ export const PostReaction = ({ item }) => {
 export const ToggleReaction = ({ item, liked, shared }) => {
   const [heart, setHeart] = useState(liked)
   const [share, setShare] = useState(shared)
+  const { isShowing: isShowingDownload, toggle: toggleDownload } = useModal()
 
   const updateHeart = async () => {
-    console.log("like", item);
     try {
       const sentLike = await toggleLike.patch(`/${item}`);
       const readLike = await listCardReacts.get(`/${item}`)
-      console.log(sentLike);
-      console.log(readLike);
       setHeart(readLike.data[0].react_heart)
     } catch (error) {
       console.log(error);
@@ -100,13 +98,12 @@ export const ToggleReaction = ({ item, liked, shared }) => {
   };
 
   const updateShare = async () => {
-    console.log("like", item);
     try {
       const sentShare = await toggleShare.patch(`/${item}`);
       const readShare = await listCardReacts.get(`/${item}`)
-      console.log(sentShare);
-      console.log(readShare);
+
       setShare(readShare.data[0].react_share)
+      toggleDownload()
     } catch (error) {
       console.log(error);
     }
@@ -124,6 +121,7 @@ export const ToggleReaction = ({ item, liked, shared }) => {
         toggle
         {share ? 'on' : 'off'}
       </button>
+      < Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
     </>
   );
 };
