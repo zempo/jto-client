@@ -69,15 +69,11 @@ const PublicCard = (props) => {
         <PaginateCardFaces currentPg={cardPg} setCurrentPg={setCardPg} />
       </JtoSection>
       <JtoSection className="jto-reactions">
-        {/* <Heart liked={heart} item={card.id} /> */}
-        {hasReacted.react_heart ? hasReacted.react_heart : "no heart"}
-        <br />
-        {hasReacted.react_share ? "yes share" : "no share"}
-        {(hasReacted.react_heart === undefined) && (hasReacted.react_share === undefined) ? (
+        {hasReacted.react_heart === undefined && hasReacted.react_share === undefined ? (
           <PostReaction item={card.id} />
         ) : (
-            <ToggleReaction item={card.id} liked={hasReacted.react_heart} shared={hasReacted.react_share} />
-          )}
+          <ToggleReaction item={card.id} liked={hasReacted.react_heart} shared={hasReacted.react_share} />
+        )}
         {/* Current user has downloaded. {share ? "true" : "false"} */}
       </JtoSection>
       <JtoSection className="jto-comments">

@@ -1,0 +1,13 @@
+.heart {
+  position: relative;
+  padding: 2rem;
+  background: none;
+  border: 2px solid black;
+}
+
+.share {
+  position: relative;
+  padding: 2rem;
+  background: none;
+  border: 2px solid black;
+}
