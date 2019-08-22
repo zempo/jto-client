@@ -34,7 +34,7 @@ const PublicCard = (props) => {
           const commentsResult = await listCardComments.get(`/${item}`);
           const hasReacted = await listCardReacts.get(`/${item}`);
           if (hasReacted.data.length > 0) {
-            console.log("has reacted");
+            console.log("has reacted", hasReacted.data[0]);
             setHasReacted(hasReacted.data[0]);
           }
 
@@ -43,7 +43,7 @@ const PublicCard = (props) => {
           setCardAuthor(cardResult.data.user);
           setCardTheme(cardResult.data.theme);
           setComments(commentsResult.data);
-          console.log(hasReacted.data[0]);
+          console.log(hasReacted.data);
           // console.log(ThemeStyles[`${cardResult.data.theme}`]);
         } catch (err) {
           if (err.response.status === 401) {
@@ -73,11 +73,11 @@ const PublicCard = (props) => {
         {hasReacted.react_heart ? hasReacted.react_heart : "no heart"}
         <br />
         {hasReacted.react_share ? "yes share" : "no share"}
-        {hasReacted.length > 0 ? (
+        {(hasReacted.react_heart === undefined) && (hasReacted.react_share === undefined) ? (
           <PostReaction item={card.id} />
         ) : (
-          <ToggleReaction item={card.id} liked={hasReacted.react_heart} shared={hasReacted.react_share} />
-        )}
+            <ToggleReaction item={card.id} liked={hasReacted.react_heart} shared={hasReacted.react_share} />
+          )}
         {/* Current user has downloaded. {share ? "true" : "false"} */}
       </JtoSection>
       <JtoSection className="jto-comments">
