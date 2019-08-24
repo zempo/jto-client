@@ -6,6 +6,18 @@
   border: 1px solid black;
 }
 
+.active {
+  background: rgb(92, 194, 219);
+}
+
+.active-auth {
+  background: rgb(92, 219, 130);
+}
+
+.jto-nav-menu a {
+  text-decoration: none;
+}
+
 .jto-footer {
   display: flex;
   justify-content: center;

@@ -4,7 +4,8 @@ const Footer = () => {
   return (
     <footer className="jto-footer">
       {/* research copyright and create personal logo */}
-      <h2>jtO | Copyright 2019 | Developed by Solomon Zelenko</h2>
+      {/* create a table based on other websites */}
+      <h2>just the Occasion | By Solomon Zelenko</h2>
     </footer>
   );
 };

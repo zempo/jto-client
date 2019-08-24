@@ -1,9 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap");
+
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 h2 {
-    text-align: center;
+  text-align: center;
 }
 
 /* #modal {
@@ -12,17 +14,12 @@ h2 {
 } */
 
 .username {
-    /* style username */
+  /* style username */
 }
 
-.jto-landing {
-    text-align: center;
-}
-
-.active {
-    border: 2px solid blue;
-}
-
-.active-auth {
-    border: 2px solid green;
+.jto-landing,
+.jto-nav-menu,
+.jto-footer {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
 }

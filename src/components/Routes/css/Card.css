@@ -60,3 +60,7 @@ h3 {
   flex-direction: row;
   justify-content: center;
 }
+
+.jto-reactions button {
+  margin: 1% 3%;
+}

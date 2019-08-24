@@ -65,8 +65,8 @@ const PublicCard = (props) => {
         {<TimeStamp date={cardAuthor.date_created} />} Ago
       </h3>
       <JtoSection className="jto-card public-card" style={ThemeStyles[`${cardTheme}`].all}>
-        <CardPages card={card} themes={ThemeStyles} cardTheme={cardTheme} cardPg={cardPg} />
         <PaginateCardFaces currentPg={cardPg} setCurrentPg={setCardPg} />
+        <CardPages card={card} themes={ThemeStyles} cardTheme={cardTheme} cardPg={cardPg} />
       </JtoSection>
       <JtoSection className="jto-reactions">
         {hasReacted.react_heart === undefined && hasReacted.react_share === undefined ? (

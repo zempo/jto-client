@@ -55,25 +55,17 @@ export const PostReaction = ({ item }) => {
 
   return status === "inactive" ? (
     <>
-      <button className="heart" onClick={createAndSendHeart}>
-        {/* use css empty selector to style */}
-      </button>
-      <button className="share" onClick={createAndSendShare}>
-        {/* use css empty selector to style */}
-      </button>
+      <button className="heart" onClick={createAndSendHeart} />
+      <button className="share" onClick={createAndSendShare} />
       <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
     </>
   ) : (
     <>
       <button className="heart" onClick={updateHeart}>
-        {/* use css empty selector to style */}
-        {heart ? null : "off"}
-        toggle
+        {heart ? "liked" : null}
       </button>
       <button className="share" onClick={updateShare}>
-        {/* use css empty selector to style */}
-        toggle
-        {share ? "on" : "off"}
+        {share ? "bookmarked" : null}
       </button>
       <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
     </>
@@ -110,12 +102,10 @@ export const ToggleReaction = ({ item, liked, shared }) => {
   return (
     <>
       <button className="heart" onClick={updateHeart}>
-        {heart ? "." : null}
+        {heart ? "liked" : null}
       </button>
       <button className="share" onClick={updateShare}>
-        {/* use css empty selector to style */}
-        toggle
-        {share ? "on" : "off"}
+        {share ? "bookmarked" : null}
       </button>
       <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
     </>
