@@ -57,11 +57,9 @@ export const PostReaction = ({ item }) => {
     <>
       <button className="heart" onClick={createAndSendHeart}>
         {/* use css empty selector to style */}
-        create and send
       </button>
       <button className="share" onClick={createAndSendShare}>
         {/* use css empty selector to style */}
-        create and send
       </button>
       <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
     </>
@@ -69,7 +67,7 @@ export const PostReaction = ({ item }) => {
     <>
       <button className="heart" onClick={updateHeart}>
         {/* use css empty selector to style */}
-        {heart ? "on" : "off"}
+        {heart ? null : "off"}
         toggle
       </button>
       <button className="share" onClick={updateShare}>
@@ -112,9 +110,7 @@ export const ToggleReaction = ({ item, liked, shared }) => {
   return (
     <>
       <button className="heart" onClick={updateHeart}>
-        {/* use css empty selector to style */}
-        toggle
-        {heart ? "on" : "off"}
+        {heart ? "." : null}
       </button>
       <button className="share" onClick={updateShare}>
         {/* use css empty selector to style */}
