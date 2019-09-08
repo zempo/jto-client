@@ -1,11 +1,15 @@
 import React from "react";
 import Logo from "../../images/jto-logo.svg";
-import { AuthService } from "../../services/auth-service";
+// import { AuthService } from "../../services/auth-service";
+import { RevolvingWords } from '../Utils/Utils'
+import { useModal } from '../../hooks/use-modal'
+import Modal from '../../modals/Modal'
 
 const Landing = (props) => {
-  const handleRefresh = (e) => {
-    AuthService.postRefreshToken();
-  };
+  // const handleRefresh = (e) => {
+  //   AuthService.postRefreshToken();
+  // };
+  const { isShowing: isShowingDemo, toggle: toggleDemo } = useModal();
 
   return (
     <div className="jto-landing">
@@ -13,6 +17,13 @@ const Landing = (props) => {
       <img src={Logo} alt="jto-logo" width="100" height="100" />
       <section>
         <h3>Experience the Greeting Card Platform</h3>
+        <div className="revolving-header">
+          <RevolvingWords words={['Create', 'Update', 'Browse']} />
+          <p className="double-arrow">&#10231;</p>
+          <RevolvingWords words={['Publish', 'Download', 'Comment']} />
+          <p className="double-arrow">&#10231;</p>
+          <RevolvingWords words={['Share', 'Store', 'React']} />
+        </div>
         <p>
           [<em>placeholder for screenshot of the interface</em>]
         </p>
@@ -25,7 +36,13 @@ const Landing = (props) => {
         <p> It only takes a few clicks to create &#10231; publish &#10231; store.</p>
       </section>
       <section>
-        <h3>Fast &#10231; Personal &#10231; Easy</h3>
+        <div className="revolving-header">
+          <RevolvingWords words={['Quick', 'Clean', 'Adjust']} />
+          <p className="double-arrow">&#10231;</p>
+          <RevolvingWords words={['Personal', 'Accessible', 'Review']} />
+          <p className="double-arrow">&#10231;</p>
+          <RevolvingWords words={['Easy', 'Ready', 'Print']} />
+        </div>
         <p>
           [<em>placeholder for screenshot of card generation component</em>]
         </p>
@@ -34,12 +51,9 @@ const Landing = (props) => {
           With a wide variety of templates, we've made the process of sizing, layout, and printing a two-step process.{" "}
           <br /> Your card is ready to go.
         </p>
-
         <p>Please send us a "Thank You" card, if you get the chance? </p>
       </section>
       <section>
-        <h3>Protect &#10231; Update &#10231; Download</h3>
-
         <p>
           [<em>placeholder for screenshot of card update/delete component</em>]
         </p>
@@ -50,6 +64,8 @@ const Landing = (props) => {
       </section>
       <section>
         <h3>DEMO</h3>
+        <button onClick={toggleDemo}>Run Demo</button>
+        <Modal isShowing={isShowingDemo} hide={toggleDemo} action="demo" />
         <p>
           [<em>Demo is click to scroll</em>]
         </p>

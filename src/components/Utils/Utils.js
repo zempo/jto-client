@@ -420,3 +420,19 @@ export const EditThemesList = ({ current }) => {
     </>
   );
 };
+
+export const RevolvingWords = ({ words }) => {
+  return (<p className="word-column-wrapper">
+    <div className="word-column">
+      {words.map((word, i, words) => {
+        if (i === words.length) {
+          return (<span key={i}>{word}</span>)
+        }
+        return (<><span key={i}>{word}</span><br /></>)
+
+      }
+      )}
+    </div>
+  </p>
+  )
+}
