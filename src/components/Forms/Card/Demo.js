@@ -7,6 +7,7 @@ import {
 import { useForm } from '../../../hooks/get-files'
 import Lock from '../../../images/Lock'
 import { Required, Loader, ThemesList } from "../../Utils/Utils";
+import "../css/Forms.css";
 
 const Demo = ({ cancel }) => {
     const { values, files, errors, handleChange, reset } = useForm(
@@ -29,7 +30,8 @@ const Demo = ({ cancel }) => {
         }
     }, [errors]);
 
-    const handleSubmit = () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault()
         const { frontMessage, insideMessage, theme } = values
         console.log(frontMessage, insideMessage, theme)
     }
