@@ -117,6 +117,27 @@ const Demo = ({ cancel }) => {
             </form>
             <button onClick={cancel}>Cancel</button>
             {loading ? <Loader loading={true} /> : <Loader loading={false} />}
+            <div className="demo-bounds">
+                <div className="list-card-demo">
+                    <input type="checkbox" id={`demo-card-toggle-1`} className="demo-card-toggle" value="selected" />
+                    <label className="demo-card-container" htmlFor={`demo-card-toggle-1`}>
+                        <span className="demo-checkmark" />
+                        <div className="front-demo face-demo">
+                            <p>There seems to have been an error :(</p>
+                            <img src="https://picsum.photos/id/858/500/400?grayscale" alt="Our server appears to be down" />
+                        </div>
+                        <div className="inner-left-demo face-demo">
+                            <p>
+                                We're sorry for the inconvenience this might have caused you. We'll work to get our server running so
+                                that we might play our cards right.
+                </p>
+                        </div>
+                        <div className="inner-right-demo face-demo">
+                            <img src="https://picsum.photos/id/858/300/300" alt="Our server appears to be down" />
+                        </div>
+                    </label>
+                </div>
+            </div>
         </>
     );
 }
