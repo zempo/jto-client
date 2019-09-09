@@ -10,6 +10,7 @@ import { Required, Loader, ThemesList } from "../../Utils/Utils";
 import "../css/Forms.css";
 
 const Demo = ({ cancel }) => {
+    // eslint-disable-next-line
     const { values, files, errors, handleChange, reset } = useForm(
         { frontMessage: "", insideMessage: "", theme: "" },
         { 1: [], 3: [], 5: [] },
@@ -17,6 +18,7 @@ const Demo = ({ cancel }) => {
         { 1: validateFrontMessage, 2: "", 3: validateInsideMessage, 4: "", 5: validateTheme }
     );
     const [validReq, setValidReq] = useState(false);
+    // eslint-disable-next-line
     const [loading, setLoading] = useState(false);
     const frontMsgRef = useRef();
     const insideMsgRef = useRef();

@@ -18,7 +18,9 @@ function AddCard({ item, cancel }) {
     { 1: validateFrontMessage, 2: "", 3: validateInsideMessage, 4: "", 5: validateTheme }
   );
   // cloudinary call
+  // eslint-disable-next-line
   const [frontUrl, setFrontUrl] = useState("");
+  // eslint-disable-next-line
   const [insideUrl, setInsideUrl] = useState("");
   // references
   const [validReq, setValidReq] = useState(false);

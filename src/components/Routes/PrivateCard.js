@@ -2,19 +2,22 @@ import React, { useEffect, useState, useContext } from "react";
 // import { CardContext, CardContextProvider } from "../../contexts/CardContext";
 import { UserContext } from "../../contexts/UserContext";
 import { listUserCards } from "../../services/endpoints-service";
-import TokenService from "../../services/token-service";
 // create back-button
 import { JtoSection, TimeStamp, CardPages, PaginateCardFaces } from "../Utils/Utils";
 import { ThemeStyles } from "../Utils/Store/Themes";
 import "./css/Card.css";
 
 const Private = (props) => {
+  // eslint-disable-next-line
   const { value } = useContext(UserContext);
+  // eslint-disable-next-line
   const [cardId, setCardId] = useState(0);
   const [card, setCard] = useState({});
   const [cardTheme, setCardTheme] = useState("handwritten");
   const [cardPg, setCardPg] = useState(1);
+  // eslint-disable-next-line
   const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -45,6 +48,10 @@ const Private = (props) => {
 
   return (
     <>
+      <h3>
+        Created {" "}
+        {<TimeStamp date={card.date_created} />} ago
+      </h3>
       <JtoSection className="jto-card private-card" style={ThemeStyles[`${cardTheme}`].all}>
         {/* style={Object.assign({}, ThemeStyles[`${cardTheme}`].all, ThemeStyles[`${cardTheme}`].front) */}
         <CardPages card={card} themes={ThemeStyles} cardTheme={cardTheme} cardPg={cardPg} />

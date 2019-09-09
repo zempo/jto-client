@@ -10,6 +10,7 @@ export const CardsContextProvider = (props) => {
   const [searching, setSearching] = useState(false);
   const [searchCards, setSearchCards] = useState([]);
   const [currentSearchPg, setCurrentSearchPg] = useState(1);
+  // eslint-disable-next-line
   const [searchCardsPerPg, setSearchCardsPerPg] = useState(8);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);

@@ -62,7 +62,7 @@ const PublicCard = (props) => {
     <>
       <h3>
         Posted by <span className="username">{cardAuthor.user_name}</span>{" "}
-        {<TimeStamp date={cardAuthor.date_created} />} Ago
+        {<TimeStamp date={card.date_created} />} ago
       </h3>
       <JtoSection className="jto-card public-card" style={ThemeStyles[`${cardTheme}`].all}>
         <PaginateCardFaces currentPg={cardPg} setCurrentPg={setCardPg} />
@@ -72,8 +72,8 @@ const PublicCard = (props) => {
         {hasReacted.react_heart === undefined && hasReacted.react_share === undefined ? (
           <PostReaction item={card.id} />
         ) : (
-          <ToggleReaction item={card.id} liked={hasReacted.react_heart} shared={hasReacted.react_share} />
-        )}
+            <ToggleReaction item={card.id} liked={hasReacted.react_heart} shared={hasReacted.react_share} />
+          )}
         {/* Current user has downloaded. {share ? "true" : "false"} */}
       </JtoSection>
       <JtoSection className="jto-comments">

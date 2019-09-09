@@ -12,6 +12,7 @@ export const PostReaction = ({ item }) => {
 
   const createAndSendHeart = async () => {
     try {
+      // eslint-disable-next-line
       const createReact = await toggleLike.post(`/${item}`);
       setStatus("active");
       setHeart(true);
@@ -22,6 +23,7 @@ export const PostReaction = ({ item }) => {
 
   const createAndSendShare = async () => {
     try {
+      // eslint-disable-next-line
       const createReact = await toggleShare.post(`/${item}`);
       setStatus("active");
       setShare(true);
@@ -33,6 +35,7 @@ export const PostReaction = ({ item }) => {
 
   const updateHeart = async () => {
     try {
+      // eslint-disable-next-line
       const sentLike = await toggleLike.patch(`/${item}`);
       const readLike = await listCardReacts.get(`/${item}`);
       setHeart(readLike.data[0].react_heart);
@@ -43,6 +46,7 @@ export const PostReaction = ({ item }) => {
 
   const updateShare = async () => {
     try {
+      // eslint-disable-next-line
       const sentShare = await toggleShare.patch(`/${item}`);
       const readShare = await listCardReacts.get(`/${item}`);
 
@@ -60,16 +64,16 @@ export const PostReaction = ({ item }) => {
       <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
     </>
   ) : (
-    <>
-      <button className="heart" onClick={updateHeart}>
-        {heart ? "liked" : null}
-      </button>
-      <button className="share" onClick={updateShare}>
-        {share ? "bookmarked" : null}
-      </button>
-      <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
-    </>
-  );
+      <>
+        <button className="heart" onClick={updateHeart}>
+          {heart ? "liked" : null}
+        </button>
+        <button className="share" onClick={updateShare}>
+          {share ? "bookmarked" : null}
+        </button>
+        <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
+      </>
+    );
 };
 
 export const ToggleReaction = ({ item, liked, shared }) => {
@@ -79,6 +83,7 @@ export const ToggleReaction = ({ item, liked, shared }) => {
 
   const updateHeart = async () => {
     try {
+      // eslint-disable-next-line
       const sentLike = await toggleLike.patch(`/${item}`);
       const readLike = await listCardReacts.get(`/${item}`);
       setHeart(readLike.data[0].react_heart);
@@ -89,6 +94,7 @@ export const ToggleReaction = ({ item, liked, shared }) => {
 
   const updateShare = async () => {
     try {
+      // eslint-disable-next-line
       const sentShare = await toggleShare.patch(`/${item}`);
       const readShare = await listCardReacts.get(`/${item}`);
 

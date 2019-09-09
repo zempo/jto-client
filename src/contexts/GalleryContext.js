@@ -9,6 +9,7 @@ export const GalleryContextProvider = (props) => {
   const [cardsPerPg, setCardsPerPg] = useState(8);
   const [searchCards, setSearchCards] = useState([]);
   const [currentSearchPg, setCurrentSearchPg] = useState(1);
+  // eslint-disable-next-line
   const [searchCardsPerPg, setSearchCardsPerPg] = useState(8);
   const [searching, setSearching] = useState(false);
   const [loading, setLoading] = useState(false);

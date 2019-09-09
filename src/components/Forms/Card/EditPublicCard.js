@@ -17,6 +17,7 @@ import "../css/Forms.css";
 
 const EditPublicCard = ({ item, cancel }) => {
   const [card, setCard] = useState({});
+  // eslint-disable-next-line
   const [cardTheme, setCardTheme] = useState("");
   const { values, files, errors, handleChange, reset } = useForm(
     { frontMessage: "", insideMessage: "", theme: "" },
@@ -26,6 +27,7 @@ const EditPublicCard = ({ item, cancel }) => {
   );
   const [validReq, setValidReq] = useState(false);
   const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line
   const [error, setError] = useState(false);
   const [resMsg, setResMsg] = useState("");
   const [resStatus, setResStatus] = useState(0);
