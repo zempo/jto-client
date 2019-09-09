@@ -60,10 +60,13 @@ const PublicCard = (props) => {
 
   return (
     <>
-      <h3>
+      {card.date_modified == undefined ? (<h3>
         Posted by <span className="username">{cardAuthor.user_name}</span>{" "}
         {<TimeStamp date={card.date_created} />} ago
-      </h3>
+      </h3>) : <h3>
+          Posted by <span className="username">{cardAuthor.user_name}</span>{" "}
+          {<TimeStamp date={card.date_created} />} ago. <br /> (Edited {<TimeStamp date={card.date_modified} />} ago).
+        </h3>}
       <JtoSection className="jto-card public-card" style={ThemeStyles[`${cardTheme}`].all}>
         <PaginateCardFaces currentPg={cardPg} setCurrentPg={setCardPg} />
         <CardPages card={card} themes={ThemeStyles} cardTheme={cardTheme} cardPg={cardPg} />
