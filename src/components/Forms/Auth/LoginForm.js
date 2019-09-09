@@ -6,6 +6,7 @@ import { JtoNotification, Required } from "../../Utils/Utils";
 import "../css/Forms.css";
 
 const LoginForm = (props) => {
+  // eslint-disable-next-line
   const { values, errors, handleChange, reset } = useForm(
     { email: "", password: "" },
     { 1: [], 2: [] },

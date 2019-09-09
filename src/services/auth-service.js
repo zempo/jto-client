@@ -1,4 +1,4 @@
-import Config from "../config";
+// import Config from "../config";
 import TokenService from "./token-service";
 import IdleService from "./idle-service";
 import { login, register, refresh } from "./endpoints-service";

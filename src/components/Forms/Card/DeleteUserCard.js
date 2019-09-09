@@ -3,6 +3,7 @@ import { JtoNotification } from "../../Utils/Utils";
 import { deleteUserCard } from "../../../services/endpoints-service";
 
 const DeleteUserCard = ({ item, cancel }) => {
+  // eslint-disable-next-line
   const [error, setError] = useState(false);
   const [resMsg, setResMsg] = useState("");
   const [resStatus, setResStatus] = useState(0);

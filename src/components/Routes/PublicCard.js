@@ -4,7 +4,7 @@ import { UserContext } from "../../contexts/UserContext";
 import { listCards, listCardComments, listCardReacts } from "../../services/endpoints-service";
 // create nice back-button
 import { PostReaction, ToggleReaction } from "../Forms/Social/Reaction";
-import { JtoSection, Loader, DotMenuOption, TimeStamp, CardPages, PaginateCardFaces } from "../Utils/Utils";
+import { JtoSection, DotMenuOption, TimeStamp, CardPages, PaginateCardFaces } from "../Utils/Utils";
 import { ThemeStyles } from "../Utils/Store/Themes";
 import "./css/Card.css";
 
@@ -12,6 +12,7 @@ const PublicCard = (props) => {
   const {
     value: { user }
   } = useContext(UserContext);
+  // eslint-disable-next-line
   const [cardId, setCardId] = useState(0);
   const [card, setCard] = useState({});
   const [comments, setComments] = useState([]);
@@ -19,7 +20,9 @@ const PublicCard = (props) => {
   const [cardAuthor, setCardAuthor] = useState({});
   const [cardTheme, setCardTheme] = useState("handwritten");
   const [cardPg, setCardPg] = useState(1);
+  // eslint-disable-next-line
   const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -60,6 +63,7 @@ const PublicCard = (props) => {
 
   return (
     <>
+      {/* eslint-disable-next-line */}
       {card.date_modified == undefined ? (<h3>
         Posted by <span className="username">{cardAuthor.user_name}</span>{" "}
         {<TimeStamp date={card.date_created} />} ago

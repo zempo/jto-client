@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import {
     validateFrontMessage,
     validateTheme,
-    validateInsideMessage
+    validateInsideMessage 
 } from "../../../services/validation/card-validation";
 import { useForm } from '../../../hooks/get-files'
 import Lock from '../../../images/Lock'
@@ -119,7 +119,6 @@ const Demo = ({ cancel }) => {
             </form>
             <button onClick={cancel}>Cancel</button>
             {loading ? <Loader loading={true} /> : <Loader loading={false} />}
-            <div className="demo-bounds">
                 <div className="list-card-demo">
                     <input type="checkbox" id={`demo-card-toggle-1`} className="demo-card-toggle" value="selected" />
                     <label className="demo-card-container" htmlFor={`demo-card-toggle-1`}>
@@ -139,7 +138,6 @@ const Demo = ({ cancel }) => {
                         </div>
                     </label>
                 </div>
-            </div>
         </>
     );
 }

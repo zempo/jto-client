@@ -24,6 +24,7 @@ const Gallery = () => {
       lastSearchPg,
       searching,
       loading,
+  // eslint-disable-next-line
       error
     }
   } = useContext(GalleryContext);

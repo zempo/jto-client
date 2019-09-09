@@ -1,9 +1,11 @@
 import React, { createContext, useState, useEffect } from "react";
+// eslint-disable-next-line
 import { listCards } from "../services/endpoints-service";
 
 export const CardContext = createContext();
 
 export const CardContextProvider = (props) => {
+  // eslint-disable-next-line
   const [card, setCard] = useState({});
   const [id, setId] = useState(0);
   const [error, setError] = useState(false);
