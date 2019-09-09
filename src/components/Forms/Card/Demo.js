@@ -133,7 +133,7 @@ const Demo = ({ cancel }) => {
                 </p>
                         </div>
                         <div className="inner-right-demo face-demo">
-                            <img src="https://picsum.photos/id/858/300/300" alt="Our server appears to be down" />
+                            <img src="https://picsum.photos/id/858/500/500" alt="Our server appears to be down" />
                         </div>
                     </label>
                 </div>

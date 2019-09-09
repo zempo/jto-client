@@ -5,19 +5,21 @@ export const UserContext = createContext();
 
 export const UserContextProvider = (props) => {
   const [user, setUser] = useState({});
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(0);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getUser = async () => {
       setLoading(true);
+      setError(0)
       try {
         const result = await readUser.get("/");
 
         setLoading(false);
         setUser(result.data);
+        setError(0)
       } catch (err) {
-        setError(err);
+        setError(err.response.status);
         setLoading(false);
       }
     };

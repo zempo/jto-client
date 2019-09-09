@@ -47,6 +47,7 @@ class Nav extends Component {
   }
 
   render() {
+    let error = this.context.value.error
     return (
       <nav className="jto-nav-menu">
         <NavLink exact activeClassName="active" to="/">
@@ -61,7 +62,7 @@ class Nav extends Component {
         <NavLink exact activeClassName="active" to="/faq">
           <h3>Help & FAQs</h3>
         </NavLink>
-        {TokenService.hasAuthToken() ? this.renderLogoutLink() : this.renderLoginLink()}
+        {TokenService.hasAuthToken() && (error !== 401) ? this.renderLogoutLink() : this.renderLoginLink()}
       </nav>
     );
   }
