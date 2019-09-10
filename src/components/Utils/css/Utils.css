@@ -299,6 +299,8 @@ div[id="413"] {
     100% var(--footer-height), 100% 100%;
   background-position: -150% 0, var(--title-position), var(--pic-position), var(--footer-position), 0 0;
   background-repeat: no-repeat;
+  -o-animation: loading 1.5s infinite;
+  -moz-animation: loading 1.5s infinite;
   -webkit-animation: loading 1.5s infinite;
   animation: loading 1.5s infinite;
   animation-delay: 1.5s;
@@ -324,6 +326,24 @@ div[id="413"] {
   }
 }
 
+@-moz-keyframes loading {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes loading {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes loading {
   0% {
     opacity: 0;
@@ -335,91 +355,116 @@ div[id="413"] {
 
 .revolving-header {
   display: flex;
-flex-direction: row;
-justify-content: center; 
+  flex-direction: row;
+  justify-content: center;
 }
 
-.revolving-header .word-column-wrapper, .revolving-header .double-arrow {
-font-weight: bold;
-font: normal 20px/30px Montserrat, sans-serif;
+.revolving-header .word-column-wrapper,
+.revolving-header .double-arrow {
+  font-weight: bold;
+  font: normal 20px/30px Montserrat, sans-serif;
 }
 
-.word-column-wrapper, .double-arrow {
-display: flex;
-flex-direction: column;
-justify-content: center;
-font-weight: bold; 
+.word-column-wrapper,
+.double-arrow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: bold;
 }
 
 .word-column-wrapper {
-overflow: hidden;
-position: relative;
-height: 30px;
-top: 0;
+  overflow: hidden;
+  position: relative;
+  height: 30px;
+  top: 0;
 }
 
 .double-arrow {
-position: relative;
-height: 30px;
-/* float: left; */ 
-font-weight: bold;
-margin-right: 0.3em;
-top: -20px;
+  position: relative;
+  height: 30px;
+  /* float: left; */
+  font-weight: bold;
+  margin-right: 0.3em;
+  top: -20px;
 }
 
 .word-column span {
-font-weight: bold;
+  font-weight: bold;
 }
 
 .word-column {
-display: inline-block;
-text-align: center;
-padding-left: 1rem;
-padding-right: 1rem;
-position: relative;
-white-space: nowrap;
-top: 30px;
-left: 0;
+  display: inline-block;
+  text-align: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: relative;
+  white-space: nowrap;
+  top: 30px;
+  left: 0;
 
-
-/*animation*/
--webkit-animation:move 8s ease;
- -moz-animation:move 8s ease;
-  -ms-animation:move 8s ease; 
-   -o-animation:move 8s ease;
-      animation:move 8s ease;
-/*animation-iteration-count*/
--webkit-animation-iteration-count:infinite;
- -moz-animation-iteration-count:infinite;
-  -ms-animation-iteration-count:infinite;
-   -o-animation-iteration-count:infinite;
-      animation-iteration-count:infinite;
-/*animation-delay*/
--webkit-animation-delay:2s;
- -moz-animation-delay:2s;
-  -ms-animation-delay:2s;
-   -o-animation-delay:2s;
-      animation-delay:2s;
+  /*animation*/
+  -webkit-animation: move 8s ease;
+  -moz-animation: move 8s ease;
+  -ms-animation: move 8s ease;
+  -o-animation: move 8s ease;
+  animation: move 8s ease;
+  /*animation-iteration-count*/
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  /*animation-delay*/
+  -webkit-animation-delay: 2s;
+  -moz-animation-delay: 2s;
+  -ms-animation-delay: 2s;
+  -o-animation-delay: 2s;
+  animation-delay: 2s;
 }
 
-@-webkit-keyframes move{
-0%  { top: 30px; }
-33% { top: 0px; }
-66% { top: -30px; }
+@-webkit-keyframes move {
+  0% {
+    top: 30px;
+  }
+  33% {
+    top: 0px;
+  }
+  66% {
+    top: -30px;
+  }
 }
-@-moz-keyframes move{
-0%  { top: 30px; }
-33% { top: 0px; }
-66% { top: -30px; }
+@-moz-keyframes move {
+  0% {
+    top: 30px;
+  }
+  33% {
+    top: 0px;
+  }
+  66% {
+    top: -30px;
+  }
 }
-@-o-keyframes move{
-0%  { top: 30px; }
-33% { top: 0px; }
-66% { top: -30px; }
+@-o-keyframes move {
+  0% {
+    top: 30px;
+  }
+  33% {
+    top: 0px;
+  }
+  66% {
+    top: -30px;
+  }
 }
 
-@keyframes move{
-0%  { top: 30px; }
-33% { top: 0px; }
-66% { top: -30px; }
+@keyframes move {
+  0% {
+    top: 30px;
+  }
+  33% {
+    top: 0px;
+  }
+  66% {
+    top: -30px;
+  }
 }

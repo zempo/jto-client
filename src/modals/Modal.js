@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import AddCard from "../components/Forms/Card/AddCardForm";
-import Demo from '../components/Forms/Card/Demo'
+import Demo from "../components/Forms/Card/Demo";
 import Download from "../components/Forms/Download/Download";
 import DeleteCard from "../components/Forms/Card/DeleteCard";
 import DeleteUserCard from "../components/Forms/Card/DeleteUserCard";
@@ -17,7 +17,7 @@ const Modal = ({ item, action, isShowing, hide }) => {
   if (isShowing) {
     return ReactDOM.createPortal(
       <div onClick={hide} className="Modal">
-        <div onClick={(e) => e.stopPropagation()} className="Modal__inner">
+        <div onClick={(e) => e.stopPropagation()} className={`Modal__inner ${isShowing}`}>
           {action === "add-card" ? (
             <AddCard cancel={hide} />
           ) : action === "demo" ? (
@@ -37,8 +37,8 @@ const Modal = ({ item, action, isShowing, hide }) => {
           ) : action === "make-public" ? (
             <MakePublic item={item} cancel={hide} />
           ) : (
-                              "other modal"
-                            )}
+            "other modal"
+          )}
         </div>
       </div>,
       document.querySelector("#modal")
