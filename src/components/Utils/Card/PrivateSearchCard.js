@@ -4,8 +4,9 @@ import { useModal } from "../../../hooks/use-modal";
 import { MenuOption, ProcessMsg } from "../Utils";
 
 const PrivateSearchCard = ({ card }) => {
-  const { isShowing: isShowingDelete, toggle: toggleDelete } = useModal();
   const { isShowing: isShowingEdit, toggle: toggleEdit } = useModal();
+  const { isShowing: isShowingDelete, toggle: toggleDelete } = useModal();
+  const { isShowing: isShowingDownload, toggle: toggleDownload } = useModal();
   const { isShowing: isShowingPublic, toggle: togglePublic } = useModal();
 
   return (
@@ -33,7 +34,10 @@ const PrivateSearchCard = ({ card }) => {
             <i className="far fa-trash-alt" title="delete" onClick={toggleDelete} />
           </div>
           <Modal isShowing={isShowingDelete} hide={toggleDelete} item={card.id} action="delete-user-card" />
-          <MenuOption to="/download" text={<i className="fas fa-file-download" title="download" />} item_id={card.id} />
+          <div className="menu-option toggle-modal">
+            <i className="fas fa-file-download" title="download" onClick={toggleDownload} />
+          </div>
+          <Modal isShowing={isShowingDownload} hide={toggleDownload} item={card.id} action="download-card" />
           <div className="menu-option toggle-modal">
             <i className="fas fa-user-friends" title="publish" onClick={togglePublic} />
           </div>

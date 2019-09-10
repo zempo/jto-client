@@ -4,8 +4,9 @@ import Modal from "../../../modals/Modal";
 import { MenuOption, ProcessMsg } from "../Utils";
 
 const SearchCard = ({ card, admin, user_name }) => {
-  const { isShowing: isShowingDelete, toggle: toggleDelete } = useModal();
   const { isShowing: isShowingEdit, toggle: toggleEdit } = useModal();
+  const { isShowing: isShowingDelete, toggle: toggleDelete } = useModal();
+  const { isShowing: isShowingDownload, toggle: toggleDownload } = useModal();
   const { isShowing: isShowingPrivate, toggle: togglePrivate } = useModal();
 
   return (
@@ -39,7 +40,10 @@ const SearchCard = ({ card, admin, user_name }) => {
             </div>
           ) : null}
           <Modal isShowing={isShowingDelete} hide={toggleDelete} item={card.id} action="delete-card" />
-          <MenuOption to="/download" text={<i className="fas fa-file-download" title="download" />} item_id={card.id} />
+          <div className="menu-option toggle-modal">
+            <i className="fas fa-file-download" title="download" onClick={toggleDownload} />
+          </div>
+          <Modal isShowing={isShowingDownload} hide={toggleDownload} item={card.id} action="download-card" />
           {card.user.user_name === user_name ? (
             <div className="menu-option toggle-modal">
               <i className="fas fa-user-lock" title="make private" onClick={togglePrivate} />
