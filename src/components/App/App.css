@@ -31,13 +31,13 @@ h2 {
   height: 1em;
   line-height: 1em;
   border-radius: 10%;
-  background-image: linear-gradient(to right, gold,orange);
+  background-image: linear-gradient(to right, gold, orange);
   position: relative;
   text-align: center;
-  }
+}
 
 .lock::before {
-  content: '';
+  content: "";
   display: block;
   width: 0.875em;
   height: 0.75em;
@@ -61,7 +61,7 @@ h2 {
 }
 
 .key-hole::before {
-  content: '';
+  content: "";
   display: block;
   width: 0;
   height: 0;
