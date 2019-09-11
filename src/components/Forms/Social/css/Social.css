@@ -10,21 +10,22 @@
 }
 
 .beat {
-  -o-animation: heartBeat 0.6s;
-  -moz-animation: heartBeat 0.6s;
-  -webkit-animation: heartBeat 0.6s;
-  animation: heartBeat 0.6s;
+  -o-animation: heartBeat 0.3s;
+  -moz-animation: heartBeat 0.3s;
+  -webkit-animation: heartBeat 0.3s;
+  animation: heartBeat 0.3s;
 }
 
 .heart:empty::before,
 .heart:empty::after {
   /* rgb(177, 30, 74) */
   background: white;
-  border: 2.5px solid #262626;
+  border: 1px solid #5c6274;
 }
 
 .heart:empty::after {
-  left: 106%;
+  top: 2%;
+  left: 104.8%;
 }
 
 .heart:before,
@@ -37,20 +38,20 @@
   height: 100%;
   border-radius: 47% 47% 0 0;
   background: rgb(255, 92, 116);
-  border: 2.5px solid rgb(255, 92, 116);
+  border: 1px solid rgb(255, 92, 116);
 }
 
 .heart:after {
-  top: 0;
-  left: 105%;
+  top: 2%;
+  left: 104.8%;
   border-right: none !important;
   border-bottom: none !important;
   -webkit-transform-origin: 0% 100%;
   -ms-transform-origin: 0% 100%;
   transform-origin: 0% 100%;
-  -webkit-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  transform: rotate(-46.8deg);
+  -webkit-transform: rotate(-47.1deg);
+  -ms-transform: rotate(-47.1deg);
+  transform: rotate(-47.1deg);
 }
 
 .heart:before {
@@ -62,6 +63,23 @@
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.jto-reactions .far,
+.jto-reactions .fas {
+  font-size: 3rem;
+}
+
+.jto-reactions .fas span {
+  font-size: 0;
+}
+
+.jto-reactions .fas:empty {
+  color: rgb(47, 58, 68, 0.4);
+}
+
+.jto-reactions .fas {
+  color: rgb(47, 58, 68);
 }
 
 .share {

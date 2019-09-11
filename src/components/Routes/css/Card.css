@@ -61,6 +61,8 @@ h3 {
   justify-content: center;
 }
 
-.jto-reactions button {
+.jto-reactions button,
+.jto-reactions .far,
+.jto-reactions .fas {
   margin: 1rem 3rem;
 }

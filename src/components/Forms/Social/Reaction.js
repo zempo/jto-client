@@ -60,7 +60,10 @@ export const PostReaction = ({ item }) => {
   return status === "inactive" ? (
     <>
       <button className="heart" onClick={createAndSendHeart} />
-      <button className="share" onClick={createAndSendShare} />
+      <i class="far fa-comment-alt"></i>
+      <i className="fas fa-file-download" title="download" onClick={createAndSendShare}>
+        {share ? "bookmarked" : null}
+      </i>
       <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
     </>
   ) : (
@@ -68,9 +71,10 @@ export const PostReaction = ({ item }) => {
       <button className="heart" onClick={updateHeart}>
         {heart ? "liked" : null}
       </button>
-      <button className="share" onClick={updateShare}>
-        {share ? "bookmarked" : null}
-      </button>
+      <i class="far fa-comment-alt"></i>
+      <i className="fas fa-file-download" title="download" onClick={updateShare}>
+        <span>{share ? "bookmarked" : null}</span>
+      </i>
       <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
     </>
   );
@@ -113,9 +117,10 @@ export const ToggleReaction = ({ item, liked, shared }) => {
       <button className={`heart ${pulse ? "beat" : null}`} onClick={updateHeart}>
         {heart ? "liked" : null}
       </button>
-      <button className="share" onClick={updateShare}>
-        {share ? "bookmarked" : null}
-      </button>
+      <i class="far fa-comment-alt"></i>
+      <i className="fas fa-file-download" title="download" onClick={updateShare}>
+        <span>{share ? "bookmarked" : null}</span>
+      </i>
       <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
     </>
   );
