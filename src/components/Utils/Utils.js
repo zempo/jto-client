@@ -249,8 +249,8 @@ export const AddBtn = () => {
   const { isShowing: isShowingAdd, toggle: toggleAdd } = useModal();
   return (
     <>
-      <div className="btn btn-add">
-        <i className="fas fa-plus fa-3x" title="add card" onClick={toggleAdd} />
+      <div className="btn btn-add" onClick={toggleAdd}>
+        <i className="fas fa-plus fa-3x" title="add card" />
       </div>
       <Modal isShowing={isShowingAdd} hide={toggleAdd} action="add-card" />
     </>
@@ -422,17 +422,21 @@ export const EditThemesList = ({ current }) => {
 };
 
 export const RevolvingWords = ({ words }) => {
-  return (<div className="word-column-wrapper">
-    <div className="word-column">
-      {words.map((word, i, words) => {
-        if (i === words.length) {
-          return (<span key={i}>{word}</span>)
-        }
-        return (<div key={i}><span>{word}</span><br /></div>)
-
-      }
-      )}
+  return (
+    <div className="word-column-wrapper">
+      <div className="word-column">
+        {words.map((word, i, words) => {
+          if (i === words.length) {
+            return <span key={i}>{word}</span>;
+          }
+          return (
+            <div key={i}>
+              <span>{word}</span>
+              <br />
+            </div>
+          );
+        })}
+      </div>
     </div>
-  </div>
-  )
-}
+  );
+};

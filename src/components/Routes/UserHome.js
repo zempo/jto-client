@@ -10,7 +10,7 @@ const UserHome = () => {
   } = useContext(UserContext);
 
   return (
-    <JtoSection className="jto-page home">
+    <JtoSection className="jto-home">
       <h1>Welcome, {user.full_name}</h1>
       <CardsProvider>
         <PrivateCards />
