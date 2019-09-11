@@ -2,6 +2,7 @@ import React from "react";
 import Modal from "../../../modals/Modal";
 import { useModal } from "../../../hooks/use-modal";
 import { MenuOption, ProcessMsg } from "../Utils";
+import { ThemeStyles } from "../Store/Themes";
 
 const PrivateSearchCard = ({ card }) => {
   const { isShowing: isShowingEdit, toggle: toggleEdit } = useModal();
@@ -12,7 +13,11 @@ const PrivateSearchCard = ({ card }) => {
   return (
     <div className="jto-card list-card">
       <input type="checkbox" id={`card-toggle-${card.id}`} className="card-toggle" value="selected" />
-      <label className="card-container" htmlFor={`card-toggle-${card.id}`}>
+      <label
+        className="card-container"
+        htmlFor={`card-toggle-${card.id}`}
+        style={card.theme ? ThemeStyles[`${card.theme}`].all : null}
+      >
         <span className="checkmark" />
         <div className="front face">
           <p>{ProcessMsg(card.front_message, 30)}</p>
