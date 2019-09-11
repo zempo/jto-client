@@ -10,7 +10,7 @@ export const PostReaction = ({ item }) => {
   const [share, setShare] = useState(false);
   const { isShowing: isShowingDownload, toggle: toggleDownload } = useModal();
 
-  const createAndSendHeart = async () => {
+  const createAndSendHeart = async (e) => {
     try {
       // eslint-disable-next-line
       const createReact = await toggleLike.post(`/${item}`);
@@ -33,7 +33,7 @@ export const PostReaction = ({ item }) => {
     }
   };
 
-  const updateHeart = async () => {
+  const updateHeart = async (e) => {
     try {
       // eslint-disable-next-line
       const sentLike = await toggleLike.patch(`/${item}`);
@@ -64,28 +64,31 @@ export const PostReaction = ({ item }) => {
       <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
     </>
   ) : (
-      <>
-        <button className="heart" onClick={updateHeart}>
-          {heart ? "liked" : null}
-        </button>
-        <button className="share" onClick={updateShare}>
-          {share ? "bookmarked" : null}
-        </button>
-        <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
-      </>
-    );
+    <>
+      <button className="heart" onClick={updateHeart}>
+        {heart ? "liked" : null}
+      </button>
+      <button className="share" onClick={updateShare}>
+        {share ? "bookmarked" : null}
+      </button>
+      <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
+    </>
+  );
 };
 
 export const ToggleReaction = ({ item, liked, shared }) => {
+  const [pulse, setPulse] = useState(false);
   const [heart, setHeart] = useState(liked);
   const [share, setShare] = useState(shared);
   const { isShowing: isShowingDownload, toggle: toggleDownload } = useModal();
 
-  const updateHeart = async () => {
+  const updateHeart = async (e) => {
+    setPulse(false);
     try {
       // eslint-disable-next-line
       const sentLike = await toggleLike.patch(`/${item}`);
       const readLike = await listCardReacts.get(`/${item}`);
+      setPulse(true);
       setHeart(readLike.data[0].react_heart);
     } catch (error) {
       console.log(error);
@@ -107,7 +110,7 @@ export const ToggleReaction = ({ item, liked, shared }) => {
 
   return (
     <>
-      <button className="heart" onClick={updateHeart}>
+      <button className={`heart ${pulse ? "beat" : null}`} onClick={updateHeart}>
         {heart ? "liked" : null}
       </button>
       <button className="share" onClick={updateShare}>
