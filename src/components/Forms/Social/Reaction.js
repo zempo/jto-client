@@ -60,24 +60,24 @@ export const PostReaction = ({ item }) => {
   return status === "inactive" ? (
     <>
       <button className="heart" onClick={createAndSendHeart} />
-      <i class="far fa-comment-alt"></i>
+      <i className="far fa-comment-alt"></i>
       <i className="fas fa-file-download" title="download" onClick={createAndSendShare}>
         {share ? "bookmarked" : null}
       </i>
       <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
     </>
   ) : (
-    <>
-      <button className="heart" onClick={updateHeart}>
-        {heart ? "liked" : null}
-      </button>
-      <i class="far fa-comment-alt"></i>
-      <i className="fas fa-file-download" title="download" onClick={updateShare}>
-        <span>{share ? "bookmarked" : null}</span>
-      </i>
-      <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
-    </>
-  );
+      <>
+        <button className="heart" onClick={updateHeart}>
+          {heart ? "liked" : null}
+        </button>
+        <i className="far fa-comment-alt"></i>
+        <i className="fas fa-file-download" title="download" onClick={updateShare}>
+          <span>{share ? "bookmarked" : null}</span>
+        </i>
+        <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
+      </>
+    );
 };
 
 export const ToggleReaction = ({ item, liked, shared }) => {
@@ -117,7 +117,7 @@ export const ToggleReaction = ({ item, liked, shared }) => {
       <button className={`heart ${pulse ? "beat" : null}`} onClick={updateHeart}>
         {heart ? "liked" : null}
       </button>
-      <i class="far fa-comment-alt"></i>
+      <i className="far fa-comment-alt"></i>
       <i className="fas fa-file-download" title="download" onClick={updateShare}>
         <span>{share ? "bookmarked" : null}</span>
       </i>

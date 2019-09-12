@@ -40,7 +40,11 @@ export const AuthService = {
         return res.data;
       })
       .catch((err) => {
-        console.log("refresh token error", err);
+        // clear the local storage if the refresh doesn't work!
+        TokenService.clearAuthToken()
+        TokenService.clearCallbackBeforeExpiry();
+        IdleService.unRegisterIdleResets();
+        console.log("Your session has expired. Please log back in.", err);
         console.error(err);
       });
   }
