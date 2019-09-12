@@ -67,17 +67,17 @@ export const PostReaction = ({ item }) => {
       <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
     </>
   ) : (
-      <>
-        <button className="heart" onClick={updateHeart}>
-          {heart ? "liked" : null}
-        </button>
-        <i className="far fa-comment-alt"></i>
-        <i className="fas fa-file-download" title="download" onClick={updateShare}>
-          <span>{share ? "bookmarked" : null}</span>
-        </i>
-        <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
-      </>
-    );
+    <>
+      <button className="heart" onClick={updateHeart}>
+        {heart ? "liked" : null}
+      </button>
+      <i className="far fa-comment-alt"></i>
+      <i className="fas fa-file-download" title="download" onClick={updateShare}>
+        <span>{share ? "bookmarked" : null}</span>
+      </i>
+      <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
+    </>
+  );
 };
 
 export const ToggleReaction = ({ item, liked, shared }) => {
@@ -117,6 +117,9 @@ export const ToggleReaction = ({ item, liked, shared }) => {
       <button className={`heart ${pulse ? "beat" : null}`} onClick={updateHeart}>
         {heart ? "liked" : null}
       </button>
+      <i className={`fas fa-heart ${pulse ? "beat" : null}`} title="heart" onClick={updateHeart}>
+        {heart ? <span>liked</span> : null}
+      </i>
       <i className="far fa-comment-alt"></i>
       <i className="fas fa-file-download" title="download" onClick={updateShare}>
         <span>{share ? "bookmarked" : null}</span>
