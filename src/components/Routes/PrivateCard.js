@@ -32,7 +32,6 @@ const Private = (props) => {
           setLoading(false);
           setCard(cardResult.data[0]);
           setCardTheme(cardResult.data[0].theme);
-          console.log(cardResult.data[0]);
         } catch (err) {
           if (err.response.status === 401) {
             setLoading(false);
@@ -48,10 +47,7 @@ const Private = (props) => {
 
   return (
     <>
-      <h3>
-        Created {" "}
-        {<TimeStamp date={card.date_created} />} ago
-      </h3>
+      <h3>Created {<TimeStamp date={card.date_created} />} ago</h3>
       <JtoSection className="jto-card private-card" style={ThemeStyles[`${cardTheme}`].all}>
         {/* style={Object.assign({}, ThemeStyles[`${cardTheme}`].all, ThemeStyles[`${cardTheme}`].front) */}
         <CardPages card={card} themes={ThemeStyles} cardTheme={cardTheme} cardPg={cardPg} />
