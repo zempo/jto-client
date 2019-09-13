@@ -106,7 +106,7 @@ const EditCard = ({ item, cancel }) => {
       <form className="jto-form add-card-form" onSubmit={handleSubmit}>
         {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
         <fieldset>
-          <label htmlFor="frontMessage">Did the Occasion Change?</label>
+          <label htmlFor="frontMessage">Did Your Occasion Change?</label>
           <ul>
             {errors["1"].map((err, i) => (
               <li key={i}>{err}</li>

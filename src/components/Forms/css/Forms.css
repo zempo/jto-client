@@ -11,7 +11,6 @@
 form,
 .jto-privacy {
   text-align: center;
-  width: 100%;
 }
 
 .frontMessage {
@@ -19,7 +18,7 @@ form,
 }
 
 form button,
-.jto-privacy button {
+.modal-btn {
   width: 100%;
 }
 

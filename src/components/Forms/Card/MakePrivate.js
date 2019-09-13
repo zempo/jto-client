@@ -26,14 +26,18 @@ const MakePrivate = ({ item, cancel }) => {
 
   return (
     <div className="jto-privacy">
-      <h1>Are you sure you want to make your Occasion Private?</h1>
+      <h2>Are you sure you want to make your Occasion Private?</h2>
       <p>
         Other users won't be able to view your occasion. <br />
         However, you can bring your occasion back to the Gallery anytime!
       </p>
       {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
-      <button onClick={handlePrivacy}>Make Occasion Private</button>
-      <button onClick={cancel}>Cancel</button>
+      <button className="modal-btn" onClick={handlePrivacy}>
+        Make Occasion Private
+      </button>
+      <button className="modal-btn" onClick={cancel}>
+        Cancel
+      </button>
       <button className="close-modal" onClick={cancel}>
         X
       </button>

@@ -26,14 +26,18 @@ const MakePublic = ({ item, cancel }) => {
 
   return (
     <div className="jto-privacy">
-      <h1>Are you ready to Publish your Occasion?</h1>
+      <h2>Are you ready to Publish your Occasion?</h2>
       <p>
         Once your publish your occasion, other users will be able see it. <br />
         However, you can remove your occasion from the gallery anytime you wish!
       </p>
       {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
-      <button onClick={handlePrivacy}>Make Occasion Public</button>
-      <button onClick={cancel}>Cancel</button>
+      <button className="modal-btn" onClick={handlePrivacy}>
+        Make Occasion Public
+      </button>
+      <button className="modal-btn" onClick={cancel}>
+        Cancel
+      </button>
       <button className="close-modal" onClick={cancel}>
         X
       </button>
