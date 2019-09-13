@@ -13,7 +13,7 @@ const UserHome = () => {
   return (
     <JtoSection className="jto-home">
       <Fade>
-        <h1>Hi, {firstName(fullName)}!</h1>
+        <h1>Hello, {firstName(fullName)}</h1>
       </Fade>
       <CardsProvider>
         <PrivateCards />

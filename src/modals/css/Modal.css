@@ -50,6 +50,18 @@ body {
   -webkit-transition: all 0.3s ease-out;
 }
 
+.Modal__inner .close-modal:active {
+  background: rgb(47, 58, 68);
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  -o-animation: pressDown 0.6s;
+  -moz-animation: pressDown 0.6s;
+  -webkit-animation: pressDown 0.6s;
+  animation: pressDown 0.6s;
+}
+
 .Modal__inner .close-modal {
   background: rgba(47, 58, 68, 0.6);
   color: white;
@@ -111,63 +123,53 @@ body {
   }
 }
 
-/* @-webkit-keyframes zoomOut {
-  from {
-    opacity: 1;
+@-webkit-keyframes pressDown {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
   }
-
   50% {
-    opacity: 0;
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
   }
-
-  to {
-    opacity: 0;
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
   }
 }
 
-@-moz-keyframes zoomOut {
-  from {
-    opacity: 1;
+@-moz-keyframes pressDown {
+  0% {
+    -moz-transform: scale(1);
   }
-
   50% {
-    opacity: 0;
-    -moz-transform: scale3d(0.3, 0.3, 0.3);
-    transform: scale3d(0.3, 0.3, 0.3);
+    -moz-transform: scale(0.9);
   }
-
-  to {
-    opacity: 0;
+  100% {
+    -moz-transform: scale(1);
   }
 }
 
-@-o-keyframes zoomOut {
-  from {
-    opacity: 1;
+@-o-keyframes pressDown {
+  0% {
+    -o-transform: scale(1);
   }
-
   50% {
-    opacity: 0;
-    -o-transform: scale3d(0.3, 0.3, 0.3);
+    -o-transform: scale(0.9);
   }
-
-  to {
-    opacity: 0;
+  100% {
+    -o-transform: scale(1);
   }
 }
 
-@keyframes zoomOut {
-  from {
-    opacity: 1;
+@keyframes pressDown {
+  0% {
+    transform: scale(1);
   }
-
   50% {
-    opacity: 0;
-    transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale(0.9);
   }
-
-  to {
-    opacity: 0;
+  100% {
+    transform: scale(1);
   }
-} */
+}
