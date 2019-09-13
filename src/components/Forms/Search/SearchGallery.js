@@ -42,7 +42,7 @@ const SearchGallery = () => {
 
   return (
     <form className="jto-form search-form" onSubmit={handleSubmit}>
-      <h1>Explore</h1>
+      <h1>Explore.</h1>
       <fieldset className="searchTerm">
         <input
           type="text"

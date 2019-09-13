@@ -6,12 +6,12 @@ import PrivateCards from "./PrivateCards";
 
 const UserHome = () => {
   const {
-    value: { user }
+    value: { fullName, firstName }
   } = useContext(UserContext);
 
   return (
     <JtoSection className="jto-home">
-      <h1>Welcome, {user.full_name}</h1>
+      <h1>Hi, {firstName(fullName)}!</h1>
       <CardsProvider>
         <PrivateCards />
       </CardsProvider>
