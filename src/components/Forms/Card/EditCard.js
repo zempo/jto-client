@@ -106,7 +106,7 @@ const EditCard = ({ item, cancel }) => {
       <form className="jto-form add-card-form" onSubmit={handleSubmit}>
         {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
         <fieldset>
-          <label htmlFor="frontMessage">Want to Change the Occasion?</label>
+          <label htmlFor="frontMessage">Did the Occasion Change?</label>
           <ul>
             {errors["1"].map((err, i) => (
               <li key={i}>{err}</li>
@@ -121,7 +121,8 @@ const EditCard = ({ item, cancel }) => {
             defaultValue={card.front_message}
           />
           <br />
-          <label htmlFor="frontImage">Want a new Cover?</label>
+          <br />
+          <label htmlFor="frontImage">New Front Pic?</label>
           <br />
           <input
             type="file"
@@ -131,7 +132,8 @@ const EditCard = ({ item, cancel }) => {
             onChange={handleChange}
           />
           <br />
-          <label htmlFor="insideMessage">Want to change the Inside?</label>
+          <br />
+          <label htmlFor="insideMessage">New Message Inside?</label>
           <ul>
             {errors["3"].map((err, i) => (
               <li key={i}>{err}</li>
@@ -145,9 +147,13 @@ const EditCard = ({ item, cancel }) => {
             defaultValue={card.inside_message}
           />
           <br />
-          <label htmlFor="frontImage">Want a new inside picture?</label>
+          <br />
+          <label htmlFor="frontImage">New Inside Pic?</label>
           <br />
           <input type="file" placeholder="choose file" name="insideImage" id={4} onChange={handleChange} />
+          <br />
+          <br />
+          <label htmlFor="themes">New Font?</label>
           <br />
           <select
             className="themes"
@@ -158,7 +164,7 @@ const EditCard = ({ item, cancel }) => {
             onChange={handleChange}
           >
             <option value="" disabled>
-              Want a new font?
+              New Font?
             </option>
             <EditThemesList current={card.theme} />
           </select>

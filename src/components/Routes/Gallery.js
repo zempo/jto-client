@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import Fade from "react-reveal/Fade";
 import { GalleryContext } from "../../contexts/GalleryContext";
 import { UserContext } from "../../contexts/UserContext";
 import { JtoSection, PaginateCards, SkeletonLoader } from "../Utils/Utils";
@@ -24,7 +25,7 @@ const Gallery = () => {
       lastSearchPg,
       searching,
       loading,
-  // eslint-disable-next-line
+      // eslint-disable-next-line
       error
     }
   } = useContext(GalleryContext);
@@ -32,6 +33,9 @@ const Gallery = () => {
 
   return (
     <>
+      <Fade>
+        <h1>Gallery</h1>
+      </Fade>
       <SearchGallery cards={cards} />
       {!searching ? (
         <JtoSection className="cards-counter">

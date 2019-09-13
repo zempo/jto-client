@@ -1,4 +1,6 @@
 import React from "react";
+import Fade from "react-reveal/Fade";
+import LightSpeed from "react-reveal/LightSpeed";
 import Logo from "../../images/jto-logo-main.svg";
 // import { AuthService } from "../../services/auth-service";
 import { RevolvingWords } from "../Utils/Utils";
@@ -13,17 +15,23 @@ const Landing = (props) => {
 
   return (
     <div className="jto-landing">
-      <h1>just the Occasion.</h1>
-      <img className="main-logo" src={Logo} alt="jto-logo" />
+      <Fade>
+        <h1>just the Occasion.</h1>
+      </Fade>
+      <Fade bottom>
+        <h2>The Greeting Card Platform.</h2>
+      </Fade>
+      <LightSpeed left>
+        <img className="main-logo" src={Logo} alt="jto-logo" />
+      </LightSpeed>
+      <div className="revolving-header">
+        <RevolvingWords words={["Create", "Update", "Browse"]} />
+        <p className="double-arrow">&#10231;</p>
+        <RevolvingWords words={["Publish", "Download", "Comment"]} />
+        <p className="double-arrow">&#10231;</p>
+        <RevolvingWords words={["Share", "Store", "React"]} />
+      </div>
       <section>
-        <h3>Experience the Greeting Card Platform</h3>
-        <div className="revolving-header">
-          <RevolvingWords words={["Create", "Update", "Browse"]} />
-          <p className="double-arrow">&#10231;</p>
-          <RevolvingWords words={["Publish", "Download", "Comment"]} />
-          <p className="double-arrow">&#10231;</p>
-          <RevolvingWords words={["Share", "Store", "React"]} />
-        </div>
         <p>
           [<em>placeholder for screenshot of the interface</em>]
         </p>

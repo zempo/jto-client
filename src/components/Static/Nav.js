@@ -63,7 +63,7 @@ class Nav extends Component {
         <NavLink exact activeClassName="active" to="/private">
           <h3>My Occasions</h3>
         </NavLink>
-        <NavLink exact activeClassName="active" to="/faq">
+        <NavLink exact activeClassName="active" to="/support">
           <h3>Help & FAQs</h3>
         </NavLink>
         {TokenService.hasAuthToken() && error !== 401 ? this.renderLogoutLink() : this.renderLoginLink()}

@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import Fade from "react-reveal/Fade";
 import { UserContext } from "../../contexts/UserContext";
 import { CardsContextProvider as CardsProvider } from "../../contexts/CardsContext";
 import { JtoSection } from "../Utils/Utils";
@@ -11,7 +12,9 @@ const UserHome = () => {
 
   return (
     <JtoSection className="jto-home">
-      <h1>Hi, {firstName(fullName)}!</h1>
+      <Fade>
+        <h1>Hi, {firstName(fullName)}!</h1>
+      </Fade>
       <CardsProvider>
         <PrivateCards />
       </CardsProvider>

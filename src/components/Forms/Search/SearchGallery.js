@@ -1,4 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
+import Fade from "react-reveal/Fade";
 import { useForm } from "../../../hooks/get-files";
 import { GalleryContext } from "../../../contexts/GalleryContext";
 import { listCards, listReactions } from "../../../services/endpoints-service";
@@ -42,7 +43,9 @@ const SearchGallery = () => {
 
   return (
     <form className="jto-form search-form" onSubmit={handleSubmit}>
-      <h1>just the Occasion.</h1>
+      <Fade bottom>
+        <h2>Explore the Gallery.</h2>
+      </Fade>
       <fieldset className="searchTerm">
         <input
           type="text"

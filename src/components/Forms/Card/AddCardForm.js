@@ -106,15 +106,14 @@ function AddCard({ item, cancel }) {
           <br />
           <br />
           <label htmlFor="frontImage">
-            Want a picture on the front? <span className="met">Optional</span>
+            Pic on the front? <span className="met">Optional</span>
           </label>
           <br />
           <input type="file" placeholder="Pick Img" name="frontImage" id={2} onChange={handleChange} />
           <br />
           <br />
           <label htmlFor="insideMessage">
-            <Required met={values.insideMessage.length === 0 ? false : true} />
-            What would you like the inside to say?
+            <Required met={values.insideMessage.length === 0 ? false : true} />A Message Inside?
           </label>
           <ul>
             {errors["3"].map((err, i) => (
@@ -132,7 +131,7 @@ function AddCard({ item, cancel }) {
           <br />
           <br />
           <label htmlFor="frontImage">
-            Want a Picture Inside? <span className="met">Optional</span>
+            Pic on the Inside? <span className="met">Optional</span>
           </label>{" "}
           <br />
           <input type="file" placeholder="Pick Img" name="insideImage" id={4} onChange={handleChange} />
