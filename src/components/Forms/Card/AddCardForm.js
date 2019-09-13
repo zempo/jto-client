@@ -104,18 +104,17 @@ function AddCard({ item, cancel }) {
             value={values.frontMessage}
           />
           <br />
-          <label htmlFor="frontImage">Does your Occasion need a Cover Image?</label>
-          <input
-            type="file"
-            placeholder="URL for image that can be stretched/shrunk to 400px width and 500px height"
-            name="frontImage"
-            id={2}
-            onChange={handleChange}
-          />
+          <br />
+          <label htmlFor="frontImage">
+            Want a picture on the front? <span className="met">Optional</span>
+          </label>
+          <br />
+          <input type="file" placeholder="Pick Img" name="frontImage" id={2} onChange={handleChange} />
+          <br />
           <br />
           <label htmlFor="insideMessage">
             <Required met={values.insideMessage.length === 0 ? false : true} />
-            What do you want to say inside the card?
+            What would you like the inside to say?
           </label>
           <ul>
             {errors["3"].map((err, i) => (
@@ -131,8 +130,13 @@ function AddCard({ item, cancel }) {
             value={values.insideMessage}
           />
           <br />
-          <label htmlFor="frontImage">Do you want a picture inside the card?</label>
-          <input type="file" placeholder="choose file" name="insideImage" id={4} onChange={handleChange} />
+          <br />
+          <label htmlFor="frontImage">
+            Want a Picture Inside? <span className="met">Optional</span>
+          </label>{" "}
+          <br />
+          <input type="file" placeholder="Pick Img" name="insideImage" id={4} onChange={handleChange} />
+          <br />
           <br />
           <Required met={values.theme.length === 0 ? false : true} />
           <select
@@ -145,7 +149,7 @@ function AddCard({ item, cancel }) {
             required
           >
             <option value="" disabled>
-              Please Choose Font...
+              Font?
             </option>
             <ThemesList />
           </select>
@@ -162,7 +166,9 @@ function AddCard({ item, cancel }) {
           Create Occasion
         </button>
       </form>
-      <button onClick={cancel}>Cancel</button>
+      <button className="close-modal" onClick={cancel}>
+        X
+      </button>
       {loading ? <Loader loading={true} /> : <Loader loading={false} />}
     </>
   );

@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+h1 {
+  font-size: 5rem;
+}
+
 h1,
 h2 {
   text-align: center;
@@ -13,6 +17,11 @@ h2 {
     height: 100%;
     width: 100%;
 } */
+
+.main-logo {
+  width: 50%;
+  height: auto;
+}
 
 .username {
   /* style username */
@@ -72,4 +81,10 @@ h2 {
   height: 0;
   border: 0.125em solid transparent;
   border-bottom: 0.35em solid #000;
+}
+
+@media screen and (max-width: 900px) {
+  h1 {
+    font-size: 9vw;
+  }
 }

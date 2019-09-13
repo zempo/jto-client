@@ -15,6 +15,7 @@ body {
 }
 
 .Modal__inner {
+  z-index: 0;
   margin: auto;
   overflow-y: auto;
   background-color: #f3f3f3;
@@ -39,6 +40,16 @@ body {
 
 .Modal__inner p {
   text-align: center;
+}
+
+.Modal__inner .close-modal {
+  position: absolute;
+  z-index: 1;
+  top: 1%;
+  right: 4%;
+  font-size: 2rem;
+  border: none;
+  border-radius: 50%;
 }
 
 @-webkit-keyframes zoomIn {

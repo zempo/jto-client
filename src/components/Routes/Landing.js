@@ -13,8 +13,8 @@ const Landing = (props) => {
 
   return (
     <div className="jto-landing">
-      <h2>just the Occasion</h2>
-      <img src={Logo} alt="jto-logo" width="300" height="300" />
+      <h1>just the Occasion.</h1>
+      <img className="main-logo" src={Logo} alt="jto-logo" />
       <section>
         <h3>Experience the Greeting Card Platform</h3>
         <div className="revolving-header">

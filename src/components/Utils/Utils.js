@@ -145,7 +145,7 @@ export const SkeletonLoader2 = ({ loading }) => {
 
 export const Required = ({ met }) => {
   if (!met) {
-    return <span className="required">&#42;</span>;
+    return <span className="required"></span>;
   } else {
     return <span className="met">&#10003;</span>;
   }
