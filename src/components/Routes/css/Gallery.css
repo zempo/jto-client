@@ -55,6 +55,7 @@
   -webkit-transform: rotate(55deg);
   -ms-transform: rotate(55deg);
   transform: rotate(55deg);
+  -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
@@ -76,6 +77,7 @@
 .card-toggle:not(:checked) + .card-container .checkmark2,
 .card-toggle:not(:checked) + .card-container .jto-mini-menu {
   opacity: 0;
+  -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
@@ -84,18 +86,21 @@
 .card-container:checked + .card-container .checkmark2,
 .card-toggle:not(:checked) + .card-container .jto-mini-menu .jto-option {
   opacity: 1;
+  -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
 }
 
 .card-container:hover .face {
+  -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
 }
 
 .card-container:hover .front {
+  -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
@@ -129,6 +134,7 @@
   background: rgb(48, 58, 69, 1);
   border-radius: 10px;
   justify-content: space-evenly;
+  -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
@@ -143,6 +149,7 @@
   display: flex;
   color: rgb(48, 58, 69);
   justify-content: space-evenly;
+  -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
@@ -157,6 +164,7 @@
   display: flex;
   color: rgb(48, 58, 69, 1);
   justify-content: space-evenly;
+  -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
