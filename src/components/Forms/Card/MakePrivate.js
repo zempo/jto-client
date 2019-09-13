@@ -34,6 +34,9 @@ const MakePrivate = ({ item, cancel }) => {
       {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
       <button onClick={handlePrivacy}>Make Occasion Private</button>
       <button onClick={cancel}>Cancel</button>
+      <button className="close-modal" onClick={cancel}>
+        X
+      </button>
     </div>
   );
 };

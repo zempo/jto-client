@@ -119,7 +119,9 @@ const Demo = ({ cancel }) => {
           Create Occasion
         </button>
       </form>
-      <button onClick={cancel}>Cancel</button>
+      <button className="close-modal" onClick={cancel}>
+        X
+      </button>
       {loading ? <Loader loading={true} /> : <Loader loading={false} />}
       <div className="list-card-demo" style={{ display: active ? "block" : "none" }}>
         <input type="checkbox" id={`demo-card-toggle-1`} className="demo-card-toggle" value="selected" />

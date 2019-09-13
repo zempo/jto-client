@@ -177,7 +177,10 @@ const EditPublicCard = ({ item, cancel }) => {
           Edit Occasion
         </button>
       </form>
-      <button onClick={cancel}>cancel</button>
+      {/* <button onClick={cancel}>cancel</button> */}
+      <button className="close-modal" onClick={cancel}>
+        X
+      </button>
       {loading ? <Loader loading={true} /> : <Loader loading={false} />}
     </>
   );

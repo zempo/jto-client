@@ -31,6 +31,9 @@ const DeleteCard = ({ item, cancel }) => {
       {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
       <button onClick={handleDelete}>Delete</button>
       <button onClick={cancel}>Cancel</button>
+      <button className="close-modal" onClick={cancel}>
+        X
+      </button>
     </>
   );
 };

@@ -30,6 +30,9 @@ const DeleteUserCard = ({ item, cancel }) => {
       <p>Once you delete an Occasion, this action cannot be undone.</p>
       {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
       <button onClick={handleDelete}>Delete</button>
+      <button className="close-modal" onClick={cancel}>
+        X
+      </button>
       <button onClick={cancel}>Cancel</button>
     </>
   );
