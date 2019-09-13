@@ -35,10 +35,12 @@
 }
 
 .jto-reactions .fa-file-download:empty {
-  color: rgb(47, 58, 68, 0.4);
+  color: rgb(47, 58, 68);
+  opacity: 0.25;
 }
 
-.jto-reactions .fa-file-download {
+.jto-reactions .fa-file-download,
+.jto-reactions .fa-comment-alt {
   color: rgb(47, 58, 68);
 }
 
@@ -53,11 +55,11 @@
 
 .jto-reactions #body:empty {
   /* make white or background color */
-  color: white;
+  color: #b6a99e;
 }
 
 .jto-reactions .fa-heart {
-  color: rgb(255, 92, 116);
+  color: rgb(224, 73, 96);
 }
 
 .share {

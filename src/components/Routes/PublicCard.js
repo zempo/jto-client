@@ -62,15 +62,19 @@ const PublicCard = (props) => {
   }, []);
 
   return (
-    <>
+    <main className="public-card-page">
       {/* eslint-disable-next-line */}
-      {card.date_modified == undefined ? (<h3>
-        Posted by <span className="username">{cardAuthor.user_name}</span>{" "}
-        {<TimeStamp date={card.date_created} />} ago
-      </h3>) : <h3>
-          Posted by <span className="username">{cardAuthor.user_name}</span>{" "}
-          {<TimeStamp date={card.date_created} />} ago. <br /> (Edited {<TimeStamp date={card.date_modified} />} ago).
-        </h3>}
+      {card.date_modified == undefined ? (
+        <h3>
+          Posted by <span className="username">{cardAuthor.user_name}</span> {<TimeStamp date={card.date_created} />}{" "}
+          ago
+        </h3>
+      ) : (
+        <h3>
+          Posted by <span className="username">{cardAuthor.user_name}</span> {<TimeStamp date={card.date_created} />}{" "}
+          ago. <br /> (Edited {<TimeStamp date={card.date_modified} />} ago).
+        </h3>
+      )}
       <JtoSection className="jto-card public-card" style={ThemeStyles[`${cardTheme}`].all}>
         <PaginateCardFaces currentPg={cardPg} setCurrentPg={setCardPg} />
         <CardPages card={card} themes={ThemeStyles} cardTheme={cardTheme} cardPg={cardPg} />
@@ -79,8 +83,8 @@ const PublicCard = (props) => {
         {hasReacted.react_heart === undefined && hasReacted.react_share === undefined ? (
           <PostReaction item={card.id} />
         ) : (
-            <ToggleReaction item={card.id} liked={hasReacted.react_heart} shared={hasReacted.react_share} />
-          )}
+          <ToggleReaction item={card.id} liked={hasReacted.react_heart} shared={hasReacted.react_share} />
+        )}
         {/* Current user has downloaded. {share ? "true" : "false"} */}
       </JtoSection>
       <JtoSection className="jto-comments">
@@ -113,7 +117,7 @@ const PublicCard = (props) => {
           })}
         </ul>
       </JtoSection>
-    </>
+    </main>
   );
 };
 
