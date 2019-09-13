@@ -4,7 +4,7 @@ import TokenService from "../../services/token-service";
 import IdleService from "../../services/idle-service";
 import { Hyph } from "../Utils/Utils";
 import { UserContext } from "../../contexts/UserContext";
-import Logo from "../../images/jto-logo.svg";
+import Logo from "../../images/jto-logo-main.svg";
 import "./css/Static.css";
 
 class Nav extends Component {
@@ -38,16 +38,20 @@ class Nav extends Component {
     return (
       <div className="logged-out">
         <h3>
-          <NavLink exact activeClassName="active-auth" to="/login">Login</NavLink>
+          <NavLink exact activeClassName="active-auth" to="/login">
+            Login
+          </NavLink>
           <Hyph />
-          <NavLink exact activeClassName="active-auth" to="/register">Register</NavLink>
+          <NavLink exact activeClassName="active-auth" to="/register">
+            Register
+          </NavLink>
         </h3>
       </div>
     );
   }
 
   render() {
-    let error = this.context.value.error
+    let error = this.context.value.error;
     return (
       <nav className="jto-nav-menu">
         <NavLink exact activeClassName="active" to="/">
@@ -62,7 +66,7 @@ class Nav extends Component {
         <NavLink exact activeClassName="active" to="/faq">
           <h3>Help & FAQs</h3>
         </NavLink>
-        {TokenService.hasAuthToken() && (error !== 401) ? this.renderLogoutLink() : this.renderLoginLink()}
+        {TokenService.hasAuthToken() && error !== 401 ? this.renderLogoutLink() : this.renderLoginLink()}
       </nav>
     );
   }

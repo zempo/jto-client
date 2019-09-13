@@ -1,9 +1,9 @@
 import React from "react";
-import Logo from "../../images/jto-logo.svg";
+import Logo from "../../images/jto-logo-main.svg";
 // import { AuthService } from "../../services/auth-service";
-import { RevolvingWords } from '../Utils/Utils'
-import { useModal } from '../../hooks/use-modal'
-import Modal from '../../modals/Modal'
+import { RevolvingWords } from "../Utils/Utils";
+import { useModal } from "../../hooks/use-modal";
+import Modal from "../../modals/Modal";
 
 const Landing = (props) => {
   // const handleRefresh = (e) => {
@@ -14,15 +14,15 @@ const Landing = (props) => {
   return (
     <div className="jto-landing">
       <h2>just the Occasion</h2>
-      <img src={Logo} alt="jto-logo" width="100" height="100" />
+      <img src={Logo} alt="jto-logo" width="300" height="300" />
       <section>
         <h3>Experience the Greeting Card Platform</h3>
         <div className="revolving-header">
-          <RevolvingWords words={['Create', 'Update', 'Browse']} />
+          <RevolvingWords words={["Create", "Update", "Browse"]} />
           <p className="double-arrow">&#10231;</p>
-          <RevolvingWords words={['Publish', 'Download', 'Comment']} />
+          <RevolvingWords words={["Publish", "Download", "Comment"]} />
           <p className="double-arrow">&#10231;</p>
-          <RevolvingWords words={['Share', 'Store', 'React']} />
+          <RevolvingWords words={["Share", "Store", "React"]} />
         </div>
         <p>
           [<em>placeholder for screenshot of the interface</em>]
@@ -37,11 +37,11 @@ const Landing = (props) => {
       </section>
       <section>
         <div className="revolving-header">
-          <RevolvingWords words={['Quick', 'Clean', 'Adjust']} />
+          <RevolvingWords words={["Quick", "Clean", "Adjust"]} />
           <p className="double-arrow">&#10231;</p>
-          <RevolvingWords words={['Personal', 'Accessible', 'Review']} />
+          <RevolvingWords words={["Personal", "Accessible", "Review"]} />
           <p className="double-arrow">&#10231;</p>
-          <RevolvingWords words={['Easy', 'Ready', 'Print']} />
+          <RevolvingWords words={["Easy", "Ready", "Print"]} />
         </div>
         <p>
           [<em>placeholder for screenshot of card generation component</em>]

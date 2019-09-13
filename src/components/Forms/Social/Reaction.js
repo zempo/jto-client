@@ -5,15 +5,18 @@ import Modal from "../../../modals/Modal";
 import "./css/Social.css";
 
 export const PostReaction = ({ item }) => {
+  const [pulse, setPulse] = useState(false);
   const [status, setStatus] = useState("inactive");
   const [heart, setHeart] = useState(false);
   const [share, setShare] = useState(false);
   const { isShowing: isShowingDownload, toggle: toggleDownload } = useModal();
 
   const createAndSendHeart = async (e) => {
+    setPulse(false);
     try {
       // eslint-disable-next-line
       const createReact = await toggleLike.post(`/${item}`);
+      setPulse(true);
       setStatus("active");
       setHeart(true);
     } catch (error) {
@@ -34,10 +37,13 @@ export const PostReaction = ({ item }) => {
   };
 
   const updateHeart = async (e) => {
+    setPulse(false);
     try {
       // eslint-disable-next-line
       const sentLike = await toggleLike.patch(`/${item}`);
       const readLike = await listCardReacts.get(`/${item}`);
+
+      setPulse(true);
       setHeart(readLike.data[0].react_heart);
     } catch (error) {
       console.log(error);
@@ -59,7 +65,14 @@ export const PostReaction = ({ item }) => {
 
   return status === "inactive" ? (
     <>
-      <button className="heart" onClick={createAndSendHeart} />
+      <span className="heart-button">
+        <i id="border" className={`fas fa-heart ${pulse ? "beat" : null}`} title="heart" onClick={createAndSendHeart}>
+          {heart ? <span>liked</span> : null}
+        </i>
+        <i id="body" className={`fas fa-heart ${pulse ? "beat" : null}`} title="heart" onClick={createAndSendHeart}>
+          {heart ? <span>liked</span> : null}
+        </i>
+      </span>
       <i className="far fa-comment-alt"></i>
       <i className="fas fa-file-download" title="download" onClick={createAndSendShare}>
         {share ? "bookmarked" : null}
@@ -68,12 +81,17 @@ export const PostReaction = ({ item }) => {
     </>
   ) : (
     <>
-      <button className="heart" onClick={updateHeart}>
-        {heart ? "liked" : null}
-      </button>
+      <span className="heart-button">
+        <i id="border" className={`fas fa-heart ${pulse ? "beat" : null}`} title="heart" onClick={updateHeart}>
+          {heart ? <span>liked</span> : null}
+        </i>
+        <i id="body" className={`fas fa-heart ${pulse ? "beat" : null}`} title="heart" onClick={updateHeart}>
+          {heart ? <span>liked</span> : null}
+        </i>
+      </span>
       <i className="far fa-comment-alt"></i>
       <i className="fas fa-file-download" title="download" onClick={updateShare}>
-        <span>{share ? "bookmarked" : null}</span>
+        {share ? <span></span> : null}
       </i>
       <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
     </>
@@ -114,9 +132,6 @@ export const ToggleReaction = ({ item, liked, shared }) => {
 
   return (
     <>
-      {/* <button className={`heart ${pulse ? "beat" : null}`} onClick={updateHeart}>
-        {heart ? "liked" : null}
-      </button> */}
       <span className="heart-button">
         <i id="border" className={`fas fa-heart ${pulse ? "beat" : null}`} title="heart" onClick={updateHeart}>
           {heart ? <span>liked</span> : null}
