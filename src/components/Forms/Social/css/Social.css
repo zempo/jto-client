@@ -9,13 +9,6 @@
   border: none;
 }
 
-.beat {
-  -o-animation: heartBeat 0.3s;
-  -moz-animation: heartBeat 0.3s;
-  -webkit-animation: heartBeat 0.3s;
-  animation: heartBeat 0.3s;
-}
-
 .heart:empty::before,
 .heart:empty::after {
   /* rgb(177, 30, 74) */
@@ -70,8 +63,31 @@
   font-size: 3rem;
 }
 
-.jto-reactions #inside {
-  font-size: 2.8rem;
+.heart-button {
+  position: relative;
+  display: inline-block;
+  width: 2rem;
+  height: 3rem;
+  line-height: 2rem;
+  vertical-align: middle;
+}
+
+.jto-reactions #body,
+.jto-reactions #border {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.jto-reactions #body {
+  font-size: 2.4rem;
+  top: 11%;
+  left: 15%;
+}
+
+.jto-reactions #border {
+  font-size: 3rem;
 }
 
 .jto-reactions .fas span {
@@ -86,11 +102,16 @@
   color: rgb(47, 58, 68);
 }
 
-.jto-reactions .fa-heart:empty {
+/* .jto-reactions .fa-heart:empty {
+  color: #2f3a44;
+} */
+
+.jto-reactions #border:empty {
+  /* make white or background color */
   color: #2f3a44;
 }
 
-.jto-reactions #inside {
+.jto-reactions #body:empty {
   /* make white or background color */
   color: white;
 }
@@ -114,12 +135,23 @@
   background: none;
 }
 
+.beat {
+  -o-animation: heartBeat 0.3s;
+  -moz-animation: heartBeat 0.3s;
+  -webkit-animation: heartBeat 0.3s;
+  animation: heartBeat 0.3s;
+}
+
 @-webkit-keyframes heartBeat {
   0% {
+    -webkit-filter: blur();
     -webkit-transform: scale(1);
   }
-  20% {
+  50% {
     -webkit-transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
   }
 }
 
@@ -127,10 +159,22 @@
   0% {
     -moz-transform: scale(1);
   }
+  50% {
+    -moz-transform: scale(1.1);
+  }
+  100% {
+    -moz-transform: scale(1);
+  }
 }
 
 @-o-keyframes heartBeat {
   0% {
+    -o-transform: scale(1);
+  }
+  50% {
+    -o-transform: scale(1.1);
+  }
+  100% {
     -o-transform: scale(1);
   }
 }
@@ -140,6 +184,7 @@
     transform: scale(1);
   }
   50% {
+    filter: blur(1px);
     transform: scale(1.1);
   }
   100% {

@@ -114,12 +114,17 @@ export const ToggleReaction = ({ item, liked, shared }) => {
 
   return (
     <>
-      <button className={`heart ${pulse ? "beat" : null}`} onClick={updateHeart}>
+      {/* <button className={`heart ${pulse ? "beat" : null}`} onClick={updateHeart}>
         {heart ? "liked" : null}
-      </button>
-      <i className={`fas fa-heart ${pulse ? "beat" : null}`} title="heart" onClick={updateHeart}>
-        {heart ? <span>liked</span> : null}
-      </i>
+      </button> */}
+      <span className="heart-button">
+        <i id="border" className={`fas fa-heart ${pulse ? "beat" : null}`} title="heart" onClick={updateHeart}>
+          {heart ? <span>liked</span> : null}
+        </i>
+        <i id="body" className={`fas fa-heart ${pulse ? "beat" : null}`} title="heart" onClick={updateHeart}>
+          {heart ? <span>liked</span> : null}
+        </i>
+      </span>
       <i className="far fa-comment-alt"></i>
       <i className="fas fa-file-download" title="download" onClick={updateShare}>
         <span>{share ? "bookmarked" : null}</span>

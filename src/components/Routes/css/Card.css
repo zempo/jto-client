@@ -63,6 +63,7 @@ h3 {
 
 .jto-reactions button,
 .jto-reactions .far,
-.jto-reactions .fas {
+.jto-reactions .fa-file-download,
+.jto-reactions .heart-button {
   margin: 1rem 3rem;
 }
