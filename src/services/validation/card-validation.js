@@ -1,7 +1,7 @@
 export const validateFrontMessage = (frontMessage) => {
   let ERRORS = [];
   if (frontMessage.length > 100) {
-    ERRORS.push(`Occasion title can only be 100 characters long.`);
+    ERRORS.push(`Please limit the title to 100 characters`);
   }
   return ERRORS;
 };
@@ -9,7 +9,7 @@ export const validateFrontMessage = (frontMessage) => {
 export const validateInsideMessage = (insideMessage) => {
   let ERRORS = [];
   if (insideMessage.length > 650) {
-    ERRORS.push(`Occasion title can only be 650 characters long.`);
+    ERRORS.push(`Please limit the inner message to 650 characters.`);
   }
   return ERRORS;
 };

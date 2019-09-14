@@ -73,7 +73,7 @@ export const PostReaction = ({ item }) => {
           {heart ? <span>liked</span> : null}
         </i>
       </span>
-      <i className="far fa-comment-alt"></i>
+      <i className="far fa-comment-alt" title="comment"></i>
       <i className="fas fa-file-download" title="download" onClick={createAndSendShare}>
         {share ? "bookmarked" : null}
       </i>
@@ -89,7 +89,7 @@ export const PostReaction = ({ item }) => {
           {heart ? <span>liked</span> : null}
         </i>
       </span>
-      <i className="far fa-comment-alt"></i>
+      <i className="far fa-comment-alt" title="comment"></i>
       <i className="fas fa-file-download" title="download" onClick={updateShare}>
         {share ? <span></span> : null}
       </i>
@@ -140,7 +140,7 @@ export const ToggleReaction = ({ item, liked, shared }) => {
           {heart ? <span>liked</span> : null}
         </i>
       </span>
-      <i className="far fa-comment-alt"></i>
+      <i className="far fa-comment-alt" title="comment"></i>
       <i className="fas fa-file-download" title="download" onClick={updateShare}>
         <span>{share ? "bookmarked" : null}</span>
       </i>

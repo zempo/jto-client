@@ -44,6 +44,15 @@ export const newCard = axios.create({
   }
 });
 
+export const newComment = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/comments`,
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+    authorization: `Bearer ${TokenService.getAuthToken()}`
+  }
+});
+
 // READ CONTENT (R)
 export const readUser = axios.create({
   baseURL: `${Config.API_ENDPOINT}/users/${TokenService.getId()}`,
@@ -113,6 +122,15 @@ export const updateCard = axios.create({
   }
 });
 
+export const updateComment = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/comments`,
+  method: "PATCH",
+  headers: {
+    "content-type": "application/json",
+    authorization: `Bearer ${TokenService.getAuthToken()}`
+  }
+});
+
 export const updateUserCard = axios.create({
   baseURL: `${Config.API_ENDPOINT}/private/cards/${TokenService.getId()}`,
   method: "PATCH",
@@ -166,6 +184,15 @@ export const deleteUserCard = axios.create({
   baseURL: `${Config.API_ENDPOINT}/private/cards/${TokenService.getId()}`,
   method: "DELETE",
   headers: {
+    authorization: `Bearer ${TokenService.getAuthToken()}`
+  }
+});
+
+export const deleteComment = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/comments`,
+  method: "DELETE",
+  headers: {
+    "content-type": "application/json",
     authorization: `Bearer ${TokenService.getAuthToken()}`
   }
 });

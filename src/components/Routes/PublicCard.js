@@ -37,7 +37,6 @@ const PublicCard = (props) => {
           const commentsResult = await listCardComments.get(`/${item}`);
           const hasReacted = await listCardReacts.get(`/${item}`);
           if (hasReacted.data.length > 0) {
-            console.log("has reacted", hasReacted.data[0]);
             setHasReacted(hasReacted.data[0]);
           }
 
@@ -46,8 +45,6 @@ const PublicCard = (props) => {
           setCardAuthor(cardResult.data.user);
           setCardTheme(cardResult.data.theme);
           setComments(commentsResult.data);
-          console.log(hasReacted.data);
-          // console.log(ThemeStyles[`${cardResult.data.theme}`]);
         } catch (err) {
           if (err.response.status === 401) {
             setLoading(false);
@@ -65,15 +62,17 @@ const PublicCard = (props) => {
     <main className="public-card-page">
       {/* eslint-disable-next-line */}
       {card.date_modified == undefined ? (
-        <h3>
-          Posted by <span className="username">{cardAuthor.user_name}</span> {<TimeStamp date={card.date_created} />}{" "}
-          ago
-        </h3>
+        <h2>
+          Created by{" "}
+          <span className="username">{cardAuthor.user_name === user.user_name ? "you, " : cardAuthor.user_name}</span>{" "}
+          {<TimeStamp date={card.date_created} />} ago
+        </h2>
       ) : (
-        <h3>
-          Posted by <span className="username">{cardAuthor.user_name}</span> {<TimeStamp date={card.date_created} />}{" "}
-          ago. <br /> (Edited {<TimeStamp date={card.date_modified} />} ago).
-        </h3>
+        <h2>
+          Created by{" "}
+          <span className="username">{cardAuthor.user_name === user.user_name ? "you, " : cardAuthor.user_name}</span>{" "}
+          {<TimeStamp date={card.date_created} />} ago. <br /> (Edited {<TimeStamp date={card.date_modified} />} ago).
+        </h2>
       )}
       <JtoSection className="jto-card public-card" style={ThemeStyles[`${cardTheme}`].all}>
         <PaginateCardFaces currentPg={cardPg} setCurrentPg={setCardPg} />
@@ -85,21 +84,28 @@ const PublicCard = (props) => {
         ) : (
           <ToggleReaction item={card.id} liked={hasReacted.react_heart} shared={hasReacted.react_share} />
         )}
-        {/* Current user has downloaded. {share ? "true" : "false"} */}
       </JtoSection>
       <JtoSection className="jto-comments">
         <ul>
           {comments.map((comment, i) => {
+            let created = comment.date_created;
             return (
               <li className="jto-comment" key={i}>
-                {/* add admin icon if admin */}
                 {comment.user.admin ? <i className="fas fa-shield-alt" /> : null}
                 {comment.user.user_name}
                 <ul className="comment-items">
                   <li className="comment-item body">{comment.body}</li>
-                  {/* create a date utility */}
-                  <li className="comment-item date">{comment.date_created}</li>
-                  {comment.date_modified ? <li className="comment-item date">{comment.date_modified}</li> : null}
+                  {comment.date_modified == undefined ? (
+                    <li className="comment-item date">
+                      Created &nbsp;
+                      <TimeStamp date={comment.date_created} />
+                      &nbsp; Ago
+                    </li>
+                  ) : (
+                    <li className="comment-item date">
+                      Updated &nbsp; <TimeStamp date={comment.date_modified}></TimeStamp> &nbsp; Ago
+                    </li>
+                  )}
                   {/* to do: mini dot list menu */}
                   {user.admin || comment.user.user_name === user.user_name ? (
                     <nav className="jto-dot-menu">

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import {
   validateFrontMessage,
   validateTheme,
@@ -6,7 +7,7 @@ import {
 } from "../../../services/validation/card-validation";
 import { useForm } from "../../../hooks/get-files";
 import Lock from "../../../images/Lock";
-import { Required, Loader, ThemesList } from "../../Utils/Utils";
+import { Required, ThemesList } from "../../Utils/Utils";
 import { ThemeStyles } from "../../Utils/Store/Themes";
 import "../css/Forms.css";
 
@@ -42,7 +43,7 @@ const Demo = ({ cancel }) => {
 
   return (
     <>
-      <form className="jto-form add-card-form" onSubmit={handleSubmit}>
+      <form className="jto-form demo-card-form" onSubmit={handleSubmit}>
         <fieldset>
           <label htmlFor="frontMessage">
             <Required met={values.frontMessage.length === 0 ? false : true} />
@@ -63,10 +64,15 @@ const Demo = ({ cancel }) => {
             value={values.frontMessage}
           />
           <br />
-          <label htmlFor="frontImage">Does your Occasion need a Cover Image?</label>
+          <br />
+          <label htmlFor="frontImage">Image on the front?</label>
           <div>
-            <Lock /> Sign up to use this feature!
+            <Lock />
+            <NavLink exact activeClassName="active-auth" to="/register">
+              Sign Up!
+            </NavLink>
           </div>
+          <br />
           <br />
           <label htmlFor="insideMessage">
             <Required met={values.insideMessage.length === 0 ? false : true} />
@@ -86,10 +92,15 @@ const Demo = ({ cancel }) => {
             value={values.insideMessage}
           />
           <br />
-          <label htmlFor="frontImage">Do you want a picture inside the card?</label>
+          <br />
+          <label htmlFor="frontImage">Image on the inside?</label>
           <div>
-            <Lock /> Sign up to use this feature!
+            <Lock />
+            <NavLink exact activeClassName="active-auth" to="/register">
+              Sign Up!
+            </NavLink>
           </div>
+          <br />
           <br />
           <Required met={values.theme.length === 0 ? false : true} />
           <select
@@ -122,7 +133,6 @@ const Demo = ({ cancel }) => {
       <button className="close-modal" onClick={cancel}>
         X
       </button>
-      {loading ? <Loader loading={true} /> : <Loader loading={false} />}
       <div className="list-card-demo" style={{ display: active ? "block" : "none" }}>
         <input type="checkbox" id={`demo-card-toggle-1`} className="demo-card-toggle" value="selected" />
         <label

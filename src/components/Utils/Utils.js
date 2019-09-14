@@ -8,16 +8,20 @@ import "./css/Utils.css";
 
 export const Loader = ({ loading }) => {
   // have quotes fade in and out with dynamic styling
-  let randomQuote1 = JtoQuotes[~~(Math.random() * JtoQuotes.length)];
-  const [quote, setQuote] = useState(randomQuote1);
+  let randomQuote = JtoQuotes[~~(Math.random() * JtoQuotes.length)];
+  const [quote, setQuote] = useState(randomQuote);
 
   useEffect(() => {
     // conditional prevents memory leak
-    if (loading === true) {
-      let randomQuote2 = JtoQuotes[~~(Math.random() * JtoQuotes.length)];
+    const loadQuotes = (currentQuote) => {
+      let newQuote = JtoQuotes[~~(Math.random() * JtoQuotes.length)];
       setTimeout(() => {
-        setQuote(randomQuote2);
+        setQuote(newQuote);
+        loadQuotes();
       }, 2000);
+    };
+    if (loading === true) {
+      loadQuotes();
     }
     // eslint-disable-next-line
   }, [loading]);
