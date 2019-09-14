@@ -179,8 +179,8 @@ export const JtoNotification = ({ type, msg }) => {
           <i className="fas fa-exclamation" />
           {msg}
         </h2>
-        <button onClick={handleClick}>
-          <i className="fas fa-times-circle" />
+        <button className="close-button" onClick={handleClick}>
+          X
         </button>
       </div>
     );

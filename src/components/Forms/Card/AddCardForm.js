@@ -81,7 +81,7 @@ function AddCard({ item, cancel }) {
   };
 
   return (
-    <>
+    <div className={resStatus === 0 ? null : "shake"}>
       <form className="jto-form add-card-form" onSubmit={handleSubmit}>
         {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
         <fieldset>
@@ -169,7 +169,7 @@ function AddCard({ item, cancel }) {
         X
       </button>
       {loading ? <Loader loading={true} /> : <Loader loading={false} />}
-    </>
+    </div>
   );
 }
 

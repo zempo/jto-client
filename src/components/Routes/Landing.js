@@ -6,6 +6,7 @@ import Logo from "../../images/jto-logo-main.svg";
 import { RevolvingWords } from "../Utils/Utils";
 import { useModal } from "../../hooks/use-modal";
 import Modal from "../../modals/Modal";
+import "./css/Landing.css";
 
 const Landing = (props) => {
   // const handleRefresh = (e) => {
@@ -15,15 +16,12 @@ const Landing = (props) => {
 
   return (
     <div className="jto-landing">
-      <Fade>
-        <h1>just the Occasion.</h1>
-      </Fade>
-      <Fade bottom>
-        <h2>The Greeting Card Platform.</h2>
-      </Fade>
-      <LightSpeed left>
-        <img className="main-logo" src={Logo} alt="jto-logo" />
-      </LightSpeed>
+      <h1 className="animated-h1">just the Occasion.</h1>
+      <Fade></Fade>
+      <h2 className="animated-h2">The Greeting Card Platform.</h2>
+      <Fade bottom></Fade>
+      <img className="main-logo" src={Logo} alt="jto-logo" />
+      <LightSpeed left></LightSpeed>
       <div className="revolving-header">
         <RevolvingWords words={["Create", "Update", "Browse"]} />
         <p className="double-arrow">&#10231;</p>
