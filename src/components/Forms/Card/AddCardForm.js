@@ -81,10 +81,10 @@ function AddCard({ item, cancel }) {
   };
 
   return (
-    <div className={resStatus === 0 ? null : "shake"}>
+    <div>
       <form className="jto-form add-card-form" onSubmit={handleSubmit}>
         {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
-        <fieldset>
+        <fieldset className={resStatus === 0 ? null : "shake"}>
           <label htmlFor="frontMessage">
             <Required met={values.frontMessage.length === 0 ? false : true} />
             What's the Occassion?

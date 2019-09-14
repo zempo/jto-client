@@ -88,7 +88,6 @@ const PublicCard = (props) => {
       <JtoSection className="jto-comments">
         <ul>
           {comments.map((comment, i) => {
-            let created = comment.date_created;
             return (
               <li className="jto-comment" key={i}>
                 {comment.user.admin ? <i className="fas fa-shield-alt" /> : null}
