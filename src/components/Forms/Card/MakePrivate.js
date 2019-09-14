@@ -25,7 +25,7 @@ const MakePrivate = ({ item, cancel }) => {
   };
 
   return (
-    <div className="jto-privacy">
+    <div className={resStatus === 0 || resStatus === 204 ? "jto-privacy" : "jto-privacy shake"}>
       <h2>Are you sure you want to make your Occasion Private?</h2>
       <p>
         Other users won't be able to view your occasion. <br />

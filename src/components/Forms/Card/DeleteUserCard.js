@@ -25,7 +25,7 @@ const DeleteUserCard = ({ item, cancel }) => {
   };
 
   return (
-    <>
+    <div className={resStatus === 0 || resStatus === 204 ? null : "shake"}>
       <h2>Are you sure you want to delete your occasion?</h2>
       <p>Once you delete an Occasion, this action cannot be undone.</p>
       {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
@@ -34,7 +34,7 @@ const DeleteUserCard = ({ item, cancel }) => {
         X
       </button>
       <button onClick={cancel}>Cancel</button>
-    </>
+    </div>
   );
 };
 
