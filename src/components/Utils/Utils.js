@@ -18,7 +18,7 @@ export const Loader = ({ loading }) => {
       setTimeout(() => {
         setQuote(newQuote);
         loadQuotes();
-      }, 2000);
+      }, 2800);
     };
     if (loading === true) {
       loadQuotes();
@@ -29,7 +29,12 @@ export const Loader = ({ loading }) => {
   if (loading) {
     return (
       <div className="jto-loader">
-        <h3>{quote}</h3>
+        <h2 className="loading">
+          {quote}
+          <span>.</span>
+          <span>.</span>
+          <span>.</span>
+        </h2>
       </div>
     );
   } else {
