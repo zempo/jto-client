@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import Fade from "react-reveal/Fade";
 import { GalleryContext } from "../../contexts/GalleryContext";
 import { UserContext } from "../../contexts/UserContext";
 import { JtoSection, PaginateCards, SkeletonLoader } from "../Utils/Utils";
@@ -33,9 +32,7 @@ const Gallery = () => {
 
   return (
     <>
-      <Fade>
-        <h1>Gallery</h1>
-      </Fade>
+      <h1 className="animated-h1">Gallery</h1>
       <SearchGallery cards={cards} />
       {!searching ? (
         <JtoSection className="cards-counter">

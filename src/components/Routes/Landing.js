@@ -1,6 +1,4 @@
 import React from "react";
-import Fade from "react-reveal/Fade";
-import LightSpeed from "react-reveal/LightSpeed";
 import Logo from "../../images/jto-logo-main.svg";
 // import { AuthService } from "../../services/auth-service";
 import { RevolvingWords } from "../Utils/Utils";
@@ -17,11 +15,8 @@ const Landing = (props) => {
   return (
     <div className="jto-landing">
       <h1 className="animated-h1">just the Occasion.</h1>
-      <Fade></Fade>
       <h2 className="animated-h2">The Greeting Card Platform.</h2>
-      <Fade bottom></Fade>
       <img className="main-logo" src={Logo} alt="jto-logo" />
-      <LightSpeed left></LightSpeed>
       <div className="revolving-header">
         <RevolvingWords words={["Create", "Update", "Browse"]} />
         <p className="double-arrow">&#10231;</p>

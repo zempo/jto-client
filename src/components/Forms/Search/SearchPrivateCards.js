@@ -1,5 +1,4 @@
 import React, { useState, useContext, useRef } from "react";
-import Fade from "react-reveal/Fade";
 import { CardsContext } from "../../../contexts/CardsContext";
 import { useForm } from "../../../hooks/get-files";
 import { listUserCards } from "../../../services/endpoints-service";
@@ -39,9 +38,7 @@ const SearchPrivateCards = () => {
 
   return (
     <form className="jto-form search-form" onSubmit={handleSubmit}>
-      <Fade bottom>
-        <h2>Explore Your Cards.</h2>
-      </Fade>
+      <h2 className="animated-h2">Explore Your Cards.</h2>
       <fieldset className="searchTerm">
         <input
           type="text"

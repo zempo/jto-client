@@ -1,13 +1,11 @@
 import React from "react";
-import Fade from "react-reveal/Fade";
 import { JtoSection } from "../Utils/Utils";
 
 const FAQs = () => {
   return (
     <JtoSection className="jto-faqs">
-      <Fade>
-        <h1>FAQs</h1>
-      </Fade>
+      <h1 className="animated-h1">Need Help?</h1>
+      <h2 className="animated-h2">FAQs</h2>
     </JtoSection>
   );
 };
