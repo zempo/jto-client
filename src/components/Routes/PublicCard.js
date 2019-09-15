@@ -2,6 +2,8 @@ import React, { useEffect, useState, useContext } from "react";
 // import { CardContext, CardContextProvider } from "../../contexts/CardContext";
 import { UserContext } from "../../contexts/UserContext";
 import { listCards, listCardComments, listCardReacts } from "../../services/endpoints-service";
+import { useModal } from "../../hooks/use-modal";
+import Modal from "../../modals/Modal";
 // create nice back-button
 import { PostReaction, ToggleReaction } from "../Forms/Social/Reaction";
 import AddComment from "../Forms/Social/AddComment";
@@ -10,16 +12,22 @@ import { ThemeStyles } from "../Utils/Store/Themes";
 import "./css/Card.css";
 
 const PublicCard = (props) => {
+  const { isShowing: isShowingCommentEdit, toggle: toggleCommentEdit } = useModal();
+  const { isShowing: isShowingCommentDelete, toggle: toggleCommentDelete } = useModal();
   const {
     value: { user }
   } = useContext(UserContext);
   const [cardId, setCardId] = useState(0);
+  const [currentId, setCurrentId] = useState(0);
+  const [currentBody, setCurrentBody] = useState("");
   const [card, setCard] = useState({});
   const [comments, setComments] = useState([]);
   const [hasReacted, setHasReacted] = useState({});
   const [cardAuthor, setCardAuthor] = useState({});
   const [cardTheme, setCardTheme] = useState("handwritten");
   const [cardPg, setCardPg] = useState(1);
+
+  const [editting, setEditting] = useState(false);
   // eslint-disable-next-line
   const [loading, setLoading] = useState(false);
   // eslint-disable-next-line
@@ -57,6 +65,12 @@ const PublicCard = (props) => {
     }
     // eslint-disable-next-line
   }, []);
+
+  const openEdit = (id, body) => {
+    setCurrentId(id);
+    setCurrentBody(body);
+    toggleCommentEdit();
+  };
 
   return (
     <main className="public-card-page">
@@ -105,14 +119,20 @@ const PublicCard = (props) => {
                       Updated &nbsp; <TimeStamp date={comment.date_modified}></TimeStamp> &nbsp; Ago
                     </li>
                   )}
-                  {/* to do: mini dot list menu */}
                   {user.admin || comment.user.user_name === user.user_name ? (
                     <nav className="jto-dot-menu">
                       <input type="checkbox" id={`comment-toggle-${i}`} className="comment-toggle" value="selected" />
                       <label className="comment-menu-container" htmlFor={`comment-toggle-${i}`}>
                         <i className="fas fa-ellipsis-h" />
-                        <DotMenuOption to="/edit-comment" text="Edit" item_id={comment.id} />
-                        <DotMenuOption to="/delete-comment" text="Delete" item_id={comment.id} />
+                        <div className="dot-menu-option" onClick={() => openEdit(comment.id, comment.body)}>
+                          Edit
+                        </div>
+                        <DotMenuOption
+                          to="/delete-comment"
+                          text="Delete"
+                          item_id={comment.id}
+                          onClick={toggleCommentDelete}
+                        />
                       </label>
                     </nav>
                   ) : null}
@@ -121,6 +141,13 @@ const PublicCard = (props) => {
             );
           })}
         </ul>
+        <Modal
+          item={currentId}
+          payload={currentBody}
+          isShowing={isShowingCommentEdit}
+          hide={toggleCommentEdit}
+          action="edit-comment"
+        />
       </JtoSection>
       <AddComment comment={cardId} />
     </main>

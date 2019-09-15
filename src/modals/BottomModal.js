@@ -11,14 +11,13 @@ import EditComment from "../components/Forms/Social/EditComment";
 import MakePrivate from "../components/Forms/Card/MakePrivate";
 import MakePublic from "../components/Forms/Card/MakePublic";
 // import DeleteComment from '../components/Forms/DeleteComment'
-// import EditComment from '../components/Forms/EditComment'
 import "./css/Modal.css";
 
-const Modal = ({ item, payload, action, isShowing, hide }) => {
+const BottomModal = ({ item, payload, action, isShowing, hide }) => {
   if (isShowing) {
     return ReactDOM.createPortal(
-      <div onClick={hide} className="Modal">
-        <div onClick={(e) => e.stopPropagation()} className={`Modal__inner ${isShowing}`}>
+      <div onClick={hide} className="Modal-Bottom">
+        <div onClick={(e) => e.stopPropagation()} className={`Modal__inner-bottom ${isShowing}`}>
           {action === "add-card" ? (
             <AddCard cancel={hide} />
           ) : action === "demo" ? (
@@ -44,11 +43,11 @@ const Modal = ({ item, payload, action, isShowing, hide }) => {
           )}
         </div>
       </div>,
-      document.querySelector("#modal")
+      document.querySelector("#bottom-modal")
     );
   } else {
     return null;
   }
 };
 
-export default Modal;
+export default BottomModal;
