@@ -8,9 +8,9 @@ import DeleteUserCard from "../components/Forms/Card/DeleteUserCard";
 import EditCard from "../components/Forms/Card/EditCard";
 import EditPublicCard from "../components/Forms/Card/EditPublicCard";
 import EditComment from "../components/Forms/Social/EditComment";
+import DeleteComment from "../components/Forms/Social/DeleteComment";
 import MakePrivate from "../components/Forms/Card/MakePrivate";
 import MakePublic from "../components/Forms/Card/MakePublic";
-// import DeleteComment from '../components/Forms/DeleteComment'
 // import EditComment from '../components/Forms/EditComment'
 import "./css/Modal.css";
 
@@ -35,6 +35,8 @@ const Modal = ({ item, payload, action, isShowing, hide }) => {
             <EditPublicCard item={item} cancel={hide} />
           ) : action === "edit-comment" ? (
             <EditComment item={item} payload={payload} cancel={hide} />
+          ) : action === "delete-comment" ? (
+            <DeleteComment item={item} cancel={hide} />
           ) : action === "make-private" ? (
             <MakePrivate item={item} cancel={hide} />
           ) : action === "make-public" ? (

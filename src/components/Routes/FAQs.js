@@ -5,6 +5,8 @@ const FAQs = () => {
   return (
     <JtoSection className="jto-faqs">
       <h1 className="animated-h1">Need Help?</h1>
+      <h2 className="animated-h2">Creating a Card</h2>
+      <h3>Might do separate section called 'guide'</h3>
       <h2 className="animated-h2">FAQs</h2>
       <p>
         Do a "Cascade animation" using the "flipInY" just add water css animation. Offset the animation children to

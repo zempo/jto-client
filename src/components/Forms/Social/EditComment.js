@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { validateBody } from "../../../services/validation/comment-validation";
 import { useForm } from "../../../hooks/get-files";
 import { updateComment } from "../../../services/endpoints-service";
-// import { Required } from "../../Utils/Utils";
+import { JtoNotification } from "../../Utils/Utils";
 
 const EditComment = ({ item, payload, cancel }) => {
   // eslint-disable-next-line
@@ -55,7 +55,13 @@ const EditComment = ({ item, payload, cancel }) => {
   return (
     <>
       <form className="jto-comment-form add-comment-form" onSubmit={handleSubmit}>
+        {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
         <fieldset>
+          <ul>
+            {errors["1"].map((err, i) => (
+              <li key={i}>{err}</li>
+            ))}
+          </ul>
           <textarea
             ref={bodyRef}
             type="text"
@@ -65,11 +71,6 @@ const EditComment = ({ item, payload, cancel }) => {
             onChange={handleChange}
             value={values.body}
           />
-          <ul>
-            {errors["1"].map((err, i) => (
-              <li key={i}>{err}</li>
-            ))}
-          </ul>
         </fieldset>
         <button disabled={!validReq || bodyRef.current.value.length === 0} type="submit">
           Update Comment

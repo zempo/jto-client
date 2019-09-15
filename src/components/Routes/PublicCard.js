@@ -72,6 +72,11 @@ const PublicCard = (props) => {
     toggleCommentEdit();
   };
 
+  const openDelete = (id) => {
+    setCurrentId(id);
+    toggleCommentDelete();
+  };
+
   return (
     <main className="public-card-page">
       {/* eslint-disable-next-line */}
@@ -125,14 +130,13 @@ const PublicCard = (props) => {
                       <label className="comment-menu-container" htmlFor={`comment-toggle-${i}`}>
                         <i className="fas fa-ellipsis-h" />
                         <div className="dot-menu-option" onClick={() => openEdit(comment.id, comment.body)}>
-                          Edit
+                          <i className="fas fa-pencil-alt" />
+                          &nbsp;Edit
                         </div>
-                        <DotMenuOption
-                          to="/delete-comment"
-                          text="Delete"
-                          item_id={comment.id}
-                          onClick={toggleCommentDelete}
-                        />
+                        <div className="dot-menu-option" onClick={() => openDelete(comment.id)}>
+                          <i className="far fa-trash-alt" title="delete" />
+                          &nbsp;Delete
+                        </div>
                       </label>
                     </nav>
                   ) : null}
@@ -148,6 +152,7 @@ const PublicCard = (props) => {
           hide={toggleCommentEdit}
           action="edit-comment"
         />
+        <Modal item={currentId} isShowing={isShowingCommentDelete} hide={toggleCommentDelete} action="delete-comment" />
       </JtoSection>
       <AddComment comment={cardId} />
     </main>
