@@ -18,7 +18,7 @@ export const Loader = ({ loading }) => {
       setTimeout(() => {
         setQuote(newQuote);
         loadQuotes();
-      }, 2800);
+      }, 2000);
     };
     if (loading === true) {
       loadQuotes();

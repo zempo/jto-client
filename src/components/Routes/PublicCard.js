@@ -115,13 +115,12 @@ const PublicCard = (props) => {
                   <li className="comment-item body">{comment.body}</li>
                   {comment.date_modified == undefined ? (
                     <li className="comment-item date">
-                      Created &nbsp;
                       <TimeStamp date={comment.date_created} />
-                      &nbsp; Ago
+                      &nbsp;ago
                     </li>
                   ) : (
                     <li className="comment-item date">
-                      Updated &nbsp; <TimeStamp date={comment.date_modified}></TimeStamp> &nbsp; Ago
+                      <TimeStamp date={comment.date_modified}></TimeStamp>&nbsp;ago (Edited)
                     </li>
                   )}
                   {user.admin || comment.user.user_name === user.user_name ? (

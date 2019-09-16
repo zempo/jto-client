@@ -18,6 +18,8 @@ const FAQs = () => {
 
       <h2 className="animated-h2">Contact Us</h2>
 
+      <h2 className="animated-h2">Solomon Zelenko</h2>
+
       <h3>Feedback Form</h3>
     </JtoSection>
   );
