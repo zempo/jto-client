@@ -14,12 +14,39 @@ export const CommentsContextProvider = (props) => {
     setCardCommentsId(cardId);
   };
 
+  const compareDatesAsc = (a, b) => {
+    // old comments first
+    const dateA = Date.parse(a.date_created);
+    const dateB = Date.parse(b.date_created);
+    let comparison = 0;
+    if (dateA > dateB) {
+      comparison = 1;
+    } else if (dateA < dateB) {
+      comparison = -1;
+    }
+    return comparison;
+  };
+
+  const compareDatesDesc = (a, b) => {
+    // new comments first
+    const dateA = Date.parse(a.date_created);
+    const dateB = Date.parse(b.date_created);
+    let comparison = 0;
+    if (dateA > dateB) {
+      comparison = 1;
+    } else if (dateA < dateB) {
+      comparison = -1;
+    }
+    return comparison * -1;
+  };
+
   useEffect(() => {
     const cardFound = async () => {
       try {
         const commentsResult = await listCardComments.get(`/${cardCommentsId}`);
+        let result = commentsResult.data.sort(compareDatesAsc);
         // console.log("hello");
-        setCardComments(commentsResult.data);
+        setCardComments(result);
         // setCard(result.data);
       } catch (err) {
         if (err.response.status === 401) {
@@ -33,17 +60,30 @@ export const CommentsContextProvider = (props) => {
   }, [cardCommentsId > 0]);
 
   const addToComments = (currentComments, newComment) => {
-    // const newComments = currentComments.push(newComment);
-    // console.log(newComments);
-
     setCardComments([...currentComments, newComment]);
-    // return newComments;
   };
 
   const editComment = (currentComments, updatedComment) => {
-    const updatedComments = currentComments.filter((comment) => comment.id !== updateComment.id).push(updateComment);
+    let commentToEdit = [updatedComment];
+    let commentsToEdit = currentComments;
+    let edited = commentsToEdit.map((obj) => commentToEdit.find((o) => o.id === obj.id) || obj);
 
-    setCardComments(updatedComments);
+    console.log(edited);
+    // let editted = removeOld.push(commentToEdit);
+    setCardComments(edited);
+    let isIE = false;
+    let ua = window.navigator.userAgent;
+    let old_ie = ua.indexOf("MSIE ");
+    let new_ie = ua.indexOf("Trident/");
+
+    if (old_ie > -1 || new_ie > -1) {
+      isIE = true;
+    }
+
+    if (isIE) {
+      //IE specific code goes here
+      window.location.reload();
+    }
   };
 
   const deleteComment = (currentComments, commentToDelete) => {
@@ -54,11 +94,14 @@ export const CommentsContextProvider = (props) => {
 
   const value = {
     cardComments,
+    setCardComments,
     cardCommentsId,
     setCardCommentsId,
     addToComments,
     editComment,
     deleteComment,
+    compareDatesAsc,
+    compareDatesDesc,
     getId,
     error
   };

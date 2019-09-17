@@ -62,6 +62,14 @@ export const readUser = axios.create({
   }
 });
 
+export const readComment = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/comments`,
+  method: "GET",
+  headers: {
+    authorization: `Bearer ${TokenService.getAuthToken()}`
+  }
+});
+
 export const readPublicUser = axios.create({
   baseURL: `${Config.API_ENDPOINT}/users/public`,
   method: "GET"

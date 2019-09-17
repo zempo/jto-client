@@ -1,10 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { validateBody } from "../../../services/validation/comment-validation";
 import { useForm } from "../../../hooks/get-files";
-import { updateComment } from "../../../services/endpoints-service";
+import { updateComment, readComment } from "../../../services/endpoints-service";
 import { JtoNotification } from "../../Utils/Utils";
+import { CommentsContext } from "../../../contexts/CommentsContext";
 
 const EditComment = ({ item, payload, cancel }) => {
+  const {
+    value: { cardComments, editComment, setCardComments }
+  } = useContext(CommentsContext);
   // eslint-disable-next-line
   const { values, files, errors, handleChange, reset } = useForm({ body: payload }, { 1: [] }, {}, { 1: validateBody });
   const [validReq, setValidReq] = useState(false);
@@ -40,11 +44,13 @@ const EditComment = ({ item, payload, cancel }) => {
       }
 
       let sendFullData = await updateComment.patch(`/${item}`, fullData);
+      let commentToUpdate = await readComment.get(`/${item}`);
+      let updatedComments = await editComment(cardComments, commentToUpdate.data);
 
       setResStatus(sendFullData.status);
       setResMsg("Updated Comment");
-      reset();
-      window.location.reload();
+      cancel();
+      // window.location.reload();
     } catch (error) {
       setLoading(false);
       setResStatus(error.response.status);
@@ -55,7 +61,6 @@ const EditComment = ({ item, payload, cancel }) => {
   return (
     <>
       <form className="jto-comment-form add-comment-form" onSubmit={handleSubmit}>
-        {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
         <fieldset>
           <ul>
             {errors["1"].map((err, i) => (
