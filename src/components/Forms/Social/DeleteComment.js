@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { JtoNotification } from "../../Utils/Utils";
 import { deleteComment } from "../../../services/endpoints-service";
+import { PublicCardContext as CardContext } from "../../../contexts/PublicCardContext";
 
 const DeleteComment = ({ item, cancel }) => {
   // eslint-disable-next-line

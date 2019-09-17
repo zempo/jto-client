@@ -2,12 +2,12 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { validateBody } from "../../../services/validation/comment-validation";
 import { useForm } from "../../../hooks/get-files";
 import { updateComment, readComment } from "../../../services/endpoints-service";
-import { CommentsContext } from "../../../contexts/CommentsContext";
+import { PublicCardContext as CardContext } from "../../../contexts/PublicCardContext";
 
 const EditComment = ({ item, payload, cancel }) => {
   const {
     value: { cardComments, editComment }
-  } = useContext(CommentsContext);
+  } = useContext(CardContext);
   // eslint-disable-next-line
   const { values, files, errors, handleChange, reset } = useForm({ body: payload }, { 1: [] }, {}, { 1: validateBody });
   const [validReq, setValidReq] = useState(false);
@@ -44,6 +44,7 @@ const EditComment = ({ item, payload, cancel }) => {
 
       let sendFullData = await updateComment.patch(`/${item}`, fullData);
       let commentToUpdate = await readComment.get(`/${item}`);
+      // eslint-disable-next-line
       let updatedComments = await editComment(cardComments, commentToUpdate.data);
 
       setResStatus(sendFullData.status);

@@ -1,13 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
 // import { CardContext, CardContextProvider } from "../../contexts/CardContext";
 import { UserContext } from "../../contexts/UserContext";
-import { CommentsContext } from "../../contexts/CommentsContext";
+import { PublicCardContext as CardContext } from "../../contexts/PublicCardContext";
 import { listCards, listCardComments, listCardReacts } from "../../services/endpoints-service";
 import { useModal } from "../../hooks/use-modal";
 import BottomModal from "../../modals/BottomModal";
 // create nice back-button
 import { PostReaction, ToggleReaction } from "../Forms/Social/Reaction";
-import AddComment from "../Forms/Social/AddComment";
 import { JtoSection, TimeStamp, CardPages, PaginateCardFaces } from "../Utils/Utils";
 import { ThemeStyles } from "../Utils/Store/Themes";
 import "./css/Card.css";
@@ -20,16 +19,15 @@ const PublicCard = (props) => {
     value: { user }
   } = useContext(UserContext);
   const {
-    value: { cardComments, cardCommentsId, setCardCommentsId }
-  } = useContext(CommentsContext);
+    value: { card, cardTheme, cardAuthor, cardComments, cardCommentsId, setCardCommentsId }
+  } = useContext(CardContext);
   const [cardId, setCardId] = useState(0);
   const [currentId, setCurrentId] = useState(0);
   const [currentBody, setCurrentBody] = useState("");
-  const [card, setCard] = useState({});
-  const [comments, setComments] = useState([]);
+  // const [card, setCard] = useState({});
   const [hasReacted, setHasReacted] = useState({});
-  const [cardAuthor, setCardAuthor] = useState({});
-  const [cardTheme, setCardTheme] = useState("handwritten");
+  // const [cardAuthor, setCardAuthor] = useState({});
+  // const [cardTheme, setCardTheme] = useState("handwritten");
   const [cardPg, setCardPg] = useState(1);
   // eslint-disable-next-line
   const [loading, setLoading] = useState(false);
@@ -45,18 +43,12 @@ const PublicCard = (props) => {
       const cardFound = async () => {
         setLoading(true);
         try {
-          const cardResult = await listCards.get(`/${item}`);
-          const commentsResult = await listCardComments.get(`/${item}`);
           const hasReacted = await listCardReacts.get(`/${item}`);
           if (hasReacted.data.length > 0) {
             setHasReacted(hasReacted.data[0]);
           }
 
           setLoading(false);
-          setCard(cardResult.data);
-          setCardAuthor(cardResult.data.user);
-          setCardTheme(cardResult.data.theme);
-          setComments(commentsResult.data);
         } catch (err) {
           if (err.response.status === 401) {
             setLoading(false);

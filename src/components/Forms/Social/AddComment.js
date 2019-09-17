@@ -2,12 +2,12 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { validateBody } from "../../../services/validation/comment-validation";
 import { useForm } from "../../../hooks/get-files";
 import { newComment } from "../../../services/endpoints-service";
-import { CommentsContext } from "../../../contexts/CommentsContext";
+import { PublicCardContext as CardContext } from "../../../contexts/PublicCardContext";
 
 const AddComment = ({ item, cancel }) => {
   const {
     value: { cardComments, addToComments }
-  } = useContext(CommentsContext);
+  } = useContext(CardContext);
   // eslint-disable-next-line
   const { values, files, errors, handleChange, reset } = useForm({ body: "" }, { 1: [] }, {}, { 1: validateBody });
   const [validReq, setValidReq] = useState(false);
@@ -39,6 +39,7 @@ const AddComment = ({ item, cancel }) => {
       const { body } = values;
       let fullData = { card_id: item, body };
       let sendFullData = await newComment.post("/", fullData);
+      // eslint-disable-next-line
       let updatedComments = await addToComments(cardComments, sendFullData.data);
 
       setResStatus(sendFullData.status);
@@ -63,8 +64,6 @@ const AddComment = ({ item, cancel }) => {
             placeholder="Write a comment..."
             id={1}
             name="body"
-            rows="5"
-            cols="50"
             onChange={handleChange}
             value={values.body}
           />

@@ -1,14 +1,44 @@
 import React, { createContext, useState, useEffect } from "react";
 // eslint-disable-next-line
-import { listCardComments, updateComment } from "../services/endpoints-service";
+import { listCards, listCardComments, listCardReacts } from "../services/endpoints-service";
 
-export const CommentsContext = createContext();
+export const PublicCardContext = createContext();
 
-export const CommentsContextProvider = (props) => {
+export const PublicCardContextProvider = (props) => {
+  const [card, setCard] = useState({});
+  const [cardAuthor, setCardAuthor] = useState({});
+  const [cardTheme, setCardTheme] = useState("handwritten");
+  const [hasReacted, setHasReacted] = useState({});
   // eslint-disable-next-line
   const [cardComments, setCardComments] = useState([]);
-  const [cardCommentsId, setCardCommentsId] = useState(0);
+  const [cardCommentsId, setCardCommentsId] = useState(1);
   const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const cardFound = async () => {
+      try {
+        const cardResult = await listCards.get(`/${cardCommentsId}`);
+        const commentsResult = await listCardComments.get(`/${cardCommentsId}`);
+        let result = commentsResult.data.sort(compareDatesAsc);
+        const hasReacted = await listCardReacts.get(`/${cardCommentsId}`);
+        if (hasReacted.data.length > 0) {
+          setHasReacted(hasReacted.data[0]);
+        }
+
+        setCard(cardResult.data);
+        setCardAuthor(cardResult.data.user);
+        setCardTheme(cardResult.data.theme);
+        setCardComments(result);
+      } catch (err) {
+        if (err.response.status === 401) {
+          setError(true);
+        }
+      }
+    };
+
+    cardFound();
+    // eslint-disable-next-line
+  }, [cardCommentsId]);
 
   const getId = (cardId) => {
     setCardCommentsId(cardId);
@@ -39,25 +69,6 @@ export const CommentsContextProvider = (props) => {
     }
     return comparison * -1;
   };
-
-  useEffect(() => {
-    const cardFound = async () => {
-      try {
-        const commentsResult = await listCardComments.get(`/${cardCommentsId}`);
-        let result = commentsResult.data.sort(compareDatesAsc);
-        // console.log("hello");
-        setCardComments(result);
-        // setCard(result.data);
-      } catch (err) {
-        if (err.response.status === 401) {
-          setError(true);
-        }
-      }
-    };
-
-    cardFound();
-    // eslint-disable-next-line
-  }, [cardCommentsId > 0]);
 
   const addToComments = (currentComments, newComment) => {
     setCardComments([...currentComments, newComment]);
@@ -91,6 +102,10 @@ export const CommentsContextProvider = (props) => {
   };
 
   const value = {
+    card,
+    cardTheme,
+    cardAuthor,
+    hasReacted,
     cardComments,
     setCardComments,
     cardCommentsId,
@@ -104,5 +119,5 @@ export const CommentsContextProvider = (props) => {
     error
   };
 
-  return <CommentsContext.Provider value={{ value }}>{props.children}</CommentsContext.Provider>;
+  return <PublicCardContext.Provider value={{ value }}>{props.children}</PublicCardContext.Provider>;
 };
