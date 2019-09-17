@@ -131,7 +131,7 @@ export const GalleryContextProvider = (props) => {
       return comparison * -1;
     };
     const compareReactions = (key, order = "asc") => {
-      return function (a, b) {
+      return function(a, b) {
         if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
           // property doesn't exist on either object
           return 0;

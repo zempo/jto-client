@@ -6,6 +6,7 @@ export const PublicCardContext = createContext();
 
 export const PublicCardContextProvider = (props) => {
   const [card, setCard] = useState({});
+  // const [cardMax, setCardMax] = useState(1000)
   const [cardAuthor, setCardAuthor] = useState({});
   const [cardTheme, setCardTheme] = useState("handwritten");
   const [hasReacted, setHasReacted] = useState({});
@@ -17,6 +18,7 @@ export const PublicCardContextProvider = (props) => {
   useEffect(() => {
     const cardFound = async () => {
       try {
+        // const cardsResult = await listCards.get("/");
         const cardResult = await listCards.get(`/${cardCommentsId}`);
         const commentsResult = await listCardComments.get(`/${cardCommentsId}`);
         let result = commentsResult.data.sort(compareDatesAsc);
@@ -25,6 +27,7 @@ export const PublicCardContextProvider = (props) => {
           setHasReacted(hasReacted.data[0]);
         }
 
+        // setCardMax(cardsResult.data.length)
         setCard(cardResult.data);
         setCardAuthor(cardResult.data.user);
         setCardTheme(cardResult.data.theme);
@@ -43,6 +46,18 @@ export const PublicCardContextProvider = (props) => {
   const getId = (cardId) => {
     setCardCommentsId(cardId);
   };
+
+  // const nextCard = (currentId, currentMax) => {
+  //   if (currentId === currentMax) {
+  //     setCardCommentsId(currentId + 1)
+  //   }
+  // }
+
+  // const prevCard = (currentId) => {
+  //   if (currentId > 1) {
+
+  //   }
+  // }
 
   const compareDatesAsc = (a, b) => {
     // old comments first

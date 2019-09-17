@@ -24,10 +24,7 @@ const PublicCard = (props) => {
   const [cardId, setCardId] = useState(0);
   const [currentId, setCurrentId] = useState(0);
   const [currentBody, setCurrentBody] = useState("");
-  // const [card, setCard] = useState({});
   const [hasReacted, setHasReacted] = useState({});
-  // const [cardAuthor, setCardAuthor] = useState({});
-  // const [cardTheme, setCardTheme] = useState("handwritten");
   const [cardPg, setCardPg] = useState(1);
   // eslint-disable-next-line
   const [loading, setLoading] = useState(false);
@@ -163,7 +160,6 @@ const PublicCard = (props) => {
       <div className="add-comment-btn">
         <button onClick={toggleCommentAdd}>Comment</button>
       </div>
-      {/* <AddComment commentToAdd={cardCommentsId} /> */}
     </main>
   );
 };
