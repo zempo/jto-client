@@ -4,7 +4,7 @@ import { useForm } from "../../../hooks/get-files";
 import { newComment } from "../../../services/endpoints-service";
 import { CommentsContext } from "../../../contexts/CommentsContext";
 
-const AddComment = ({ commentToAdd }) => {
+const AddComment = ({ item, cancel }) => {
   const {
     value: { cardComments, addToComments }
   } = useContext(CommentsContext);
@@ -37,13 +37,14 @@ const AddComment = ({ commentToAdd }) => {
       setLoading(false);
 
       const { body } = values;
-      let fullData = { card_id: commentToAdd, body };
+      let fullData = { card_id: item, body };
       let sendFullData = await newComment.post("/", fullData);
       let updatedComments = await addToComments(cardComments, sendFullData.data);
 
       setResStatus(sendFullData.status);
       setResMsg("Added Comment");
       reset();
+      cancel();
       // window.location.reload();
     } catch (error) {
       setLoading(false);
@@ -62,6 +63,8 @@ const AddComment = ({ commentToAdd }) => {
             placeholder="Write a comment..."
             id={1}
             name="body"
+            rows="5"
+            cols="50"
             onChange={handleChange}
             value={values.body}
           />
@@ -75,6 +78,9 @@ const AddComment = ({ commentToAdd }) => {
           Comment
         </button>
       </form>
+      <button className="close-modal" onClick={cancel}>
+        X
+      </button>
     </>
   );
 };

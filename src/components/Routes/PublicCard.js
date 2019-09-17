@@ -4,15 +4,16 @@ import { UserContext } from "../../contexts/UserContext";
 import { CommentsContext } from "../../contexts/CommentsContext";
 import { listCards, listCardComments, listCardReacts } from "../../services/endpoints-service";
 import { useModal } from "../../hooks/use-modal";
-import Modal from "../../modals/Modal";
+import BottomModal from "../../modals/BottomModal";
 // create nice back-button
 import { PostReaction, ToggleReaction } from "../Forms/Social/Reaction";
 import AddComment from "../Forms/Social/AddComment";
-import { JtoSection, DotMenuOption, TimeStamp, CardPages, PaginateCardFaces } from "../Utils/Utils";
+import { JtoSection, TimeStamp, CardPages, PaginateCardFaces } from "../Utils/Utils";
 import { ThemeStyles } from "../Utils/Store/Themes";
 import "./css/Card.css";
 
 const PublicCard = (props) => {
+  const { isShowing: isShowingCommentAdd, toggle: toggleCommentAdd } = useModal();
   const { isShowing: isShowingCommentEdit, toggle: toggleCommentEdit } = useModal();
   const { isShowing: isShowingCommentDelete, toggle: toggleCommentDelete } = useModal();
   const {
@@ -147,16 +148,30 @@ const PublicCard = (props) => {
             );
           })}
         </ul>
-        <Modal
+        <BottomModal
+          item={cardCommentsId}
+          isShowing={isShowingCommentAdd}
+          hide={toggleCommentAdd}
+          action="add-comment"
+        />
+        <BottomModal
           item={currentId}
           payload={currentBody}
           isShowing={isShowingCommentEdit}
           hide={toggleCommentEdit}
           action="edit-comment"
         />
-        <Modal item={currentId} isShowing={isShowingCommentDelete} hide={toggleCommentDelete} action="delete-comment" />
+        <BottomModal
+          item={currentId}
+          isShowing={isShowingCommentDelete}
+          hide={toggleCommentDelete}
+          action="delete-comment"
+        />
       </JtoSection>
-      <AddComment commentToAdd={cardCommentsId} />
+      <div className="add-comment-btn">
+        <button onClick={toggleCommentAdd}>Comment</button>
+      </div>
+      {/* <AddComment commentToAdd={cardCommentsId} /> */}
     </main>
   );
 };

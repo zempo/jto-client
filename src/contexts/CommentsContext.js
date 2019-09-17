@@ -67,8 +67,6 @@ export const CommentsContextProvider = (props) => {
     let commentToEdit = [updatedComment];
     let commentsToEdit = currentComments;
     let edited = commentsToEdit.map((obj) => commentToEdit.find((o) => o.id === obj.id) || obj);
-
-    console.log(edited);
     // let editted = removeOld.push(commentToEdit);
     setCardComments(edited);
     let isIE = false;

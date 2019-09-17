@@ -48,16 +48,16 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  -o-animation: zoomIn 0.6s;
-  -moz-animation: zoomIn 0.6s;
-  -webkit-animation: zoomIn 0.6s;
-  animation: zoomIn 0.6s;
+  -o-animation: fadeInUp 0.7s;
+  -moz-animation: fadeInUp 0.7s;
+  -webkit-animation: fadeInUp 0.7s;
+  animation: fadeInUp 0.7s;
   display: grid;
-  padding: 20px 100px;
+  padding: 50px 100px 30%;
   outline: 0;
   border: 1px #777 solid;
   text-align: justify;
-  width: 60%;
+  width: 100%;
   max-width: 100%;
   max-height: 100%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -117,14 +117,29 @@ body {
   animation: pressDown 0.6s;
 }
 
-.Modal__inner .close-modal,
-.Modal__inner-bottom .close-modal {
+.Modal__inner .close-modal {
   background: rgba(47, 58, 68);
   color: rgb(255, 255, 255, 0.6);
   position: absolute;
   z-index: 1;
   top: 1rem;
   right: 1rem;
+  font-size: 2rem;
+  border: none;
+  border-radius: 50%;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.Modal__inner-bottom .close-modal {
+  background: rgba(47, 58, 68);
+  color: rgb(255, 255, 255, 0.6);
+  position: absolute;
+  z-index: 1;
+  top: 1rem;
+  right: 3rem;
   font-size: 2rem;
   border: none;
   border-radius: 50%;

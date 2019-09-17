@@ -2,12 +2,11 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { validateBody } from "../../../services/validation/comment-validation";
 import { useForm } from "../../../hooks/get-files";
 import { updateComment, readComment } from "../../../services/endpoints-service";
-import { JtoNotification } from "../../Utils/Utils";
 import { CommentsContext } from "../../../contexts/CommentsContext";
 
 const EditComment = ({ item, payload, cancel }) => {
   const {
-    value: { cardComments, editComment, setCardComments }
+    value: { cardComments, editComment }
   } = useContext(CommentsContext);
   // eslint-disable-next-line
   const { values, files, errors, handleChange, reset } = useForm({ body: payload }, { 1: [] }, {}, { 1: validateBody });
@@ -50,7 +49,6 @@ const EditComment = ({ item, payload, cancel }) => {
       setResStatus(sendFullData.status);
       setResMsg("Updated Comment");
       cancel();
-      // window.location.reload();
     } catch (error) {
       setLoading(false);
       setResStatus(error.response.status);

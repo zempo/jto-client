@@ -63,10 +63,16 @@ h3 {
 }
 
 .jto-comments,
-.jto-reactions {
+.jto-reactions,
+.add-comment-btn {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+.add-comment-btn button {
+  width: 30%;
+  height: 2rem;
 }
 
 .jto-reactions button,
