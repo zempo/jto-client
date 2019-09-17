@@ -4,7 +4,7 @@ import { useForm } from "../../../hooks/get-files";
 import { newComment } from "../../../services/endpoints-service";
 // import { Required } from "../../Utils/Utils";
 
-const AddComment = ({ comment }) => {
+const AddComment = ({ comment, comments, setComments }) => {
   // eslint-disable-next-line
   const { values, files, errors, handleChange, reset } = useForm({ body: "" }, { 1: [] }, {}, { 1: validateBody });
   const [validReq, setValidReq] = useState(false);

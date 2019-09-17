@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 // import { CardContext, CardContextProvider } from "../../contexts/CardContext";
 import { UserContext } from "../../contexts/UserContext";
+import { CommentsContext } from "../../contexts/CommentsContext";
 import { listCards, listCardComments, listCardReacts } from "../../services/endpoints-service";
 import { useModal } from "../../hooks/use-modal";
 import Modal from "../../modals/Modal";
@@ -17,6 +18,9 @@ const PublicCard = (props) => {
   const {
     value: { user }
   } = useContext(UserContext);
+  const {
+    value: { cardComments, cardCommentsId, setCardCommentsId }
+  } = useContext(CommentsContext);
   const [cardId, setCardId] = useState(0);
   const [currentId, setCurrentId] = useState(0);
   const [currentBody, setCurrentBody] = useState("");
@@ -26,8 +30,6 @@ const PublicCard = (props) => {
   const [cardAuthor, setCardAuthor] = useState({});
   const [cardTheme, setCardTheme] = useState("handwritten");
   const [cardPg, setCardPg] = useState(1);
-
-  const [editting, setEditting] = useState(false);
   // eslint-disable-next-line
   const [loading, setLoading] = useState(false);
   // eslint-disable-next-line
@@ -37,6 +39,7 @@ const PublicCard = (props) => {
     if (props.location.state !== undefined) {
       const { item } = props.location.state;
       setCardId(item);
+      setCardCommentsId(item);
 
       const cardFound = async () => {
         setLoading(true);
@@ -106,7 +109,7 @@ const PublicCard = (props) => {
       </JtoSection>
       <JtoSection className="jto-comments">
         <ul>
-          {comments.map((comment, i) => {
+          {cardComments.map((comment, i) => {
             return (
               <li className="jto-comment" key={i}>
                 {comment.user.admin ? <i className="fas fa-shield-alt" /> : null}
@@ -153,7 +156,7 @@ const PublicCard = (props) => {
         />
         <Modal item={currentId} isShowing={isShowingCommentDelete} hide={toggleCommentDelete} action="delete-comment" />
       </JtoSection>
-      <AddComment comment={cardId} />
+      <AddComment comment={cardId} comments={comments} setComments={setComments} />
     </main>
   );
 };

@@ -9,15 +9,15 @@ import "@fortawesome/fontawesome-free/css/all.css";
 // providers
 import { GalleryContextProvider as GalleryProvider } from "./contexts/GalleryContext";
 import { UserContextProvider as UserProvider } from "./contexts/UserContext";
-import { CardContextProvider as PublicCardProvider } from "./contexts/CardContext";
+import { CommentsContextProvider as CommentsProvider } from "./contexts/CommentsContext";
 
 ReactDOM.render(
   <ROUTER>
     <GalleryProvider>
       <UserProvider>
-        <PublicCardProvider>
+        <CommentsProvider>
           <App />
-        </PublicCardProvider>
+        </CommentsProvider>
       </UserProvider>
     </GalleryProvider>
   </ROUTER>,
