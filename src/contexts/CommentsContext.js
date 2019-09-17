@@ -32,10 +32,12 @@ export const CommentsContextProvider = (props) => {
     // eslint-disable-next-line
   }, [cardCommentsId > 0]);
 
-  const addToComments = async (currentComments, newComment) => {
-    const newComments = currentComments.push(newComment);
+  const addToComments = (currentComments, newComment) => {
+    // const newComments = currentComments.push(newComment);
+    // console.log(newComments);
 
-    setCardComments(newComments);
+    setCardComments([...currentComments, newComment]);
+    // return newComments;
   };
 
   const editComment = (currentComments, updatedComment) => {
@@ -56,6 +58,7 @@ export const CommentsContextProvider = (props) => {
     setCardCommentsId,
     addToComments,
     editComment,
+    deleteComment,
     getId,
     error
   };

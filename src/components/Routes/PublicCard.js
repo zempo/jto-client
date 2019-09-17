@@ -156,7 +156,7 @@ const PublicCard = (props) => {
         />
         <Modal item={currentId} isShowing={isShowingCommentDelete} hide={toggleCommentDelete} action="delete-comment" />
       </JtoSection>
-      <AddComment comment={cardId} comments={comments} setComments={setComments} />
+      <AddComment commentToAdd={cardCommentsId} />
     </main>
   );
 };

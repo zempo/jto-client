@@ -1,10 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { validateBody } from "../../../services/validation/comment-validation";
 import { useForm } from "../../../hooks/get-files";
 import { newComment } from "../../../services/endpoints-service";
-// import { Required } from "../../Utils/Utils";
+import { CommentsContext } from "../../../contexts/CommentsContext";
 
-const AddComment = ({ comment, comments, setComments }) => {
+const AddComment = ({ commentToAdd }) => {
+  const {
+    value: { cardComments, addToComments }
+  } = useContext(CommentsContext);
   // eslint-disable-next-line
   const { values, files, errors, handleChange, reset } = useForm({ body: "" }, { 1: [] }, {}, { 1: validateBody });
   const [validReq, setValidReq] = useState(false);
@@ -34,13 +37,14 @@ const AddComment = ({ comment, comments, setComments }) => {
       setLoading(false);
 
       const { body } = values;
-      let fullData = { card_id: comment, body };
+      let fullData = { card_id: commentToAdd, body };
       let sendFullData = await newComment.post("/", fullData);
+      let updatedComments = await addToComments(cardComments, sendFullData.data);
 
       setResStatus(sendFullData.status);
       setResMsg("Added Comment");
       reset();
-      window.location.reload();
+      // window.location.reload();
     } catch (error) {
       setLoading(false);
       setResStatus(error.response.status);
