@@ -39,7 +39,9 @@ export const PublicCardContextProvider = (props) => {
       }
     };
 
-    cardFound();
+    if (cardCommentsId !== 0) {
+      cardFound();
+    }
     // eslint-disable-next-line
   }, [cardCommentsId]);
 

@@ -27,7 +27,8 @@ h2 {
 } */
 
 .main-logo {
-  width: 50%;
+  display: inline-block;
+  max-width: 70%;
   height: auto;
 }
 

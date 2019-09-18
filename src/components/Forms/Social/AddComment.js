@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { validateBody } from "../../../services/validation/comment-validation";
+import { Required } from "../../Utils/Utils";
 import { useForm } from "../../../hooks/get-files";
 import { newComment } from "../../../services/endpoints-service";
 import { PublicCardContext as CardContext } from "../../../contexts/PublicCardContext";
@@ -58,6 +59,9 @@ const AddComment = ({ item, cancel }) => {
     <>
       <form className="jto-comment-form add-comment-form" onSubmit={handleSubmit}>
         <fieldset>
+          <label htmlFor="body">
+            <Required met={values.body.length === 0 ? false : true} />
+          </label>
           <textarea
             ref={bodyRef}
             type="text"

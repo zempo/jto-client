@@ -17,7 +17,7 @@ form,
   text-align: center;
 }
 
-textarea {
+.jto-comment-form textarea {
   width: 100%;
 }
 
