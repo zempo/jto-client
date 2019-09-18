@@ -12,7 +12,7 @@ export const PublicCardContextProvider = (props) => {
   const [hasReacted, setHasReacted] = useState({});
   // eslint-disable-next-line
   const [cardComments, setCardComments] = useState([]);
-  const [cardCommentsId, setCardCommentsId] = useState(1);
+  const [cardCommentsId, setCardCommentsId] = useState(0);
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -110,9 +110,7 @@ export const PublicCardContextProvider = (props) => {
     }
   };
 
-  const deleteComment = (currentComments, commentToDelete) => {
-    const updatedComments = currentComments.filter((comment) => comment.id !== commentToDelete.id);
-
+  const deleteCardComment = (updatedComments) => {
     setCardComments(updatedComments);
   };
 
@@ -127,7 +125,7 @@ export const PublicCardContextProvider = (props) => {
     setCardCommentsId,
     addToComments,
     editComment,
-    deleteComment,
+    deleteCardComment,
     compareDatesAsc,
     compareDatesDesc,
     getId,

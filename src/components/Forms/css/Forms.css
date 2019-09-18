@@ -8,6 +8,10 @@
   max-width: 350px;
 }
 
+form ul {
+  list-style-type: none;
+}
+
 form,
 .jto-privacy {
   text-align: center;

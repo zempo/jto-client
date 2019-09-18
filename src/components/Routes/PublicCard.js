@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 // import { CardContext, CardContextProvider } from "../../contexts/CardContext";
 import { UserContext } from "../../contexts/UserContext";
 import { PublicCardContext as CardContext } from "../../contexts/PublicCardContext";
-import { listCards, listCardComments, listCardReacts } from "../../services/endpoints-service";
+import { listCardReacts } from "../../services/endpoints-service";
 import { useModal } from "../../hooks/use-modal";
 import BottomModal from "../../modals/BottomModal";
 // create nice back-button
@@ -21,7 +21,6 @@ const PublicCard = (props) => {
   const {
     value: { card, cardTheme, cardAuthor, cardComments, cardCommentsId, setCardCommentsId }
   } = useContext(CardContext);
-  const [cardId, setCardId] = useState(0);
   const [currentId, setCurrentId] = useState(0);
   const [currentBody, setCurrentBody] = useState("");
   const [hasReacted, setHasReacted] = useState({});
@@ -34,7 +33,6 @@ const PublicCard = (props) => {
   useEffect(() => {
     if (props.location.state !== undefined) {
       const { item } = props.location.state;
-      setCardId(item);
       setCardCommentsId(item);
 
       const cardFound = async () => {

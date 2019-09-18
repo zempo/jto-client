@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { JtoNotification } from "../../Utils/Utils";
-import { deleteComment } from "../../../services/endpoints-service";
+import { deleteComment, readComment, listCardComments } from "../../../services/endpoints-service";
 import { PublicCardContext as CardContext } from "../../../contexts/PublicCardContext";
 
 const DeleteComment = ({ item, cancel }) => {
+  const {
+    value: { cardComments, deleteCardComment }
+  } = useContext(CardContext);
   // eslint-disable-next-line
   const [error, setError] = useState(false);
   const [resMsg, setResMsg] = useState("");
@@ -13,11 +16,15 @@ const DeleteComment = ({ item, cancel }) => {
     setResStatus(0);
     setResMsg("");
     try {
-      const deleted = await deleteComment.delete(`/${item}`);
+      let commentToDelete = await readComment.get(`/${item}`);
+      let deleted = await deleteComment.delete(`/${item}`);
+      let commentsResult = await listCardComments.get(`/${commentToDelete.data.card_id}`);
+      let deletedComments = await deleteCardComment(commentsResult.data);
 
       setResStatus(deleted.status);
       setResMsg("Comment Deleted");
-      window.location.reload();
+      cancel();
+      // window.location.reload();
     } catch (err) {
       setError(true);
       setResStatus(err.response.status);
@@ -27,8 +34,8 @@ const DeleteComment = ({ item, cancel }) => {
 
   return (
     <div className={resStatus === 0 || resStatus === 204 ? null : "shake"}>
-      <h2>Are you sure you want to delete your comment?</h2>
-      {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
+      <h2>Are you sure?</h2>
+      {resStatus === 0 || resStatus === 204 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
       <button onClick={handleDelete}>Yes</button>
       <button onClick={cancel}>No</button>
       <button className="close-modal" onClick={cancel}>
