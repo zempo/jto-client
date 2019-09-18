@@ -46,6 +46,18 @@ h3 {
   color: black;
 }
 
+.jto-dot-menu {
+  /* background: #2f3a44; */
+  background: linear-gradient(to bottom 33% rgb(255, 255, 255, 0), 66% #2f3a44);
+}
+
+.openMenu {
+  -o-animation: openDown 0.6s;
+  -moz-animation: openDown 0.6s;
+  -webkit-animation: openDown 0.6s;
+  animation: openDown 0.6s;
+}
+
 .comment-toggle:not(:checked) + .comment-menu-container .dot-menu-option {
   display: none;
   -moz-transition: all 0.3s ease-out;
@@ -58,13 +70,13 @@ h3 {
   display: block;
   position: relative;
   padding: 0.5rem;
-  top: 1rem;
   background: #2f3a44;
+  top: 1rem;
   color: white;
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 .jto-comments,
@@ -122,4 +134,52 @@ h3 {
 .jto-reactions .fa-file-download,
 .jto-reactions .heart-button {
   margin: 1rem 3rem;
+}
+
+@-webkit-keyframes openDown {
+  0% {
+    -webkit-transform: scaleY(0);
+  }
+  50% {
+    -webkit-transform: scaleY(0.5);
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+  }
+}
+
+@-moz-keyframes openDown {
+  0% {
+    -moz-transform: scaleY(0);
+  }
+  50% {
+    -moz-transform: scaleY(0.5);
+  }
+  100% {
+    -moz-transform: scaleY(1);
+  }
+}
+
+@-o-keyframes openDown {
+  0% {
+    -o-transform: scaleY(0);
+  }
+  50% {
+    -o-transform: scaleY(0.5);
+  }
+  100% {
+    -o-transform: scaleY(1);
+  }
+}
+
+@keyframes openDown {
+  0% {
+    transform: scaleY(0);
+  }
+  50% {
+    transform: scaleY(0.5);
+  }
+  100% {
+    transform: scaleY(1);
+  }
 }

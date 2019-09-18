@@ -28,7 +28,8 @@ h2 {
 
 .main-logo {
   display: inline-block;
-  max-width: 70%;
+  max-width: 35%;
+  margin-bottom: 10rem;
   height: auto;
 }
 

@@ -68,6 +68,14 @@ const PublicCard = (props) => {
     toggleCommentDelete();
   };
 
+  const [menuOpen, setMenuOpen] = useState(false);
+  const openMenu = (e) => {
+    if (e.target.value === "selected") {
+      console.log("selected");
+    } else {
+    }
+  };
+
   return (
     <main className="public-card-page">
       {/* eslint-disable-next-line */}
@@ -116,8 +124,17 @@ const PublicCard = (props) => {
                   )}
                   {user.admin || comment.user.user_name === user.user_name ? (
                     <nav className="jto-dot-menu">
-                      <input type="checkbox" id={`comment-toggle-${i}`} className="comment-toggle" value="selected" />
-                      <label className="comment-menu-container" htmlFor={`comment-toggle-${i}`}>
+                      <input
+                        type="checkbox"
+                        id={`comment-toggle-${i}`}
+                        className="comment-toggle"
+                        value="selected"
+                        onClick={openMenu}
+                      />
+                      <label
+                        className={`comment-menu-container ${menuOpen ? "openMenu" : null}`}
+                        htmlFor={`comment-toggle-${i}`}
+                      >
                         <i className="fas fa-ellipsis-h" />
                         <div className="dot-menu-option" onClick={() => openEdit(comment.id, comment.body)}>
                           <i className="fas fa-pencil-alt" />

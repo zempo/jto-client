@@ -38,7 +38,7 @@ const SearchPrivateCards = () => {
 
   return (
     <form className="jto-form search-form" onSubmit={handleSubmit}>
-      <h2 className="animated-h2">Explore Your Cards.</h2>
+      <h2 className="animated-h2">Explore Your Cards</h2>
       <fieldset className="searchTerm">
         <input
           type="text"

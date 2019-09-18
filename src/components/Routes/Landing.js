@@ -14,8 +14,8 @@ const Landing = (props) => {
 
   return (
     <div className="jto-landing">
-      <h1 className="animated-h1">just the Occasion.</h1>
-      <h2 className="animated-h2">The Greeting Card Platform.</h2>
+      <h1 className="animated-h1">Just the Occasion</h1>
+      <h2 className="animated-h2">The Greeting Card Platform</h2>
       <img className="main-logo" src={Logo} alt="jto-logo" />
       <div className="revolving-header">
         <RevolvingWords words={["Create", "Update", "Browse"]} />
