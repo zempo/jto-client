@@ -34,6 +34,36 @@ export const CardsContextProvider = (props) => {
     // eslint-disable-next-line
   }, []);
 
+  const addToCards = (currentCards, currentSearchCards, newCard) => {
+    setCards([...currentCards, newCard]);
+    setSearchCards([...currentSearchCards, newCard]);
+  };
+
+  const editPrivateCards = (currentCards, currentSearchCards, updatedCard) => {
+    let cardToEdit = [updatedCard];
+    let cardsToEdit = currentCards;
+    let searchCardsToEdit = currentSearchCards;
+    let editedCards = cardsToEdit.map((obj) => cardToEdit.find((o) => o.id === obj.id) || obj);
+    let editedSearchCards = searchCardsToEdit.map((obj) => cardToEdit.find((o) => o.id === obj.id) || obj);
+    // let editted = removeOld.push(commentToEdit);
+    setCards(editedCards);
+    setSearchCards(editedSearchCards);
+
+    let isIE = false;
+    let ua = window.navigator.userAgent;
+    let old_ie = ua.indexOf("MSIE ");
+    let new_ie = ua.indexOf("Trident/");
+
+    if (old_ie > -1 || new_ie > -1) {
+      isIE = true;
+    }
+
+    if (isIE) {
+      //IE specific code goes here
+      window.location.reload();
+    }
+  };
+
   const indexOfLastCard = currentPg * cardsPerPg;
   const indexOfFirstCard = indexOfLastCard - cardsPerPg;
   const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
@@ -164,6 +194,8 @@ export const CardsContextProvider = (props) => {
     arrangeByTheme,
     searching,
     setSearching,
+    addToCards,
+    editPrivateCards,
     loading,
     error
   };

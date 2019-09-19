@@ -15,6 +15,10 @@
 
 /* Notification utility  */
 /* //////////////////////////// */
+.jto-notification h3 {
+  padding: 0.5rem;
+}
+
 div[id="200"],
 div[id="201"] {
   /* green checkmark in center */
@@ -32,7 +36,8 @@ div[id="204"] {
 div[id="400"],
 div[id="403"],
 div[id="404"],
-div[id="413"] {
+div[id="413"],
+div[id="500"] {
   /* green checkmark in center */
   background: rgba(170, 33, 74, 0.37);
   border: 2px solid rgb(177, 30, 74);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import Modal from "../../modals/Modal";
 import { useModal } from "../../hooks/use-modal";
 import { JtoQuotes } from "./Store/Quotes";
@@ -6,27 +6,40 @@ import { Link } from "react-router-dom";
 import { distanceInWordsToNow as formatDate } from "date-fns";
 import "./css/Utils.css";
 
-export const Loader = ({ loading }) => {
+export const Loader = ({ loading, status }) => {
   // have quotes fade in and out with dynamic styling
+  const unmounted = useRef(false);
+  useLayoutEffect(() => {
+    return () => {
+      unmounted.current = true;
+    };
+  }, []);
   let randomQuote = JtoQuotes[~~(Math.random() * JtoQuotes.length)];
   const [quote, setQuote] = useState(randomQuote);
 
   useEffect(() => {
     // conditional prevents memory leak
-    const loadQuotes = (currentQuote) => {
+    let loadQuotes = window.setInterval(() => {
       let newQuote = JtoQuotes[~~(Math.random() * JtoQuotes.length)];
-      setTimeout(() => {
-        setQuote(newQuote);
-        loadQuotes();
-      }, 2000);
-    };
-    if (loading === true) {
-      loadQuotes();
-    }
-    // eslint-disable-next-line
-  }, [loading]);
+      setQuote(newQuote);
+      // loadQuotes();
+    }, 2000);
 
-  if (loading) {
+    // if (status > 0) {
+    //   unmounted.current = true;
+    //   return;
+    // } else if (loading === true) {
+    //   loadQuotes();
+    // }
+    // loadQuotes();
+
+    return () => {
+      clearInterval(loadQuotes);
+      unmounted.current = true;
+    };
+  }, []);
+
+  if (!unmounted.current) {
     return (
       <div className="jto-loader">
         <h2 className="loading">
@@ -160,35 +173,58 @@ export const Required = ({ met }) => {
   }
 };
 
-export const JtoNotification = ({ type, msg }) => {
+export const JtoNotification = ({ type, msg, done }) => {
   // created centered checkmark or x
   // below display message and surround with colored border
   const [displaying, setDisplaying] = useState(false);
+  const unmounted = useRef(false);
+  useLayoutEffect(() => {
+    return () => {
+      unmounted.current = true;
+    };
+  }, []);
+
   useEffect(() => {
     setDisplaying(true);
-    setTimeout(() => {
-      setDisplaying(false);
-      // console.clear();
-    }, 5000);
-  }, []);
+    const openNotification = () => {
+      setTimeout(() => {
+        setDisplaying(false);
+        // console.clear();
+      }, 5000);
+    };
+
+    if (displaying === true && type > 400) {
+      openNotification();
+    } else if (type < 400) {
+      setDisplaying(true);
+    }
+
+    return () => {
+      unmounted.current = true;
+      clearTimeout(openNotification);
+      // setDisplaying(false);
+    };
+  }, [displaying, done, type]);
 
   const handleClick = (e) => {
     e.preventDefault();
     setDisplaying(false);
     // console.clear();
   };
-  if (displaying) {
+  if (displaying && !done) {
     return (
       <div id={type} className="jto-notification">
-        <h2>
+        <h3>
           <i className="fas fa-exclamation" />
           {msg}
-        </h2>
+        </h3>
         <button className="close-button" onClick={handleClick}>
           X
         </button>
       </div>
     );
+  } else if (unmounted) {
+    return null;
   } else {
     return null;
   }

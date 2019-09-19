@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, useLayoutEffect, useRef } from "react";
 import {
   validateFrontMessage,
   validateTheme,
   validateInsideMessage
 } from "../../../services/validation/card-validation";
+import { CardsContext } from "../../../contexts/CardsContext";
 import { useForm } from "../../../hooks/get-files";
 import { listUserCards, updateUserCard, newImages } from "../../../services/endpoints-service";
 import { JtoNotification, Loader, EditThemesList } from "../../Utils/Utils";
@@ -19,12 +20,23 @@ const EditCard = ({ item, cancel }) => {
     { frontImage: "", insideImage: "" },
     { 1: validateFrontMessage, 2: "", 3: validateInsideMessage, 4: "", 5: validateTheme }
   );
+  const {
+    value: { editPrivateCards, cards, searchCards }
+  } = useContext(CardsContext);
   const [validReq, setValidReq] = useState(false);
   const [loading, setLoading] = useState(false);
+  const unmounted = useRef(false);
   // eslint-disable-next-line
   const [error, setError] = useState(false);
   const [resMsg, setResMsg] = useState("");
   const [resStatus, setResStatus] = useState(0);
+
+  useLayoutEffect(() => {
+    return () => {
+      setResStatus(0);
+      unmounted.current = true;
+    };
+  }, []);
 
   useEffect(() => {
     if (item) {
@@ -44,7 +56,10 @@ const EditCard = ({ item, cancel }) => {
       cardFound();
     }
     // eslint-disable-next-line
-  }, []);
+    return () => {
+      setResStatus(0);
+    };
+  }, [item]);
 
   useEffect(() => {
     if (errors["1"].length > 0 || errors["3"].length > 0) {
@@ -89,10 +104,17 @@ const EditCard = ({ item, cancel }) => {
       }
       // console.log(fullData)
       let sendFullData = await updateUserCard.patch(`/${item}`, fullData);
-      setResStatus(sendFullData.status);
+      let cardToUpdate = await listUserCards.get(`/${item}`);
+      let editedCard = await editPrivateCards(cards, searchCards, cardToUpdate.data[0]);
+
       setResMsg("Occasion Updated");
       reset();
-      window.location.reload();
+      setResStatus(sendFullData.status);
+      setTimeout(() => {
+        setResStatus(0);
+        cancel();
+      }, 1000);
+      // window.location.reload();
     } catch (err) {
       setLoading(false);
       setResStatus(err.response.status);
@@ -104,7 +126,7 @@ const EditCard = ({ item, cancel }) => {
     <>
       <h2>Edit Your Occasion</h2>
       <form className="jto-comment-form add-card-form" onSubmit={handleSubmit}>
-        {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
+        {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} done={unmounted.current} />}
         <fieldset className={resStatus === 0 || resStatus === 204 ? null : "shake"}>
           <label htmlFor="frontMessage">Did Your Occasion Change?</label>
           <ul>
@@ -180,7 +202,7 @@ const EditCard = ({ item, cancel }) => {
       <button className="close-modal" onClick={cancel}>
         X
       </button>
-      {loading ? <Loader loading={true} /> : <Loader loading={false} />}
+      {/* {loading ? <Loader loading={true} /> : <Loader loading={false} />} */}
     </>
   );
 };

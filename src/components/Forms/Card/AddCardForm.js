@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import {
   validateFrontMessage,
   validateTheme,
   validateInsideMessage
 } from "../../../services/validation/card-validation";
+import { CardsContext } from "../../../contexts/CardsContext";
 import { useForm } from "../../../hooks/get-files";
 import { newImages, newCard } from "../../../services/endpoints-service";
 import { JtoNotification, Required, Loader, ThemesList } from "../../Utils/Utils";
@@ -17,6 +18,9 @@ function AddCard({ item, cancel }) {
     { frontImage: "", insideImage: "" },
     { 1: validateFrontMessage, 2: "", 3: validateInsideMessage, 4: "", 5: validateTheme }
   );
+  const {
+    value: { addToCards, cards, searchCards }
+  } = useContext(CardsContext);
   // cloudinary call
   // eslint-disable-next-line
   const [frontUrl, setFrontUrl] = useState("");
@@ -53,7 +57,6 @@ function AddCard({ item, cancel }) {
       let sendImageData = await newImages.post("/", formData);
       // sendImageData returns an array of the urls. conditionally add them to the img data
       if (!sendImageData) return "Sorry, no dice :/";
-      setLoading(false);
       setFrontUrl(sendImageData.data[0]);
       setInsideUrl(sendImageData.data[1]);
 
@@ -68,11 +71,16 @@ function AddCard({ item, cancel }) {
       fullData.front_message = frontMessage;
       fullData.inside_message = insideMessage;
       let sendFullData = await newCard.post("/", fullData);
+      let addedToCards = await addToCards(cards, searchCards, sendFullData.data);
 
-      setResStatus(sendFullData.status);
       setResMsg("New Occasion Created");
       reset();
-      window.location.reload();
+      setLoading(false);
+      setResStatus(sendFullData.status);
+      setTimeout(() => {
+        setResStatus(0);
+        cancel();
+      }, 1000);
     } catch (error) {
       setLoading(false);
       setResStatus(error.response.status);
@@ -168,7 +176,8 @@ function AddCard({ item, cancel }) {
       <button className="close-modal" onClick={cancel}>
         X
       </button>
-      {loading ? <Loader loading={true} /> : <Loader loading={false} />}
+      {loading ? <Loader loading={loading} status={resStatus} /> : null}
+      {/* {loading ? <Loader loading={true} /> : <Loader loading={false} />} */}
     </div>
   );
 }
