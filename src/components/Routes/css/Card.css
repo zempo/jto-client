@@ -96,6 +96,10 @@ h3 {
   margin: 2rem;
   width: 40rem;
   list-style-type: none;
+  -o-animation: fadeInUp 0.6s;
+  -moz-animation: fadeInUp 0.6s;
+  -webkit-animation: fadeInUp 0.6s;
+  animation: fadeInUp 0.6s;
 }
 
 .comment-items {

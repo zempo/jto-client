@@ -177,7 +177,6 @@ function AddCard({ item, cancel }) {
         X
       </button>
       {loading ? <Loader loading={loading} status={resStatus} /> : null}
-      {/* {loading ? <Loader loading={true} /> : <Loader loading={false} />} */}
     </div>
   );
 }

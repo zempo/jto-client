@@ -1,4 +1,5 @@
 import React from "react";
+import { GalleryContext } from "../../../contexts/GalleryContext";
 import { useModal } from "../../../hooks/use-modal";
 import Modal from "../../../modals/Modal";
 import { MenuOption, ProcessMsg } from "../Utils";
@@ -14,7 +15,7 @@ const ListCard = ({ card, admin, user_name }) => {
     <div className="jto-card list-card">
       <input type="checkbox" id={`card-toggle-${card.id}`} className="card-toggle" value="selected" />
       <label
-        className="card-container"
+        className={`card-container`}
         htmlFor={`card-toggle-${card.id}`}
         style={card.theme ? ThemeStyles[`${card.theme}`].all : null}
       >

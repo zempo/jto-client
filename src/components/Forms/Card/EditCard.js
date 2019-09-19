@@ -83,7 +83,6 @@ const EditCard = ({ item, cancel }) => {
       let sendImageData = await newImages.post("/", formData);
       // sendImageData returns an array of the urls. conditionally add them to the img data
       if (!sendImageData) return "Sorry, no dice :/";
-      setLoading(false);
 
       const { theme, insideMessage, frontMessage } = values;
       let fullData = { theme };
@@ -109,12 +108,12 @@ const EditCard = ({ item, cancel }) => {
 
       setResMsg("Occasion Updated");
       reset();
+      setLoading(false);
       setResStatus(sendFullData.status);
       setTimeout(() => {
         setResStatus(0);
         cancel();
       }, 1000);
-      // window.location.reload();
     } catch (err) {
       setLoading(false);
       setResStatus(err.response.status);
@@ -202,7 +201,7 @@ const EditCard = ({ item, cancel }) => {
       <button className="close-modal" onClick={cancel}>
         X
       </button>
-      {/* {loading ? <Loader loading={true} /> : <Loader loading={false} />} */}
+      {loading ? <Loader loading={loading} status={resStatus} /> : null}
     </>
   );
 };

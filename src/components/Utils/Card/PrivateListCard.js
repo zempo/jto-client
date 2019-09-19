@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CardsContext } from "../../../contexts/CardsContext";
 import Modal from "../../../modals/Modal";
 import { useModal } from "../../../hooks/use-modal";
 import { MenuOption, ProcessMsg } from "../Utils";
@@ -9,12 +10,15 @@ const PrivateListCard = ({ card }) => {
   const { isShowing: isShowingDelete, toggle: toggleDelete } = useModal();
   const { isShowing: isShowingDownload, toggle: toggleDownload } = useModal();
   const { isShowing: isShowingPublic, toggle: togglePublic } = useModal();
+  const {
+    value: { deleted }
+  } = useContext(CardsContext);
 
   return (
     <div className="jto-card list-card">
       <input type="checkbox" id={`card-toggle-${card.id}`} className="card-toggle" value="selected" />
       <label
-        className="card-container"
+        className={`card-container ${deleted ? "removed" : null}`}
         htmlFor={`card-toggle-${card.id}`}
         style={card.theme ? ThemeStyles[`${card.theme}`].all : null}
       >

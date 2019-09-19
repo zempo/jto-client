@@ -64,6 +64,20 @@ export const CardsContextProvider = (props) => {
     }
   };
 
+  const moveOrDeleteCard = (updatedCards, updatedSearchCards) => {
+    const newCards = updatedCards;
+    const newSearchCards = updatedSearchCards;
+    setCards(newCards);
+    setSearchCards(newSearchCards);
+  };
+
+  const makePublic = (updatedCards, updatedSearchCards) => {
+    const newCards = updatedCards;
+    const newSearchCards = updatedSearchCards;
+    setCards(newCards);
+    setSearchCards(newSearchCards);
+  };
+
   const indexOfLastCard = currentPg * cardsPerPg;
   const indexOfFirstCard = indexOfLastCard - cardsPerPg;
   const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
@@ -196,6 +210,8 @@ export const CardsContextProvider = (props) => {
     setSearching,
     addToCards,
     editPrivateCards,
+    moveOrDeleteCard,
+    makePublic,
     loading,
     error
   };
