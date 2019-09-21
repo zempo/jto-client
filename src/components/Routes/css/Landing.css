@@ -13,10 +13,10 @@
 }
 
 .main-logo {
-  -o-animation: springIn 1s;
-  -moz-animation: springIn 1s;
-  -webkit-animation: springIn 1s;
-  animation: springIn 1s;
+  -o-animation: fadeInUp 1s;
+  -moz-animation: fadeInUp 1s;
+  -webkit-animation: fadeInUp 1s;
+  animation: fadeInUp 1s;
 }
 
 @-webkit-keyframes fadeIn {
