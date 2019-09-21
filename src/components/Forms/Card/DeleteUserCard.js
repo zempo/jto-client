@@ -15,13 +15,15 @@ const DeleteUserCard = ({ item, cancel }) => {
   } = useContext(CardsContext);
 
   useLayoutEffect(() => {
-    unmounted.current = false;
+    // unmounted.current = false;
     return () => {
-      unmounted.current = true;
-      console.clear();
-      setTimeout(() => {
-        console.clear();
-      }, 1100);
+      // unmounted.current = true;
+      // // console.clear();
+      // setTimeout(() => {
+      //   console.clear();
+      //   console.log("dismount");
+      //   unmounted.current = true;
+      // }, 1000);
     };
   }, []);
 
@@ -33,12 +35,15 @@ const DeleteUserCard = ({ item, cancel }) => {
       let newCards = await listUserCards.get("");
       let updatedCards = await moveOrDeleteCard(newCards.data, newCards.data);
 
-      setResStatus(deleted.status);
+      // return array of all cards at present
+      // set a variable equal to all cards minus the id of current
+      // delete
+      setResStatus(204);
       setResMsg("Occasion Deleted");
+      cancel();
       setTimeout(() => {
-        setResStatus(0);
-        cancel();
-        unmounted.current = true;
+        // setResStatus(0);
+        // unmounted.current = true;
       }, 1000);
       // window.location.reload();
     } catch (err) {
@@ -48,22 +53,18 @@ const DeleteUserCard = ({ item, cancel }) => {
     }
   };
 
-  if (!unmounted.current && item) {
-    return (
-      <div className={resStatus === 0 || resStatus === 204 ? null : "shake"}>
-        <h2>Are you sure you want to delete your occasion?</h2>
-        <p>Once you delete an Occasion, this action cannot be undone.</p>
-        {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
-        <button onClick={handleDelete}>Yes</button>
-        <button className="close-modal" onClick={cancel}>
-          X
-        </button>
-        <button onClick={cancel}>No</button>
-      </div>
-    );
-  } else {
-    return null;
-  }
+  return (
+    <div className={resStatus === 0 || resStatus === 204 ? null : "shake"}>
+      <h2>Are you sure you want to delete your occasion?</h2>
+      <p>Once you delete an Occasion, this action cannot be undone.</p>
+      {/* {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />} */}
+      <button onClick={handleDelete}>Yes</button>
+      <button className="close-modal" onClick={cancel}>
+        X
+      </button>
+      <button onClick={cancel}>No</button>
+    </div>
+  );
 };
 
 export default DeleteUserCard;
