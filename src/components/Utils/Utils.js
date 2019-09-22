@@ -12,7 +12,7 @@ export const Loader = ({ loading, status }) => {
   useLayoutEffect(() => {
     return () => {
       unmounted.current = true;
-    };
+    }; 
   }, []);
   let randomQuote = JtoQuotes[~~(Math.random() * JtoQuotes.length)];
   const [quote, setQuote] = useState(randomQuote);
@@ -24,14 +24,6 @@ export const Loader = ({ loading, status }) => {
       setQuote(newQuote);
       // loadQuotes();
     }, 2000);
-
-    // if (status > 0) {
-    //   unmounted.current = true;
-    //   return;
-    // } else if (loading === true) {
-    //   loadQuotes();
-    // }
-    // loadQuotes();
 
     return () => {
       clearInterval(loadQuotes);
