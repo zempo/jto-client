@@ -187,6 +187,7 @@ export const CardsContextProvider = (props) => {
     }
   };
 
+
   const value = {
     cards,
     currentPg,

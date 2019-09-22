@@ -1,4 +1,4 @@
-import React, { useState, useContext, useLayoutEffect, useRef } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { JtoNotification } from "../../Utils/Utils";
 import { deleteUserCard, listUserCards } from "../../../services/endpoints-service";
 import { CardsContext } from "../../../contexts/CardsContext";
@@ -14,32 +14,49 @@ const DeleteUserCard = ({ item, cancel }) => {
     value: { moveOrDeleteCard }
   } = useContext(CardsContext);
 
-  useLayoutEffect(() => {
-    unmounted.current = false;
-    return () => {
+  const close = () => {
+    setTimeout(() => {
+      console.log('closed')
+      // setResStatus(0);
+      cancel();
       unmounted.current = true;
-      console.clear();
-      setTimeout(() => {
-        console.clear();
-      }, 1100);
+    }, 1000);
+  }
+
+  useEffect(() => {
+    unmounted.current = false;
+
+
+    return () => {
+      clearTimeout(close)
+      // unmounted.current = true;
+      // console.clear();
+      // setTimeout(() => {
+      //   console.clear();
+      //   clearTimeout(close())
+      // }, 1100); 
     };
   }, []);
+
 
   const handleDelete = async (e) => {
     setResStatus(0);
     setResMsg("");
     try {
+      // const close = setTimeout(() => {
+      //   console.log('closed')
+      //   setResStatus(0);
+      //   cancel();
+      //   unmounted.current = true;
+      // }, 1000);
       let deleted = await deleteUserCard.delete(`/${item}`);
       let newCards = await listUserCards.get("");
       let updatedCards = await moveOrDeleteCard(newCards.data, newCards.data);
 
       setResStatus(deleted.status);
       setResMsg("Occasion Deleted");
-      setTimeout(() => {
-        setResStatus(0);
-        cancel();
-        unmounted.current = true;
-      }, 1000);
+      // cancel()
+      close()
       // window.location.reload();
     } catch (err) {
       setError(true);
