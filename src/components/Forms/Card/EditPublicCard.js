@@ -1,10 +1,5 @@
-// import React, { useEffect, useState, useContext } from "react";
-// // import { CardContext, CardContextProvider } from "../../contexts/CardContext";
-// import { listCards, listCardComments, listReactions, listHearts, listShares } from "../../services/endpoints-service";
-// // create back-button
-// import { JtoSection, Loader, DotMenuOption, TimeStamp, CardPages, PaginateCardFaces } from "../Utils/Utils";
-// import "./css/Card.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect, useContext, useRef } from "react";
+import { GalleryContext } from "../../../contexts/GalleryContext";
 import {
   validateFrontMessage,
   validateTheme,
@@ -25,12 +20,23 @@ const EditPublicCard = ({ item, cancel }) => {
     { frontImage: "", insideImage: "" },
     { 1: validateFrontMessage, 2: "", 3: validateInsideMessage, 4: "", 5: validateTheme }
   );
+  const {
+    value: { editPublicCard, cards, searchCards }
+  } = useContext(GalleryContext);
   const [validReq, setValidReq] = useState(false);
   const [loading, setLoading] = useState(false);
+  const unmounted = useRef(false);
   // eslint-disable-next-line
   const [error, setError] = useState(false);
   const [resMsg, setResMsg] = useState("");
   const [resStatus, setResStatus] = useState(0);
+
+  useLayoutEffect(() => {
+    return () => {
+      setResStatus(0);
+      unmounted.current = true;
+    };
+  }, []);
 
   useEffect(() => {
     if (item) {
@@ -38,7 +44,6 @@ const EditPublicCard = ({ item, cancel }) => {
         // setLoading(true);
         try {
           const cardResult = await listCards.get(`/${item}`);
-          console.log(cardResult.data);
           setCard(cardResult.data);
           setCardTheme(cardResult.data.theme);
         } catch (err) {
@@ -50,8 +55,10 @@ const EditPublicCard = ({ item, cancel }) => {
 
       cardFound();
     }
-    // eslint-disable-next-line
-  }, []);
+    return () => {
+      setResStatus(0);
+    };
+  }, [item]);
 
   useEffect(() => {
     if (errors["1"].length > 0 || errors["3"].length > 0) {
@@ -94,12 +101,19 @@ const EditPublicCard = ({ item, cancel }) => {
       if (theme === "") {
         fullData.theme = card.theme;
       }
-      // console.log(fullData)
+
       let sendFullData = await updateCard.patch(`/${item}`, fullData);
-      setResStatus(sendFullData.status);
+      let cardToUpdate = await listCards.get(`/${item}`);
+      let editedCard = await editPublicCard(cards, searchCards, cardToUpdate.data);
+
       setResMsg("Occasion Updated");
       reset();
-      window.location.reload();
+      setLoading(false);
+      setResStatus(sendFullData.status);
+      setTimeout(() => {
+        setResStatus(0);
+        cancel();
+      }, 1000);
     } catch (err) {
       setLoading(false);
       setResStatus(err.response.status);
@@ -111,7 +125,7 @@ const EditPublicCard = ({ item, cancel }) => {
     <>
       <h2>Edit Your Occasion</h2>
       <form className="jto-form add-card-form" onSubmit={handleSubmit}>
-        {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
+        {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} done={unmounted.current} />}
         <fieldset className={resStatus === 0 || resStatus === 204 ? null : "shake"}>
           <label htmlFor="frontMessage">Did Your Occasion Change?</label>
           <ul>
@@ -184,7 +198,7 @@ const EditPublicCard = ({ item, cancel }) => {
       <button className="close-modal" onClick={cancel}>
         X
       </button>
-      {loading ? <Loader loading={true} /> : <Loader loading={false} />}
+      {loading ? <Loader loading={loading} status={resStatus} /> : null}
     </>
   );
 };
