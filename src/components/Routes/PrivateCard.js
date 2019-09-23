@@ -50,8 +50,8 @@ const Private = (props) => {
       <h3>Created {<TimeStamp date={card.date_created} />} ago</h3>
       <JtoSection className="jto-card private-card" style={ThemeStyles[`${cardTheme}`].all}>
         {/* style={Object.assign({}, ThemeStyles[`${cardTheme}`].all, ThemeStyles[`${cardTheme}`].front) */}
-        <CardPages card={card} themes={ThemeStyles} cardTheme={cardTheme} cardPg={cardPg} />
         <PaginateCardFaces currentPg={cardPg} setCurrentPg={setCardPg} />
+        <CardPages card={card} themes={ThemeStyles} cardTheme={cardTheme} cardPg={cardPg} />
       </JtoSection>
     </>
   );
