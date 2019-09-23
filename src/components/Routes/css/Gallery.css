@@ -253,7 +253,7 @@
 }
 
 .inner-left {
-  background: rgb(248, 245, 245);
+  background: #f8f5f5;
   -webkit-transform: rotateY(-20deg);
   transform: rotateY(-20deg);
   z-index: 2;
