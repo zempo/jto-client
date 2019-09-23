@@ -24,7 +24,7 @@ const Modal = ({ item, payload, action, isShowing, hide }) => {
           ) : action === "demo" ? (
             <Demo cancel={hide} />
           ) : action === "download-card" ? (
-            <Download item={item} cancel={hide} />
+            <Download item={item} cancel={hide} payload={payload} />
           ) : action === "delete-card" ? (
             <DeleteCard item={item} cancel={hide} />
           ) : action === "delete-user-card" ? (

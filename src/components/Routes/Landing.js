@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "../../images/jto-logo-main.svg";
 // import { AuthService } from "../../services/auth-service";
-import { RevolvingWords } from "../Utils/Utils";
+import { RevolvingWords, JtoSection } from "../Utils/Utils";
 import { useModal } from "../../hooks/use-modal";
 import Modal from "../../modals/Modal";
 import "./css/Landing.css";
@@ -13,7 +13,7 @@ const Landing = (props) => {
   const { isShowing: isShowingDemo, toggle: toggleDemo } = useModal();
 
   return (
-    <div className="jto-landing">
+    <JtoSection className="jto-landing">
       <h1 className="animated-h1">Just the Occasion</h1>
       <h2 className="animated-h2">The Greeting Card Platform</h2>
       <img className="main-logo" src={Logo} alt="jto-logo" />
@@ -82,7 +82,7 @@ const Landing = (props) => {
       </section>
       {/* to-do: build modal that checks if you're still logged in after 30 mins of inactivity */}
       {/* <button onClick={handleRefresh}>Refresh Checker</button> */}
-    </div>
+    </JtoSection>
   );
 };
 

@@ -19,8 +19,10 @@ import Footer from "../Static/Footer";
 import AddCard from "../Forms/Card/AddCardForm";
 
 // ROUTES
+import DownloadPage from "../Routes/DownloadPage";
 import Landing from "../Routes/Landing";
 import Gallery from "../Routes/Gallery";
+import Guide from "../Routes/Guide";
 import FAQs from "../Routes/FAQs";
 import PublicCard from "../Routes/PublicCard";
 import PrivateCard from "../Routes/PrivateCard";
@@ -72,11 +74,13 @@ class App extends Component {
           <ErrorPage>
             <Switch>
               <Route exact path={"/"} component={Landing} />
+              <Route exact path={"/guide"} component={Guide} />
               <PrivateRoute exact path={"/add-occasion"} component={AddCard} />
               <Route exact path={"/gallery"} component={Gallery} />
               <PrivateRoute exact path={"/gallery-card"} component={PublicCard} />
               <PrivateRoute exact path={"/private"} component={UserHome} />
               <PrivateRoute exact path={"/private-card"} component={PrivateCard} />
+              <PrivateRoute exact path={"/download-card"} component={DownloadPage} />
               <PublicOnlyRoute exact path={"/login"} component={Login} />
               <PublicOnlyRoute exact path={"/register"} component={Registration} />
               <Route exact path={"/support"} component={FAQs} />

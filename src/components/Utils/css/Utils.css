@@ -133,7 +133,7 @@ div[id="500"] {
 }
 .btn:hover {
   background: rgb(223, 233, 243);
-  border: 2px solid #0060a4;
+  border: 2px solid rgb(223, 233, 243);
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
   -webkit-transition: all 0.2s ease-out;

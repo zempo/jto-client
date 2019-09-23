@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { toggleLike, toggleShare, listCardReacts } from "../../../services/endpoints-service";
 import { useModal } from "../../../hooks/use-modal";
 import Modal from "../../../modals/Modal";
 import "./css/Social.css";
+import { PublicCardContext as CardContext } from "../../../contexts/PublicCardContext";
 
-export const PostReaction = ({ item }) => {
+export const PostReaction = ({ item, payload }) => {
   const [pulse, setPulse] = useState(false);
   const [status, setStatus] = useState("inactive");
   const [heart, setHeart] = useState(false);
   const [share, setShare] = useState(false);
   const { isShowing: isShowingDownload, toggle: toggleDownload } = useModal();
+  const {
+    value: { card }
+  } = useContext(CardContext);
 
   const createAndSendHeart = async (e) => {
     setPulse(false);
@@ -77,7 +81,7 @@ export const PostReaction = ({ item }) => {
       <i className="fas fa-file-download" title="download" onClick={createAndSendShare}>
         {share ? "bookmarked" : null}
       </i>
-      <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
+      <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} payload={card} />
     </>
   ) : (
     <>
@@ -93,7 +97,7 @@ export const PostReaction = ({ item }) => {
       <i className="fas fa-file-download" title="download" onClick={updateShare}>
         {share ? <span></span> : null}
       </i>
-      <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
+      <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} payload={card} />
     </>
   );
 };
@@ -103,6 +107,9 @@ export const ToggleReaction = ({ item, liked, shared }) => {
   const [heart, setHeart] = useState(liked);
   const [share, setShare] = useState(shared);
   const { isShowing: isShowingDownload, toggle: toggleDownload } = useModal();
+  const {
+    value: { card }
+  } = useContext(CardContext);
 
   const updateHeart = async (e) => {
     setPulse(false);
@@ -144,7 +151,7 @@ export const ToggleReaction = ({ item, liked, shared }) => {
       <i className="fas fa-file-download" title="download" onClick={updateShare}>
         <span>{share ? "bookmarked" : null}</span>
       </i>
-      <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} />
+      <Modal item={item} action="download-card" isShowing={isShowingDownload} hide={toggleDownload} payload={card} />
     </>
   );
 };

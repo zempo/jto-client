@@ -42,7 +42,13 @@ const PrivateSearchCard = ({ card }) => {
           <div className="menu-option toggle-modal">
             <i className="fas fa-file-download" title="download" onClick={toggleDownload} />
           </div>
-          <Modal isShowing={isShowingDownload} hide={toggleDownload} item={card.id} action="download-card" />
+          <Modal
+            isShowing={isShowingDownload}
+            hide={toggleDownload}
+            item={card.id}
+            payload={card}
+            action="download-card"
+          />
           <div className="menu-option toggle-modal">
             <i className="fas fa-user-friends" title="publish" onClick={togglePublic} />
           </div>

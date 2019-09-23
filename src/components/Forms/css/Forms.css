@@ -27,7 +27,17 @@ form,
 
 form button,
 .modal-btn {
-  width: 100%;
+  width: 15rem;
+  height: 3rem;
+}
+
+form button {
+  margin: 2rem;
+}
+
+.search-form button {
+  width: 10rem;
+  height: 3rem;
 }
 
 .list-card-demo {

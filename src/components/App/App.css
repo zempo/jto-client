@@ -27,10 +27,13 @@ h2 {
 } */
 
 .main-logo {
-  display: inline-block;
   max-width: 35%;
   margin-bottom: 10rem;
   height: auto;
+}
+
+fieldset {
+  border: none;
 }
 
 .username {
