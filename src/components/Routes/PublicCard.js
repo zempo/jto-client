@@ -31,6 +31,7 @@ const PublicCard = (props) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (props.location.state !== undefined) {
       const { item } = props.location.state;
       setCardCommentsId(item);

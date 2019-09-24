@@ -16,6 +16,11 @@ h1 {
 h1,
 h2 {
   text-align: center;
+  color: rgb(48, 58, 69);
+}
+
+h3 {
+  color: rgb(48, 58, 69);
 }
 
 h2 {
@@ -49,6 +54,10 @@ fieldset {
 .jto-footer {
   font-family: "Montserrat", sans-serif;
   text-align: center;
+}
+
+.jto-landing {
+  background: #f8f5f5;
 }
 
 /* key icon */

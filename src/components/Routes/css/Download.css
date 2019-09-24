@@ -2,7 +2,7 @@
   /* margin: 10px auto;
   text-align: center; */
   /* padding-top: 20px; */
-  margin: 10px auto;
+  margin: 5px auto;
   /* border: 1px dashed black; */
   text-align: center;
   /* box-sizing: content-box; */
@@ -13,6 +13,23 @@
 .export-pg h3 {
   position: relative;
   top: 10%;
+}
+
+.export-pg p {
+  position: relative;
+  top: 50%;
+}
+
+.export-pg h3 {
+  max-width: 80%;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+  text-align: center;
+  margin-left: 5%;
 }
 .export-front img {
   position: absolute;
@@ -33,8 +50,271 @@
 
 .export-container {
   border: 2px dashed black;
-  margin: auto 10%;
+  margin: auto 5%;
   max-width: 100%;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.jto-download-form {
+  /* border: 2px solid black; */
+  color: rgb(48, 58, 69);
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-areas:
+    ". sizeControl ."
+    ". bkgControl ."
+    ". textControl ."
+    ". borderControl ."
+    ". signatureControl ."
+    ". downloadButtons .";
+}
+
+.jto-download-form fieldset {
+  /* border: 2px solid black; */
+  margin: 1rem 1rem;
+  -moz-backface-visibility: visible !important;
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+  -o-animation: flipInX 1.4s;
+  -moz-animation: flipInX 1.4s;
+  -webkit-animation: flipInX 1.4s;
+  animation: flipInX 1.4s;
+}
+
+.jto-download-form fieldset:nth-child(2) {
+  -o-animation-delay: 0.1s;
+  -moz-animation-delay: 0.1s;
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+
+.jto-download-form fieldset:nth-child(3) {
+  -o-animation-delay: 0.2s;
+  -moz-animation-delay: 0.2s;
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+
+.jto-download-form fieldset:nth-child(4) {
+  -o-animation-delay: 0.3s;
+  -moz-animation-delay: 0.3s;
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+
+.jto-download-form fieldset:nth-child(5) {
+  -o-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+.jto-download-form fieldset:nth-child(6) {
+  -o-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+
+.jto-download-form .control-item {
+  grid-area: controlItem;
+  border: 2px solid rgb(48, 58, 69);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: relative;
+  padding: 1rem 0;
+  left: 80px;
+}
+
+.jto-download-form legend {
+  grid-area: controlLegend;
+  /* border: 2px solid blue; */
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: start;
+  position: relative;
+  top: 30%;
+  left: -90px;
+}
+
+.download-text-color {
+  grid-area: textControl;
+}
+
+.download-background {
+  grid-area: bkgControl;
+}
+
+.download-border {
+  grid-area: borderControl;
+}
+
+.download-size {
+  grid-area: sizeControl;
+}
+
+.download-signature {
+  grid-area: signatureControl;
+}
+
+.download-signature .control-item {
+  justify-content: center;
+  flex-direction: column;
+}
+
+.download-signature .control-item label {
+  padding: 0.4rem;
+}
+
+.download-buttons {
+  grid-area: downloadButtons;
+  justify-content: space-between;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: flex-start; */
+  position: relative;
+  left: 80px;
+}
+.download-buttons button {
+  width: 40%;
+  margin: 5%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+}
+
+@-o-keyframes flipInX {
+  from {
+    -o-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    -o-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    -o-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    -o-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    -o-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    -o-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  to {
+    -o-transform: perspective(400px);
+    transform: perspective(400px);
+  }
+}
+
+@-moz-keyframes flipInX {
+  from {
+    -moz-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    -moz-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    -moz-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    -moz-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    -moz-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    -moz-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  to {
+    -moz-transform: perspective(400px);
+    transform: perspective(400px);
+  }
+}
+
+@-webkit-keyframes flipInX {
+  from {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  to {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px);
+  }
+}
+
+@keyframes flipInX {
+  from {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  to {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px);
+  }
 }
 
 @media screen and (max-width: 900px) {

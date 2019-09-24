@@ -9,6 +9,14 @@ class DocService {
       margin: 3
     });
   };
+  formatInnerMessage = (msg) => {
+    let processedMsg = "";
+    msg.split().forEach((char) => {
+      if (char === ".") {
+        return;
+      }
+    });
+  };
 }
 
 const Doc = new DocService();

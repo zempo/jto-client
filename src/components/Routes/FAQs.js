@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { JtoSection } from "../Utils/Utils";
 
 const FAQs = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <JtoSection className="jto-faqs">
       <h1 className="animated-h1">Need Help?</h1>

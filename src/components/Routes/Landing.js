@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "../../images/jto-logo-main.svg";
 // import { AuthService } from "../../services/auth-service";
 import { RevolvingWords, JtoSection } from "../Utils/Utils";
@@ -11,6 +11,10 @@ const Landing = (props) => {
   //   AuthService.postRefreshToken();
   // };
   const { isShowing: isShowingDemo, toggle: toggleDemo } = useModal();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <JtoSection className="jto-landing">

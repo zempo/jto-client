@@ -13,6 +13,7 @@ body {
   height: 100%;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2;
 }
 
 .Modal__inner {

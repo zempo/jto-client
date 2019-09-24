@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { GalleryContext } from "../../contexts/GalleryContext";
 import { UserContext } from "../../contexts/UserContext";
 import { JtoSection, PaginateCards, SkeletonLoader } from "../Utils/Utils";
@@ -29,6 +29,10 @@ const Gallery = () => {
     }
   } = useContext(GalleryContext);
   const { value: userValue } = useContext(UserContext);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

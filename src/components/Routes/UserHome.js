@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { CardsContextProvider as CardsProvider } from "../../contexts/CardsContext";
 import { JtoSection } from "../Utils/Utils";
@@ -8,6 +8,10 @@ const UserHome = () => {
   const {
     value: { fullName, firstName }
   } = useContext(UserContext);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <JtoSection className="jto-home">

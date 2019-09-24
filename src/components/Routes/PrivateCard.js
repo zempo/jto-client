@@ -22,6 +22,7 @@ const Private = (props) => {
 
   useEffect(() => {
     if (props.location.state !== undefined) {
+      window.scrollTo(0, 0);
       const { item } = props.location.state;
       setCardId(item);
       setLoading(true);
