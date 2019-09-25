@@ -26,17 +26,18 @@ const MakePrivate = ({ item, cancel }) => {
 
   return (
     <div className={resStatus === 0 || resStatus === 204 ? "jto-privacy" : "jto-privacy shake"}>
-      <h2>Are you sure you want to make your Occasion Private?</h2>
+      <h2>Make Occasion Private?</h2>
       <p>
-        Other users won't be able to view your occasion. <br />
-        However, you can bring your occasion back to the Gallery anytime!
+        Click the button to hide your occasion
+        <br />
+        You can bring your occasion back here, anytime!
       </p>
       {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
-      <button className="modal-btn" onClick={handlePrivacy}>
-        Make Occasion Private
-      </button>
       <button className="modal-btn" onClick={cancel}>
         Cancel
+      </button>
+      <button className="modal-btn" onClick={handlePrivacy}>
+        Hide Occasion
       </button>
       <button className="close-modal" onClick={cancel}>
         X

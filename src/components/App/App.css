@@ -56,7 +56,8 @@ fieldset {
   text-align: center;
 }
 
-.jto-landing {
+body,
+.jto-main {
   background: #f8f5f5;
 }
 

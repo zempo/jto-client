@@ -9,18 +9,29 @@
   position: relative;
 }
 
-.export-pg h2,
-.export-pg h3 {
-  position: relative;
-  top: 10%;
-}
-
 .export-pg p {
+  /* position: relative; */
+  line-height: 150%;
+}
+
+.export-pg h2 {
   position: relative;
-  top: 50%;
+  top: 2.5%;
+  font-size: 20px;
+  max-width: 80%;
+  margin-left: 10%;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
 }
 
 .export-pg h3 {
+  position: relative;
+  top: 5%;
+  font-size: 14px;
   max-width: 80%;
   -ms-word-break: break-all;
   word-break: break-all;
@@ -28,16 +39,20 @@
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   hyphens: auto;
-  text-align: center;
-  margin-left: 5%;
+  text-align: justify;
+  margin-left: 10%;
+  padding-bottom: 10%;
+  word-spacing: 0.1;
+  line-height: 125%;
 }
+
 .export-front img {
   position: absolute;
   max-width: 90%;
   max-height: 70%;
   left: 55%;
   margin-left: -50%;
-  top: 80%;
+  bottom: 1%;
   margin-top: -50%;
 }
 
@@ -50,6 +65,7 @@
 
 .export-container {
   border: 2px dashed black;
+  background: white;
   margin: auto 5%;
   max-width: 100%;
   max-height: 100vh;

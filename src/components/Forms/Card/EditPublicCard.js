@@ -123,7 +123,7 @@ const EditPublicCard = ({ item, cancel }) => {
 
   return (
     <>
-      <h2>Edit Your Occasion</h2>
+      <h2>Update Your Occasion?</h2>
       <form className="jto-form add-card-form" onSubmit={handleSubmit}>
         {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} done={unmounted.current} />}
         <fieldset className={resStatus === 0 || resStatus === 204 ? null : "shake"}>

@@ -89,6 +89,7 @@ class DownloadPage extends Component {
     };
     let pageStyle = {
       fontFamily: `${card.theme !== "" ? ThemeStyles[`${card.theme}`].all.fontFamily : "none"}`,
+      fontSize: `${size === "A1" ? "16" : size === "A6" ? "18" : size === "A7" ? "20" : size === "A9" ? "22" : "16"}px`,
       border: `${stroke}px solid ${border}`,
       outline: `${stroke}px solid ${border}`,
       outlineOffset: `-${stroke}px`,
@@ -285,8 +286,16 @@ class DownloadPage extends Component {
                 fontFamily: pageStyle.fontFamily
               }}
             >
-              <h2>{card.front_message}</h2>
-              <img src={card.front_image} alt="download-cover" />
+              <h2
+                style={{
+                  color: frontText,
+                  fontFamily: pageStyle.fontFamily,
+                  fontSize: pageStyle.fontSize
+                }}
+              >
+                {card.front_message}
+              </h2>
+              {card.front_image ? <img src={card.front_image} alt="download-cover" /> : null}
             </div>
             <div
               className="export-pg export-inside-left page-break"
@@ -300,20 +309,41 @@ class DownloadPage extends Component {
               }}
             >
               {/* <h3 className="download-text">{card.inside_message.replace(/\./g, <br />)}</h3> */}
-              <h3 className="download-text">
-                {card.inside_message.split(".").map((sentence, i) => {
-                  return (
-                    <div key={i}>
-                      <span>{sentence}</span>.
-                      <br />
-                    </div>
-                  );
+              <h3
+                className="download-text"
+                style={{
+                  color: innerLeftText,
+                  fontFamily: pageStyle.fontFamily
+                }}
+              >
+                {/* {card.inside_message} */}
+                {card.inside_message.split(".").map((sentence, i, msg) => {
+                  if (i === msg.length - 1) {
+                    return (
+                      <div key={i}>
+                        <span>{sentence}</span>
+                        <br />
+                      </div>
+                    );
+                  } else {
+                    return (
+                      <div key={i}>
+                        <span>{sentence}</span>.
+                        <br />
+                      </div>
+                    );
+                  }
                 })}
               </h3>
-
-              <p className="signature">
+              <br />
+              <p
+                className="signature"
+                style={{
+                  color: innerLeftText,
+                  fontFamily: pageStyle.fontFamily
+                }}
+              >
                 {close !== "" ? `${close},` : ""}
-                <br />
                 <br />
                 {name}
               </p>
@@ -329,7 +359,7 @@ class DownloadPage extends Component {
                 fontFamily: pageStyle.fontFamily
               }}
             >
-              <img src={card.inside_image} alt="download-inside-figure" />
+              {card.inside_image ? <img src={card.inside_image} alt="download-inside-figure" /> : null}
             </div>
           </PDFExport>
         </JtoSection>

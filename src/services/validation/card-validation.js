@@ -8,8 +8,8 @@ export const validateFrontMessage = (frontMessage) => {
 
 export const validateInsideMessage = (insideMessage) => {
   let ERRORS = [];
-  if (insideMessage.length > 650) {
-    ERRORS.push(`Please limit the inner message to 650 characters.`);
+  if (insideMessage.length > 350) {
+    ERRORS.push(`Please limit the inner message to 350 characters.`);
   }
   return ERRORS;
 };

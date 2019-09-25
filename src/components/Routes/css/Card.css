@@ -51,12 +51,12 @@ h3 {
   background: linear-gradient(to bottom 33% rgb(255, 255, 255, 0), 66% #2f3a44);
 }
 
-.openMenu {
+/* .openMenu {
   -o-animation: openDown 0.6s;
   -moz-animation: openDown 0.6s;
   -webkit-animation: openDown 0.6s;
   animation: openDown 0.6s;
-}
+} */
 
 .comment-toggle:not(:checked) + .comment-menu-container .dot-menu-option {
   display: none;
@@ -72,11 +72,30 @@ h3 {
   padding: 0.5rem;
   background: #2f3a44;
   top: 1rem;
-  color: white;
+  color: rgba(255, 255, 255, 0.7);
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
+  -o-animation: openDown 0.1s;
+  -moz-animation: openDown 0.1s;
+  -webkit-animation: openDown 0.1s;
+  animation: openDown 0.1s;
+  -o-animation-fill-mode: backwards;
+  -moz-animation-fill-mode: backwards;
+  -webkit-animation-fill-mode: backwards;
+  animation-fill-mode: backwards;
+}
+
+.comment-toggle:checked + .comment-menu-container .dot-menu-option:hover {
+  color: rgba(255, 255, 255);
+}
+
+.comment-toggle:checked + .comment-menu-container .dot-menu-option:nth-child(3) {
+  -o-animation-delay: 0.1s;
+  -moz-animation-delay: 0.1s;
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
 }
 
 .jto-comments,
@@ -115,7 +134,7 @@ h3 {
 .comment-toggle {
   display: none;
   width: 2rem;
-  height: 1rem;
+  height: 1.5rem;
 }
 
 .fa-ellipsis-h {
@@ -178,12 +197,15 @@ h3 {
 
 @keyframes openDown {
   0% {
+    transform-origin: top;
     transform: scaleY(0);
   }
   50% {
+    transform-origin: top;
     transform: scaleY(0.5);
   }
   100% {
+    transform-origin: top;
     transform: scaleY(1);
   }
 }
