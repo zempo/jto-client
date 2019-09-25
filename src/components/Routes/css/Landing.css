@@ -3,6 +3,10 @@
   -moz-animation: fadeIn 1s;
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
+  -o-animation-fill-mode: backwards;
+  -moz-animation-fill-mode: backwards;
+  -webkit-animation-fill-mode: backwards;
+  animation-fill-mode: backwards;
 }
 
 .animated-h2 {
@@ -10,6 +14,10 @@
   -moz-animation: fadeInUp 1s;
   -webkit-animation: fadeInUp 1s;
   animation: fadeInUp 1s;
+  -o-animation-fill-mode: backwards;
+  -moz-animation-fill-mode: backwards;
+  -webkit-animation-fill-mode: backwards;
+  animation-fill-mode: backwards;
 }
 
 .main-logo {
@@ -17,6 +25,10 @@
   -moz-animation: fadeInUp 1s;
   -webkit-animation: fadeInUp 1s;
   animation: fadeInUp 1s;
+  -o-animation-fill-mode: backwards;
+  -moz-animation-fill-mode: backwards;
+  -webkit-animation-fill-mode: backwards;
+  animation-fill-mode: backwards;
 }
 
 @-webkit-keyframes fadeIn {

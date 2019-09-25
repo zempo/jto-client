@@ -4,8 +4,10 @@ import { UserContext } from "../../contexts/UserContext";
 import { ThemeStyles } from "../Utils/Store/Themes";
 import { JtoSection, Loader } from "../Utils/Utils";
 // import DownloadContent from "../Utils/Card/DownloadContent";
-import { PDFExport } from "@progress/kendo-react-pdf";
+// import { PDFExport } from "@progress/kendo-react-pdf";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import "./css/Download.css";
+import DownloadContainer from "../Utils/Card/DownloadContainer";
 
 class DownloadPage extends Component {
   constructor(props) {
@@ -94,10 +96,10 @@ class DownloadPage extends Component {
       outlineOffset: `-${stroke}px`,
       height: `${
         size === "A1" ? "480" : size === "A6" ? "576" : size === "A7" ? "672" : size === "A9" ? "816" : "830"
-        }px`,
+      }px`,
       width: `${
         size === "A1" ? "336" : size === "A6" ? "348" : size === "A7" ? "480" : size === "A9" ? "528" : "600"
-        }px`
+      }px`
     };
 
     return (
@@ -114,12 +116,12 @@ class DownloadPage extends Component {
                 {size === "A1"
                   ? "5'' x 3.5''"
                   : size === "A6"
-                    ? "6'' x 4''"
-                    : size === "A7"
-                      ? "7'' x 5''"
-                      : size === "A9"
-                        ? "8.5'' x 5.5''"
-                        : ""}
+                  ? "6'' x 4''"
+                  : size === "A7"
+                  ? "7'' x 5''"
+                  : size === "A9"
+                  ? "8.5'' x 5.5''"
+                  : ""}
                 )
               </legend>
               <div className="control-item">
@@ -244,7 +246,16 @@ class DownloadPage extends Component {
               <button className="reset-button" onClick={this.handleReset}>
                 Reset
               </button>
-              <button
+              <button className="k-button">
+                <PDFDownloadLink
+                  document={<DownloadContainer card={card} styles={pageStyle} />}
+                  fileName="movielist.pdf"
+                  className="k-button"
+                >
+                  Save the Occasion
+                </PDFDownloadLink>
+              </button>
+              {/* <button
                 className="k-button"
                 onClick={async (e) => {
                   e.preventDefault();
@@ -259,108 +270,98 @@ class DownloadPage extends Component {
                 }}
               >
                 Save the Occasion
-              </button>
+              </button> */}
             </fieldset>
           </form>
           {this.state.loading ? <Loader /> : null}
         </JtoSection>
-        <JtoSection className="export-container">
-          <PDFExport
-            // createPdf={this.createPdf}
-            forcePageBreak=".page-break"
-            paperSize="letter"
-            fileName="my-occasion.pdf"
-            margin="20px"
-            ref={(component) => (this.pdfExportComponent = component)}
-            style={outputStyle}
+        <JtoSection className="export-container preview">
+          <div
+            className="export-pg export-front"
+            style={{
+              backgroundColor: frontBg,
+              color: frontText,
+              height: pageStyle.height,
+              width: pageStyle.width,
+              border: pageStyle.border,
+              fontFamily: pageStyle.fontFamily
+            }}
           >
-            <div
-              className="export-pg export-front"
+            <h2
               style={{
-                backgroundColor: frontBg,
                 color: frontText,
-                height: pageStyle.height,
-                width: pageStyle.width,
-                border: pageStyle.border,
-                fontFamily: pageStyle.fontFamily
+                fontFamily: pageStyle.fontFamily,
+                fontSize: pageStyle.fontSize
               }}
             >
-              <h2
-                style={{
-                  color: frontText,
-                  fontFamily: pageStyle.fontFamily,
-                  fontSize: pageStyle.fontSize
-                }}
-              >
-                {card.front_message}
-              </h2>
-              {card.front_image ? <img src={card.front_image} alt="download-cover" /> : null}
-            </div>
-            <div
-              className="export-pg export-inside-left page-break"
+              {card.front_message}
+            </h2>
+            {card.front_image ? <img src={card.front_image} alt="download-cover" /> : null}
+          </div>
+          <div
+            className="export-pg export-inside-left page-break"
+            style={{
+              backgroundColor: innerLeftBg,
+              color: innerLeftText,
+              height: pageStyle.height,
+              width: pageStyle.width,
+              border: pageStyle.border,
+              fontFamily: pageStyle.fontFamily
+            }}
+          >
+            {/* <h3 className="download-text">{card.inside_message.replace(/\./g, <br />)}</h3> */}
+            <h3
+              className="download-text"
               style={{
-                backgroundColor: innerLeftBg,
                 color: innerLeftText,
-                height: pageStyle.height,
-                width: pageStyle.width,
-                border: pageStyle.border,
                 fontFamily: pageStyle.fontFamily
               }}
             >
-              {/* <h3 className="download-text">{card.inside_message.replace(/\./g, <br />)}</h3> */}
-              <h3
-                className="download-text"
-                style={{
-                  color: innerLeftText,
-                  fontFamily: pageStyle.fontFamily
-                }}
-              >
-                {/* {card.inside_message} */}
-                {card.inside_message.split(".").map((sentence, i, msg) => {
-                  if (i === msg.length - 1) {
-                    return (
-                      <div key={i}>
-                        <span>{sentence}</span>
-                        <br />
-                      </div>
-                    );
-                  } else {
-                    return (
-                      <div key={i}>
-                        <span>{sentence}</span>.
-                        <br />
-                      </div>
-                    );
-                  }
-                })}
-              </h3>
-              <br />
-              <p
-                className="signature"
-                style={{
-                  color: innerLeftText,
-                  fontFamily: pageStyle.fontFamily
-                }}
-              >
-                {close !== "" ? `${close},` : ""}
-                <br />
-                {name}
-              </p>
-            </div>
-            <div
-              className="export-pg export-inside-right page-break"
+              {/* {card.inside_message} */}
+              {card.inside_message.split(".").map((sentence, i, msg) => {
+                if (i === msg.length - 1) {
+                  return (
+                    <div key={i}>
+                      <span>{sentence}</span>
+                      <br />
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div key={i}>
+                      <span>{sentence}</span>.
+                      <br />
+                    </div>
+                  );
+                }
+              })}
+            </h3>
+            <br />
+            <p
+              className="signature"
               style={{
-                backgroundColor: innerRightBg,
-                color: innerRightText,
-                height: pageStyle.height,
-                width: pageStyle.width,
-                border: pageStyle.border,
+                color: innerLeftText,
                 fontFamily: pageStyle.fontFamily
               }}
             >
-              {card.inside_image ? <img src={card.inside_image} alt="download-inside-figure" /> : null}
-            </div>
-          </PDFExport>
+              {close !== "" ? `${close},` : ""}
+              <br />
+              {name}
+            </p>
+          </div>
+          <div
+            className="export-pg export-inside-right page-break"
+            style={{
+              backgroundColor: innerRightBg,
+              color: innerRightText,
+              height: pageStyle.height,
+              width: pageStyle.width,
+              border: pageStyle.border,
+              fontFamily: pageStyle.fontFamily
+            }}
+          >
+            {card.inside_image ? <img src={card.inside_image} alt="download-inside-figure" /> : null}
+          </div>
         </JtoSection>
       </div>
     );
