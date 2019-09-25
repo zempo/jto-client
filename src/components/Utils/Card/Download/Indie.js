@@ -1,26 +1,64 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Page, Text, View, Document, StyleSheet, Font, Image as IMG } from "@react-pdf/renderer";
+import "../../../Routes/css/Download.css";
 // import { JtoSection } from "../Utils";
+// {
+//   family: "'Great Vibes', cursive",
+//   src: "https://fonts.gstatic.com/s/greatvibes/v7/RWmMoKWR9v4ksMfaWd_JN9XFiaEoDmlr.ttf"
+// }
 
-const DownloadContainer = ({ card, styles }) => {
-  console.log(card, styles);
+Font.register({
+  family: "'Amatic SC', cursive",
+  src: "http://fonts.gstatic.com/s/amaticsc/v13/TUZyzwprpvBS1izr_vOECuSaU5cP1Q.ttf"
+});
+
+// Font.register({
+//   family: "Oswald",
+//   src: "https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf"
+// });
+
+const Indie = ({ card, styles, size }) => {
+  const [allStyles, setAllStyles] = useState({});
+  useEffect(() => {
+    let newStyle = StyleSheet.create({
+      page: {
+        fontFamily: "'Amatic SC', cursive"
+      },
+      view: {
+        border: styles.border,
+        height: styles.height,
+        width: styles.width
+      }
+    });
+    setAllStyles(newStyle);
+  }, [allStyles, card, styles]);
+
+  const frontStyles = StyleSheet.create({});
+
+  let innerLeftStyles = StyleSheet.create({});
+
+  let innerRightStyles = StyleSheet.create({});
   return (
-    <Document>
-      <Page className="export-pg export-front" wrap>
-        <Text>{card.front_message}</Text>
-        {card.front_image ? <IMG source={card.front_image}></IMG> : null}
+    <Document style={allStyles}>
+      <Page className="export-pg export-front" style={allStyles.page} size="Letter" wrap>
+        <View style={allStyles.view}>
+          <Text>{card.front_message}</Text>
+          {card.front_image ? <IMG source={card.front_image}></IMG> : null}
+        </View>
       </Page>
-      <Page className="export-pg export-inside-left" wrap>
-        <Text>{card.inside_message}</Text>
+      <Page className="export-pg export-inside-left" size="Letter" wrap>
+        <View style={allStyles.view}>
+          <Text>{card.inside_message}</Text>
+        </View>
       </Page>
-      <Page className="export-pg export-inside-right" wrap>
-        {card.inside_image ? <IMG source={card.inside_image}></IMG> : null}
+      <Page className="export-pg export-inside-right" size="Letter" wrap>
+        <View style={allStyles.view}>{card.inside_image ? <IMG source={card.inside_image}></IMG> : null}</View>
       </Page>
     </Document>
   );
 };
 
-export default DownloadContainer;
+export default Indie;
 
 // const styles = StyleSheet.create({
 //   page: {

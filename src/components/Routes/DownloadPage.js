@@ -7,7 +7,7 @@ import { JtoSection, Loader } from "../Utils/Utils";
 // import { PDFExport } from "@progress/kendo-react-pdf";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import "./css/Download.css";
-import DownloadContainer from "../Utils/Card/DownloadContainer";
+import Indie from "../Utils/Card/Download/Indie";
 
 class DownloadPage extends Component {
   constructor(props) {
@@ -248,7 +248,7 @@ class DownloadPage extends Component {
               </button>
               <button className="k-button">
                 <PDFDownloadLink
-                  document={<DownloadContainer card={card} styles={pageStyle} />}
+                  document={<Indie card={card} styles={pageStyle} size={size} />}
                   fileName="movielist.pdf"
                   className="k-button"
                 >

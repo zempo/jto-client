@@ -11,8 +11,10 @@ import { GalleryContextProvider as GalleryProvider } from "./contexts/GalleryCon
 import { UserContextProvider as UserProvider } from "./contexts/UserContext";
 import { PublicCardContextProvider as PubCardProvider } from "./contexts/PublicCardContext";
 
-// fonts
-import 'typeface-amatic-sc'
+// FONTS
+// 'cursive'
+import "typeface-great-vibes";
+import "typeface-amatic-sc";
 // import WebFont from 'webfontloader';
 
 // WebFont.load({
