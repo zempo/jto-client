@@ -11,6 +11,20 @@ import { GalleryContextProvider as GalleryProvider } from "./contexts/GalleryCon
 import { UserContextProvider as UserProvider } from "./contexts/UserContext";
 import { PublicCardContextProvider as PubCardProvider } from "./contexts/PublicCardContext";
 
+// fonts
+import 'typeface-amatic-sc'
+// import WebFont from 'webfontloader';
+
+// WebFont.load({
+//   google: {
+//     families: ['Amatic SC:400,700', 'cursive']
+//   },
+//   custom: {
+//     families: ['The Indie Font'],
+//     urls: ['/fonts/AmaticSC-Regular.ttf']
+//   }
+// });
+
 ReactDOM.render(
   <ROUTER>
     <GalleryProvider>

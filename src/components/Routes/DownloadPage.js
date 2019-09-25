@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import Doc from "../../services/exports/download-service";
 import { UserContext } from "../../contexts/UserContext";
 import { ThemeStyles } from "../Utils/Store/Themes";
@@ -18,7 +17,7 @@ class DownloadPage extends Component {
       innerLeftBg: "#f8f5f5",
       innerRightText: "#000000",
       innerRightBg: "#f8f5f5",
-      border: "#f8f5f5",
+      border: "#000000",
       stroke: 2,
       size: "A7",
       name: "",
@@ -56,7 +55,7 @@ class DownloadPage extends Component {
       innerLeftBg: "#f8f5f5",
       innerRightText: "#000000",
       innerRightBg: "#f8f5f5",
-      border: "#f8f5f5",
+      border: "#000000",
       stroke: 2,
       size: "A7"
     });
@@ -95,10 +94,10 @@ class DownloadPage extends Component {
       outlineOffset: `-${stroke}px`,
       height: `${
         size === "A1" ? "480" : size === "A6" ? "576" : size === "A7" ? "672" : size === "A9" ? "816" : "830"
-      }px`,
+        }px`,
       width: `${
         size === "A1" ? "336" : size === "A6" ? "348" : size === "A7" ? "480" : size === "A9" ? "528" : "600"
-      }px`
+        }px`
     };
 
     return (
@@ -115,12 +114,12 @@ class DownloadPage extends Component {
                 {size === "A1"
                   ? "5'' x 3.5''"
                   : size === "A6"
-                  ? "6'' x 4''"
-                  : size === "A7"
-                  ? "7'' x 5''"
-                  : size === "A9"
-                  ? "8.5'' x 5.5''"
-                  : ""}
+                    ? "6'' x 4''"
+                    : size === "A7"
+                      ? "7'' x 5''"
+                      : size === "A9"
+                        ? "8.5'' x 5.5''"
+                        : ""}
                 )
               </legend>
               <div className="control-item">
