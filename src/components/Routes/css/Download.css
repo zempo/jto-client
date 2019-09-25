@@ -47,13 +47,10 @@
 }
 
 .export-front img {
-  position: absolute;
+  position: relative;
   max-width: 90%;
-  max-height: 70%;
-  left: 55%;
-  margin-left: -50%;
-  bottom: 1%;
-  margin-top: -50%;
+  max-height: 60%;
+  bottom: 5%;
 }
 
 .export-inside-right img {

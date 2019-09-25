@@ -89,7 +89,7 @@ class DownloadPage extends Component {
     };
     let pageStyle = {
       fontFamily: `${card.theme !== "" ? ThemeStyles[`${card.theme}`].all.fontFamily : "none"}`,
-      fontSize: `${size === "A1" ? "16" : size === "A6" ? "18" : size === "A7" ? "20" : size === "A9" ? "22" : "16"}px`,
+      fontSize: `${size === "A1" ? "14" : size === "A6" ? "18" : size === "A7" ? "20" : size === "A9" ? "22" : "16"}px`,
       border: `${stroke}px solid ${border}`,
       outline: `${stroke}px solid ${border}`,
       outlineOffset: `-${stroke}px`,
