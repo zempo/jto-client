@@ -248,7 +248,11 @@ class DownloadPage extends Component {
                 Reset
               </button>
               <button>
-                <ReactToPrint trigger={() => <a href="#">Save the Occasion</a>} content={() => this.componentRef} />
+                <ReactToPrint
+                  trigger={() => <a href="#">Save the Occasion</a>}
+                  content={() => this.componentRef}
+                  onAfterPrint={() => console.log("printed")}
+                />
               </button>
               {/* <button className="k-button">
                 <PDFDownloadLink
