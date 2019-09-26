@@ -6,6 +6,7 @@ import { JtoSection, Loader } from "../Utils/Utils";
 // import DownloadContent from "../Utils/Card/DownloadContent";
 // import { PDFExport } from "@progress/kendo-react-pdf";
 import { PDFDownloadLink } from "@react-pdf/renderer";
+import ReactToPrint from "react-to-print";
 import "./css/Download.css";
 import Indie from "../Utils/Card/Download/Indie";
 
@@ -246,7 +247,10 @@ class DownloadPage extends Component {
               <button className="reset-button" onClick={this.handleReset}>
                 Reset
               </button>
-              <button className="k-button">
+              <button>
+                <ReactToPrint trigger={() => <a href="#">Save the Occasion</a>} content={() => this.componentRef} />
+              </button>
+              {/* <button className="k-button">
                 <PDFDownloadLink
                   document={<Indie card={card} styles={pageStyle} size={size} />}
                   fileName="movielist.pdf"
@@ -254,7 +258,7 @@ class DownloadPage extends Component {
                 >
                   Save the Occasion
                 </PDFDownloadLink>
-              </button>
+              </button> */}
               {/* <button
                 className="k-button"
                 onClick={async (e) => {
@@ -275,7 +279,8 @@ class DownloadPage extends Component {
           </form>
           {this.state.loading ? <Loader /> : null}
         </JtoSection>
-        <JtoSection className="export-container preview">
+        {/* <div ref={(el) => (this.componentRef = el)}>Print me, bitch</div> */}
+        <div className="export-container preview" ref={(el) => (this.componentRef = el)}>
           <div
             className="export-pg export-front"
             style={{
@@ -299,7 +304,7 @@ class DownloadPage extends Component {
             {card.front_image ? <img src={card.front_image} alt="download-cover" /> : null}
           </div>
           <div
-            className="export-pg export-inside-left page-break"
+            className="export-pg export-inside-left"
             style={{
               backgroundColor: innerLeftBg,
               color: innerLeftText,
@@ -317,7 +322,6 @@ class DownloadPage extends Component {
                 fontFamily: pageStyle.fontFamily
               }}
             >
-              {/* {card.inside_message} */}
               {card.inside_message.split(".").map((sentence, i, msg) => {
                 if (i === msg.length - 1) {
                   return (
@@ -362,7 +366,7 @@ class DownloadPage extends Component {
           >
             {card.inside_image ? <img src={card.inside_image} alt="download-inside-figure" /> : null}
           </div>
-        </JtoSection>
+        </div>
       </div>
     );
   }

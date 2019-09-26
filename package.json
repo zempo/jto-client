@@ -19,6 +19,7 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "react-to-print": "^2.4.0",
     "typeface-amatic-sc": "0.0.72",
     "typeface-great-vibes": "0.0.72",
     "webfontloader": "^1.6.28"
