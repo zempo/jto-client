@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 // import { CardContext, CardContextProvider } from "../../contexts/CardContext";
 import { UserContext } from "../../contexts/UserContext";
+import { CardContext } from "../../contexts/CardContext";
 import { listUserCards } from "../../services/endpoints-service";
 // create back-button
 import { JtoSection, TimeStamp, CardPages, PaginateCardFaces } from "../Utils/Utils";
@@ -10,9 +11,13 @@ import "./css/Card.css";
 const Private = (props) => {
   // eslint-disable-next-line
   const { value } = useContext(UserContext);
+  const {
+    value: { anyCard, setAnyCardId }
+  } = useContext(CardContext);
   // eslint-disable-next-line
   const [cardId, setCardId] = useState(0);
   const [card, setCard] = useState({});
+  const [card2, setCard2] = useState({});
   const [cardTheme, setCardTheme] = useState("handwritten");
   const [cardPg, setCardPg] = useState(1);
   // eslint-disable-next-line
@@ -25,11 +30,11 @@ const Private = (props) => {
       window.scrollTo(0, 0);
       const { item } = props.location.state;
       setCardId(item);
+      setAnyCardId(item);
       setLoading(true);
       const cardFound = async () => {
         try {
           const cardResult = await listUserCards.get(`/${item}`);
-
           setLoading(false);
           setCard(cardResult.data[0]);
           setCardTheme(cardResult.data[0].theme);
@@ -43,6 +48,7 @@ const Private = (props) => {
 
       cardFound();
     }
+    setAnyCardId(1);
     // eslint-disable-next-line
   }, []);
 

@@ -2,7 +2,7 @@
   /* margin: 10px auto;
   text-align: center; */
   /* padding-top: 20px; */
-  margin: 5px auto;
+  margin: auto;
   /* border: 1px dashed black; */
   text-align: center;
   /* box-sizing: content-box; */
@@ -31,7 +31,7 @@
 .export-pg h3 {
   position: relative;
   top: 5%;
-  font-size: 14px;
+  font-size: 16px;
   max-width: 80%;
   -ms-word-break: break-all;
   word-break: break-all;
@@ -46,11 +46,16 @@
   line-height: 125%;
 }
 
-.export-front img {
+.export-front {
   position: relative;
+}
+
+.export-front img {
+  position: absolute;
   max-width: 90%;
   max-height: 60%;
   bottom: 5%;
+  left: 5%;
 }
 
 .export-inside-right img {
@@ -60,8 +65,13 @@
   top: 10%;
 }
 
-.export-container {
+.jto-export {
   border: 2px dashed black;
+  background: rgb(48, 58, 69, 0.3);
+  padding-top: 20px;
+}
+
+.export-container {
   /* background: white; */
   margin: auto 5%;
   max-width: 100%;
@@ -182,7 +192,7 @@
 }
 
 .download-signature .control-item label {
-  padding: 0.4rem;
+  padding: 0.2rem;
 }
 
 .download-buttons {
@@ -205,6 +215,106 @@
 .download-buttons a {
   text-decoration: none;
   color: rgb(48, 58, 69);
+}
+
+.download-border label {
+  width: 220px;
+}
+.download-border .counter {
+  display: inline-block;
+  width: 20px;
+}
+
+input[type="color"] {
+  -webkit-appearance: none;
+  border: 1px solid rbg(48,58,69);
+  padding: 0;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 11.5px 0;
+}
+input[type="range"]:focus {
+  outline: none;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 1px;
+  cursor: pointer;
+  box-shadow: 1px 1px 0px #000000, 0px 0px 1px #0d0d0d;
+  background: #303a45;
+  border-radius: 25px;
+  border: 0px solid #303a45;
+}
+input[type="range"]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.17), 0px 0px 1px rgba(13, 13, 13, 0.17);
+  border: 1px solid #303a45;
+  height: 25px;
+  width: 25px;
+  border-radius: 50px;
+  background: #eeeeee;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -11.5px;
+}
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: #3a4754;
+}
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 1px;
+  cursor: pointer;
+  box-shadow: 1px 1px 0px #000000, 0px 0px 1px #0d0d0d;
+  background: #303a45;
+  border-radius: 25px;
+  border: 0px solid #303a45;
+}
+input[type="range"]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.17), 0px 0px 1px rgba(13, 13, 13, 0.17);
+  border: 1px solid #303a45;
+  height: 25px;
+  width: 25px;
+  border-radius: 50px;
+  background: #eeeeee;
+  cursor: pointer;
+}
+input[type="range"]::-ms-track {
+  width: 100%;
+  height: 1px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type="range"]::-ms-fill-lower {
+  background: #262d36;
+  border: 0px solid #303a45;
+  border-radius: 50px;
+  box-shadow: 1px 1px 0px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type="range"]::-ms-fill-upper {
+  background: #303a45;
+  border: 0px solid #303a45;
+  border-radius: 50px;
+  box-shadow: 1px 1px 0px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type="range"]::-ms-thumb {
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.17), 0px 0px 1px rgba(13, 13, 13, 0.17);
+  border: 1px solid #303a45;
+  height: 25px;
+  width: 25px;
+  border-radius: 50px;
+  background: #eeeeee;
+  cursor: pointer;
+  height: 2px;
+}
+input[type="range"]:focus::-ms-fill-lower {
+  background: #303a45;
+}
+input[type="range"]:focus::-ms-fill-upper {
+  background: #3a4754;
 }
 
 @-o-keyframes flipInX {

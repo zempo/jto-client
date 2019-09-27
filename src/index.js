@@ -9,31 +9,42 @@ import "@fortawesome/fontawesome-free/css/all.css";
 // providers
 import { GalleryContextProvider as GalleryProvider } from "./contexts/GalleryContext";
 import { UserContextProvider as UserProvider } from "./contexts/UserContext";
+import { CardContextProvider as CardProvider } from "./contexts/CardContext";
 import { PublicCardContextProvider as PubCardProvider } from "./contexts/PublicCardContext";
 
 // FONTS
 // 'cursive'
+import "typeface-cedarville-cursive";
+// 'cursive+'
 import "typeface-great-vibes";
+// 'indie'
 import "typeface-amatic-sc";
-// import WebFont from 'webfontloader';
-
-// WebFont.load({
-//   google: {
-//     families: ['Amatic SC:400,700', 'cursive']
-//   },
-//   custom: {
-//     families: ['The Indie Font'],
-//     urls: ['/fonts/AmaticSC-Regular.ttf']
-//   }
-// });
+// 'handwritten'
+import "typeface-shadows-into-light";
+// handwritten-bold
+import "typeface-gochi-hand";
+// kiddo
+import "typeface-gaegu";
+// pen
+import "typeface-nanum-pen-script";
+// sharpie
+import "typeface-permanent-marker";
+// roboto
+import "typeface-roboto";
+// typed
+import "typeface-cutive";
+// quill
+import "typeface-italianno";
 
 ReactDOM.render(
   <ROUTER>
     <GalleryProvider>
       <UserProvider>
-        <PubCardProvider>
-          <App />
-        </PubCardProvider>
+        <CardProvider>
+          <PubCardProvider>
+            <App />
+          </PubCardProvider>
+        </CardProvider>
       </UserProvider>
     </GalleryProvider>
   </ROUTER>,

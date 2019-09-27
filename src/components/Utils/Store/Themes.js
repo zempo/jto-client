@@ -1,7 +1,7 @@
 export const ThemeStyles = {
   cursive: {
     all: {
-      fontFamily: `'Great Vibes', cursive`
+      fontFamily: `'Cedarville Cursive', cursive`
     },
     front: {
       background: "rgb(248, 245, 245)"
@@ -44,8 +44,7 @@ export const ThemeStyles = {
   },
   "handwritten-bold": {
     all: {
-      fontFamily: `'Great Vibes', cursive`,
-      fontWeight: "bold"
+      fontFamily: `'Gochi Hand', cursive`
     },
     front: {
       background: "rgb(248, 245, 245)"
@@ -129,7 +128,7 @@ export const ThemeStyles = {
   },
   typed: {
     all: {
-      fontFamily: `'Cutive Mono', monospace`
+      fontFamily: `'Cutive', serif`
     },
     front: {
       background: "rgb(248, 245, 245)"
@@ -143,7 +142,7 @@ export const ThemeStyles = {
   },
   quill: {
     all: {
-      fontFamily: `'Tangerine', cursive`
+      fontFamily: `'Italianno', cursive`
     },
     front: {
       background: "rgb(248, 245, 245)"
