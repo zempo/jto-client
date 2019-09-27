@@ -1,11 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap");
 
-@font-face {
-  font-family: 'The Indie Font', cursive;
-  src: local('The Indie Font'), url("./fonts/AmaticSC-Regular.ttf") format("truetype");
-} 
-
-body { 
+body {
   margin: 0;
   /* font-family: 'Amatic SC', cursive; */
   font-family: "Montserrat", sans-serif;

@@ -107,6 +107,13 @@ body,
   border-bottom: 0.35em solid #000;
 }
 
+#preview-btn {
+  width: auto;
+  height: auto;
+  padding: 0.2rem;
+  margin: 0.2rem;
+}
+
 @media screen and (max-width: 900px) {
   h1 {
     font-size: 9vw;

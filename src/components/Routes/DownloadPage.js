@@ -5,6 +5,7 @@ import { CardContext } from "../../contexts/CardContext";
 import { ThemeStyles } from "../Utils/Store/Themes";
 import { JtoSection, Loader } from "../Utils/Utils";
 import "./css/Download.css";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 const DownloadPage = (props) => {
   const {
@@ -13,6 +14,9 @@ const DownloadPage = (props) => {
   const {
     value: { anyCard: card, anyCardId, setAnyCardId, userName }
   } = useContext(CardContext);
+  const {
+    value: { winHgt, winWidth }
+  } = useContext(ThemeContext);
   const [currentId, setCurrentId] = useState(0);
   const [frontTxt, setFrontTxt] = useState("#000000");
   const [frontBg, setFrontBg] = useState("#f8f5f5");
@@ -41,6 +45,8 @@ const DownloadPage = (props) => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+
+    console.log(e.currentTarget);
 
     if (type === "checkbox") {
       setSize(checked);
@@ -142,15 +148,15 @@ const DownloadPage = (props) => {
             <div className="control-item">
               <label htmlFor="frontBg">
                 Front <br />
-                <input type="color" style={{ backgroundColor: frontBg }} id="frontBg" name="frontBg" defaultValue={frontBg} onChange={handleChange} />
+                <input type="color" id="frontBg" name="frontBg" value={frontBg} onChange={handleChange} />
               </label>
               <label htmlFor="leftBg">
                 Inner L <br />
-                <input type="color" id="leftBg" name="leftBg" defaultValue={leftBg} onChange={handleChange} />
+                <input type="color" id="leftBg" name="leftBg" value={leftBg} onChange={handleChange} />
               </label>
               <label htmlFor="rightBg">
                 Inner R <br />
-                <input type="color" id="rightBg" name="rightBg" defaultValue={rightBg} onChange={handleChange} />
+                <input type="color" id="rightBg" name="rightBg" value={rightBg} onChange={handleChange} />
               </label>
             </div>
           </fieldset>
@@ -159,11 +165,11 @@ const DownloadPage = (props) => {
             <div className="control-item">
               <label htmlFor="frontTxt">
                 Front <br />
-                <input type="color" id="frontTxt" name="frontTxt" defaultValue={frontTxt} onChange={handleChange} />
+                <input type="color" id="frontTxt" name="frontTxt" value={frontTxt} onChange={handleChange} />
               </label>
               <label htmlFor="leftTxt">
                 Inner <br />
-                <input type="color" id="leftTxt" name="leftTxt" defaultValue={leftTxt} onChange={handleChange} />
+                <input type="color" id="leftTxt" name="leftTxt" value={leftTxt} onChange={handleChange} />
               </label>
             </div>
           </fieldset>
@@ -172,7 +178,7 @@ const DownloadPage = (props) => {
             <div className="control-item">
               <label htmlFor="border">
                 Color <br />
-                <input type="color" id="border" name="border" defaultValue={border} onChange={handleChange} />
+                <input type="color" id="border" name="border" value={border} onChange={handleChange} />
               </label>
               <label htmlFor="stroke" style={{ display: "inline-block" }}>
                 Width - <span className="counter">{stroke}</span>
@@ -193,11 +199,11 @@ const DownloadPage = (props) => {
             <legend>Signature</legend>
             <div className="control-item">
               <label htmlFor="close">
-                Sign-Off
-                <input type="text" name="close" placeholder="Warmly" value={close} onChange={handleChange} />
+                Sign-Off <br />
+                <input type="text" name="close" placeholder="Warmly," value={close} onChange={handleChange} />
               </label>
               <label htmlFor="name">
-                From
+                From <br />
                 <input type="text" name="name" placeholder="John Doe III" value={name} onChange={handleChange} />
               </label>
             </div>
@@ -208,7 +214,7 @@ const DownloadPage = (props) => {
             </button>
             <button>
               <ReactToPrint
-                trigger={() => <a href="javascript:void(0);">Save the Occasion</a>}
+                trigger={() => <a href="javascript:void(0);">{winWidth > 900 ? "Save the Occasion" : "Save"}</a>}
                 content={() => componentRef.current}
               />
             </button>

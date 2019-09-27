@@ -12,6 +12,7 @@ import "../css/Forms.css";
 
 const EditPublicCard = ({ item, cancel }) => {
   const [card, setCard] = useState({});
+  const [showing, setShowing] = useState(false);
   // eslint-disable-next-line
   const [cardTheme, setCardTheme] = useState("");
   const { values, files, errors, handleChange, reset } = useForm(
@@ -121,6 +122,15 @@ const EditPublicCard = ({ item, cancel }) => {
     }
   };
 
+  const handlePreview = (e) => {
+    e.preventDefault();
+    if (!showing) {
+      setShowing(true);
+    } else {
+      setShowing(false);
+    }
+  };
+
   return (
     <>
       <h2>Update Your Occasion?</h2>
@@ -160,6 +170,10 @@ const EditPublicCard = ({ item, cancel }) => {
               <li key={i}>{err}</li>
             ))}
           </ul>
+          <button id="preview-btn" onClick={handlePreview}>
+            Last Message
+          </button>
+          {showing ? <p className="preview">{card.inside_message}</p> : null}
           <textarea
             placeholder={card.inside_message}
             name="insideMessage"

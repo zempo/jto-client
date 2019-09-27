@@ -7,6 +7,7 @@ import "./index.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 
 // providers
+import { ThemeContextProvider as ThemeProvider } from "./contexts/ThemeContext";
 import { GalleryContextProvider as GalleryProvider } from "./contexts/GalleryContext";
 import { UserContextProvider as UserProvider } from "./contexts/UserContext";
 import { CardContextProvider as CardProvider } from "./contexts/CardContext";
@@ -38,15 +39,17 @@ import "typeface-italianno";
 
 ReactDOM.render(
   <ROUTER>
-    <GalleryProvider>
-      <UserProvider>
-        <CardProvider>
-          <PubCardProvider>
-            <App />
-          </PubCardProvider>
-        </CardProvider>
-      </UserProvider>
-    </GalleryProvider>
+    <ThemeProvider>
+      <GalleryProvider>
+        <UserProvider>
+          <CardProvider>
+            <PubCardProvider>
+              <App />
+            </PubCardProvider>
+          </CardProvider>
+        </UserProvider>
+      </GalleryProvider>
+    </ThemeProvider>
   </ROUTER>,
   document.getElementById("root")
 );

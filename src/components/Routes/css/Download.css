@@ -41,7 +41,7 @@
   hyphens: auto;
   text-align: justify;
   margin-left: 10%;
-  padding-bottom: 10%;
+  padding-bottom: 5%;
   word-spacing: 0.1;
   line-height: 125%;
 }
@@ -150,6 +150,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap: wrap;
   position: relative;
   padding: 1rem 0;
   left: 80px;
@@ -158,12 +159,13 @@
 .jto-download-form legend {
   grid-area: controlLegend;
   /* border: 2px solid blue; */
-  font-size: 1.2rem;
+  color: rgb(48, 58, 69);
+  font-size: 1.4rem;
   font-weight: bold;
   text-align: start;
   position: relative;
-  top: 30%;
-  left: -90px;
+  top: 40%;
+  left: -110px;
 }
 
 .download-text-color {
@@ -225,10 +227,14 @@
   width: 20px;
 }
 
+input[type="text"]::placeholder {
+  /* Firefox, Chrome, Opera */
+  text-align: center;
+}
+
 input[type="color"] {
-  -webkit-appearance: none;
-  border: 1px solid rbg(48,58,69);
-  border-image: none;
+  background: rgb(48, 58, 69, 0);
+  border: 1px solid rgb(48, 58, 69);
   padding: 0;
 }
 
@@ -316,6 +322,10 @@ input[type="range"]:focus::-ms-fill-lower {
 }
 input[type="range"]:focus::-ms-fill-upper {
   background: #3a4754;
+}
+
+.jto-download-form label {
+  line-height: 150%;
 }
 
 @-o-keyframes flipInX {
@@ -451,7 +461,23 @@ input[type="range"]:focus::-ms-fill-upper {
 }
 
 @media screen and (max-width: 900px) {
+  .download-buttons {
+    left: 0;
+  }
   .export-container {
-    margin: auto;
+    margin: 0;
+    width: 100%;
+  }
+  .control-item label {
+    padding: 0.5rem;
+  }
+  .jto-download-form legend {
+    font-size: 2rem;
+    position: static;
+    text-align: center;
+  }
+  .jto-download-form .control-item {
+    padding: 1.2rem 0;
+    left: 0;
   }
 }
