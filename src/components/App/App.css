@@ -6,6 +6,49 @@
 
 button {
   outline-width: 0px;
+  color: rgb(48, 58, 69);
+  font-family: "Montserrat", sans-serif;
+  background: #f8f5f5;
+  border: 1px solid rgb(48, 58, 69);
+  border-radius: 5px;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+button:hover {
+  background: rgb(48, 58, 69);
+  color: #f8f5f5;
+  border: 1px solid rgb(48, 58, 69);
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+button:active {
+  color: rgb(48, 58, 69);
+  background: #f8f5f5;
+  border: 1px solid rgb(48, 58, 69);
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+input[type="file"] {
+  /* create custom label and style said label */
+}
+
+button:disabled {
+  color: #4e4c4c;
+  background: #a19e9e;
+  opacity: 0.5;
+  border: 1px solid #4e4c4c;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  -webkit-transition: none;
 }
 
 h1 {

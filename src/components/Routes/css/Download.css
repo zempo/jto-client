@@ -207,16 +207,38 @@
   left: 80px;
 }
 .download-buttons button {
+  color: rgb(48, 58, 69);
+  background: rgb(248, 245, 245);
+  border: 2px solid rgb(48, 58, 69);
   width: 40%;
   margin: 5%;
   font-size: 1.2rem;
   font-weight: bold;
   font-family: "Montserrat", sans-serif;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.download-buttons button:hover {
+  background: rgb(48, 58, 69);
+  color: rgb(248, 245, 245);
+  border: 2px solid rgb(48, 58, 69);
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
 }
 
 .download-buttons a {
   text-decoration: none;
   color: rgb(48, 58, 69);
+}
+
+.download-buttons button:hover a {
+  text-decoration: none;
+  color: rgb(248, 245, 245);
 }
 
 .download-border label {

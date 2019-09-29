@@ -173,6 +173,7 @@ const EditCard = ({ item, cancel }) => {
           <button id="preview-btn" onClick={handlePreview}>
             Last Message
           </button>
+          <br />
           {showing ? <p className="preview">{card.inside_message}</p> : null}
           <textarea
             placeholder="New card, who dis?"

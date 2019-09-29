@@ -5,7 +5,7 @@ import Modal from "../../../modals/Modal";
 import "./css/Social.css";
 import { PublicCardContext as CardContext } from "../../../contexts/PublicCardContext";
 
-export const PostReaction = ({ item, payload }) => {
+export const PostReaction = ({ item, payload, toggleCommentAdd }) => {
   const [pulse, setPulse] = useState(false);
   const [status, setStatus] = useState("inactive");
   const [heart, setHeart] = useState(false);
@@ -70,14 +70,14 @@ export const PostReaction = ({ item, payload }) => {
   return status === "inactive" ? (
     <>
       <span className="heart-button">
-        <i id="border" className={`fas fa-heart ${pulse ? "beat" : null}`} title="heart" onClick={createAndSendHeart}>
+        <i id="border" className={`fas fa-heart ${pulse ? "beat" : null}`} title="like" onClick={createAndSendHeart}>
           {heart ? <span>liked</span> : null}
         </i>
-        <i id="body" className={`fas fa-heart ${pulse ? "beat" : null}`} title="heart" onClick={createAndSendHeart}>
+        <i id="body" className={`fas fa-heart ${pulse ? "beat" : null}`} title="like" onClick={createAndSendHeart}>
           {heart ? <span>liked</span> : null}
         </i>
       </span>
-      <i className="far fa-comment-alt" title="comment"></i>
+      <i className="far fa-comment-alt" title="comment" onClick={toggleCommentAdd}></i>
       <i className="fas fa-file-download" title="download" onClick={createAndSendShare}>
         {share ? "bookmarked" : null}
       </i>
@@ -86,14 +86,14 @@ export const PostReaction = ({ item, payload }) => {
   ) : (
     <>
       <span className="heart-button">
-        <i id="border" className={`fas fa-heart ${pulse ? "beat" : null}`} title="heart" onClick={updateHeart}>
+        <i id="border" className={`fas fa-heart ${pulse ? "beat" : null}`} title="like" onClick={updateHeart}>
           {heart ? <span>liked</span> : null}
         </i>
-        <i id="body" className={`fas fa-heart ${pulse ? "beat" : null}`} title="heart" onClick={updateHeart}>
+        <i id="body" className={`fas fa-heart ${pulse ? "beat" : null}`} title="like" onClick={updateHeart}>
           {heart ? <span>liked</span> : null}
         </i>
       </span>
-      <i className="far fa-comment-alt" title="comment"></i>
+      <i className="far fa-comment-alt" title="comment" onClick={toggleCommentAdd}></i>
       <i className="fas fa-file-download" title="download" onClick={updateShare}>
         {share ? <span></span> : null}
       </i>
@@ -102,7 +102,7 @@ export const PostReaction = ({ item, payload }) => {
   );
 };
 
-export const ToggleReaction = ({ item, liked, shared }) => {
+export const ToggleReaction = ({ item, liked, shared, toggleCommentAdd }) => {
   const [pulse, setPulse] = useState(false);
   const [heart, setHeart] = useState(liked);
   const [share, setShare] = useState(shared);
@@ -140,14 +140,14 @@ export const ToggleReaction = ({ item, liked, shared }) => {
   return (
     <>
       <span className="heart-button">
-        <i id="border" className={`fas fa-heart ${pulse ? "beat" : null}`} title="heart" onClick={updateHeart}>
+        <i id="border" className={`fas fa-heart ${pulse ? "beat" : null}`} title="like" onClick={updateHeart}>
           {heart ? <span>liked</span> : null}
         </i>
-        <i id="body" className={`fas fa-heart ${pulse ? "beat" : null}`} title="heart" onClick={updateHeart}>
+        <i id="body" className={`fas fa-heart ${pulse ? "beat" : null}`} title="like" onClick={updateHeart}>
           {heart ? <span>liked</span> : null}
         </i>
       </span>
-      <i className="far fa-comment-alt" title="comment"></i>
+      <i className="far fa-comment-alt" title="comment" onClick={toggleCommentAdd}></i>
       <i className="fas fa-file-download" title="download" onClick={updateShare}>
         <span>{share ? "bookmarked" : null}</span>
       </i>

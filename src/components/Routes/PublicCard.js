@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 // import { CardContext, CardContextProvider } from "../../contexts/CardContext";
 import { UserContext } from "../../contexts/UserContext";
 import { PublicCardContext as CardContext } from "../../contexts/PublicCardContext";
-import { listCardReacts } from "../../services/endpoints-service";
+import { listCardReacts, listUserCards, newCard } from "../../services/endpoints-service";
 import { useModal } from "../../hooks/use-modal";
 import BottomModal from "../../modals/BottomModal";
 // create nice back-button
@@ -69,13 +69,28 @@ const PublicCard = (props) => {
     toggleCommentDelete();
   };
 
-  // const [menuOpen, setMenuOpen] = useState(false);
-  // const openMenu = (e) => {
-  //   if (e.target.value === "selected") {
-  //     console.log("selected");
-  //   } else {
-  //   }
-  // };
+  const handleCopy = async (e) => {
+    e.preventDefault();
+    let { inside_message, inside_image, front_image, theme, front_message } = card;
+    let cardCopy = { front_message, inside_message, theme };
+    if (inside_image !== "" && front_image !== "") {
+      cardCopy.front_image = front_image;
+      cardCopy.inside_image = inside_image;
+    } else if (inside_image !== "" && front_image === "") {
+      cardCopy.inside_image = inside_image;
+    } else if (front_image !== "" && inside_image === "") {
+      cardCopy.front_image = front_image;
+    }
+    // copiedCard.inside_message = card.inside_message;
+    console.log(cardCopy);
+    try {
+      let sendFullData = await newCard.post("/", cardCopy);
+
+      window.location.reload();
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
 
   return (
     <main className="public-card-page">
@@ -94,14 +109,20 @@ const PublicCard = (props) => {
         </h2>
       )}
       <JtoSection className="jto-card public-card" style={ThemeStyles[`${cardTheme}`].all}>
+        {cardAuthor.user_name === user.user_name ? null : <i className="far fa-copy fa-2x" onClick={handleCopy}></i>}
         <PaginateCardFaces currentPg={cardPg} setCurrentPg={setCardPg} />
         <CardPages card={card} themes={ThemeStyles} cardTheme={cardTheme} cardPg={cardPg} />
       </JtoSection>
       <JtoSection className="jto-reactions">
         {hasReacted.react_heart === undefined && hasReacted.react_share === undefined ? (
-          <PostReaction item={card.id} />
+          <PostReaction item={card.id} toggleCommentAdd={toggleCommentAdd} />
         ) : (
-          <ToggleReaction item={card.id} liked={hasReacted.react_heart} shared={hasReacted.react_share} />
+          <ToggleReaction
+            item={card.id}
+            liked={hasReacted.react_heart}
+            shared={hasReacted.react_share}
+            toggleCommentAdd={toggleCommentAdd}
+          />
         )}
       </JtoSection>
       <JtoSection className="jto-comments">
@@ -164,9 +185,6 @@ const PublicCard = (props) => {
           action="delete-comment"
         />
       </JtoSection>
-      <div className="add-comment-btn">
-        <button onClick={toggleCommentAdd}>Comment</button>
-      </div>
     </main>
   );
 };

@@ -38,7 +38,6 @@ const DownloadPage = (props) => {
       setAnyCardId(item);
       setCurrentId(item);
     } else {
-      console.log(currentId);
     }
     // eslint-disable-next-line
   }, [anyCardId]);
@@ -213,10 +212,21 @@ const DownloadPage = (props) => {
               Reset
             </button>
             <button>
-              <ReactToPrint
-                trigger={() => <a href="javascript:void(0);">{winWidth > 900 ? "Save the Occasion" : "Save"}</a>}
+              {winWidth > 900 ? (
+                <ReactToPrint
+                  trigger={() => <a href="javascript:void(0);">Save the Occaison</a>}
+                  content={() => componentRef.current}
+                />
+              ) : (
+                <ReactToPrint
+                  trigger={() => <a href="javascript:void(0);">Save</a>}
+                  content={() => componentRef.current}
+                />
+              )}
+              {/* <ReactToPrint
+                trigger={() => <a href="javascript:void(0);">Save the Occaison</a>}
                 content={() => componentRef.current}
-              />
+              /> */}
             </button>
           </fieldset>
         </form>

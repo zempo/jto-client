@@ -58,7 +58,7 @@ class Nav extends Component {
           <img src={Logo} alt="site logo" width="50" height="50" />
         </NavLink>
         <NavLink exact activeClassName="active" to="/guide">
-          <h3>Guide</h3>
+          <h3>Start</h3>
         </NavLink>
         <NavLink exact activeClassName="active" to="/gallery">
           <h3>Occasions</h3>
