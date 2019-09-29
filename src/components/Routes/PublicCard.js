@@ -81,8 +81,7 @@ const PublicCard = (props) => {
     } else if (front_image !== "" && inside_image === "") {
       cardCopy.front_image = front_image;
     }
-    // copiedCard.inside_message = card.inside_message;
-    console.log(cardCopy);
+
     try {
       let sendFullData = await newCard.post("/", cardCopy);
 
@@ -109,7 +108,11 @@ const PublicCard = (props) => {
         </h2>
       )}
       <JtoSection className="jto-card public-card" style={ThemeStyles[`${cardTheme}`].all}>
-        {cardAuthor.user_name === user.user_name ? null : <i className="far fa-copy fa-2x" onClick={handleCopy}></i>}
+        {cardAuthor.user_name === user.user_name ? null : (
+          <i className="far fa-copy fa-2x" onClick={handleCopy}>
+            Copy
+          </i>
+        )}
         <PaginateCardFaces currentPg={cardPg} setCurrentPg={setCardPg} />
         <CardPages card={card} themes={ThemeStyles} cardTheme={cardTheme} cardPg={cardPg} />
       </JtoSection>
