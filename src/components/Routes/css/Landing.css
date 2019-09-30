@@ -31,6 +31,10 @@
   animation-fill-mode: backwards;
 }
 
+.landing-img {
+  max-width: 50%;
+}
+
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;

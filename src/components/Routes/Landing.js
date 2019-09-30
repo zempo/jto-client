@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Logo from "../../images/jto-logo-main.svg";
+import Pic1 from '../../images/section-2-min.png'
 // import { AuthService } from "../../services/auth-service";
 import { RevolvingWords, JtoSection } from "../Utils/Utils";
 import { useModal } from "../../hooks/use-modal";
@@ -29,9 +30,7 @@ const Landing = (props) => {
         <RevolvingWords words={["Share", "Store", "React"]} />
       </div>
       <section>
-        <p>
-          [<em>placeholder for screenshot of the interface</em>]
-        </p>
+        <img className="landing-img" src={Pic1} alt="screenshot of homepage"></img>
         <p>
           {" "}
           Experience the greeting card ideas you've always wanted to bring to life.
