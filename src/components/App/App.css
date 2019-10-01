@@ -8,7 +8,7 @@ button {
   outline-width: 0px;
   color: rgb(48, 58, 69);
   font-family: "Montserrat", sans-serif;
-  background: #f8f5f5;
+  background: rgb(248, 245, 245);
   border: 2px solid rgb(48, 58, 69);
   border-radius: 5px;
   -moz-transition: all 0.3s ease-out;
@@ -155,6 +155,12 @@ body,
   height: auto;
   padding: 0.2rem;
   margin: 0.2rem;
+}
+
+input[type="radio"] {
+  border-bottom-color: rgb(48, 58, 69);
+  width: 1.3rem;
+  height: 1.3rem;
 }
 
 @media screen and (max-width: 900px) {

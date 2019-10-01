@@ -19,7 +19,10 @@
 }
 .search-term legend,
 .sort-by legend,
-.theme-select legend {
+.theme-select legend,
+.user-search-term legend,
+.user-sort-by legend,
+.user-theme-select legend {
   position: absolute;
   text-align: left;
   font-weight: bold;
@@ -27,11 +30,10 @@
   left: -9.5rem;
   top: 25%;
 }
-.search-term input {
-  grid-area: term;
-  width: 90%;
+.search-term input,
+.user-search-term input {
+  width: 100%;
   height: 2rem;
-  margin-left: 5%;
 }
 .sort-by {
   position: relative;
@@ -48,18 +50,19 @@
   position: relative;
 }
 
-.theme-select select {
+.theme-select select,
+.user-theme-select select {
   width: 100%;
   height: 2rem;
 }
 .user-search-term {
-  grid-area: usrTerm;
+  position: relative;
 }
 .user-sort-by {
-  grid-area: usrSort;
+  position: relative;
 }
 .user-theme-select {
-  grid-area: usrTheme;
+  position: relative;
 }
 .browse-btn {
   width: 100%;

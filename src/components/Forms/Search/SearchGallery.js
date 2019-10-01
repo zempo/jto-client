@@ -44,6 +44,32 @@ const SearchGallery = () => {
   return (
     <form className="jto-form search-form" onSubmit={handleSubmit}>
       <h2 className="animated-h2">Explore the Gallery</h2>
+      <fieldset className="search-term">
+        <legend>Term</legend>
+        <input
+          type="text"
+          className="keyword"
+          placeholder="International Lefthanders Day"
+          name="keyword"
+          id={1}
+          value={values.keyword}
+          onChange={handleChange}
+        />
+      </fieldset>
+      <fieldset className="theme-select">
+        <legend>Font</legend>
+        <select
+          ref={themeRef}
+          className="themes"
+          name="themeSort"
+          id={2}
+          value={values.themeSort}
+          onChange={handleChange}
+        >
+          <option value="Any">Any</option>
+          <ThemesList />
+        </select>
+      </fieldset>
       <fieldset className="sort-by">
         <legend>Category</legend>
         <div className="sort-fields">
@@ -74,32 +100,6 @@ const SearchGallery = () => {
             <input type="radio" name="old" value="old" checked={arrange === "old"} onChange={handleRadio} />
           </label>
         </div>
-      </fieldset>
-      <fieldset className="theme-select">
-        <legend>Font</legend>
-        <select
-          ref={themeRef}
-          className="themes"
-          name="themeSort"
-          id={2}
-          value={values.themeSort}
-          onChange={handleChange}
-        >
-          <option value="Any">Any</option>
-          <ThemesList />
-        </select>
-      </fieldset>
-      <fieldset className="search-term">
-        <legend>Term</legend>
-        <input
-          type="text"
-          className="keyword"
-          placeholder="International Lefthanders Day"
-          name="keyword"
-          id={1}
-          value={values.keyword}
-          onChange={handleChange}
-        />
       </fieldset>
       <button className="browse-btn">Browse</button>
     </form>
