@@ -123,7 +123,7 @@ div[id="500"] {
   border-radius: 50%;
   width: 5em;
   height: 5em;
-  border: 2px solid rgb(223, 233, 243);
+  border: 2px solid rgb(248, 245, 245);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,18 +132,24 @@ div[id="500"] {
   -webkit-transition: all 0.2s ease-out;
 }
 .btn:hover {
-  background: rgb(223, 233, 243);
-  border: 2px solid rgb(223, 233, 243);
+  background: rgb(248, 245, 245);
+  border: 2px solid rgb(248, 245, 245);
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
   -webkit-transition: all 0.2s ease-out;
 }
 
 .btn > * {
-  color: rgb(223, 233, 243);
+  color: rgb(248, 245, 245);
 }
 .btn:hover > * {
-  color: #0060a4;
+  color: #b6a99e;
+}
+.btn:active {
+  -o-animation: heartBeat 0.3s;
+  -moz-animation: heartBeat 0.3s;
+  -webkit-animation: heartBeat 0.3s;
+  animation: heartBeat 0.3s;
 }
 
 /* pagination  */

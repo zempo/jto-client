@@ -36,8 +36,9 @@ form button {
 }
 
 .search-form button {
-  width: 10rem;
+  width: 50%;
   height: 3rem;
+  font-size: 1.4rem;
 }
 
 .list-card-demo {

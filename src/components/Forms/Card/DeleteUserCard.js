@@ -8,7 +8,6 @@ const DeleteUserCard = ({ item, cancel }) => {
   const [resMsg, setResMsg] = useState("");
   const [resStatus, setResStatus] = useState(0);
 
-
   const handleDelete = async (e) => {
     setResStatus(0);
     setResMsg("");
@@ -36,11 +35,17 @@ const DeleteUserCard = ({ item, cancel }) => {
       <h2>Are you sure you want to delete your occasion?</h2>
       <p>Once you delete an Occasion, this action cannot be undone.</p>
       {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
-      <button onClick={handleDelete}>Yes</button>
+      <div className="modal-controls">
+        <button className="modal-btn" onClick={handleDelete}>
+          Yes
+        </button>
+        <button className="modal-btn" onClick={cancel}>
+          No
+        </button>
+      </div>
       <button className="close-modal" onClick={cancel}>
         X
       </button>
-      <button onClick={cancel}>No</button>
     </div>
   );
 };

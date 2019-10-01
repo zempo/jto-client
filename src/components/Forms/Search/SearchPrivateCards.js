@@ -37,9 +37,10 @@ const SearchPrivateCards = () => {
   };
 
   return (
-    <form className="jto-form search-form" onSubmit={handleSubmit}>
+    <form className="jto-form search-form-user" onSubmit={handleSubmit}>
       <h2 className="animated-h2">Explore Your Cards</h2>
-      <fieldset className="searchTerm">
+      <fieldset className="user-search-term">
+        <legend>By Term</legend>
         <input
           type="text"
           className="keyword"
@@ -50,7 +51,8 @@ const SearchPrivateCards = () => {
           onChange={handleChange}
         />
       </fieldset>
-      <fieldset className="sortBy">
+      <fieldset className="user-sort-by">
+        <legend>By Category</legend>
         <label htmlFor="new">
           <input type="radio" name="new" value="new" checked={arrange === "new"} onChange={handleRadio} />
           Newest
@@ -60,7 +62,8 @@ const SearchPrivateCards = () => {
           Oldest
         </label>
       </fieldset>
-      <fieldset className="themeSelect">
+      <fieldset className="user-theme-select">
+        <legend>By Font</legend>
         <select
           ref={themeRef}
           className="themes"
@@ -73,7 +76,7 @@ const SearchPrivateCards = () => {
           <ThemesList />
         </select>
       </fieldset>
-      <button>Browse Occasions</button>
+      <button>Browse</button>
     </form>
   );
 };

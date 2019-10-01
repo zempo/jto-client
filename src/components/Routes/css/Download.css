@@ -196,13 +196,15 @@
 .download-signature .control-item label {
   padding: 0.2rem;
 }
+.download-signature .control-item input {
+  background: rgb(248, 245, 245);
+  border: 1px solid rgb(48, 58, 69);
+  padding: 0.3rem;
+}
 
 .download-buttons {
   grid-area: downloadButtons;
   justify-content: space-between;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: flex-start; */
   position: relative;
   left: 80px;
 }
@@ -249,11 +251,6 @@
   width: 20px;
 }
 
-input[type="text"]::placeholder {
-  /* Firefox, Chrome, Opera */
-  text-align: center;
-}
-
 input[type="color"] {
   background: rgb(48, 58, 69, 0);
   border: 1px solid rgb(48, 58, 69);
@@ -279,7 +276,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 input[type="range"]::-webkit-slider-thumb {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.17), 0px 0px 1px rgba(13, 13, 13, 0.17);
-  border: 1px solid #303a45;
+  border: 1px solid rgb(48, 58, 69);
   height: 25px;
   width: 25px;
   border-radius: 50px;

@@ -79,10 +79,21 @@ body {
 .Modal__inner .close-modal:hover,
 .Modal__inner-bottom .close-modal:hover {
   background: rgb(47, 58, 68);
+  color: rgb(248, 245, 245);
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
+}
+
+.modal-controls {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-btn {
+  width: 10rem;
+  height: 3rem;
 }
 
 .close-button:hover {
@@ -107,7 +118,7 @@ body {
 }
 
 .close-button:active {
-  background: white;
+  background: rgb(248, 245, 245);
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
@@ -120,7 +131,7 @@ body {
 
 .Modal__inner .close-modal {
   background: rgba(47, 58, 68);
-  color: rgb(255, 255, 255, 0.6);
+  color: rgb(248, 245, 245, 0.8);
   position: absolute;
   z-index: 1;
   top: 1rem;
@@ -136,12 +147,12 @@ body {
 
 .Modal__inner-bottom .close-modal {
   background: rgba(47, 58, 68);
-  color: rgb(255, 255, 255, 0.6);
+  color: rgb(248, 245, 245, 0.8);
   position: absolute;
   z-index: 1;
   top: 1rem;
   right: 3rem;
-  font-size: 2rem;
+  font-size: 1.6rem;
   border: none;
   border-radius: 50%;
   -moz-transition: all 0.3s ease-out;

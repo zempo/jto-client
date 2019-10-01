@@ -33,12 +33,14 @@ const MakePrivate = ({ item, cancel }) => {
         You can bring your occasion back here, anytime!
       </p>
       {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
-      <button className="modal-btn" onClick={cancel}>
-        Cancel
-      </button>
-      <button className="modal-btn" onClick={handlePrivacy}>
-        Hide Occasion
-      </button>
+      <div className="modal-controls">
+        <button className="modal-btn" onClick={cancel}>
+          Cancel
+        </button>
+        <button className="modal-btn" onClick={handlePrivacy}>
+          Hide Occasion
+        </button>
+      </div>
       <button className="close-modal" onClick={cancel}>
         X
       </button>

@@ -4,6 +4,7 @@ import { GalleryContext } from "../../../contexts/GalleryContext";
 import { listCards, listReactions } from "../../../services/endpoints-service";
 import { validationSpacer } from "../../../services/validation/auth-validation";
 import { ThemesList } from "../../Utils/Utils";
+import "./css/SearchForm.css";
 
 const SearchGallery = () => {
   const {
@@ -43,46 +44,39 @@ const SearchGallery = () => {
   return (
     <form className="jto-form search-form" onSubmit={handleSubmit}>
       <h2 className="animated-h2">Explore the Gallery</h2>
-      <fieldset className="searchTerm">
-        <input
-          type="text"
-          className="keyword"
-          placeholder="International Lefthanders Day"
-          name="keyword"
-          id={1}
-          value={values.keyword}
-          onChange={handleChange}
-        />
+      <fieldset className="sort-by">
+        <legend>Category</legend>
+        <div className="sort-fields">
+          <label htmlFor="new">
+            New <br />
+            <input type="radio" name="new" value="new" checked={arrange === "new"} onChange={handleRadio} />
+          </label>
+          <label>
+            Likes <br />
+            <input type="radio" name="hearts" value="hearts" checked={arrange === "hearts"} onChange={handleRadio} />
+          </label>
+          <label>
+            Comments <br />
+            <input
+              type="radio"
+              name="comments"
+              value="comments"
+              checked={arrange === "comments"}
+              onChange={handleRadio}
+            />
+          </label>
+          <label>
+            Shares <br />
+            <input type="radio" name="shares" value="shares" checked={arrange === "shares"} onChange={handleRadio} />
+          </label>
+          <label>
+            Old <br />
+            <input type="radio" name="old" value="old" checked={arrange === "old"} onChange={handleRadio} />
+          </label>
+        </div>
       </fieldset>
-      <fieldset className="sortBy">
-        <label htmlFor="new">
-          <input type="radio" name="new" value="new" checked={arrange === "new"} onChange={handleRadio} />
-          Newest
-        </label>
-        <label>
-          <input type="radio" name="hearts" value="hearts" checked={arrange === "hearts"} onChange={handleRadio} />
-          Likes
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="comments"
-            value="comments"
-            checked={arrange === "comments"}
-            onChange={handleRadio}
-          />
-          Comments
-        </label>
-        <label>
-          <input type="radio" name="shares" value="shares" checked={arrange === "shares"} onChange={handleRadio} />
-          Downloads
-        </label>
-        <label>
-          <input type="radio" name="old" value="old" checked={arrange === "old"} onChange={handleRadio} />
-          Oldest
-        </label>
-      </fieldset>
-      <fieldset className="themeSelect">
+      <fieldset className="theme-select">
+        <legend>Font</legend>
         <select
           ref={themeRef}
           className="themes"
@@ -95,7 +89,19 @@ const SearchGallery = () => {
           <ThemesList />
         </select>
       </fieldset>
-      <button>Browse Occasions</button>
+      <fieldset className="search-term">
+        <legend>Term</legend>
+        <input
+          type="text"
+          className="keyword"
+          placeholder="International Lefthanders Day"
+          name="keyword"
+          id={1}
+          value={values.keyword}
+          onChange={handleChange}
+        />
+      </fieldset>
+      <button className="browse-btn">Browse</button>
     </form>
   );
 };
