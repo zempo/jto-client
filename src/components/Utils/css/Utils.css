@@ -157,6 +157,8 @@ div[id="500"] {
 /* pagination  */
 /* ///////////////////// */
 .jto-page-menu ul {
+  margin: 1rem auto;
+  padding: 0;
   list-style-type: none;
   display: flex;
   justify-content: center;
