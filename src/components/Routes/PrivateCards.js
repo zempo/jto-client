@@ -30,8 +30,9 @@ const PrivateCards = () => {
 
   return (
     <>
-      <AddBtn />
       <SearchPrivateCards cards={cards} />
+      <h2 className="animated-h2">Add Occasion?</h2>
+      <AddBtn />
       {!searching ? (
         <JtoSection className="cards-counter">
           <p>

@@ -117,9 +117,12 @@ function AddCard({ item, cancel }) {
             />
           </div>
           <div className="question-file">
+            <i class="fas fa-cloud-upload-alt fa-2x"></i>
+            <br />
             <label htmlFor="frontImage">
               Front Picture? <span className="met">Optional</span>
             </label>
+            <br />
             <input type="file" placeholder="Pick Img" name="frontImage" id={2} onChange={handleChange} />
           </div>
           <div className="question-text">
@@ -141,13 +144,20 @@ function AddCard({ item, cancel }) {
             />
           </div>
           <div className="question-file">
+            <i class="fas fa-cloud-upload-alt fa-2x"></i>
+            <br />
             <label htmlFor="frontImage">
               Inside Picture? <span className="met">Optional</span>
-            </label>{" "}
+            </label>
+            <br />
             <input type="file" placeholder="Pick Img" name="insideImage" id={4} onChange={handleChange} />
           </div>
           <div className="question-select">
-            <Required met={values.theme.length === 0 ? false : true} />
+            <label htmlFor="theme">
+              <Required met={values.theme.length === 0 ? false : true} />
+              Font
+            </label>
+            <br />
             <select
               ref={themeRef}
               className="themes"
@@ -165,6 +175,7 @@ function AddCard({ item, cancel }) {
           </div>
         </fieldset>
         <button
+          id="add-card-btn"
           disabled={
             !validReq ||
             frontMsgRef.current.value.length === 0 ||

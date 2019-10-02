@@ -59,7 +59,8 @@ form button {
 }
 
 .add-card-form .question-text label,
-.add-card-form .question-file label {
+.add-card-form .question-file label,
+.add-card-form .question-select label {
   margin-top: 1rem;
   font-size: 1.4rem;
 }
@@ -70,6 +71,22 @@ form button {
   padding: 0.4rem;
   width: 90%;
   margin-bottom: 1rem;
+}
+
+.add-card-form .question-file input,
+.add-card-form .question-select select {
+  margin: 3rem auto;
+}
+
+input[type="file"] {
+  font-size: 0.8rem;
+  /* display: none; */
+}
+
+#add-card-btn {
+  width: 50%;
+  height: 4rem;
+  font-size: 2rem;
 }
 
 .list-card-demo {
@@ -298,6 +315,12 @@ form button {
   }
   .add-card-form fieldset {
     width: 100%;
+    margin-left: 0;
+  }
+  #add-card-btn {
+    width: 100%;
+    height: 4rem;
+    font-size: 2rem;
     margin-left: 0;
   }
 }

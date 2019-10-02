@@ -212,7 +212,11 @@ const DownloadPage = (props) => {
               Reset
             </button>
             <button>
-              {winWidth > 900 ? (
+              <ReactToPrint
+                trigger={() => <a href="javascript:void(0);">Save</a>}
+                content={() => componentRef.current}
+              />
+              {/* {winWidth > 900 ? (
                 <ReactToPrint
                   trigger={() => <a href="javascript:void(0);">Save the Occaison</a>}
                   content={() => componentRef.current}
@@ -222,11 +226,7 @@ const DownloadPage = (props) => {
                   trigger={() => <a href="javascript:void(0);">Save</a>}
                   content={() => componentRef.current}
                 />
-              )}
-              {/* <ReactToPrint
-                trigger={() => <a href="javascript:void(0);">Save the Occaison</a>}
-                content={() => componentRef.current}
-              /> */}
+              )} */}
             </button>
           </fieldset>
         </form>
