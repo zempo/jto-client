@@ -94,6 +94,7 @@ body {
 .modal-btn {
   width: 10rem;
   height: 3rem;
+  font-size: 1.4rem;
 }
 
 .close-button:hover {
@@ -189,6 +190,10 @@ body {
 .jto-notification .close-button {
   top: -1.9rem;
   right: -1.9rem;
+}
+
+.download-menu .modal-btn {
+  margin-left: calc(50% - 5rem);
 }
 
 @-webkit-keyframes zoomIn {
@@ -365,5 +370,8 @@ body {
   .Modal__inner {
     width: 100%;
     padding: 0;
+  }
+  .modal-btn {
+    font-size: 1rem;
   }
 }

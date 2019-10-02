@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import Logo from "../../images/jto-logo-main.svg";
-import Pic1 from '../../images/section-2-min.png'
-// import { AuthService } from "../../services/auth-service";
+import Pic1 from "../../images/section1.gif";
+import Pic2 from "../../images/jto-2.gif";
 import { RevolvingWords, JtoSection } from "../Utils/Utils";
 import { useModal } from "../../hooks/use-modal";
 import Modal from "../../modals/Modal";
@@ -30,14 +31,11 @@ const Landing = (props) => {
         <RevolvingWords words={["Share", "Store", "React"]} />
       </div>
       <section>
-        <img className="landing-img" src={Pic1} alt="screenshot of homepage"></img>
+        <img className="landing-img" src={Pic1} alt="screenshot of user-page."></img>
         <p>
-          {" "}
-          Experience the greeting card ideas you've always wanted to bring to life.
-          <br /> You'll discover a platform that celebrates your sentiments, quirks, and condolances.
+          Create, share, and download greeting cards on your terms. <br />
+          Discover a platform that values your experiences.
         </p>
-
-        <p> It only takes a few clicks to create &#10231; publish &#10231; store.</p>
       </section>
       <section>
         <div className="revolving-header">
@@ -47,44 +45,40 @@ const Landing = (props) => {
           <p className="double-arrow">&#10231;</p>
           <RevolvingWords words={["Easy", "Ready", "Print"]} />
         </div>
-        <p>
-          [<em>placeholder for screenshot of card generation component</em>]
-        </p>
+        <img className="landing-img" src={Pic2} alt="screenshot of homepage"></img>
         <p>
           {" "}
-          With a wide variety of templates, we've made the process of sizing, layout, and printing a two-step process.{" "}
-          <br /> Your card is ready to go.
+          Before you download an occasion, add finishing touches.
+          <br /> Enjoy the freedom to bring your occasions to life!
         </p>
-        <p>Please send us a "Thank You" card, if you get the chance? </p>
+        <p>
+          Please send us a "Thank You" card, if you get the chance? <br />
+          Speaking of...{" "}
+        </p>
       </section>
       <section>
+        <div className="revolving-header">
+          <RevolvingWords words={["Like", "Protect", "Copy"]} />
+          <p className="double-arrow">&#10231;</p>
+          <RevolvingWords words={["Comment", "Review", "Engage"]} />
+          <p className="double-arrow">&#10231;</p>
+          <RevolvingWords words={["Share", "Upload", "Save"]} />
+        </div>
         <p>
-          [<em>placeholder for screenshot of card update/delete component</em>]
+          Want to share the occasion with a community? <br />
+          Bring your occasions to the gallery!
         </p>
-        <p>
-          [<em>placeholder for screenshot of layout/download component</em>]
-        </p>
-        <p />
+
+        <p>You can even download and copy your favorites!</p>
       </section>
       <section>
         <h3>DEMO</h3>
         <button onClick={toggleDemo}>Run Demo</button>
+        <NavLink exact activeClassName="active-auth" to="/register">
+          <p>Register</p>
+        </NavLink>
         <Modal isShowing={isShowingDemo} hide={toggleDemo} action="demo" />
-        <p>
-          [<em>Demo is click to scroll</em>]
-        </p>
-        <p>
-          [<em>Interactive Interface using local storage</em>]
-        </p>
-        <p>
-          [<em>Uses create card form, without add-image functionality. Uses lorem picsum.</em>]
-        </p>
       </section>
-      <section>
-        <h3>Registration Form</h3>
-      </section>
-      {/* to-do: build modal that checks if you're still logged in after 30 mins of inactivity */}
-      {/* <button onClick={handleRefresh}>Refresh Checker</button> */}
     </JtoSection>
   );
 };

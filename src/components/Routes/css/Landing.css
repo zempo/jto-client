@@ -32,7 +32,13 @@
 }
 
 .landing-img {
-  max-width: 50%;
+  max-width: 100%;
+  margin: 1.5rem auto 0.4rem;
+}
+
+.jto-landing section {
+  margin-bottom: 160px;
+  line-height: 2;
 }
 
 @-webkit-keyframes fadeIn {

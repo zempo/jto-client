@@ -110,7 +110,7 @@ const PublicCard = (props) => {
       <JtoSection className="jto-card public-card" style={ThemeStyles[`${cardTheme}`].all}>
         {cardAuthor.user_name === user.user_name ? null : (
           <i className="far fa-copy fa-2x" onClick={handleCopy}>
-            Copy
+            &nbsp; Save Card
           </i>
         )}
         <PaginateCardFaces currentPg={cardPg} setCurrentPg={setCardPg} />

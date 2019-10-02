@@ -26,10 +26,15 @@ button:hover {
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
 }
+
 button:active {
   color: rgb(48, 58, 69);
   background: #f8f5f5;
   border: 2px solid rgb(48, 58, 69);
+  -moz-transform: scaleX(1.05);
+  -o-transform: scaleX(1.05);
+  -ms-transform: scaleX(1.05);
+  transform: scaleX(1.05);
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
@@ -69,10 +74,14 @@ h3 {
 h2 {
   font-weight: 300;
 }
-/* #modal {
-    height: 100%;
-    width: 100%;
-} */
+h1::selection,
+h2::selection,
+h3::selection,
+p::selection,
+b::selection {
+  background: rgb(48, 58, 69);
+  color: #f8f5f5;
+}
 
 .main-logo {
   max-width: 35%;

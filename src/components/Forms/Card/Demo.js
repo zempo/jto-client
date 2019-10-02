@@ -69,7 +69,7 @@ const Demo = ({ cancel }) => {
           <div>
             <Lock />
             <NavLink exact activeClassName="active-auth" to="/register">
-              Sign Up!
+              Register
             </NavLink>
           </div>
           <br />
@@ -97,7 +97,7 @@ const Demo = ({ cancel }) => {
           <div>
             <Lock />
             <NavLink exact activeClassName="active-auth" to="/register">
-              Sign Up!
+              Register
             </NavLink>
           </div>
           <br />
