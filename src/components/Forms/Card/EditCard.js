@@ -134,7 +134,7 @@ const EditCard = ({ item, cancel }) => {
   return (
     <>
       <h2>Update Your Occasion?</h2>
-      <form className="jto-comment-form add-card-form" onSubmit={handleSubmit}>
+      <form className="jto-comment-form edit-card-form" onSubmit={handleSubmit}>
         {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} done={unmounted.current} />}
         <fieldset className={resStatus === 0 || resStatus === 204 ? null : "shake"}>
           <label htmlFor="frontMessage">Did Your Occasion Change?</label>

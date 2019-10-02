@@ -28,7 +28,8 @@
     "typeface-nanum-pen-script": "0.0.63",
     "typeface-permanent-marker": "0.0.72",
     "typeface-roboto": "0.0.75",
-    "typeface-shadows-into-light": "0.0.72"
+    "typeface-shadows-into-light": "0.0.72",
+    "typeface-shadows-into-light-two": "0.0.72"
   },
   "scripts": {
     "start": "react-scripts start",

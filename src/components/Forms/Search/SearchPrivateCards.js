@@ -39,49 +39,51 @@ const SearchPrivateCards = () => {
   return (
     <form className="jto-form search-form" onSubmit={handleSubmit}>
       {cards.length === 0 ? (
-        <h2 className="animated-h2">Create An Occasion!</h2>
+        <h2 className="animated-h2">Create Your First Occasion</h2>
       ) : (
         <h2 className="animated-h2">Explore Your Occasions</h2>
       )}
-      <fieldset className="user-sort-by">
-        <legend>Category</legend>
-        <div className="sort-fields">
-          <label htmlFor="new">
-            New <br />
-            <input type="radio" name="new" value="new" checked={arrange === "new"} onChange={handleRadio} />
-          </label>
-          <label>
-            Old <br />
-            <input type="radio" name="old" value="old" checked={arrange === "old"} onChange={handleRadio} />
-          </label>
-        </div>
-      </fieldset>
-      <fieldset className="user-theme-select">
-        <legend>Font</legend>
-        <select
-          ref={themeRef}
-          className="themes"
-          name="themeSort"
-          id={2}
-          value={values.themeSort}
-          onChange={handleChange}
-        >
-          <option value="Any">Any</option>
-          <ThemesList />
-        </select>
-      </fieldset>
-      <fieldset className="user-search-term">
-        <legend>Term</legend>
-        <input
-          type="text"
-          className="keyword"
-          placeholder="International Lefthanders Day"
-          name="keyword"
-          id={1}
-          value={values.keyword}
-          onChange={handleChange}
-        />
-      </fieldset>
+      <div className="search-fields">
+        <fieldset className="user-search-term">
+          <legend>Term</legend>
+          <input
+            type="text"
+            className="keyword"
+            placeholder="International Lefthanders Day"
+            name="keyword"
+            id={1}
+            value={values.keyword}
+            onChange={handleChange}
+          />
+        </fieldset>
+        <fieldset className="user-theme-select">
+          <legend>Font</legend>
+          <select
+            ref={themeRef}
+            className="themes"
+            name="themeSort"
+            id={2}
+            value={values.themeSort}
+            onChange={handleChange}
+          >
+            <option value="Any">Any</option>
+            <ThemesList />
+          </select>
+        </fieldset>
+        <fieldset className="user-sort-by">
+          <legend>Category</legend>
+          <div className="sort-fields">
+            <label htmlFor="new">
+              New <br />
+              <input type="radio" name="new" value="new" checked={arrange === "new"} onChange={handleRadio} />
+            </label>
+            <label>
+              Old <br />
+              <input type="radio" name="old" value="old" checked={arrange === "old"} onChange={handleRadio} />
+            </label>
+          </div>
+        </fieldset>
+      </div>
       <button className="browse-btn">Browse</button>
     </form>
   );

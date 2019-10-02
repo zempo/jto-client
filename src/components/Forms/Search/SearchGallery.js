@@ -44,63 +44,65 @@ const SearchGallery = () => {
   return (
     <form className="jto-form search-form" onSubmit={handleSubmit}>
       <h2 className="animated-h2">Explore the Gallery</h2>
-      <fieldset className="search-term">
-        <legend>Term</legend>
-        <input
-          type="text"
-          className="keyword"
-          placeholder="International Lefthanders Day"
-          name="keyword"
-          id={1}
-          value={values.keyword}
-          onChange={handleChange}
-        />
-      </fieldset>
-      <fieldset className="theme-select">
-        <legend>Font</legend>
-        <select
-          ref={themeRef}
-          className="themes"
-          name="themeSort"
-          id={2}
-          value={values.themeSort}
-          onChange={handleChange}
-        >
-          <option value="Any">Any</option>
-          <ThemesList />
-        </select>
-      </fieldset>
-      <fieldset className="sort-by">
-        <legend>Category</legend>
-        <div className="sort-fields">
-          <label htmlFor="new">
-            New <br />
-            <input type="radio" name="new" value="new" checked={arrange === "new"} onChange={handleRadio} />
-          </label>
-          <label>
-            Likes <br />
-            <input type="radio" name="hearts" value="hearts" checked={arrange === "hearts"} onChange={handleRadio} />
-          </label>
-          <label>
-            Comments <br />
-            <input
-              type="radio"
-              name="comments"
-              value="comments"
-              checked={arrange === "comments"}
-              onChange={handleRadio}
-            />
-          </label>
-          <label>
-            Shares <br />
-            <input type="radio" name="shares" value="shares" checked={arrange === "shares"} onChange={handleRadio} />
-          </label>
-          <label>
-            Old <br />
-            <input type="radio" name="old" value="old" checked={arrange === "old"} onChange={handleRadio} />
-          </label>
-        </div>
-      </fieldset>
+      <div className="search-fields">
+        <fieldset className="search-term">
+          <legend>Term</legend>
+          <input
+            type="text"
+            className="keyword"
+            placeholder="International Lefthanders Day"
+            name="keyword"
+            id={1}
+            value={values.keyword}
+            onChange={handleChange}
+          />
+        </fieldset>
+        <fieldset className="theme-select">
+          <legend>Font</legend>
+          <select
+            ref={themeRef}
+            className="themes"
+            name="themeSort"
+            id={2}
+            value={values.themeSort}
+            onChange={handleChange}
+          >
+            <option value="Any">Any</option>
+            <ThemesList />
+          </select>
+        </fieldset>
+        <fieldset className="sort-by">
+          <legend>Category</legend>
+          <div className="sort-fields">
+            <label htmlFor="new">
+              New <br />
+              <input type="radio" name="new" value="new" checked={arrange === "new"} onChange={handleRadio} />
+            </label>
+            <label>
+              Likes <br />
+              <input type="radio" name="hearts" value="hearts" checked={arrange === "hearts"} onChange={handleRadio} />
+            </label>
+            <label>
+              Comments <br />
+              <input
+                type="radio"
+                name="comments"
+                value="comments"
+                checked={arrange === "comments"}
+                onChange={handleRadio}
+              />
+            </label>
+            <label>
+              Shares <br />
+              <input type="radio" name="shares" value="shares" checked={arrange === "shares"} onChange={handleRadio} />
+            </label>
+            <label>
+              Old <br />
+              <input type="radio" name="old" value="old" checked={arrange === "old"} onChange={handleRadio} />
+            </label>
+          </div>
+        </fieldset>
+      </div>
       <button className="browse-btn">Browse</button>
     </form>
   );

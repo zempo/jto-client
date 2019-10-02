@@ -19,10 +19,7 @@ form,
 
 .jto-comment-form textarea {
   width: 100%;
-}
-
-.frontMessage {
-  /* height: ; */
+  height: 50%;
 }
 
 form button,
@@ -36,9 +33,43 @@ form button {
 }
 
 .search-form button {
-  width: 50%;
-  height: 3rem;
+  width: 40%;
+  height: 4rem;
   font-size: 1.4rem;
+}
+
+.add-card-form fieldset {
+  border: 2px solid rgb(48, 58, 69);
+  border-radius: 5px;
+  width: 80%;
+  margin-left: 10%;
+  padding: 0;
+}
+
+.add-card-form .question-text,
+.add-card-form .question-file {
+  border-bottom: 2px solid rgb(48, 58, 69);
+  width: 100%;
+  padding-top: 1rem;
+}
+
+.add-card-form .question-select {
+  width: 100%;
+  padding-top: 1rem;
+}
+
+.add-card-form .question-text label,
+.add-card-form .question-file label {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+}
+
+.add-card-form .question-text input,
+.add-card-form .question-select select,
+.add-card-form .question-text textarea {
+  padding: 0.4rem;
+  width: 90%;
+  margin-bottom: 1rem;
 }
 
 .list-card-demo {

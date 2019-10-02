@@ -21,7 +21,7 @@ import "typeface-great-vibes";
 // 'indie'
 import "typeface-amatic-sc";
 // 'handwritten'
-import "typeface-shadows-into-light";
+import "typeface-shadows-into-light-two";
 // handwritten-bold
 import "typeface-gochi-hand";
 // kiddo
