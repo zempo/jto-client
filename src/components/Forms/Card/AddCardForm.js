@@ -85,11 +85,14 @@ function AddCard({ item, cancel }) {
       setLoading(false);
       setResStatus(error.response.status);
       setResMsg(Object.values(error.response.data.error));
+      setTimeout(() => {
+        setResStatus(0);
+      }, 5000);
     }
   };
 
   return (
-    <fieldset>
+    <>
       <form className="jto-form add-card-form" onSubmit={handleSubmit}>
         {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
         <fieldset className={resStatus === 0 || resStatus === 201 ? null : "shake"}>
@@ -177,7 +180,7 @@ function AddCard({ item, cancel }) {
         X
       </button>
       {loading ? <Loader loading={loading} status={resStatus} /> : null}
-    </fieldset>
+    </>
   );
 }
 

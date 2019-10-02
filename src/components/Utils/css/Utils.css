@@ -16,7 +16,11 @@
 /* Notification utility  */
 /* //////////////////////////// */
 .jto-notification h3 {
-  padding: 0.5rem;
+  padding: 0.2rem;
+}
+
+.jto-notification .close-btn {
+  top: 0;
 }
 
 div[id="200"],
@@ -117,13 +121,11 @@ div[id="500"] {
 }
 
 .btn {
-  position: absolute;
-  top: 40%;
-  left: 20%;
   border-radius: 50%;
+  margin: 1rem auto 5rem;
   width: 5em;
   height: 5em;
-  border: 2px solid rgb(248, 245, 245);
+  border: 2px solid rgb(48, 58, 69);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,18 +134,18 @@ div[id="500"] {
   -webkit-transition: all 0.2s ease-out;
 }
 .btn:hover {
-  background: rgb(248, 245, 245);
-  border: 2px solid rgb(248, 245, 245);
+  background: rgb(48, 58, 69);
+  border: 2px solid rgb(48, 58, 69);
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
   -webkit-transition: all 0.2s ease-out;
 }
 
 .btn > * {
-  color: rgb(248, 245, 245);
+  color: rgb(48, 58, 69);
 }
 .btn:hover > * {
-  color: #b6a99e;
+  color: rgba(248, 245, 245);
 }
 .btn:active {
   -o-animation: heartBeat 0.3s;

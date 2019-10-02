@@ -13,8 +13,7 @@
   padding: 100px;
 }
 
-.card-container,
-.card-container2 {
+.card-container {
   display: block;
   width: 180px;
   height: 240px;
@@ -40,6 +39,7 @@
   -webkit-animation-fill-mode: backwards;
   animation-fill-mode: backwards;
 }
+
 .card-toggle {
   display: block;
   position: relative;

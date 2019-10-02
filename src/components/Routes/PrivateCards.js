@@ -30,6 +30,7 @@ const PrivateCards = () => {
 
   return (
     <>
+      <AddBtn />
       <SearchPrivateCards cards={cards} />
       {!searching ? (
         <JtoSection className="cards-counter">
@@ -38,12 +39,12 @@ const PrivateCards = () => {
           </p>
         </JtoSection>
       ) : (
-          <JtoSection className="cards-counter">
-            <p>
-              Showing {currentSearchCards.length} of {searchCards.length} Results
+        <JtoSection className="cards-counter">
+          <p>
+            Showing {currentSearchCards.length} of {searchCards.length} Results
           </p>
-          </JtoSection>
-        )}
+        </JtoSection>
+      )}
       {cards.length > cardsPerPg && !searching ? (
         <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
       ) : searchCards.length > searchCardsPerPg && searching ? (
@@ -59,22 +60,19 @@ const PrivateCards = () => {
         <SkeletonLoader2 loading={loading} />
         {!searching
           ? currentCards.map((card, i) => {
-            return (
-              <div key={i}>
-                <PrivateListCard card={card} />
-              </div>
-            );
-          })
+              return (
+                <div key={i}>
+                  <PrivateListCard card={card} />
+                </div>
+              );
+            })
           : searchCards.map((card, i) => {
-            return (
-              <div key={i}>
-                <PrivateSearchCard card={card} />
-              </div>
-            );
-          })}
-        <div className="card-container2">
-          <AddBtn />
-        </div>
+              return (
+                <div key={i}>
+                  <PrivateSearchCard card={card} />
+                </div>
+              );
+            })}
       </JtoSection>
       {cards.length > cardsPerPg && !searching ? (
         <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />

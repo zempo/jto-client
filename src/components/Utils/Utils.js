@@ -12,7 +12,7 @@ export const Loader = ({ loading, status }) => {
   useLayoutEffect(() => {
     return () => {
       unmounted.current = true;
-    }; 
+    };
   }, []);
   let randomQuote = JtoQuotes[~~(Math.random() * JtoQuotes.length)];
   const [quote, setQuote] = useState(randomQuote);
@@ -168,42 +168,43 @@ export const Required = ({ met }) => {
 export const JtoNotification = ({ type, msg, done }) => {
   // created centered checkmark or x
   // below display message and surround with colored border
-  const [displaying, setDisplaying] = useState(false);
-  const unmounted = useRef(false);
-  useLayoutEffect(() => {
-    return () => {
-      unmounted.current = true;
-    };
-  }, []);
+  const [displaying, setDisplaying] = useState(true);
+  // const unmounted = useRef(false);
+  // useLayoutEffect(() => {
+  //   return () => {
+  //     unmounted.current = true;
+  //   };
+  // }, []);
 
-  useEffect(() => {
-    setDisplaying(true);
-    const openNotification = () => {
-      setTimeout(() => {
-        setDisplaying(false);
-        // console.clear();
-      }, 5000);
-    };
+  // useEffect(() => {
+  //   setDisplaying(true);
+  //   const openNotification = () => {
+  //     setTimeout(() => {
+  //       setDisplaying(false);
+  //       // console.clear();
+  //     }, 5000);
+  //   };
 
-    if (displaying === true && type > 400) {
-      openNotification();
-    } else if (type < 400) {
-      setDisplaying(true);
-    }
+  //   if (displaying === true && type > 400) {
+  //     openNotification();
+  //   } else if (type < 400) {
+  //     setDisplaying(true);
+  //   }
 
-    return () => {
-      unmounted.current = true;
-      clearTimeout(openNotification);
-      // setDisplaying(false);
-    };
-  }, [displaying, done, type]);
+  //   return () => {
+  //     unmounted.current = true;
+  //     clearTimeout(openNotification);
+  //     // setDisplaying(false);
+  //   };
+  // }, [displaying, done, type]);
 
   const handleClick = (e) => {
     e.preventDefault();
     setDisplaying(false);
     // console.clear();
   };
-  if (displaying && !done) {
+
+  if (displaying) {
     return (
       <div id={type} className="jto-notification">
         <h3>
@@ -215,11 +216,27 @@ export const JtoNotification = ({ type, msg, done }) => {
         </button>
       </div>
     );
-  } else if (unmounted) {
-    return null;
   } else {
     return null;
   }
+
+  // if (displaying && !done) {
+  //   return (
+  //     <div id={type} className="jto-notification">
+  //       <h3>
+  //         <i className="fas fa-exclamation" />
+  //         {msg}
+  //       </h3>
+  //       <button className="close-button" onClick={handleClick}>
+  //         X
+  //       </button>
+  //     </div>
+  //   );
+  // } else if (unmounted) {
+  //   return null;
+  // } else {
+  //   return null;
+  // }
 };
 
 export function JtoSection({ className, list, ...props }) {

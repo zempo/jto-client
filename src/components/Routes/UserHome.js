@@ -16,6 +16,7 @@ const UserHome = () => {
   return (
     <JtoSection className="jto-home">
       <h1 className="animated-h1">Hello, {firstName(fullName)}</h1>
+      <h2 className="animated-h2">New Occasion</h2>
       <CardsProvider>
         <PrivateCards />
       </CardsProvider>
