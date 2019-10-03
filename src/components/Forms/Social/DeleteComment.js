@@ -36,8 +36,12 @@ const DeleteComment = ({ item, cancel }) => {
     <div className={resStatus === 0 || resStatus === 204 ? null : "shake"}>
       <h2>Are you sure?</h2>
       {resStatus === 0 || resStatus === 204 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
-      <button onClick={handleDelete}>Yes</button>
-      <button onClick={cancel}>No</button>
+      <button className="modal-btn" onClick={cancel}>
+        Cancel
+      </button>
+      <button className="modal-btn" onClick={handleDelete}>
+        Delete
+      </button>
       <button className="close-modal" onClick={cancel}>
         X
       </button>

@@ -1,0 +1,33 @@
+.jto-guide,
+.jto-faqs {
+  text-align: center;
+}
+
+.jto-guide .animated-h2,
+.jto-faqs .animated-h2 {
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin-top: 3rem;
+}
+
+.jto-faqs p,
+.jto-guide p {
+  max-width: 50rem;
+  margin: auto;
+  line-height: 2;
+  -o-animation: fadeInUp 1s;
+  -moz-animation: fadeInUp 1s;
+  -webkit-animation: fadeInUp 1s;
+  animation: fadeInUp 1s;
+  -o-animation-fill-mode: backwards;
+  -moz-animation-fill-mode: backwards;
+  -webkit-animation-fill-mode: backwards;
+  animation-fill-mode: backwards;
+}
+
+.jto-faqs a,
+.jto-guide a {
+  color: rgb(48, 58, 69);
+  text-decoration: underline;
+  font-weight: bold;
+}

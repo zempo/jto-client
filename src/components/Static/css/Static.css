@@ -16,15 +16,15 @@ header {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
+.jto-nav-menu .logo-link {
+  margin-right: 10rem;
+}
+
 .active h3 {
   text-decoration: underline;
 }
 
-.active img {
-  /* -o-animation: fadeIn 1s;
-  -moz-animation: fadeIn 1s;
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s; */
+.logo-link:active {
   -o-animation: heartBeat 0.3s;
   -moz-animation: heartBeat 0.3s;
   -webkit-animation: heartBeat 0.3s;

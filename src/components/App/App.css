@@ -78,11 +78,15 @@ h1::selection,
 h2::selection,
 h3::selection,
 p::selection,
-b::selection {
+b::selection,
+span::selection {
   background: rgb(48, 58, 69);
   color: #f8f5f5;
 }
-
+a::selection {
+  background: rgb(48, 58, 69);
+  color: #f8f5f5;
+}
 .main-logo {
   max-width: 35%;
   margin-bottom: 10rem;

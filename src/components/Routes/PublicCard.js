@@ -69,28 +69,6 @@ const PublicCard = (props) => {
     toggleCommentDelete();
   };
 
-  const handleCopy = async (e) => {
-    e.preventDefault();
-    let { inside_message, inside_image, front_image, theme, front_message } = card;
-    let cardCopy = { front_message, inside_message, theme };
-    if (inside_image !== "" && front_image !== "") {
-      cardCopy.front_image = front_image;
-      cardCopy.inside_image = inside_image;
-    } else if (inside_image !== "" && front_image === "") {
-      cardCopy.inside_image = inside_image;
-    } else if (front_image !== "" && inside_image === "") {
-      cardCopy.front_image = front_image;
-    }
-
-    try {
-      let sendFullData = await newCard.post("/", cardCopy);
-
-      window.location.reload();
-    } catch (error) {
-      console.log(error.response);
-    }
-  };
-
   return (
     <main className="public-card-page">
       {/* eslint-disable-next-line */}
@@ -108,11 +86,6 @@ const PublicCard = (props) => {
         </h2>
       )}
       <JtoSection className="jto-card public-card" style={ThemeStyles[`${cardTheme}`].all}>
-        {cardAuthor.user_name === user.user_name ? null : (
-          <i className="far fa-copy fa-2x" onClick={handleCopy}>
-            &nbsp; Save Card
-          </i>
-        )}
         <PaginateCardFaces currentPg={cardPg} setCurrentPg={setCardPg} />
         <CardPages card={card} themes={ThemeStyles} cardTheme={cardTheme} cardPg={cardPg} />
       </JtoSection>
@@ -133,8 +106,10 @@ const PublicCard = (props) => {
           {cardComments.map((comment, i) => {
             return (
               <li className="jto-comment" key={i}>
-                {comment.user.admin ? <i className="fas fa-shield-alt" /> : null}
-                {comment.user.user_name}
+                <p className="comment-item user">
+                  {comment.user.admin ? <i className="fas fa-shield-alt" /> : null}&nbsp;
+                  {comment.user.user_name}
+                </p>
                 <ul className="comment-items">
                   <li className="comment-item body">{comment.body}</li>
                   {comment.date_modified == undefined ? (

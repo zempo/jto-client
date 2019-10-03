@@ -76,8 +76,11 @@ const EditComment = ({ item, payload, cancel }) => {
             value={values.body}
           />
         </fieldset>
-        <button disabled={!validReq || bodyRef.current.value.length === 0} type="submit">
-          Update Comment
+        <button className="modal-btn" onClick={cancel}>
+          Cancel
+        </button>
+        <button className="modal-btn" disabled={!validReq || bodyRef.current.value.length === 0} type="submit">
+          Edit
         </button>
       </form>
       <button className="close-modal" onClick={cancel}>

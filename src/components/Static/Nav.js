@@ -55,7 +55,7 @@ class Nav extends Component {
     return (
       <nav className="jto-nav-menu">
         <NavLink exact activeClassName="active" to="/">
-          <img src={Logo} alt="site logo" width="50" height="50" />
+          <img className="logo-link" src={Logo} alt="homepage" width="50" height="50" />
         </NavLink>
         <NavLink exact activeClassName="active" to="/guide">
           <h3>Start</h3>

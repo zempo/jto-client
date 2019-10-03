@@ -2,6 +2,7 @@
   background-color: #b6a99e;
   margin: 0;
   padding: 0;
+  padding-top: 5%;
 }
 
 h3 {
@@ -102,27 +103,55 @@ h3 {
 }
 
 .jto-comments {
-  border: 2px solid black;
+  background: rgb(47, 58, 68, 0.8);
+}
+.jto-comments ul {
+  width: 100%;
 }
 
 .jto-comment {
-  border: 2px solid black;
-  margin: 2rem;
-  width: 40rem;
+  margin: 2rem 25%;
+  width: 50%;
+  height: auto;
+  padding: 0.5rem;
   list-style-type: none;
   -o-animation: fadeInUp 0.6s;
   -moz-animation: fadeInUp 0.6s;
   -webkit-animation: fadeInUp 0.6s;
   animation: fadeInUp 0.6s;
+  background: #b6a99e;
+  /* box-shadow: 5px 3px 10px rgba(49, 47, 47, 0.349); */
+  border-radius: 5px;
 }
 
 .comment-items {
   position: relative;
+  list-style-type: none;
+}
+
+.comment-item {
+  padding: 0.4rem;
+}
+
+.jto-comment .user {
+  font-size: 1.2rem;
+  position: relative;
+  top: -1rem;
+  font-weight: bold;
+}
+
+.jto-comment .body {
+  margin-top: 1rem;
+}
+
+.jto-comment .date {
+  font-style: italic;
+  color: rgba(47, 58, 68, 0.829);
 }
 
 .jto-dot-menu {
   position: absolute;
-  top: -1rem;
+  top: -4rem;
   right: 1rem;
 }
 
@@ -136,6 +165,7 @@ h3 {
   position: absolute;
   right: 1.5rem;
   color: #2f3a44;
+  font-size: 1.4rem;
 }
 
 .comment-item {

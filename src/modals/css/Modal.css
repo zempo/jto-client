@@ -192,8 +192,21 @@ body {
   right: -1.9rem;
 }
 
+.download-menu {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
 .download-menu .modal-btn {
-  margin-left: calc(50% - 5rem);
+  margin: 1rem;
+}
+.modal-btn a {
+  text-decoration: none;
+  color: rgb(47, 58, 68);
+}
+.modal-btn:hover a {
+  text-decoration: none;
+  color: rgb(248, 245, 245);
 }
 
 @-webkit-keyframes zoomIn {
