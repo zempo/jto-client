@@ -21,7 +21,11 @@ const FAQs = () => {
       <p>However, your private cards will always remain private.</p>
       <h2 className="animated-h2">What do I do with my downloaded card?</h2>
       <p>
-        Revisit the <Link to="/guide">getting-started page</Link>.
+        Revisit the{" "}
+        <Link to="/guide" title="card assembly instructions">
+          getting-started page
+        </Link>
+        .
       </p>
       <p>Click the "Downloading" section.</p>
       <h2 className="animated-h2">Is my information secure?</h2>

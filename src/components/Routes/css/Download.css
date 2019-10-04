@@ -66,7 +66,8 @@
 }
 
 .jto-export {
-  border: 2px dashed black;
+  border-top: 2px dashed rgb(48, 58, 69);
+  border-bottom: 2px dashed rgb(48, 58, 69);
   background: rgb(48, 58, 69, 0.3);
   padding-top: 20px;
 }

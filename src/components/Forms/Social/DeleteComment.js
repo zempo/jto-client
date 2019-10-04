@@ -33,7 +33,7 @@ const DeleteComment = ({ item, cancel }) => {
   };
 
   return (
-    <div className={resStatus === 0 || resStatus === 204 ? null : "shake"}>
+    <div className={resStatus === 0 || resStatus === 204 ? "comment-delete" : "comment-delete shake"}>
       <h2>Are you sure?</h2>
       {resStatus === 0 || resStatus === 204 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
       <button className="modal-btn" onClick={cancel}>

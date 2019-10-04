@@ -72,12 +72,16 @@ const Landing = (props) => {
         <p>You can even download and copy your favorites!</p>
       </section>
       <section>
-        <h3>DEMO</h3>
-        <button onClick={toggleDemo}>Run Demo</button>
-        <NavLink exact activeClassName="active-auth" to="/register">
-          <p>Register</p>
-        </NavLink>
+        <h3>Give it a Try!</h3>
+        <button className="modal-btn" onClick={toggleDemo}>
+          Demo
+        </button>
         <Modal isShowing={isShowingDemo} hide={toggleDemo} action="demo" />
+      </section>
+      <section>
+        <NavLink exact activeClassName="active-auth" to="/register">
+          <h3>Get Started</h3>
+        </NavLink>
       </section>
     </JtoSection>
   );

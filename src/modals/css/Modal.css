@@ -86,15 +86,19 @@ body {
   -webkit-transition: all 0.3s ease-out;
 }
 
-.modal-controls {
-  display: flex;
-  justify-content: center;
-}
-
-.modal-btn {
+.comment-controls {
   width: 10rem;
   height: 3rem;
   font-size: 1.4rem;
+}
+
+.comment-delete h2 {
+  margin-bottom: 4rem;
+}
+
+.comment-delete .modal-btn:nth-child(2) {
+  margin-left: calc(47.5% - 15rem);
+  margin-right: 5%;
 }
 
 .close-button:hover {
@@ -197,8 +201,16 @@ body {
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
+.download-menu button a {
+  font-weight: normal;
+}
+
 .download-menu .modal-btn {
   margin: 1rem;
+}
+
+.modal-btn {
+  font-size: 1.4rem;
 }
 .modal-btn a {
   text-decoration: none;
@@ -386,5 +398,9 @@ body {
   }
   .modal-btn {
     font-size: 1rem;
+    width: 5rem;
+  }
+  .comment-delete .modal-btn:nth-child(2) {
+    margin-left: calc(50% - 5.5rem);
   }
 }

@@ -64,7 +64,8 @@
   width: 30%;
   height: 60%;
   /* border: solid #dfe9f3; */
-  border: solid rgb(248, 245, 245);
+  /* border: solid rgb(48, 58, 69); */
+  border: none;
   border-width: 0 10px 10px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);

@@ -60,11 +60,11 @@ class Nav extends Component {
         <NavLink exact activeClassName="active" to="/guide">
           <h3>Start</h3>
         </NavLink>
-        <NavLink exact activeClassName="active" to="/gallery">
-          <h3>Occasions</h3>
-        </NavLink>
         <NavLink exact activeClassName="active" to="/private">
-          <h3>Personal</h3>
+          <h3>Create</h3>
+        </NavLink>
+        <NavLink exact activeClassName="active" to="/gallery">
+          <h3>Browse</h3>
         </NavLink>
         <NavLink exact activeClassName="active" to="/support">
           <h3>Support</h3>

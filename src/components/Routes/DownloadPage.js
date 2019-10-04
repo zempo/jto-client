@@ -1,4 +1,5 @@
 import React, { useEffect, useContext, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import ReactToPrint from "react-to-print";
 import { UserContext } from "../../contexts/UserContext";
 import { CardContext } from "../../contexts/CardContext";
@@ -226,7 +227,12 @@ const DownloadPage = (props) => {
             </button>
           </fieldset>
         </form>
-        {loading ? <Loader /> : null}
+        <h2>
+          Card Assembly Instructions{" "}
+          <Link title="link to instructions page" to="/guide">
+            Here
+          </Link>
+        </h2>
       </JtoSection>
       <JtoSection className="jto-export">
         <div className="export-container preview" ref={componentRef}>
@@ -320,6 +326,17 @@ const DownloadPage = (props) => {
           >
             {card.inside_image ? <img src={card.inside_image} alt="download-inside-figure" /> : null}
           </div>
+          <div
+            className="export-pg page-break"
+            style={{
+              backgroundColor: rightBg,
+              height: pageStyle.height,
+              width: pageStyle.width,
+              border: pageStyle.border,
+              fontFamily: pageStyle.fontFamily,
+              marginBottom: pageStyle.marginBottom
+            }}
+          ></div>
         </div>
       </JtoSection>
     </div>
