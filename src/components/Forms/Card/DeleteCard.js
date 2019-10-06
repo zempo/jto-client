@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { JtoNotification } from "../../Utils/Utils";
 import { deleteCard } from "../../../services/endpoints-service";
+import "../css/Forms.css";
 
 const DeleteCard = ({ item, cancel }) => {
   // eslint-disable-next-line

@@ -73,7 +73,7 @@ const Landing = (props) => {
       </section>
       <section>
         <h3>Give it a Try!</h3>
-        <button className="modal-btn" onClick={toggleDemo}>
+        <button className="modal-btn action" onClick={toggleDemo}>
           Demo
         </button>
         <Modal isShowing={isShowingDemo} hide={toggleDemo} action="demo" />

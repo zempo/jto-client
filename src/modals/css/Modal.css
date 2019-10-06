@@ -221,6 +221,15 @@ body {
   color: rgb(248, 245, 245);
 }
 
+.modal-controls {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-controls button {
+  margin: 2rem;
+}
+
 @-webkit-keyframes zoomIn {
   from {
     opacity: 0;

@@ -4,8 +4,8 @@ import "./css/Info.css";
 
 const Guide = () => {
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <JtoSection className="jto-guide">
       <h1 className="animated-h1">Getting Started</h1>
@@ -14,8 +14,7 @@ const Guide = () => {
         <li>Need inspiration and resources?</li>
         <ul>
           <li>
-            <Required met="true"></Required>
-            For Images - try the free software{" "}
+            <Required met="true"></Required> For Images - try the free software{" "}
             <a
               href="https://www.photopea.com"
               className="guide-link"
@@ -27,8 +26,7 @@ const Guide = () => {
             </a>
           </li>
           <li>
-            <Required met="true"></Required>
-            For Messages - try some of these{" "}
+            <Required met="true"></Required> For Messages - try some of these{" "}
             <a
               href="https://www.pinterest.com/tlsprincipal/card-sentiments-and-messages/"
               className="guide-link"
@@ -76,12 +74,18 @@ const Guide = () => {
         </ul>
         <li>Create</li>
         <ul>
-          <li>Prepare your custom message (and image, if desired).</li>
-          <li>Click the "add-occasion" button</li>
-          <li>Provide your card's info</li>
+          <li>
+            <Required met="true"></Required> Prepare your custom message (and image, if desired).
+          </li>
+          <li>
+            <Required met="true"></Required> Click the "add-occasion" button
+          </li>
+          <li>
+            <Required met="true"></Required> Add your messages and pictures
+          </li>
           <li>
             {" "}
-            <Required met="true"></Required>Done{" "}
+            <Required met="true"></Required> Done{" "}
           </li>
         </ul>
       </ol>

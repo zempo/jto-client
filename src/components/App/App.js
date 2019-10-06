@@ -86,8 +86,8 @@ class App extends Component {
               <Route exact path={"/support"} component={FAQs} />
             </Switch>
           </ErrorPage>
-          <Footer />
         </main>
+        <Footer />
       </>
     );
   }

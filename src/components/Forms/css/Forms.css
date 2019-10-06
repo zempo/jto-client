@@ -106,6 +106,7 @@ input[type="file"] {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  transform: scale(0.8);
 }
 .demo-card-toggle {
   display: block;

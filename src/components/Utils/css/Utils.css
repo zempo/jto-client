@@ -176,6 +176,8 @@ div[id="500"] {
   font-size: 1.7em;
   width: 2em;
   height: 1.5em;
+  margin: 0.2rem;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .public-card .jto-page-menu,

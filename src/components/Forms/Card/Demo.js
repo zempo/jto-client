@@ -119,6 +119,7 @@ const Demo = ({ cancel }) => {
           </select>
         </fieldset>
         <button
+          className="modal-btn action"
           disabled={
             !validReq ||
             frontMsgRef.current.value.length === 0 ||
