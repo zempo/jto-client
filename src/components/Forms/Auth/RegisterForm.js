@@ -58,7 +58,7 @@ const Register = (props) => {
 
   return (
     <>
-      <form className="jto-form register-form" onSubmit={handleSubmit}>
+      <form className="jto-form register-form" onSubmit={handleSubmit} autoComplete="off">
         {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
         <fieldset>
           <label htmlFor="username">
@@ -156,7 +156,7 @@ const Register = (props) => {
 };
 
 Register.defaultProps = {
-  onRegistrationSuccess: () => {}
+  onRegistrationSuccess: () => { }
 };
 
 export default Register;

@@ -83,7 +83,7 @@ span::selection {
   background: rgb(48, 58, 69);
   color: #f8f5f5;
 }
-a::selection {
+ a::selection {
   background: rgb(48, 58, 69);
   color: #f8f5f5;
 }
@@ -171,16 +171,17 @@ body,
 }
 
 input[type="text"] {
-  border: 1px solid rgb(48, 58, 69);
-  text-indent: 10px;
+  /* border: 1px solid rgb(48, 58, 69); */
+  text-indent: 5px;
   border-radius: 5px;
+  padding: 5px;
 }
 
 input[type="radio"] {
   border-bottom-color: rgb(48, 58, 69);
   width: 1.3rem;
   height: 1.3rem;
-}
+} 
 
 p {
   font-size: 1.2rem;

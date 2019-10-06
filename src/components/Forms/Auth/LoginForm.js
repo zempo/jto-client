@@ -46,7 +46,7 @@ const LoginForm = (props) => {
   };
 
   return (
-    <form className="jto-form login-form" onSubmit={handleSubmit}>
+    <form className="jto-form login-form" onSubmit={handleSubmit} autoComplete="dumb">
       {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
       <fieldset>
         <label htmlFor="email">
@@ -67,7 +67,7 @@ const LoginForm = (props) => {
 };
 
 LoginForm.defaultProps = {
-  onLoginSuccess: () => {}
+  onLoginSuccess: () => { }
 };
 
 export default LoginForm;

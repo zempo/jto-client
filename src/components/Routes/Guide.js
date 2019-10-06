@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { JtoSection, Required } from "../Utils/Utils";
 import "./css/Info.css";
 
 const Guide = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <JtoSection className="jto-guide">
       <h1 className="animated-h1">Getting Started</h1>
