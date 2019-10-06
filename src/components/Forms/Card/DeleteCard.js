@@ -33,7 +33,7 @@ const DeleteCard = ({ item, cancel }) => {
         <button className="modal-btn" onClick={cancel}>
           Cancel
         </button>
-        <button className="modal-btn" onClick={handleDelete}>
+        <button className="modal-btn action" onClick={handleDelete}>
           Delete
         </button>
       </div>

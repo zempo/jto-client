@@ -139,6 +139,7 @@ const Register = (props) => {
         </fieldset>
         {/* validReq */}
         <button
+          className="action"
           disabled={
             !validReq ||
             usernameRef.current.value.length === 0 ||
@@ -156,7 +157,7 @@ const Register = (props) => {
 };
 
 Register.defaultProps = {
-  onRegistrationSuccess: () => { }
+  onRegistrationSuccess: () => {}
 };
 
 export default Register;

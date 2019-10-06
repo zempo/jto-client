@@ -61,13 +61,15 @@ const LoginForm = (props) => {
         </label>
         <input ref={pwdRef} name="password" type="text" id={2} value={values.password} onChange={handleChange} />
       </fieldset>
-      <button disabled={values.email.length === 0 || values.password.length === 0}>Login</button>
+      <button className="action" disabled={values.email.length === 0 || values.password.length === 0}>
+        Login
+      </button>
     </form>
   );
 };
 
 LoginForm.defaultProps = {
-  onLoginSuccess: () => { }
+  onLoginSuccess: () => {}
 };
 
 export default LoginForm;

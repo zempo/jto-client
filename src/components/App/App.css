@@ -17,10 +17,16 @@ button {
   -webkit-transition: all 0.3s ease-out;
 }
 
-button:hover {
+button.action:enabled:hover {
   background: rgb(48, 58, 69);
-  color: #f8f5f5;
   border: 2px solid rgb(48, 58, 69);
+  color: white;
+}
+
+button.action {
+  background: rgb(48, 58, 69, 0.9);
+  color: #f8f5f5;
+  border: 2px solid rgb(48, 58, 69, 0);
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
@@ -28,9 +34,9 @@ button:hover {
 }
 
 button:active {
-  color: rgb(48, 58, 69);
+  /* color: rgb(48, 58, 69);
   background: #f8f5f5;
-  border: 2px solid rgb(48, 58, 69);
+  border: 2px solid rgb(48, 58, 69); */
   -moz-transform: scaleX(1.05);
   -o-transform: scaleX(1.05);
   -ms-transform: scaleX(1.05);
@@ -46,8 +52,8 @@ input[type="file"] {
 }
 
 button:disabled {
-  color: #4e4c4c;
-  background: #a19e9e;
+  color: rgb(48, 58, 69);
+  background: rgb(48, 58, 69, 0.3);
   opacity: 0.5;
   border: 1px solid #4e4c4c;
   -moz-transition: none;
@@ -83,7 +89,7 @@ span::selection {
   background: rgb(48, 58, 69);
   color: #f8f5f5;
 }
- a::selection {
+a::selection {
   background: rgb(48, 58, 69);
   color: #f8f5f5;
 }
@@ -181,7 +187,7 @@ input[type="radio"] {
   border-bottom-color: rgb(48, 58, 69);
   width: 1.3rem;
   height: 1.3rem;
-} 
+}
 
 p {
   font-size: 1.2rem;

@@ -117,7 +117,7 @@ function AddCard({ item, cancel }) {
             />
           </div>
           <div className="question-file">
-            <i class="fas fa-cloud-upload-alt fa-2x"></i>
+            <i className="fas fa-cloud-upload-alt fa-2x"></i>
             <br />
             <label htmlFor="frontImage">
               Front Picture? <span className="met">Optional</span>
@@ -144,7 +144,7 @@ function AddCard({ item, cancel }) {
             />
           </div>
           <div className="question-file">
-            <i class="fas fa-cloud-upload-alt fa-2x"></i>
+            <i className="fas fa-cloud-upload-alt fa-2x"></i>
             <br />
             <label htmlFor="frontImage">
               Inside Picture? <span className="met">Optional</span>
@@ -176,6 +176,7 @@ function AddCard({ item, cancel }) {
         </fieldset>
         <button
           id="add-card-btn"
+          className="action"
           disabled={
             !validReq ||
             frontMsgRef.current.value.length === 0 ||
