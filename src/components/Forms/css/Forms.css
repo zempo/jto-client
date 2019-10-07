@@ -369,15 +369,3 @@ p.preview {
     margin-left: 0;
   }
 }
-
-@media screen and (max-width: 600px) {
-  /* .private-cards {
-      grid-template-columns: 1fr;
-    }
-    .front-demo > img {
-      display: none;
-    }
-    .demo-card-toggle:checked + .demo-card-container .face-demo {
-      margin-left: 90px;
-    } */
-}

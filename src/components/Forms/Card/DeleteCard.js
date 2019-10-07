@@ -27,9 +27,9 @@ const DeleteCard = ({ item, cancel }) => {
 
   return (
     <div className={resStatus === 0 || resStatus === 204 ? null : "shake"}>
+      {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
       <h2>Are you sure you want to delete this person's occasion?</h2>
       <p>Once you delete their Occasion, they won't be happy with you.</p>
-      {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
       <div className="modal-controls">
         <button className="modal-btn" onClick={cancel}>
           Cancel

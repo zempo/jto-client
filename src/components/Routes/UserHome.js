@@ -15,7 +15,13 @@ const UserHome = () => {
 
   return (
     <JtoSection className="jto-home">
-      <h1 className="animated-h1">Hello, {firstName(fullName)}</h1>
+      <h1 className="animated-h1">
+        Hello,{" "}
+        {firstName(fullName).slice(0, 1) +
+          firstName(fullName)
+            .slice(1)
+            .toLowerCase()}
+      </h1>
       <CardsProvider>
         <PrivateCards />
       </CardsProvider>

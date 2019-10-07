@@ -10,14 +10,38 @@ header {
 .jto-nav-menu {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   padding: 1em;
   border: 1px solid #eee;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  width: 100%;
+}
+
+.link-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 85%;
+  margin-right: 0;
+  margin-left: 15%;
+  /* border: 2px solid black; */
+}
+
+.auth-link {
+  margin-left: 10%;
 }
 
 .jto-nav-menu .logo-link {
-  margin-right: 10rem;
+  margin-left: 100%;
+  opacity: 0.6;
+  padding: 0.5rem;
+  border: 2px dashed rgb(48, 58, 69);
+  border-radius: 50%;
+}
+
+.jto-nav-menu .active .logo-link {
+  opacity: 1;
+  border: 2px solid rgb(48, 58, 69);
 }
 
 .jto-nav-menu h3 {

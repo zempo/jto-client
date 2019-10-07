@@ -42,6 +42,9 @@ const LoginForm = (props) => {
     } catch (error) {
       setResStatus(error.response.status);
       setResMsg(Object.values(error.response.data.error));
+      setTimeout(() => {
+        setResStatus(0);
+      }, 5000);
     }
   };
 
@@ -49,17 +52,36 @@ const LoginForm = (props) => {
     <form className="jto-form login-form" onSubmit={handleSubmit} autoComplete="dumb">
       {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
       <fieldset>
+        <br />
         <label htmlFor="email">
           <Required met={values.email.length === 0 ? false : true} />
           Email
         </label>
-        <input ref={emailRef} name="email" type="text" id={1} value={values.email} onChange={handleChange} />
+        <br />
+        <input
+          ref={emailRef}
+          placeholder="john@doemail.com"
+          name="email"
+          type="text"
+          id={1}
+          value={values.email}
+          onChange={handleChange}
+        />
         <br />
         <label htmlFor="password">
           <Required met={values.password.length === 0 ? false : true} />
           Password
         </label>
-        <input ref={pwdRef} name="password" type="text" id={2} value={values.password} onChange={handleChange} />
+        <br />
+        <input
+          ref={pwdRef}
+          placeholder="Secret@123"
+          name="password"
+          type="text"
+          id={2}
+          value={values.password}
+          onChange={handleChange}
+        />
       </fieldset>
       <button className="action" disabled={values.email.length === 0 || values.password.length === 0}>
         Login

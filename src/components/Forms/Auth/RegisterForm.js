@@ -54,6 +54,9 @@ const Register = (props) => {
     } catch (error) {
       setResStatus(error.response.status);
       setResMsg(Object.values(error.response.data.error));
+      setTimeout(() => {
+        setResStatus(0);
+      }, 5000);
     }
   };
 
@@ -154,7 +157,7 @@ const Register = (props) => {
           }
           type="submit"
         >
-          Join Our Community
+          Create Occasions
         </button>
       </form>
     </>

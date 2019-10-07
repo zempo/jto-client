@@ -6,7 +6,7 @@ export const validateUsername = (username) => {
   if (!REGEX_USERNAME.test(username) && username.length < 3) {
     ERRORS.push(`One word. Please use letters, numbers, underscores, or hyphens.`);
     ERRORS.push(`Please use 3+ characters`);
-  } else if (!REGEX_USERNAME.test(username) && username.length > 72) {
+  } else if (!REGEX_USERNAME.test(username) && username.length > 20) {
     ERRORS.push(`One word. Please use letters, numbers, underscores, or hyphens.`);
     ERRORS.push(`Please use less than 72 characters`);
   } else if (!REGEX_USERNAME.test(username)) {

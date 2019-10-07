@@ -209,6 +209,7 @@ export const JtoNotification = ({ type, msg, done }) => {
       <div id={type} className="jto-notification">
         <h3>
           <i className="fas fa-exclamation" />
+          &nbsp;
           {msg}
         </h3>
         <button className="close-button" onClick={handleClick}>

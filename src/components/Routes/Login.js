@@ -11,7 +11,7 @@ const Login = (props) => {
 
   return (
     <JtoSection className="jto-page login-page">
-      <h2>Login</h2>
+      <h1 className="animated-h1">Login</h1>
       <LoginForm onLoginSuccess={handleLoginSuccess} />
     </JtoSection>
   );
