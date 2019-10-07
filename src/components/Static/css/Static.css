@@ -20,8 +20,26 @@ header {
   margin-right: 10rem;
 }
 
+.jto-nav-menu h3 {
+  color: rgb(81, 90, 100, 0.8);
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.jto-nav-menu div h3 {
+  color: rgb(48, 58, 69);
+}
+
 .active h3 {
+  color: rgb(48, 58, 69);
+  font-weight: bold;
   text-decoration: underline;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
 }
 
 .logo-link:active {

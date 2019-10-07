@@ -44,9 +44,13 @@
   color: rgb(47, 58, 68);
 }
 
-/* .jto-reactions .fa-heart:empty {
-  color: #2f3a44;
-} */
+.jto-reactions .fa-file-download:active,
+.jto-reactions .fa-comment-alt:active {
+  -o-animation: heartBeat 0.3s;
+  -moz-animation: heartBeat 0.3s;
+  -webkit-animation: heartBeat 0.3s;
+  animation: heartBeat 0.3s;
+}
 
 .jto-reactions #border:empty {
   /* make white or background color */

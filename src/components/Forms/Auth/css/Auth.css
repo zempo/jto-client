@@ -1,0 +1,17 @@
+.register-form {
+  border: 2px solid rgb(48, 58, 69);
+  border-radius: 5px;
+  width: 60%;
+  margin-left: 20%;
+  text-align: center;
+}
+
+.register-form label {
+  left: 10%;
+  font-size: 1.4rem;
+  margin: 1rem;
+}
+
+.register-form input {
+  width: 60%;
+}

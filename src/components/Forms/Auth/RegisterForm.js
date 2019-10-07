@@ -9,6 +9,7 @@ import { useForm } from "../../../hooks/get-files";
 import { AuthService } from "../../../services/auth-service";
 import { JtoNotification, Required } from "../../Utils/Utils";
 import "../css/Forms.css";
+import "./css/Auth.css";
 
 const Register = (props) => {
   const { values, errors, handleChange, reset } = useForm(
@@ -61,34 +62,16 @@ const Register = (props) => {
       <form className="jto-form register-form" onSubmit={handleSubmit} autoComplete="off">
         {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
         <fieldset>
-          <label htmlFor="username">
-            <Required met={values.username.length === 0 ? false : true} />
-            User Name:
-          </label>
-          <ul>
-            {errors["1"].map((err, i) => (
-              <li key={i}>{err}</li>
-            ))}
-          </ul>
-          <input
-            ref={usernameRef}
-            type="text"
-            name="username"
-            placeholder="paper_cut-27"
-            id={1}
-            value={values.username}
-            onChange={handleChange}
-          />
-          <br />
-          <label htmlFor="fullname">
-            <Required met={values.fullname.length === 0 ? false : true} />
-            Full Name:
-          </label>
           <ul>
             {errors["2"].map((err, i) => (
               <li key={i}>{err}</li>
             ))}
           </ul>
+          <label htmlFor="fullname">
+            <Required met={values.fullname.length === 0 ? false : true} />
+            Full Name
+          </label>
+          <br />
           <input
             ref={fullnameRef}
             type="text"
@@ -99,15 +82,36 @@ const Register = (props) => {
             onChange={handleChange}
           />
           <br />
-          <label htmlFor="email">
-            <Required met={values.email.length === 0 ? false : true} />
-            Email:
+          <ul>
+            {errors["1"].map((err, i) => (
+              <li key={i}>{err}</li>
+            ))}
+          </ul>
+          <label htmlFor="username">
+            <Required met={values.username.length === 0 ? false : true} />
+            Username
           </label>
+          <br />
+          <input
+            ref={usernameRef}
+            type="text"
+            name="username"
+            placeholder="paper_cut-27"
+            id={1}
+            value={values.username}
+            onChange={handleChange}
+          />
+          <br />
           <ul>
             {errors["3"].map((err, i) => (
               <li key={i}>{err}</li>
             ))}
           </ul>
+          <label htmlFor="email">
+            <Required met={values.email.length === 0 ? false : true} />
+            Email
+          </label>
+          <br />
           <input
             ref={emailRef}
             type="text"
@@ -118,15 +122,16 @@ const Register = (props) => {
             onChange={handleChange}
           />
           <br />
-          <label htmlFor="password">
-            <Required met={values.password.length === 0 ? false : true} />
-            Password:
-          </label>
           <ul>
             {errors["4"].map((err, i) => (
               <li key={i}>{err}</li>
             ))}
           </ul>
+          <label htmlFor="password">
+            <Required met={values.password.length === 0 ? false : true} />
+            Password
+          </label>
+          <br />
           <input
             ref={pwdRef}
             type="text"

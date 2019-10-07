@@ -145,6 +145,7 @@ div[id="500"] {
 .btn > * {
   color: rgba(248, 245, 245);
 }
+
 .btn:active {
   -o-animation: heartBeat 0.3s;
   -moz-animation: heartBeat 0.3s;
@@ -175,7 +176,6 @@ div[id="500"] {
   width: 2em;
   height: 1.5em;
   margin: 0.2rem;
-  font-family: "Courier New", Courier, monospace;
 }
 
 .public-card .jto-page-menu,

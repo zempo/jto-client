@@ -45,80 +45,82 @@ const Demo = ({ cancel }) => {
     <>
       <form className="jto-form demo-card-form" onSubmit={handleSubmit}>
         <fieldset>
-          <label htmlFor="frontMessage">
-            <Required met={values.frontMessage.length === 0 ? false : true} />
-            What's the Occassion?
-          </label>
-          <ul>
-            {errors["1"].map((err, i) => (
-              <li key={i}>{err}</li>
-            ))}
-          </ul>
-          <input
-            ref={frontMsgRef}
-            type="text"
-            placeholder="Happy Occasion Day!"
-            id={1}
-            name="frontMessage"
-            onChange={handleChange}
-            value={values.frontMessage}
-          />
-          <br />
-          <br />
-          <label htmlFor="frontImage">Image on the front?</label>
-          <div>
+          <div className="question-text">
+            <label htmlFor="frontMessage">
+              <Required met={values.frontMessage.length === 0 ? false : true} />
+              What's the Occassion?
+            </label>
+            <ul>
+              {errors["1"].map((err, i) => (
+                <li key={i}>{err}</li>
+              ))}
+            </ul>
+            <input
+              ref={frontMsgRef}
+              type="text"
+              placeholder="Happy Occasion Day!"
+              id={1}
+              name="frontMessage"
+              onChange={handleChange}
+              value={values.frontMessage}
+            />
+          </div>
+          <div className="question-file">
+            <label htmlFor="frontImage">Image on the front?</label>
             <Lock />
             <NavLink exact activeClassName="active-auth" to="/register">
               Register
             </NavLink>
+            <br />
           </div>
-          <br />
-          <br />
-          <label htmlFor="insideMessage">
-            <Required met={values.insideMessage.length === 0 ? false : true} />
-            What do you want to say inside the card?
-          </label>
-          <ul>
-            {errors["3"].map((err, i) => (
-              <li key={i}>{err}</li>
-            ))}
-          </ul>
-          <textarea
-            ref={insideMsgRef}
-            placeholder="From yours, truly!"
-            name="insideMessage"
-            onChange={handleChange}
-            id={3}
-            value={values.insideMessage}
-          />
-          <br />
-          <br />
-          <label htmlFor="frontImage">Image on the inside?</label>
-          <div>
+          <div className="question-text">
+            <label htmlFor="insideMessage">
+              <Required met={values.insideMessage.length === 0 ? false : true} />
+              What do you want to say inside the card?
+            </label>
+            <ul>
+              {errors["3"].map((err, i) => (
+                <li key={i}>{err}</li>
+              ))}
+            </ul>
+            <textarea
+              ref={insideMsgRef}
+              placeholder="From yours, truly!"
+              name="insideMessage"
+              onChange={handleChange}
+              id={3}
+              value={values.insideMessage}
+            />
+          </div>
+          <div className="question-file">
+            <label htmlFor="frontImage">Image on the inside?</label>
+
             <Lock />
             <NavLink exact activeClassName="active-auth" to="/register">
               Register
             </NavLink>
+            <br />
           </div>
-          <br />
-          <br />
-          <Required met={values.theme.length === 0 ? false : true} />
-          <select
-            ref={themeRef}
-            className="themes"
-            value={values.theme}
-            name="theme"
-            id={5}
-            onChange={handleChange}
-            required
-          >
-            <option value="" disabled>
-              Please Choose Font...
-            </option>
-            <ThemesList />
-          </select>
+          <div className="question-select">
+            <Required met={values.theme.length === 0 ? false : true} />
+            <select
+              ref={themeRef}
+              className="themes"
+              value={values.theme}
+              name="theme"
+              id={5}
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled>
+                Please Choose Font...
+              </option>
+              <ThemesList />
+            </select>
+          </div>
         </fieldset>
         <button
+          id="demo-card-btn"
           className="modal-btn action"
           disabled={
             !validReq ||

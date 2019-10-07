@@ -1,3 +1,15 @@
+.search-form,
+.btn-add {
+  -o-animation: fadeIn 1s;
+  -moz-animation: fadeIn 1s;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+  -o-animation-fill-mode: backwards;
+  -moz-animation-fill-mode: backwards;
+  -webkit-animation-fill-mode: backwards;
+  animation-fill-mode: backwards;
+}
+
 .search-fields {
   border: 2px solid rgb(48, 58, 69);
   width: 60%;

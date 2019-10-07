@@ -77,7 +77,7 @@ const AddComment = ({ item, cancel }) => {
             ))}
           </ul>
         </fieldset>
-        <button disabled={!validReq || bodyRef.current.value.length === 0} type="submit">
+        <button className="action" disabled={!validReq || bodyRef.current.value.length === 0} type="submit">
           Comment
         </button>
       </form>

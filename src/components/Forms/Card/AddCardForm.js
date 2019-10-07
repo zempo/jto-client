@@ -174,6 +174,7 @@ function AddCard({ item, cancel }) {
             </select>
           </div>
         </fieldset>
+        {loading ? <Loader loading={loading} status={resStatus} /> : null}
         <button
           id="add-card-btn"
           className="action"
@@ -191,7 +192,6 @@ function AddCard({ item, cancel }) {
       <button className="close-modal" onClick={cancel}>
         X
       </button>
-      {loading ? <Loader loading={loading} status={resStatus} /> : null}
     </>
   );
 }

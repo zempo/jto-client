@@ -84,7 +84,7 @@ const SearchPrivateCards = () => {
           </div>
         </fieldset>
       </div>
-      <button className="browse-btn">Browse</button>
+      <button className="browse-btn action">Browse</button>
     </form>
   );
 };

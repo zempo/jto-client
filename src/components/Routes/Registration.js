@@ -10,7 +10,7 @@ const Registration = (props) => {
 
   return (
     <JtoSection className="jto-page registration-page">
-      <h2>Register</h2>
+      <h1 className="animated-h1">Register</h1>
       <RegisterForm onRegistrationSuccess={handleRegistrationSuccess} />
     </JtoSection>
   );

@@ -180,7 +180,13 @@ const EditCard = ({ item, cancel }) => {
             </button>
             <br />
             {showing ? <p className="preview">"{card.inside_message}"</p> : null}
-            <textarea placeholder="type something to change message" name="insideMessage" onChange={handleChange} id={3} defaultValue={card.inside_message} />
+            <textarea
+              placeholder="type something to change message"
+              name="insideMessage"
+              onChange={handleChange}
+              id={3}
+              defaultValue={card.inside_message}
+            />
           </div>
           <div className="question-file">
             <i className="fas fa-cloud-upload-alt fa-2x"></i>
@@ -204,6 +210,7 @@ const EditCard = ({ item, cancel }) => {
             </select>
           </div>
         </fieldset>
+        {loading ? <Loader loading={loading} status={resStatus} /> : null}
         <button
           id="edit-card-btn"
           className="action"
@@ -217,7 +224,6 @@ const EditCard = ({ item, cancel }) => {
       <button className="close-modal" onClick={cancel}>
         X
       </button>
-      {loading ? <Loader loading={loading} status={resStatus} /> : null}
     </>
   );
 };

@@ -209,6 +209,7 @@ const EditPublicCard = ({ item, cancel }) => {
             </select>
           </div>
         </fieldset>
+        {loading ? <Loader loading={loading} status={resStatus} /> : null}
         <button
           id="edit-card-btn"
           className="action"
@@ -222,7 +223,6 @@ const EditPublicCard = ({ item, cancel }) => {
       <button className="close-modal" onClick={cancel}>
         X
       </button>
-      {loading ? <Loader loading={loading} status={resStatus} /> : null}
     </>
   );
 };
