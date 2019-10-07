@@ -38,7 +38,8 @@ form button {
   font-size: 1.4rem;
 }
 
-.add-card-form fieldset {
+.add-card-form fieldset,
+.edit-card-form fieldset {
   border: 2px solid rgb(48, 58, 69);
   border-radius: 5px;
   width: 80%;
@@ -47,43 +48,62 @@ form button {
 }
 
 .add-card-form .question-text,
-.add-card-form .question-file {
+.add-card-form .question-file,
+.edit-card-form .question-text,
+.edit-card-form .question-file {
   border-bottom: 2px solid rgb(48, 58, 69);
   width: 100%;
   padding-top: 1rem;
 }
 
-.add-card-form .question-select {
+.add-card-form .question-select,
+.edit-card-form .question-select {
   width: 100%;
   padding-top: 1rem;
 }
 
 .add-card-form .question-text label,
 .add-card-form .question-file label,
-.add-card-form .question-select label {
+.add-card-form .question-select label,
+.edit-card-form .question-text label,
+.edit-card-form .question-file label,
+.edit-card-form .question-select label {
   margin-top: 1rem;
   font-size: 1.4rem;
 }
 
 .add-card-form .question-text input,
 .add-card-form .question-select select,
-.add-card-form .question-text textarea {
+.add-card-form .question-text textarea,
+.edit-card-form .question-text input,
+.edit-card-form .question-select select,
+.edit-card-form .question-text textarea {
   padding: 0.4rem;
   width: 90%;
   margin-bottom: 1rem;
 }
 
 .add-card-form .question-file input,
-.add-card-form .question-select select {
+.add-card-form .question-select select,
+.edit-card-form .question-file input,
+.edit-card-form .question-select select {
   margin: 3rem auto;
 }
 
 input[type="file"] {
   font-size: 0.8rem;
-  /* display: none; */
 }
 
-#add-card-btn {
+p.preview {
+  font-size: 1rem;
+  font-style: italic;
+  color: rgb(48, 58, 69, 0.6);
+  max-width: 80%;
+  margin-left: 10%;
+}
+
+#add-card-btn,
+#edit-card-btn {
   width: 50%;
   height: 4rem;
   font-size: 2rem;
@@ -311,14 +331,17 @@ input[type="file"] {
 }
 
 @media screen and (max-width: 1000px) {
-  .add-card-form {
+  .add-card-form,
+  .edit-card-form {
     margin: 100px 20px;
   }
-  .add-card-form fieldset {
+  .add-card-form fieldset,
+  .edit-card-form fieldset {
     width: 100%;
     margin-left: 0;
   }
-  #add-card-btn {
+  #add-card-btn,
+  #edit-card-btn {
     width: 100%;
     height: 4rem;
     font-size: 2rem;

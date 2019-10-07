@@ -136,76 +136,82 @@ const EditPublicCard = ({ item, cancel }) => {
 
   return (
     <>
-      <h2>Update Your Occasion?</h2>
       <form className="jto-form edit-card-form" onSubmit={handleSubmit}>
         {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} done={unmounted.current} />}
         <fieldset className={resStatus === 0 || resStatus === 204 ? null : "shake"}>
-          <label htmlFor="frontMessage">Did Your Occasion Change?</label>
-          <ul>
-            {errors["1"].map((err, i) => (
-              <li key={i}>{err}</li>
-            ))}
-          </ul>
-          <input
-            type="text"
-            placeholder="Happy Occasion Day!"
-            id={1}
-            name="frontMessage"
-            onChange={handleChange}
-            defaultValue={card.front_message}
-          />
+          <div className="question-text">
+            <label htmlFor="frontMessage">Did Your Occasion Change?</label>
+            <ul>
+              {errors["1"].map((err, i) => (
+                <li key={i}>{err}</li>
+              ))}
+            </ul>
+            <input
+              type="text"
+              placeholder="Happy Occasion Day!"
+              id={1}
+              name="frontMessage"
+              onChange={handleChange}
+              defaultValue={card.front_message}
+            />
+          </div>
+          <div className="question-file">
+            <label htmlFor="frontImage">New Front Pic?</label>
+            <br />
+            <input
+              type="file"
+              placeholder="URL for image that can be stretched/shrunk to 400px width and 500px height"
+              name="frontImage"
+              id={2}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="question-text">
+            <label htmlFor="insideMessage">New Message Inside?</label>
+            <ul>
+              {errors["3"].map((err, i) => (
+                <li key={i}>{err}</li>
+              ))}
+            </ul>
+            <button id="preview-btn" onClick={handlePreview}>
+              {showing ? "▲ Hide" : "▼ Show"} Last Message
+            </button>
+            <br />
+            {showing ? <p className="preview">"{card.inside_message}"</p> : null}
+            <textarea
+              placeholder="type something to change message..."
+              name="insideMessage"
+              onChange={handleChange}
+              id={3}
+              defaultValue={card.inside_message}
+            />
+          </div>
+          <div className="question-file">
+            <i className="fas fa-cloud-upload-alt fa-2x"></i>
+            <br />
+            <label htmlFor="frontImage">New Inside Pic?</label>
+            <br />
+            <input type="file" placeholder="choose file" name="insideImage" id={4} onChange={handleChange} />
+          </div>
           <br />
-          <br />
-          <label htmlFor="frontImage">New Front Pic?</label>
-          <br />
-          <input
-            type="file"
-            placeholder="URL for image that can be stretched/shrunk to 400px width and 500px height"
-            name="frontImage"
-            id={2}
-            onChange={handleChange}
-          />
-          <br />
-          <br />
-          <label htmlFor="insideMessage">New Message Inside?</label>
-          <ul>
-            {errors["3"].map((err, i) => (
-              <li key={i}>{err}</li>
-            ))}
-          </ul>
-          <button id="preview-btn" onClick={handlePreview}>
-            Last Message
-          </button>{" "}
-          <br />
-          {showing ? <p className="preview">{card.inside_message}</p> : null}
-          <textarea
-            placeholder={card.inside_message}
-            name="insideMessage"
-            onChange={handleChange}
-            id={3}
-            defaultValue={card.inside_message}
-          />
-          <br />
-          <br />
-          <label htmlFor="frontImage">New Inside Pic?</label>
-          <br />
-          <input type="file" placeholder="choose file" name="insideImage" id={4} onChange={handleChange} />
-          <br />
-          <select
-            className="themes"
-            defaultValue={card.theme}
-            defaultChecked={card.theme}
-            name="theme"
-            id={5}
-            onChange={handleChange}
-          >
-            <option value="" disabled>
-              Want a new font?
-            </option>
-            <EditThemesList current={card.theme} />
-          </select>
+          <div className="question-select">
+            <label htmlFor="themes">New Font?</label>
+            <br />
+            <select
+              className="themes"
+              defaultValue={card.theme}
+              defaultChecked={card.theme}
+              name="theme"
+              id={5}
+              onChange={handleChange}
+            >
+              <EditThemesList current={card.theme} />
+            </select>
+          </div>
         </fieldset>
         <button
+          id="edit-card-btn"
+          className="action"
           disabled={!validReq || errors["1"].length > 0 || errors["3"].length > 0 || errors["5"].length > 0}
           type="submit"
         >

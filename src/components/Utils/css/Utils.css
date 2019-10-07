@@ -125,7 +125,8 @@ div[id="500"] {
   margin: 1rem auto 5rem;
   width: 5em;
   height: 5em;
-  border: 2px solid rgb(48, 58, 69);
+  background: rgb(48, 58, 69, 0.9);
+  border: 2px solid rgb(48, 58, 69, 0);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -142,9 +143,6 @@ div[id="500"] {
 }
 
 .btn > * {
-  color: rgb(48, 58, 69);
-}
-.btn:hover > * {
   color: rgba(248, 245, 245);
 }
 .btn:active {
