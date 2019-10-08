@@ -212,7 +212,7 @@ const DownloadPage = (props) => {
             <button className="reset-button" onClick={handleReset}>
               Reset
             </button>
-            <button onClick={(e) => e.preventDefault()}>
+            <button className="action" onClick={(e) => e.preventDefault()}>
               {winWidth > 900 ? (
                 <ReactToPrint
                   trigger={() => <a href="javascript:void(0);">Save the Occaison</a>}

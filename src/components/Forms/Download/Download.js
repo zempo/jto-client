@@ -39,12 +39,12 @@ const Download = ({ item, payload, cancel }) => {
   return (
     <div className="download-menu">
       {user.user_name !== payload.user.user_name ? (
-        <button className="modal-btn" onClick={handleCopy}>
+        <button className="modal-btn action" onClick={handleCopy}>
           <Required met={copied} />
           {copied ? "Copied" : "Copy"}
         </button>
       ) : null}
-      <button className="modal-btn" onClick={(e) => e.preventDefault()}>
+      <button className="modal-btn action" onClick={(e) => e.preventDefault()}>
         <Link
           to={{
             pathname: "/download-card",
@@ -57,7 +57,7 @@ const Download = ({ item, payload, cancel }) => {
           Download
         </Link>
       </button>{" "}
-      <button className="modal-btn" onClick={(e) => e.preventDefault()}>
+      <button className="modal-btn action" onClick={(e) => e.preventDefault()}>
         Email
       </button>
       <button className="modal-btn" onClick={cancel}>

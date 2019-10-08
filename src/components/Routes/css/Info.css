@@ -52,3 +52,7 @@ a,
   text-decoration: underline;
   font-weight: bold;
 }
+
+.action a {
+  color: rgb(248, 245, 245);
+}

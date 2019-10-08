@@ -251,6 +251,7 @@
 
 .front p,
 .inner-left p {
+  font-size: 1rem;
   width: 160px;
   overflow: hidden;
   text-overflow: ellipsis;
