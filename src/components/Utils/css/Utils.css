@@ -23,7 +23,7 @@
 .jto-notification {
   position: relative;
   border-radius: 5px;
-  width: 20rem;
+  width: 50%;
   height: 5rem;
   margin: 2rem auto 1rem;
   -o-animation: fadeIn 0.5s;
@@ -598,5 +598,6 @@ div[id="500"] h3 {
 @media screen and (max-width: 1000px) {
   .jto-notification {
     padding: 0;
+    width: 80%;
   }
 }

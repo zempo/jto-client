@@ -8,6 +8,13 @@ import Logo from "../../images/jto-logo-main.svg";
 import "./css/Static.css";
 
 class Nav extends Component {
+  constructor() {
+    super();
+    this.state = {
+      menuOpen: false
+    };
+  }
+
   static contextType = UserContext;
 
   handleLogoutClick = () => {
