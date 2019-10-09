@@ -8,10 +8,14 @@
   text-align: justify;
 }
 
+.jto-faqs p {
+  text-align: justify;
+}
+
 .jto-guide .animated-h2,
 .jto-faqs .animated-h2 {
   font-size: 1.7rem;
-  margin-top: 3rem;
+  margin-top: 5rem;
 }
 
 .jto-faqs p,

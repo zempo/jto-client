@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Logo from "../../images/jto-logo-main.svg";
 import Pic1 from "../../images/section1.gif";
-import Pic2 from "../../images/jto-2.gif";
+import Pic2 from "../../images/section2.gif";
 import { RevolvingWords, JtoSection } from "../Utils/Utils";
 import { useModal } from "../../hooks/use-modal";
 import Modal from "../../modals/Modal";
@@ -31,7 +31,7 @@ const Landing = (props) => {
         <RevolvingWords words={["Share", "Store", "React"]} />
       </div>
       <section>
-        <img className="landing-img" src={Pic1} alt="screenshot of user-page."></img>
+        <img className="landing-img" src={Pic1} alt="Screenshot of your private occasions page."></img>
         <p>
           Create, share, and download greeting cards on your terms. <br />
           Discover a platform that values your experiences.
@@ -45,15 +45,16 @@ const Landing = (props) => {
           <p className="double-arrow">&#10231;</p>
           <RevolvingWords words={["Easy", "Ready", "Print"]} />
         </div>
-        <img className="landing-img" src={Pic2} alt="screenshot of homepage"></img>
+        <img
+          className="landing-img"
+          src={Pic2}
+          alt="Screenshot of download page. Control size, colors, and borders."
+        ></img>
         <p>
           {" "}
-          Before you download an occasion, add finishing touches.
-          <br /> Enjoy the freedom to bring your occasions to life!
-        </p>
-        <p>
-          Please send us a "Thank You" card, if you get the chance? <br />
-          Speaking of...{" "}
+          Print occasions from the gallery and your private page.
+          <br />
+          Add a personal touch, everytime!
         </p>
       </section>
       <section>
@@ -69,7 +70,7 @@ const Landing = (props) => {
           Bring your occasions to the gallery!
         </p>
 
-        <p>You can even download and copy your favorites!</p>
+        <p>You can even copy your favorites!</p>
       </section>
       <section>
         <h3>Give it a Try!</h3>

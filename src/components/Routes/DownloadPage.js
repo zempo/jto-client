@@ -212,19 +212,25 @@ const DownloadPage = (props) => {
             <button className="reset-button" onClick={handleReset}>
               Reset
             </button>
-            <button className="action" onClick={(e) => e.preventDefault()}>
-              {winWidth > 900 ? (
-                <ReactToPrint
-                  trigger={() => <a href="javascript:void(0);">Save the Occaison</a>}
-                  content={() => componentRef.current}
-                />
-              ) : (
-                <ReactToPrint
-                  trigger={() => <a href="javascript:void(0);">Save</a>}
-                  content={() => componentRef.current}
-                />
-              )}
-            </button>
+            {winWidth > 900 ? (
+              <ReactToPrint
+                trigger={() => (
+                  <a className="download-btn action" href="javascript:void(0);">
+                    Save the Occaison
+                  </a>
+                )}
+                content={() => componentRef.current}
+              />
+            ) : (
+              <ReactToPrint
+                trigger={() => (
+                  <a className="download-btn action" href="javascript:void(0);">
+                    Save
+                  </a>
+                )}
+                content={() => componentRef.current}
+              />
+            )}
           </fieldset>
         </form>
         <h2>

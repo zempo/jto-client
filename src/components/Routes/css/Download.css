@@ -41,9 +41,9 @@
   hyphens: auto;
   text-align: justify;
   margin-left: 10%;
-  padding-bottom: 5%;
+  padding-bottom: 4%;
   word-spacing: 0.1;
-  line-height: 125%;
+  line-height: 130%;
 }
 
 .export-front {
@@ -210,39 +210,18 @@
   left: 80px;
 }
 .download-buttons button {
-  /* color: rgb(48, 58, 69);
-  background: rgb(248, 245, 245); */
-  /* border: 2px solid rgb(48, 58, 69); */
   width: 40%;
   margin: 5%;
   font-size: 1.2rem;
   font-weight: bold;
   font-family: "Montserrat", sans-serif;
-  /* -moz-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
-  -webkit-transition: all 0.3s ease-out; */
 }
 
-/* .download-buttons button:hover {
-  background: rgb(48, 58, 69);
-  color: rgb(248, 245, 245);
-  border: 2px solid rgb(48, 58, 69);
-  -moz-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
-  -webkit-transition: all 0.3s ease-out;
-} */
-
-/* .download-buttons a {
-  text-decoration: none;
-  color: rgb(48, 58, 69);
+.download-buttons .download-btn {
+  width: 40%;
+  padding: calc(1.5rem - 15px) calc(20% - 90.5px);
+  font-size: 1.2rem;
 }
-
-.download-buttons button:hover a {
-  text-decoration: none;
-  color: rgb(248, 245, 245);
-} */
 
 .download-buttons a {
   text-decoration: none;
@@ -487,6 +466,12 @@ input[type="range"]:focus::-ms-fill-upper {
 @media screen and (max-width: 900px) {
   .download-buttons {
     left: 0;
+  }
+  .download-buttons .download-btn {
+    width: 40%;
+    /* padding: calc(1.5rem - 15px) 0; */
+    padding: calc(1.5rem - 13px) calc(20% - 25px);
+    font-size: 1.2rem;
   }
   .export-container {
     margin: 0;

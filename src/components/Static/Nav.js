@@ -32,7 +32,7 @@ class Nav extends Component {
     return (
       <div className="logged-in auth-link">
         <h3>
-          <i class="far fa-user-circle"></i> &nbsp;
+          <i className="far fa-user-circle"></i> &nbsp;
           {user_name && user_name.length > 10 ? `${user_name.slice(0, 10)}...` : user_name}
           <Hyph />
           <Link onClick={this.handleLogoutClick} to="/">

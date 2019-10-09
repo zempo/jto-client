@@ -26,6 +26,8 @@ const Demo = ({ cancel }) => {
   const frontMsgRef = useRef();
   const insideMsgRef = useRef();
   const themeRef = useRef();
+  const modalRef = useRef();
+  const demoRef = useRef();
 
   useEffect(() => {
     if (errors["1"].length > 0 || errors["3"].length > 0) {
@@ -39,11 +41,16 @@ const Demo = ({ cancel }) => {
     e.preventDefault();
     // const { frontMessage, insideMessage, theme } = values;
     setActive(true);
+
+    let modal = modalRef.current.offsetParent;
+    let posY = demoRef.current.offsetTop;
+
+    modal.scrollTo(0, posY);
   };
 
   return (
     <>
-      <form className="jto-form demo-card-form" onSubmit={handleSubmit}>
+      <form ref={modalRef} className="jto-form demo-card-form" onSubmit={handleSubmit}>
         <fieldset>
           <div className="question-text">
             <label htmlFor="frontMessage">
@@ -136,7 +143,8 @@ const Demo = ({ cancel }) => {
       <button className="close-modal" onClick={cancel}>
         X
       </button>
-      <div className="list-card-demo" style={{ display: active ? "block" : "none" }}>
+
+      <div className="list-card-demo" ref={demoRef} style={{ display: active ? "block" : "hidden" }}>
         <input type="checkbox" id={`demo-card-toggle-1`} className="demo-card-toggle" value="selected" />
         <label
           className="demo-card-container"

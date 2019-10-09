@@ -37,11 +37,19 @@ header {
   padding: 0.5rem;
   border: 2px dashed rgb(48, 58, 69);
   border-radius: 50%;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
 }
 
 .jto-nav-menu .active .logo-link {
   opacity: 1;
   border: 2px solid rgb(48, 58, 69);
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
 }
 
 .jto-nav-menu h3 {

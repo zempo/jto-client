@@ -368,4 +368,26 @@ p.preview {
     font-size: 2rem;
     margin-left: 0;
   }
+  .list-card-demo {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .list-card-demo {
+    -moz-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .list-card-demo {
+    -moz-transform: scale(0.6);
+    -o-transform: scale(0.6);
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+  }
 }
