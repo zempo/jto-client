@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 
-button {
+button,
+a.action {
   outline-width: 0px;
   color: rgb(48, 58, 69);
   font-family: "Montserrat", sans-serif;
@@ -17,13 +18,15 @@ button {
   -webkit-transition: all 0.3s ease-out;
 }
 
-button.action:enabled:hover {
+button.action:enabled:hover,
+a.action:hover {
   background: rgb(48, 58, 69);
   border: 2px solid rgb(48, 58, 69);
   color: white;
 }
 
-button.action {
+button.action,
+a.action {
   background: rgb(48, 58, 69, 0.9);
   color: #f8f5f5;
   border: 2px solid rgb(48, 58, 69, 0);

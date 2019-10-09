@@ -38,31 +38,39 @@ const Download = ({ item, payload, cancel }) => {
 
   return (
     <div className="download-menu">
+      <button className="modal-btn" onClick={cancel}>
+        Cancel
+      </button>
+      <Link
+        className="modal-btn action"
+        to={{
+          pathname: "/download-card",
+          state: {
+            item,
+            payload
+          }
+        }}
+      >
+        Download
+      </Link>{" "}
+      <Link
+        className="modal-btn action"
+        to={{
+          pathname: "/email-card",
+          state: {
+            item,
+            payload
+          }
+        }}
+      >
+        Email
+      </Link>{" "}
       {user.user_name !== payload.user.user_name ? (
         <button className="modal-btn action" onClick={handleCopy}>
           <Required met={copied} />
           {copied ? "Copied" : "Copy"}
         </button>
       ) : null}
-      <button className="modal-btn action" onClick={(e) => e.preventDefault()}>
-        <Link
-          to={{
-            pathname: "/download-card",
-            state: {
-              item,
-              payload
-            }
-          }}
-        >
-          Download
-        </Link>
-      </button>{" "}
-      <button className="modal-btn action" onClick={(e) => e.preventDefault()}>
-        Email
-      </button>
-      <button className="modal-btn" onClick={cancel}>
-        Cancel
-      </button>
       <button className="close-modal" onClick={cancel}>
         X
       </button>

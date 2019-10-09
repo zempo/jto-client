@@ -29,6 +29,7 @@ import PrivateCard from "../Routes/PrivateCard";
 import UserHome from "../Routes/UserHome";
 import Registration from "../Routes/Registration";
 import Login from "../Routes/Login";
+import Email from "../Routes/Email";
 
 class App extends Component {
   state = { hasError: false };
@@ -81,6 +82,7 @@ class App extends Component {
               <PrivateRoute exact path={"/private"} component={UserHome} />
               <PrivateRoute exact path={"/private-card"} component={PrivateCard} />
               <PrivateRoute exact path={"/download-card"} component={DownloadPage} />
+              <PrivateRoute exact path={"/email-card"} component={Email} />
               <PublicOnlyRoute exact path={"/login"} component={Login} />
               <PublicOnlyRoute exact path={"/register"} component={Registration} />
               <Route exact path={"/support"} component={FAQs} />

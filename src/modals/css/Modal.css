@@ -190,7 +190,7 @@ body {
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
-.download-menu button a {
+.download-menu a {
   font-weight: normal;
 }
 
@@ -198,12 +198,17 @@ body {
   margin: 1rem;
 }
 
+.download-menu a.modal-btn {
+  text-align: center;
+}
+
 .modal-btn {
   font-size: 1.4rem;
 }
-.modal-btn a {
+
+a.modal-btn {
   text-decoration: none;
-  color: rgb(47, 58, 68);
+  padding-top: 0.5rem;
 }
 .modal-btn:hover a {
   text-decoration: none;
@@ -386,6 +391,16 @@ body {
   80% {
     -webkit-transform: translate3d(10px, 0, 0);
     transform: translate3d(10px, 0, 0);
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .download-menu {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
   }
 }
 
