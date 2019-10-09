@@ -123,7 +123,12 @@ fieldset {
 
 body,
 .jto-main {
-  background: #f8f5f5;
+  background: rgb(248, 245, 245);
+}
+
+.info-vector {
+  max-width: 40%;
+  margin-left: 30%;
 }
 
 /* key icon */

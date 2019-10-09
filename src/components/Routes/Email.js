@@ -9,7 +9,7 @@ const Email = () => {
     <>
       <h1 className="animated-h1">Coming Soon</h1>
       <h2 className="animated-h2">We're working as fast as we can!</h2>
-      <img src={PageUnderConstruction} alt="this page is under construction" />
+      <img className="info-vector" src={PageUnderConstruction} alt="this page is under construction" />
     </>
   );
 };
