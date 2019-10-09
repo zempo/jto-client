@@ -5,17 +5,24 @@ import IdleService from "../../services/idle-service";
 import { Hyph } from "../Utils/Utils";
 import { UserContext } from "../../contexts/UserContext";
 import Logo from "../../images/jto-logo-main.svg";
+import MenuModal from "../../modals/MenuModal";
 import "./css/Static.css";
 
 class Nav extends Component {
   constructor() {
     super();
     this.state = {
-      menuOpen: false
+      showing: false
     };
   }
 
   static contextType = UserContext;
+
+  toggleModal = () => {
+    const { showing } = this.state;
+
+    this.setState({ showing: !showing });
+  };
 
   handleLogoutClick = () => {
     TokenService.clearAuthToken();
@@ -62,28 +69,33 @@ class Nav extends Component {
   }
 
   render() {
+    const { showing } = this.state;
     let error = this.context.value.error;
+
     return (
-      <nav className="jto-nav-menu">
-        <NavLink exact activeClassName="active" to="/">
-          <img className="logo-link" src={Logo} alt="homepage" width="70" height="70" />
-        </NavLink>
-        <div className="link-menu">
-          <NavLink exact activeClassName="active" to="/guide">
-            <h3>Start</h3>
+      <>
+        <nav className="jto-nav-menu">
+          <NavLink exact activeClassName="active" to="/">
+            <img className="logo-link" src={Logo} alt="homepage" width="70" height="70" />
           </NavLink>
-          <NavLink exact activeClassName="active" to="/private">
-            <h3>Create</h3>
-          </NavLink>
-          <NavLink exact activeClassName="active" to="/gallery">
-            <h3>Browse</h3>
-          </NavLink>
-          <NavLink exact activeClassName="active" to="/support">
-            <h3>Support</h3>
-          </NavLink>
-          {TokenService.hasAuthToken() && error !== 401 ? this.renderLogoutLink() : this.renderLoginLink()}
-        </div>
-      </nav>
+          <div className="link-menu">
+            <NavLink exact activeClassName="active" to="/guide">
+              <h3>Start</h3>
+            </NavLink>
+            <NavLink exact activeClassName="active" to="/private">
+              <h3>Create</h3>
+            </NavLink>
+            <NavLink exact activeClassName="active" to="/gallery">
+              <h3>Browse</h3>
+            </NavLink>
+            <NavLink exact activeClassName="active" to="/support">
+              <h3>Support</h3>
+            </NavLink>
+            {TokenService.hasAuthToken() && error !== 401 ? this.renderLogoutLink() : this.renderLoginLink()}
+          </div>
+        </nav>
+        <MenuModal isShowing={showing} hide={this.toggleModal} />
+      </>
     );
   }
 }

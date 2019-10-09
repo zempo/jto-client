@@ -255,9 +255,6 @@
   .private-cards {
     grid-template-columns: 1fr;
   }
-  .front > img {
-    display: none;
-  }
   .card-toggle:checked + .card-container .face {
     margin-left: 90px;
   }

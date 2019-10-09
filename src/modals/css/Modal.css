@@ -5,7 +5,8 @@ body {
 }
 
 .Modal,
-.Modal-bottom {
+.Modal-bottom,
+.Modal-menu {
   position: fixed;
   left: 0;
   top: 0;
@@ -64,6 +65,30 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.Modal__inner-menu {
+  z-index: 0;
+  margin: auto;
+  overflow-y: auto;
+  background-color: #f3f3f3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  -o-animation: fadeInUp 0.5s;
+  -moz-animation: fadeInUp 0.5s;
+  -webkit-animation: fadeInUp 0.5s;
+  animation: fadeInUp 0.5s;
+  display: grid;
+  padding: 50px 100px 10vw;
+  outline: 0;
+  border: 1px #777 solid;
+  text-align: justify;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .shake {
   -o-animation: shake 0.7s;
   -moz-animation: shake 0.7s;
@@ -77,7 +102,8 @@ body {
 }
 
 .Modal__inner .close-modal:hover,
-.Modal__inner-bottom .close-modal:hover {
+.Modal__inner-bottom .close-modal:hover,
+.Modal__inner-menu .close-modal:hover {
   background: rgb(47, 58, 68);
   color: rgb(248, 245, 245);
   -moz-transition: all 0.3s ease-out;
@@ -110,7 +136,8 @@ body {
 }
 
 .Modal__inner .close-modal:active,
-.Modal__inner-bottom .close-modal:hover {
+.Modal__inner-bottom .close-modal:active,
+.Modal__inner-menu .close-modal:active {
   background: rgb(47, 58, 68);
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
@@ -134,7 +161,8 @@ body {
   animation: pressDown 0.6s;
 }
 
-.Modal__inner .close-modal {
+.Modal__inner .close-modal,
+.Modal__inner-menu .close-modal {
   background: rgba(47, 58, 68);
   color: rgb(248, 245, 245, 0.8);
   position: absolute;
