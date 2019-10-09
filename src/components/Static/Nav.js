@@ -14,6 +14,7 @@ class Nav extends Component {
     this.state = {
       showing: false
     };
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   static contextType = UserContext;
@@ -21,7 +22,11 @@ class Nav extends Component {
   toggleModal = () => {
     const { showing } = this.state;
 
-    this.setState({ showing: !showing });
+    if (showing) {
+      this.setState({ showing: false });
+    } else {
+      this.setState({ showing: true });
+    }
   };
 
   handleLogoutClick = () => {
@@ -91,6 +96,7 @@ class Nav extends Component {
             <NavLink exact activeClassName="active" to="/support">
               <h3>Support</h3>
             </NavLink>
+            <button onClick={this.toggleModal}>show menu</button>
             {TokenService.hasAuthToken() && error !== 401 ? this.renderLogoutLink() : this.renderLoginLink()}
           </div>
         </nav>
