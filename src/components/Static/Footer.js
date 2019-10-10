@@ -3,9 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="jto-footer">
-      {/* research copyright and create personal logo */}
-      {/* create a table based on other websites */}
-      <h2>just the Occasion | By Solomon Zelenko</h2>
+      <h2>Just the Occasion</h2>
     </footer>
   );
 };

@@ -10,7 +10,7 @@ import { PostReaction, ToggleReaction } from "../Forms/Social/Reaction";
 import { JtoSection, TimeStamp, CardPages, PaginateCardFaces } from "../Utils/Utils";
 import { ThemeStyles } from "../Utils/Store/Themes";
 import "./css/Card.css";
-
+ 
 const PublicCard = (props) => {
   const { isShowing: isShowingCommentAdd, toggle: toggleCommentAdd } = useModal();
   const { isShowing: isShowingCommentEdit, toggle: toggleCommentEdit } = useModal();
