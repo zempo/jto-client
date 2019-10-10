@@ -169,6 +169,12 @@ body {
   animation: pressDown 0.6s;
 }
 
+.Modal__inner .close-modal {
+  position: absolute;
+  z-index: 1;
+  top: 1rem;
+  right: 1rem;
+}
 .Modal__inner .close-modal,
 .Modal__inner-menu .close-modal {
   background: rgba(47, 58, 68);
@@ -182,13 +188,6 @@ body {
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
-}
-
-.Modal__inner .close-modal {
-  position: absolute;
-  z-index: 1;
-  top: 1rem;
-  right: 1rem;
 }
 
 .Modal__inner-menu .close-modal {
