@@ -102,11 +102,23 @@ body {
 
 .Modal__inner-menu h1 {
   font-size: 3.3rem;
+  color: rgb(248, 245, 245, .8);
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.Modal__inner-menu h1:hover {
   color: rgb(248, 245, 245);
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
 }
 
 .Modal__inner-menu h1.modal-header {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .Modal__inner-menu a, .Modal__inner-menu h2 {
