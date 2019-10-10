@@ -5,6 +5,7 @@ import IdleService from "../../services/idle-service";
 import { Hyph } from "../Utils/Utils";
 import { UserContext } from "../../contexts/UserContext";
 import Logo from "../../images/jto-logo-main.svg";
+import MenuIcon from "../../images/menu-icon.svg";
 import MenuModal from "../../modals/MenuModal";
 import "./css/Static.css";
 
@@ -83,7 +84,12 @@ class Nav extends Component {
           <NavLink exact activeClassName="active" to="/">
             <img className="logo-link" src={Logo} alt="homepage" width="70" height="70" />
           </NavLink>
-          <div className="link-menu">
+          <div className="nav-menu-mini" onClick={this.toggleModal}>
+            {/* {" "}
+            &#9776; */}
+            <img src={MenuIcon} alt="menu-icon" width="50" height="50" />
+          </div>
+          <div className="nav-menu">
             <NavLink exact activeClassName="active" to="/guide">
               <h3>Start</h3>
             </NavLink>
@@ -96,7 +102,6 @@ class Nav extends Component {
             <NavLink exact activeClassName="active" to="/support">
               <h3>Support</h3>
             </NavLink>
-            <button onClick={this.toggleModal}>show menu</button>
             {TokenService.hasAuthToken() && error !== 401 ? this.renderLogoutLink() : this.renderLoginLink()}
           </div>
         </nav>
