@@ -7,7 +7,20 @@ const MenuModal = ({ payload, isShowing, hide }) => {
     return ReactDOM.createPortal(
       <div onClick={hide} className="Modal-menu">
         <div onClick={(e) => e.stopPropagation()} className={`Modal__inner-menu ${isShowing}`}>
-          <h1>Menu</h1>
+          <nav className="fullscreen-nav">
+            <NavLink onClick={hide} exact activeClassName="active" to="/guide">
+              <h3>Start</h3>
+            </NavLink>
+            <NavLink onClick={hide} exact activeClassName="active" to="/private">
+              <h3>Create</h3>
+            </NavLink>
+            <NavLink onClick={hide} exact activeClassName="active" to="/gallery">
+              <h3>Browse</h3>
+            </NavLink>
+            <NavLink onClick={hide} exact activeClassName="active" to="/support">
+              <h3>Support</h3>
+            </NavLink>
+          </nav>
           <button className="close-modal" onClick={hide}>
             X
           </button>

@@ -85,8 +85,6 @@ class Nav extends Component {
             <img className="logo-link" src={Logo} alt="homepage" width="70" height="70" />
           </NavLink>
           <div className="nav-menu-mini" onClick={this.toggleModal}>
-            {/* {" "}
-            &#9776; */}
             <img src={MenuIcon} alt="menu-icon" width="50" height="50" />
           </div>
           <div className="nav-menu">

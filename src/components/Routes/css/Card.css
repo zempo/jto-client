@@ -1,5 +1,6 @@
-.public-card-page {
-  background-color: #b6a99e;
+.public-card-page,
+.private-card {
+  background-color: rgb(144, 155, 161);
   margin: 0;
   padding: 0;
   padding-top: 5%;

@@ -59,11 +59,11 @@
 
 .jto-reactions #body:empty {
   /* make white or background color */
-  color: #b6a99e;
+  color: rgb(144, 155, 161);
 }
 
 .jto-reactions .fa-heart {
-  color: rgb(224, 73, 96);
+  color: rgb(138, 16, 47);
 }
 
 .share {
