@@ -127,7 +127,8 @@ header {
   .nav-menu-mini img {
     padding-top: 10px;
   }
-  .nav-menu-mini:hover img {
+  .nav-menu-mini:hover img,
+  .nav-menu-mini:active img {
     -o-animation: pressDown 0.6s;
     -moz-animation: pressDown 0.6s;
     -webkit-animation: pressDown 0.6s;
