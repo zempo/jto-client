@@ -8,6 +8,20 @@
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   row-gap: 5em;
 }
+
+.top-pagination {
+  background-color: rgb(135, 145, 151);
+  width: 100%;
+  padding: 0.2rem 0 0.8rem;
+  margin-top: 0rem;
+}
+
+.bottom-pagination {
+  background-color: rgb(135, 145, 151);
+  width: 100%;
+  padding: 0.8rem 0 0.1rem;
+  margin-top: 0;
+}
 .cards-counter {
   text-align: center;
 }

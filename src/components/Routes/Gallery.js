@@ -40,27 +40,29 @@ const Gallery = () => {
       <SearchGallery cards={cards} />
       {!searching ? (
         <JtoSection className="cards-counter">
-          <h3>
+          <h2>
             Showing {currentCards.length} of {cards.length} Occasions
-          </h3>
+          </h2>
         </JtoSection>
       ) : (
         <JtoSection className="cards-counter">
-          <h3>
+          <h2>
             Showing {currentSearchCards.length} of {searchCards.length} Results
-          </h3>
+          </h2>
         </JtoSection>
       )}
-      {cards.length > cardsPerPg && !searching ? (
-        <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
-      ) : searchCards.length > searchCardsPerPg && searching ? (
-        <PaginateCards
-          currentCards={currentSearchCards}
-          paginate={paginateSearch}
-          currentPg={currentSearchPg}
-          lastPg={lastSearchPg}
-        />
-      ) : null}
+      <div className="top-pagination">
+        {cards.length > cardsPerPg && !searching ? (
+          <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
+        ) : searchCards.length > searchCardsPerPg && searching ? (
+          <PaginateCards
+            currentCards={currentSearchCards}
+            paginate={paginateSearch}
+            currentPg={currentSearchPg}
+            lastPg={lastSearchPg}
+          />
+        ) : null}
+      </div>
       <JtoSection className="jto-cards public-cards">
         <SkeletonLoader loading={loading} />
         {!searching
@@ -79,16 +81,18 @@ const Gallery = () => {
               );
             })}
       </JtoSection>
-      {cards.length > cardsPerPg && !searching ? (
-        <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
-      ) : searchCards.length > searchCardsPerPg && searching ? (
-        <PaginateCards
-          currentCards={currentSearchCards}
-          paginate={paginateSearch}
-          currentPg={currentSearchPg}
-          lastPg={lastSearchPg}
-        />
-      ) : null}
+      <div className="bottom-pagination">
+        {cards.length > cardsPerPg && !searching ? (
+          <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
+        ) : searchCards.length > searchCardsPerPg && searching ? (
+          <PaginateCards
+            currentCards={currentSearchCards}
+            paginate={paginateSearch}
+            currentPg={currentSearchPg}
+            lastPg={lastSearchPg}
+          />
+        ) : null}
+      </div>
     </>
   );
 };

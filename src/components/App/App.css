@@ -61,7 +61,8 @@ button:active,
 
 button:disabled {
   color: rgb(48, 58, 69);
-  background: rgb(48, 58, 69, 0.3);
+  background: rgb(114, 124, 134);
+  background: rgb(48, 58, 69, 0.5);
   opacity: 0.5;
   border: 1px solid #4e4c4c;
   -moz-transition: none;
@@ -87,6 +88,7 @@ h3 {
 
 h2 {
   font-weight: 300;
+  margin-bottom: 0.2rem;
 }
 h1::selection,
 h2::selection,

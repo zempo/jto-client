@@ -43,8 +43,14 @@ const Demo = ({ cancel }) => {
 
     let modal = demoRef.current.offsetParent;
     let posY = demoRef.current.offsetTop;
+    let uA = navigator.userAgent;
 
-    if (navigator.userAgent.toLowerCase() === "safari") {
+    if (uA.toLowerCase().includes("compatible") || uA.toLowerCase().includes("edge")) {
+      setActive(true);
+      window.scrollTo(0, 800);
+    }
+
+    if (!uA.toLowerCase().includes("chrome") && !uA.toLowerCase().includes("gecko/")) {
       setActive(true);
       modal.scrollTo(0, posY);
     }

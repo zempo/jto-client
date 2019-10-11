@@ -215,7 +215,7 @@ div[id="500"] h3 {
 /* pagination  */
 /* ///////////////////// */
 .jto-page-menu ul {
-  margin: 1rem auto;
+  margin: 0.2rem auto;
   padding: 0;
   list-style-type: none;
   display: -webkit-box;
@@ -245,6 +245,15 @@ div[id="500"] h3 {
   width: 2em;
   height: 1.5em;
   margin: 0.2rem;
+  background: rgb(48, 58, 69);
+  border: 2px solid rgb(48, 58, 69, 0);
+  color: rgb(248, 245, 245);
+}
+
+.bottom-pagination .page-btn {
+  background: rgb(48, 58, 69);
+  border: 2px solid rgb(48, 58, 69, 0);
+  color: rgb(248, 245, 245);
 }
 
 .public-card .jto-page-menu,

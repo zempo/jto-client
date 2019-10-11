@@ -35,27 +35,29 @@ const PrivateCards = () => {
       <AddBtn />
       {!searching ? (
         <JtoSection className="cards-counter">
-          <p>
+          <h2>
             Showing {currentCards.length} of {cards.length} Occasions
-          </p>
+          </h2>
         </JtoSection>
       ) : (
         <JtoSection className="cards-counter">
-          <p>
+          <h2>
             Showing {currentSearchCards.length} of {searchCards.length} Results
-          </p>
+          </h2>
         </JtoSection>
       )}
-      {cards.length > cardsPerPg && !searching ? (
-        <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
-      ) : searchCards.length > searchCardsPerPg && searching ? (
-        <PaginateCards
-          currentCards={currentSearchCards}
-          paginate={paginateSearch}
-          currentPg={currentSearchPg}
-          lastPg={lastSearchPg}
-        />
-      ) : null}
+      <div className="top-pagination">
+        {cards.length > cardsPerPg && !searching ? (
+          <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
+        ) : searchCards.length > searchCardsPerPg && searching ? (
+          <PaginateCards
+            currentCards={currentSearchCards}
+            paginate={paginateSearch}
+            currentPg={currentSearchPg}
+            lastPg={lastSearchPg}
+          />
+        ) : null}
+      </div>
       <JtoSection className="jto-cards private-cards">
         {/* make empty card with question mark and big "start creating Occasions button" */}
         <SkeletonLoader2 loading={loading} />
@@ -67,7 +69,7 @@ const PrivateCards = () => {
                 </div>
               );
             })
-          : searchCards.map((card, i) => {
+          : currentSearchCards.map((card, i) => {
               return (
                 <div key={i}>
                   <PrivateSearchCard card={card} />
@@ -75,16 +77,18 @@ const PrivateCards = () => {
               );
             })}
       </JtoSection>
-      {cards.length > cardsPerPg && !searching ? (
-        <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
-      ) : searchCards.length > searchCardsPerPg && searching ? (
-        <PaginateCards
-          currentCards={currentSearchCards}
-          paginate={paginateSearch}
-          currentPg={currentSearchPg}
-          lastPg={lastSearchPg}
-        />
-      ) : null}
+      <div className="bottom-pagination">
+        {cards.length > cardsPerPg && !searching ? (
+          <PaginateCards currentCards={currentCards} paginate={paginate} currentPg={currentPg} lastPg={lastPg} />
+        ) : searchCards.length > searchCardsPerPg && searching ? (
+          <PaginateCards
+            currentCards={currentSearchCards}
+            paginate={paginateSearch}
+            currentPg={currentSearchPg}
+            lastPg={lastSearchPg}
+          />
+        ) : null}
+      </div>
     </>
   );
 };
