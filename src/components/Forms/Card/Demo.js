@@ -37,15 +37,23 @@ const Demo = ({ cancel }) => {
     }
   }, [errors]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // const { frontMessage, insideMessage, theme } = values;
-    setActive(true);
 
-    let modal = modalRef.current.offsetParent;
+    let modal = demoRef.current.offsetParent;
     let posY = demoRef.current.offsetTop;
 
-    modal.scrollTo(0, posY);
+    if (navigator.userAgent.toLowerCase() === "safari") {
+      setActive(true);
+      modal.scrollTo(0, posY);
+    }
+    setActive(true);
+    modal.scrollTo({
+      top: posY,
+      left: 0,
+      behavior: "smooth"
+    });
   };
 
   return (
@@ -136,6 +144,7 @@ const Demo = ({ cancel }) => {
             themeRef.current.value.length === 0
           }
           type="submit"
+          ref={demoRef}
         >
           Create Occasion
         </button>
@@ -144,7 +153,7 @@ const Demo = ({ cancel }) => {
         X
       </button>
 
-      <div className="list-card-demo" ref={demoRef} style={{ display: active ? "block" : "hidden" }}>
+      <div className="list-card-demo" style={{ opacity: active ? "1" : "0" }}>
         <input type="checkbox" id={`demo-card-toggle-1`} className="demo-card-toggle" value="selected" />
         <label
           className="demo-card-container"
@@ -153,11 +162,13 @@ const Demo = ({ cancel }) => {
         >
           <span className="demo-checkmark" />
           <div className="front-demo face-demo">
-            <h3>{values.frontMessage}</h3>
+            <h3>{values.frontMessage.length > 10 ? values.frontMessage.slice(0, 10) + "..." : values.frontMessage}</h3>
             <img src="https://picsum.photos/id/858/500/400?grayscale" alt="Random demo cover" />
           </div>
           <div className="inner-left-demo face-demo">
-            <p>{values.insideMessage}</p>
+            <p>
+              {values.insideMessage.length > 100 ? values.insideMessage.slice(0, 100) + "..." : values.insideMessage}
+            </p>
           </div>
           <div className="inner-right-demo face-demo">
             <img src="https://picsum.photos/id/858/500/500" alt="Random demo interior" />

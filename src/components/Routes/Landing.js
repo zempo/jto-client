@@ -73,9 +73,9 @@ const Landing = (props) => {
         <p>You can even copy your favorites!</p>
       </section>
       <section>
-        <h3>Give it a Try!</h3>
+        <h3>Try it out!</h3>
         <button className="modal-btn action" onClick={toggleDemo}>
-          Demo
+          Open Demo
         </button>
         <Modal isShowing={isShowingDemo} hide={toggleDemo} action="demo" />
       </section>

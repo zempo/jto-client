@@ -288,8 +288,8 @@ p.preview {
 }
 
 .front-demo > img {
-  height: 280px;
-  width: 280px;
+  max-height: 280px;
+  max-width: 280px;
   -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
   -webkit-backface-visibility: visible;
@@ -307,6 +307,7 @@ p.preview {
   max-width: 280px;
   -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
+  word-wrap: break-word;
 }
 
 .inner-right-demo {

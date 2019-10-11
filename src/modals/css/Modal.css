@@ -318,41 +318,89 @@ a.modal-btn {
 }
 
 @-webkit-keyframes expandOut {
-  from {
-    opacity: 0;
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+  0% {
+    -webkit-clip-path: circle(0% at 94% 8%);
+    clip-path: circle(0% at 94% 8%);
   }
 
-  50% {
-    opacity: 1;
+  20% {
+    -webkit-clip-path: circle(40% at 94% 8%);
+    clip-path: circle(40% at 94% 8%);
+  }
+
+  40% {
+    -webkit-clip-path: circle(70% at 94% 8%);
+    clip-path: circle(70% at 94% 8%);
+  }
+
+  60% {
+    -webkit-clip-path: circle(100% at 94% 8%);
+    clip-path: circle(100% at 94% 8%);
+  }
+
+  80% {
+    -webkit-clip-path: circle(130% at 94% 8%);
+    clip-path: circle(130% at 94% 8%);
   }
 }
 
 @-moz-keyframes expandOut {
-  from {
-    opacity: 0;
-    -moz-transform: scale3d(0.3, 0.3, 0.3);
+  0% {
+    -webkit-clip-path: circle(0% at 94% 8%);
+    clip-path: circle(0% at 94% 8%);
   }
 
-  50% {
-    opacity: 1;
+  20% {
+    -webkit-clip-path: circle(40% at 94% 8%);
+    clip-path: circle(40% at 94% 8%);
+  }
+
+  40% {
+    -webkit-clip-path: circle(70% at 94% 8%);
+    clip-path: circle(70% at 94% 8%);
+  }
+
+  60% {
+    -webkit-clip-path: circle(100% at 94% 8%);
+    clip-path: circle(100% at 94% 8%);
+  }
+
+  80% {
+    -webkit-clip-path: circle(130% at 94% 8%);
+    clip-path: circle(130% at 94% 8%);
   }
 }
 
 @-o-keyframes expandOut {
-  from {
-    opacity: 0;
-    -o-transform: scale3d(0.3, 0.3, 0.3);
+  0% {
+    -webkit-clip-path: circle(0% at 94% 8%);
+    clip-path: circle(0% at 94% 8%);
   }
 
-  50% {
-    opacity: 1;
+  20% {
+    -webkit-clip-path: circle(40% at 94% 8%);
+    clip-path: circle(40% at 94% 8%);
+  }
+
+  40% {
+    -webkit-clip-path: circle(70% at 94% 8%);
+    clip-path: circle(70% at 94% 8%);
+  }
+
+  60% {
+    -webkit-clip-path: circle(100% at 94% 8%);
+    clip-path: circle(100% at 94% 8%);
+  }
+
+  80% {
+    -webkit-clip-path: circle(130% at 94% 8%);
+    clip-path: circle(130% at 94% 8%);
   }
 }
 
 @keyframes expandOut {
   0% {
-    clip-path: circle(10% at 94% 8%);
+    clip-path: circle(0% at 94% 8%);
   }
 
   20% {
