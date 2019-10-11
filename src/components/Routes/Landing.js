@@ -23,6 +23,9 @@ const Landing = (props) => {
       <h1 className="animated-h1">Just the Occasion</h1>
       <h2 className="animated-h2">The Greeting Card Platform</h2>
       <img className="main-logo" src={Logo} alt="jto-logo" />
+      <h2 className="animated-h2">Features</h2>
+      <br />
+      <br />
       <div className="revolving-header">
         <RevolvingWords words={["Create", "Update", "Browse"]} />
         <p className="double-arrow">&#10231;</p>
@@ -80,6 +83,7 @@ const Landing = (props) => {
         <Modal isShowing={isShowingDemo} hide={toggleDemo} action="demo" />
       </section>
       <section>
+        <h2>Like what you see?</h2>
         <NavLink exact activeClassName="active-auth" to="/register">
           <h3>Get Started</h3>
         </NavLink>
