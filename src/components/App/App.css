@@ -27,12 +27,14 @@ a.action,
 button.action:enabled:hover,
 a.action:hover {
   background: rgb(48, 58, 69);
+  background-color: rgb(48, 58, 69);
   border: 2px solid rgb(48, 58, 69);
   color: white;
 }
 
 button.action,
 a.action {
+  background-color: rgb(48, 58, 69);
   background: rgb(48, 58, 69, 0.9);
   color: #f8f5f5;
   border: 2px solid rgb(48, 58, 69, 0);
@@ -97,10 +99,12 @@ p::selection,
 b::selection,
 span::selection {
   background: rgb(48, 58, 69);
+  background-color: rgb(48, 58, 69);
   color: #f8f5f5;
 }
 a::selection {
   background: rgb(48, 58, 69);
+  background-color: rgb(48, 58, 69);
   color: #f8f5f5;
 }
 .main-logo {
@@ -131,6 +135,7 @@ fieldset {
 body,
 .jto-main {
   background: rgb(248, 245, 245);
+  background-color: rgb(248, 245, 245);
 }
 
 .info-vector {

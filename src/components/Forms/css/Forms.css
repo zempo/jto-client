@@ -239,10 +239,14 @@ p.preview {
   left: -55%;
   width: 200%;
   padding: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
   background: rgb(48, 58, 69, 1);
   border-radius: 10px;
-  justify-content: space-evenly;
 }
 
 .menu-option > a {

@@ -88,9 +88,18 @@ body {
   -moz-animation: expandOut 0.3s;
   -webkit-animation: expandOut 0.3s;
   animation: expandOut 0.5s ease;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   outline: 0;
   border: 1px #777 solid;
@@ -102,6 +111,7 @@ body {
 
 .Modal__inner-menu h1 {
   font-size: 6vh;
+  color: rgb(248, 245, 245);
   color: rgb(248, 245, 245, 0.75);
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
@@ -126,6 +136,7 @@ body {
 .Modal__inner-menu h2 {
   text-decoration: none;
   font-weight: normal;
+  color: rgb(248, 245, 245);
   color: rgb(248, 245, 245, 0.75);
 }
 
@@ -221,6 +232,7 @@ body {
 .Modal__inner .close-modal,
 .Modal__inner-menu .close-modal {
   background: rgba(47, 58, 68);
+  color: rgb(248, 245, 245);
   color: rgb(248, 245, 245, 0.8);
   position: absolute;
   z-index: 1;
@@ -245,6 +257,7 @@ body {
 
 .Modal__inner-bottom .close-modal {
   background: rgba(47, 58, 68);
+  color: rgb(248, 245, 245);
   color: rgb(248, 245, 245, 0.8);
   position: absolute;
   z-index: 1;
@@ -260,6 +273,7 @@ body {
 }
 
 .close-button {
+  color: rgb(47, 58, 68);
   color: rgba(47, 58, 68, 0.6);
   background: white;
   width: 2rem;
@@ -279,8 +293,13 @@ body {
 }
 
 .download-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 .download-menu a {
@@ -309,7 +328,11 @@ a.modal-btn {
 }
 
 .modal-controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -592,10 +615,19 @@ a.modal-btn {
 
 @media screen and (max-width: 1600px) {
   .download-menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -ms-flex-line-pack: center;
     align-content: center;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
   }
 }

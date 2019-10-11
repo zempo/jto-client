@@ -8,8 +8,15 @@ header {
 }
 
 .jto-nav-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   padding: 1em;
   border: 1px solid #eee;
@@ -18,8 +25,15 @@ header {
 }
 
 .nav-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
   width: 85%;
   margin-right: 0;
@@ -136,13 +150,6 @@ header {
   }
   .nav-menu-mini img {
     padding-top: 10px;
-  }
-  .nav-menu-mini:hover img,
-  .nav-menu-mini:active img {
-    /* -o-animation: pressDown 0.6s;
-    -moz-animation: pressDown 0.6s;
-    -webkit-animation: pressDown 0.6s;
-    animation: pressDown 0.6s; */
   }
   /* align to column, do fullscreen click modal */
 }
