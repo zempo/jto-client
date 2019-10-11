@@ -7,10 +7,10 @@ import { useModal } from "../../hooks/use-modal";
 import BottomModal from "../../modals/BottomModal";
 // create nice back-button
 import { PostReaction, ToggleReaction } from "../Forms/Social/Reaction";
-import { JtoSection, TimeStamp, CardPages, PaginateCardFaces } from "../Utils/Utils";
+import { JtoSection, TimeStamp, CardPages, PaginateCardFaces, BackBtn } from "../Utils/Utils";
 import { ThemeStyles } from "../Utils/Store/Themes";
 import "./css/Card.css";
- 
+
 const PublicCard = (props) => {
   const { isShowing: isShowingCommentAdd, toggle: toggleCommentAdd } = useModal();
   const { isShowing: isShowingCommentEdit, toggle: toggleCommentEdit } = useModal();
@@ -70,16 +70,17 @@ const PublicCard = (props) => {
   };
 
   return (
-    <main className="public-card-page">
+    <div className="public-card-page">
+      <BackBtn history={props.history}></BackBtn>
       {/* eslint-disable-next-line */}
       {card.date_modified == undefined ? (
-        <h2>
+        <h2 className="animated-h2">
           Created by{" "}
           <span className="username">{cardAuthor.user_name === user.user_name ? "you, " : cardAuthor.user_name}</span>{" "}
           {<TimeStamp date={card.date_created} />} ago
         </h2>
       ) : (
-        <h2>
+        <h2 className="animated-h2">
           Created by{" "}
           <span className="username">{cardAuthor.user_name === user.user_name ? "you, " : cardAuthor.user_name}</span>{" "}
           {<TimeStamp date={card.date_created} />} ago. <br /> (Edited {<TimeStamp date={card.date_modified} />} ago).
@@ -163,7 +164,7 @@ const PublicCard = (props) => {
           action="delete-comment"
         />
       </JtoSection>
-    </main>
+    </div>
   );
 };
 

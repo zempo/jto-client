@@ -105,6 +105,7 @@ const EditPublicCard = ({ item, cancel }) => {
 
       let sendFullData = await updateCard.patch(`/${item}`, fullData);
       let cardToUpdate = await listCards.get(`/${item}`);
+      // eslint-disable-next-line
       let editedCard = await editPublicCard(cards, searchCards, cardToUpdate.data);
 
       setResMsg("Occasion Updated");

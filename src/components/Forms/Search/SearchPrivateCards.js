@@ -7,6 +7,7 @@ import { ThemesList } from "../../Utils/Utils";
 
 const SearchPrivateCards = () => {
   const {
+    // eslint-disable-next-line
     value: { cards, searchCards, arrangeByKeyword, arrangeBySelection, arrangeByTheme, setSearching, setSearchCards }
   } = useContext(CardsContext);
   const { values, handleChange, reset } = useForm(

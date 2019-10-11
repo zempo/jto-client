@@ -215,6 +215,6 @@ p {
 
 @media screen and (max-width: 900px) {
   h1 {
-    font-size: 9vw;
+    font-size: 3.5rem;
   }
 }

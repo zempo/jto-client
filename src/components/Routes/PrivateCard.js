@@ -4,7 +4,7 @@ import { UserContext } from "../../contexts/UserContext";
 import { CardContext } from "../../contexts/CardContext";
 import { listUserCards } from "../../services/endpoints-service";
 // create back-button
-import { JtoSection, TimeStamp, CardPages, PaginateCardFaces } from "../Utils/Utils";
+import { JtoSection, TimeStamp, CardPages, PaginateCardFaces, BackBtn } from "../Utils/Utils";
 import { ThemeStyles } from "../Utils/Store/Themes";
 import "./css/Card.css";
 
@@ -12,7 +12,7 @@ const Private = (props) => {
   // eslint-disable-next-line
   const { value } = useContext(UserContext);
   const {
-    value: { anyCard, setAnyCardId }
+    value: { anyCard, setAnyCardId, cardAuthor }
   } = useContext(CardContext);
   // eslint-disable-next-line
   const [cardId, setCardId] = useState(0);
@@ -53,14 +53,24 @@ const Private = (props) => {
   }, []);
 
   return (
-    <>
-      <h3>Created {<TimeStamp date={card.date_created} />} ago</h3>
+    <div className="card-page">
+      <BackBtn history={props.history}></BackBtn>
+      {card.date_modified == undefined ? (
+        <h2 className="animated-h2">
+          Created by <span className="username">You</span> {<TimeStamp date={card.date_created} />} ago
+        </h2>
+      ) : (
+        <h2 className="animated-h2">
+          Created by <span className="username">You</span> {<TimeStamp date={card.date_created} />} ago. <br /> (Edited{" "}
+          {<TimeStamp date={card.date_modified} />} ago).
+        </h2>
+      )}
       <JtoSection className="jto-card private-card" style={ThemeStyles[`${cardTheme}`].all}>
         {/* style={Object.assign({}, ThemeStyles[`${cardTheme}`].all, ThemeStyles[`${cardTheme}`].front) */}
         <PaginateCardFaces currentPg={cardPg} setCurrentPg={setCardPg} />
         <CardPages card={card} themes={ThemeStyles} cardTheme={cardTheme} cardPg={cardPg} />
       </JtoSection>
-    </>
+    </div>
   );
 };
 

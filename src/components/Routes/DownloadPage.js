@@ -4,7 +4,7 @@ import ReactToPrint from "react-to-print";
 import { UserContext } from "../../contexts/UserContext";
 import { CardContext } from "../../contexts/CardContext";
 import { ThemeStyles } from "../Utils/Store/Themes";
-import { JtoSection, Loader } from "../Utils/Utils";
+import { JtoSection, Loader, BackBtn } from "../Utils/Utils";
 import "./css/Download.css";
 import { ThemeContext } from "../../contexts/ThemeContext";
 
@@ -105,8 +105,9 @@ const DownloadPage = (props) => {
   };
 
   return (
-    <div>
-      <h1 className="animated-h1">Download an Occasion</h1>
+    <div className="jto-download-page">
+      <BackBtn history={props.history} />
+      <h1 className="animated-h1">{winWidth < 1300 ? "Download" : "Download an Occasion"}</h1>
       <h2 className="animated-h2">From {userName && card_user.user_name === userName ? "You" : userName}</h2>
       <JtoSection className="download-controls">
         <form className="jto-download-form">

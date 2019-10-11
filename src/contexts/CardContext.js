@@ -9,6 +9,7 @@ export const CardContextProvider = (props) => {
   const [userName, setUserName] = useState("");
   // eslint-disable-next-line
   const [anyCardId, setAnyCardId] = useState(0);
+  // eslint-disable-next-line
   const [error, setError] = useState(false);
 
   useEffect(() => {

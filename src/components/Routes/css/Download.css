@@ -68,7 +68,9 @@
 .jto-export {
   border-top: 2px dashed rgb(48, 58, 69);
   border-bottom: 2px dashed rgb(48, 58, 69);
-  background: rgb(48, 58, 69, 0.3);
+  /* background: rgb(48, 58, 69, 0.3);
+   */
+  background: rgb(144, 155, 161);
   padding-top: 20px;
 }
 
@@ -464,6 +466,12 @@ input[type="range"]:focus::-ms-fill-upper {
 }
 
 @media screen and (max-width: 900px) {
+  .jto-download-page h1.animated-h1 {
+    margin-top: 7rem;
+  }
+  .jto-download-form {
+    grid-template-columns: 5% 90% 5%;
+  }
   .download-buttons {
     left: 0;
   }
@@ -476,14 +484,16 @@ input[type="range"]:focus::-ms-fill-upper {
   .export-container {
     margin: 0;
     width: 100%;
+    overflow-x: scroll;
   }
   .control-item label {
     padding: 0.5rem;
   }
   .jto-download-form legend {
-    font-size: 2rem;
+    font-size: 1.7rem;
     position: static;
     text-align: center;
+    font-weight: normal;
   }
   .jto-download-form .control-item {
     padding: 1.2rem 0;

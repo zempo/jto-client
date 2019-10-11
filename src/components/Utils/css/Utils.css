@@ -188,6 +188,24 @@ div[id="500"] h3 {
   animation: heartBeat 0.3s;
 }
 
+.btn-back {
+  position: absolute;
+  top: 10rem;
+  left: 10%;
+  color: rgb(248, 245, 245);
+  font-size: 5rem;
+  padding: 0;
+  margin: 0;
+  width: 5rem;
+  height: 5rem;
+}
+
+.btn-back span {
+  position: relative;
+  font-weight: bold;
+  top: -1.5rem;
+}
+
 /* pagination  */
 /* ///////////////////// */
 .jto-page-menu ul {
@@ -595,9 +613,120 @@ div[id="500"] h3 {
   }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1500px) {
+  .btn-back {
+    position: absolute;
+    top: 9rem;
+    left: 5%;
+    color: rgb(248, 245, 245);
+    font-size: 4rem;
+    padding: 0;
+    margin: 0;
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .btn-back span {
+    position: relative;
+    font-weight: bold;
+    top: -1.25rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .jto-landing p {
+    font-size: 14px;
+  }
   .jto-notification {
     padding: 0;
     width: 80%;
+  }
+  .revolving-header .word-column-wrapper,
+  .revolving-header .double-arrow {
+    font-weight: bold;
+    font: normal 15px/25px Montserrat, sans-serif;
+  }
+  .word-column {
+    display: inline-block;
+    text-align: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    position: relative;
+    white-space: nowrap;
+    top: 30px;
+    left: 0;
+
+    /*animation*/
+    -webkit-animation: move2 7s ease-in;
+    -moz-animation: move2 7s ease-in;
+    -ms-animation: move2 7s ease-in;
+    -o-animation: move2 7s ease-in;
+    animation: move2 7s ease;
+    /*animation-iteration-count*/
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: infinite;
+    -o-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    /*animation-delay*/
+    -webkit-animation-delay: 1.5s;
+    -moz-animation-delay: 1.5s;
+    -ms-animation-delay: 1.5s;
+    -o-animation-delay: 1.5s;
+    animation-delay: 1.5s;
+  }
+
+  .double-arrow {
+    position: relative;
+    height: 25px;
+    /* float: left; */
+    font-weight: bold;
+    margin-right: 0.2em;
+    top: -13px;
+  }
+  @-webkit-keyframes move2 {
+    10% {
+      top: 25px;
+    }
+    40% {
+      top: 0px;
+    }
+    69% {
+      top: -25px;
+    }
+  }
+  @-moz-keyframes move2 {
+    10% {
+      top: 25px;
+    }
+    40% {
+      top: 0px;
+    }
+    69% {
+      top: -25px;
+    }
+  }
+  @-o-keyframes move2 {
+    10% {
+      top: 25px;
+    }
+    40% {
+      top: 0px;
+    }
+    69% {
+      top: -25px;
+    }
+  }
+
+  @keyframes move2 {
+    10% {
+      top: 25px;
+    }
+    40% {
+      top: 0px;
+    }
+    69% {
+      top: -25px;
+    }
   }
 }

@@ -11,7 +11,7 @@ const Guide = () => {
       <h1 className="animated-h1">Getting Started</h1>
       <h2 className="animated-h2">Create</h2>
       <ol className="jto-list">
-        <li>Need inspiration and resources?</li>
+        <li>Inspiration and Resources</li>
         <ul>
           <li>
             <Required met="true"></Required> For Images - try the free software{" "}
@@ -72,7 +72,7 @@ const Guide = () => {
             </a>{" "}
           </li>
         </ul>
-        <li>Create</li>
+        <li>Design Process</li>
         <ul>
           <li>
             <Required met="true"></Required> Prepare your custom message (and image, if desired).
