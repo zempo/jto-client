@@ -45,9 +45,13 @@ const Demo = ({ cancel }) => {
     let posY = demoRef.current.offsetTop;
     let uA = navigator.userAgent;
 
-    if (uA.toLowerCase().includes("compatible") || uA.toLowerCase().includes("edge")) {
+    if (
+      uA.toLowerCase().includes("compatible") ||
+      uA.toLowerCase().includes("edge") ||
+      uA.includes("MSIE") ||
+      uA.includes("Trident/")
+    ) {
       setActive(true);
-      window.scrollTo(0, 800);
     }
 
     if (!uA.toLowerCase().includes("chrome") && !uA.toLowerCase().includes("gecko/")) {

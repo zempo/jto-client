@@ -53,8 +53,9 @@ export const CardsContextProvider = (props) => {
     let ua = window.navigator.userAgent;
     let old_ie = ua.indexOf("MSIE ");
     let new_ie = ua.indexOf("Trident/");
+    let edge = ua.toLowerCase().indexOf("edge");
 
-    if (old_ie > -1 || new_ie > -1) {
+    if (old_ie > -1 || new_ie > -1 || edge > -1) {
       isIE = true;
     }
 
@@ -186,7 +187,6 @@ export const CardsContextProvider = (props) => {
       return cardsValue;
     }
   };
-
 
   const value = {
     cards,

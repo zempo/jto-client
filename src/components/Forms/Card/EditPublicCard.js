@@ -115,7 +115,7 @@ const EditPublicCard = ({ item, cancel }) => {
       setTimeout(() => {
         setResStatus(0);
         cancel();
-      }, 1000);
+      }, 500);
     } catch (err) {
       setLoading(false);
       setResStatus(err.response.status);

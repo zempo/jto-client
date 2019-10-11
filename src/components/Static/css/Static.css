@@ -94,10 +94,10 @@ header {
   background: rgb(48, 58, 69);
   bottom: -5px;
   left: 45%;
-  /* -moz-transition: all 0.1s ease;
-  -o-transition: all 0.1s ease;
-  -webkit-transition: all 0.1s ease;
-  transition: all 0.1s ease; */
+  /* -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease; */
 }
 
 .jto-nav-menu a:hover h3::after {

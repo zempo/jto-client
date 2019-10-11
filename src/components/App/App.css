@@ -88,8 +88,9 @@ h3 {
 
 h2 {
   font-weight: 300;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.3rem;
 }
+
 h1::selection,
 h2::selection,
 h3::selection,
