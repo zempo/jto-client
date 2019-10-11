@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as ROUTER } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import App from "./components/App/App";
 import "./index.css";
@@ -38,19 +37,17 @@ import "typeface-cutive";
 import "typeface-italianno";
 
 ReactDOM.render(
-  <ROUTER>
-    <ThemeProvider>
-      <GalleryProvider>
-        <UserProvider>
-          <CardProvider>
-            <PubCardProvider>
-              <App />
-            </PubCardProvider>
-          </CardProvider>
-        </UserProvider>
-      </GalleryProvider>
-    </ThemeProvider>
-  </ROUTER>,
+  <ThemeProvider>
+    <GalleryProvider>
+      <UserProvider>
+        <CardProvider>
+          <PubCardProvider>
+            <App />
+          </PubCardProvider>
+        </CardProvider>
+      </UserProvider>
+    </GalleryProvider>
+  </ThemeProvider>,
   document.getElementById("root")
 );
 

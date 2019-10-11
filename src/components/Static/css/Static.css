@@ -41,10 +41,6 @@ header {
   /* border: 2px solid black; */
 }
 
-.auth-link {
-  margin-left: 10%;
-}
-
 .jto-nav-menu .logo-link {
   margin-left: 50%;
   opacity: 0.6;
@@ -74,6 +70,14 @@ header {
   -o-transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
+}
+
+.auth-link {
+  margin-left: 10%;
+}
+
+.auth-link h3 {
+  color: rgb(48, 58, 69);
 }
 
 .jto-nav-menu a:hover h3 {

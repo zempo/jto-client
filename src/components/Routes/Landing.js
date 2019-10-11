@@ -85,7 +85,7 @@ const Landing = (props) => {
       <section>
         <h2>Like what you see?</h2>
         <NavLink exact activeClassName="active-auth" to="/register">
-          <h3>Get Started</h3>
+          <h3>Create an Account</h3>
         </NavLink>
       </section>
     </JtoSection>

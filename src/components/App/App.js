@@ -1,6 +1,7 @@
 // SETUP + UTILS
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
+import { BrowserRouter as ROUTER } from "react-router-dom";
 import PublicOnlyRoute from "../Utils/Auth/PublicOnlyRoute";
 import PrivateRoute from "../Utils/Auth/PrivateRoute";
 import ErrorPage from "../Errors/ErrorPage";
@@ -67,29 +68,31 @@ class App extends Component {
   render() {
     return (
       <>
-        <header className="jto-header">
-          <Nav />
-        </header>
-        <main className="jto-main">
-          {/* create general layout, restructure components folder in forms, utils, nav, content */}
-          <ErrorPage>
-            <Switch>
-              <Route exact path={"/"} component={Landing} />
-              <Route exact path={"/guide"} component={Guide} />
-              <PrivateRoute exact path={"/add-occasion"} component={AddCard} />
-              <Route exact path={"/gallery"} component={Gallery} />
-              <PrivateRoute exact path={"/gallery-card"} component={PublicCard} />
-              <PrivateRoute exact path={"/private"} component={UserHome} />
-              <PrivateRoute exact path={"/private-card"} component={PrivateCard} />
-              <PrivateRoute exact path={"/download-card"} component={DownloadPage} />
-              <PrivateRoute exact path={"/email-card"} component={Email} />
-              <PublicOnlyRoute exact path={"/login"} component={Login} />
-              <PublicOnlyRoute exact path={"/register"} component={Registration} />
-              <Route exact path={"/support"} component={FAQs} />
-            </Switch>
-          </ErrorPage>
-        </main>
-        <Footer />
+        <ROUTER>
+          <header className="jto-header">
+            <Nav />
+          </header>
+          <main className="jto-main">
+            {/* create general layout, restructure components folder in forms, utils, nav, content */}
+            <ErrorPage>
+              <Switch>
+                <Route exact path={"/"} component={Landing} />
+                <Route exact path={"/guide"} component={Guide} />
+                <PrivateRoute exact path={"/add-occasion"} component={AddCard} />
+                <Route exact path={"/gallery"} component={Gallery} />
+                <PrivateRoute exact path={"/gallery-card"} component={PublicCard} />
+                <PrivateRoute exact path={"/private"} component={UserHome} />
+                <PrivateRoute exact path={"/private-card"} component={PrivateCard} />
+                <PrivateRoute exact path={"/download-card"} component={DownloadPage} />
+                <PrivateRoute exact path={"/email-card"} component={Email} />
+                <PublicOnlyRoute exact path={"/login"} component={Login} />
+                <PublicOnlyRoute exact path={"/register"} component={Registration} />
+                <Route exact path={"/support"} component={FAQs} />
+              </Switch>
+            </ErrorPage>
+          </main>
+          <Footer />
+        </ROUTER>
       </>
     );
   }

@@ -76,7 +76,7 @@ class Nav extends Component {
 
   render() {
     const { showing } = this.state;
-    let error = this.context.value.error;
+    // let error = this.context.value.error;
 
     return (
       <>
@@ -100,7 +100,9 @@ class Nav extends Component {
             <NavLink exact activeClassName="active" to="/support">
               <h3>Support</h3>
             </NavLink>
-            {TokenService.hasAuthToken() && error !== 401 ? this.renderLogoutLink() : this.renderLoginLink()}
+            {TokenService.hasAuthToken() && this.context.value.error !== 401
+              ? this.renderLogoutLink()
+              : this.renderLoginLink()}
           </div>
         </nav>
         <MenuModal isShowing={showing} hide={this.toggleModal} />
