@@ -4,7 +4,7 @@ import ReactToPrint from "react-to-print";
 import { UserContext } from "../../contexts/UserContext";
 import { CardContext } from "../../contexts/CardContext";
 import { ThemeStyles } from "../Utils/Store/Themes";
-import { JtoSection, Loader, BackBtn } from "../Utils/Utils";
+import { JtoSection, BackBtn } from "../Utils/Utils";
 import "./css/Download.css";
 import { ThemeContext } from "../../contexts/ThemeContext";
 
@@ -16,8 +16,9 @@ const DownloadPage = (props) => {
     value: { anyCard: card, anyCardId, setAnyCardId, userName }
   } = useContext(CardContext);
   const {
-    value: { winHgt, winWidth }
+    value: { winWidth }
   } = useContext(ThemeContext);
+  // eslint-disable-next-line
   const [currentId, setCurrentId] = useState(0);
   const [frontTxt, setFrontTxt] = useState("#000000");
   const [frontBg, setFrontBg] = useState("#f8f5f5");
@@ -29,6 +30,7 @@ const DownloadPage = (props) => {
   const [size, setSize] = useState("A7");
   const [name, setName] = useState("");
   const [close, setClose] = useState("");
+  // eslint-disable-next-line
   const [loading, setLoading] = useState(false);
   const componentRef = useRef();
 
@@ -216,6 +218,7 @@ const DownloadPage = (props) => {
             {winWidth > 900 ? (
               <ReactToPrint
                 trigger={() => (
+                  // eslint-disable-next-line
                   <a className="download-btn action" href="javascript:void(0);">
                     Save the Occaison
                   </a>
@@ -225,6 +228,7 @@ const DownloadPage = (props) => {
             ) : (
               <ReactToPrint
                 trigger={() => (
+                  // eslint-disable-next-line
                   <a className="download-btn action" href="javascript:void(0);">
                     Save
                   </a>

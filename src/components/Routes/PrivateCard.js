@@ -12,12 +12,11 @@ const Private = (props) => {
   // eslint-disable-next-line
   const { value } = useContext(UserContext);
   const {
-    value: { anyCard, setAnyCardId, cardAuthor }
+    value: { setAnyCardId }
   } = useContext(CardContext);
   // eslint-disable-next-line
   const [cardId, setCardId] = useState(0);
   const [card, setCard] = useState({});
-  const [card2, setCard2] = useState({});
   const [cardTheme, setCardTheme] = useState("handwritten");
   const [cardPg, setCardPg] = useState(1);
   // eslint-disable-next-line
@@ -55,6 +54,7 @@ const Private = (props) => {
   return (
     <div className="card-page">
       <BackBtn history={props.history}></BackBtn>
+      {/* eslint-disable-next-line */}
       {card.date_modified == undefined ? (
         <h2 className="animated-h2">
           Created by <span className="username">You</span> {<TimeStamp date={card.date_created} />} ago

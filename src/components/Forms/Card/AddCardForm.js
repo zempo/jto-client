@@ -71,6 +71,7 @@ function AddCard({ item, cancel }) {
       fullData.front_message = frontMessage;
       fullData.inside_message = insideMessage;
       let sendFullData = await newCard.post("/", fullData);
+      // eslint-disable-next-line
       let addedToCards = await addToCards(cards, searchCards, sendFullData.data);
 
       setResMsg("New Occasion Created");

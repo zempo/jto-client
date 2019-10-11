@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 // import { CardContext, CardContextProvider } from "../../contexts/CardContext";
 import { UserContext } from "../../contexts/UserContext";
 import { PublicCardContext as CardContext } from "../../contexts/PublicCardContext";
-import { listCardReacts, listUserCards, newCard } from "../../services/endpoints-service";
+import { listCardReacts } from "../../services/endpoints-service";
 import { useModal } from "../../hooks/use-modal";
 import BottomModal from "../../modals/BottomModal";
 // create nice back-button
@@ -113,6 +113,7 @@ const PublicCard = (props) => {
                 </p>
                 <ul className="comment-items">
                   <li className="comment-item body">{comment.body}</li>
+                  {/* eslint-disable-next-line */}
                   {comment.date_modified == undefined ? (
                     <li className="comment-item date">
                       <TimeStamp date={comment.date_created} />

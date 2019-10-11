@@ -25,12 +25,13 @@ const Download = ({ item, payload, cancel }) => {
     }
 
     try {
+      // eslint-disable-next-line
       let sendFullData = await newCard.post("/", cardCopy);
 
       setCopied(true);
       setTimeout(() => {
         window.location.reload();
-      }, 2000);
+      }, 500);
     } catch (error) {
       console.log(error.response);
     }

@@ -59,10 +59,6 @@ button:active,
   -webkit-transition: all 0.3s ease-out;
 }
 
-input[type="file"] {
-  /* create custom label and style said label */
-}
-
 button:disabled {
   color: rgb(48, 58, 69);
   background: rgb(48, 58, 69, 0.3);
@@ -115,10 +111,6 @@ a::selection {
 
 fieldset {
   border: none;
-}
-
-.username {
-  /* style username */
 }
 
 .jto-home {
