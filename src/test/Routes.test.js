@@ -5,7 +5,7 @@ import { shallow, configure } from "enzyme";
 import { BrowserRouter as ROUTER } from "react-router-dom";
 import { act } from "react-dom/test-utils";
 
-// components to test
+// Components to test
 import Landing from "../components/Routes/Landing";
 import Guide from "../components/Routes/Guide";
 import Gallery from "../components/Routes/Gallery";
@@ -18,6 +18,8 @@ import PrivateCards from "../components/Routes/PrivateCards";
 import PrivateCard from "../components/Routes/PrivateCard";
 import PublicCard from "../components/Routes/PublicCard";
 import Email from "../components/Routes/Email";
+
+// Contexts used
 import { ThemeContextProvider as ThemeProvider } from "../contexts/ThemeContext";
 import { GalleryContextProvider as GalleryProvider } from "../contexts/GalleryContext";
 import { UserContextProvider as UserProvider } from "../contexts/UserContext";
