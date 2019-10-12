@@ -18,11 +18,20 @@ import { PublicCardContextProvider as PubCardProvider } from "../contexts/Public
 
 configure({ adapter: new Adapter() });
 
+afterAll(() => {
+  const originalError = console.log("Ignore Context Warning");
+  console.error = jest.fn();
+
+  // test code here
+
+  console.error = originalError;
+});
+
 describe("Main App", () => {
   it("renders app -- given a context", () => {
     const app = shallow(
       <ThemeProvider>
-        <GalleryProvider>
+        <GalleryProvider value="foo">
           <UserProvider>
             <CardProvider>
               <PubCardProvider>
@@ -57,17 +66,9 @@ describe("3 Modal Containers", () => {
 
   it("renders MenuModal.js -- given context", () => {
     const menuModal = shallow(
-      <ThemeProvider>
-        <GalleryProvider>
-          <UserProvider>
-            <CardProvider>
-              <PubCardProvider>
-                <MenuModal />
-              </PubCardProvider>
-            </CardProvider>
-          </UserProvider>
-        </GalleryProvider>
-      </ThemeProvider>
+      <UserProvider>
+        <MenuModal />
+      </UserProvider>
     );
     const div = document.createElement("div");
     ReactDOM.render(menuModal, div);

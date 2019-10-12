@@ -7,30 +7,27 @@ import { shallow, configure } from "enzyme";
 // components to test
 import Nav from "../components/Static/Nav";
 import Footer from "../components/Static/Footer";
-import { ThemeContextProvider as ThemeProvider } from "../contexts/ThemeContext";
-import { GalleryContextProvider as GalleryProvider } from "../contexts/GalleryContext";
 import { UserContextProvider as UserProvider } from "../contexts/UserContext";
-import { CardContextProvider as CardProvider } from "../contexts/CardContext";
-import { PublicCardContextProvider as PubCardProvider } from "../contexts/PublicCardContext";
 
 configure({ adapter: new Adapter() });
+
+afterAll(() => {
+  const originalError = console.log("Ignore Context Warning");
+  console.error = jest.fn();
+
+  // test code here
+
+  console.error = originalError;
+});
 
 describe("Static Components", () => {
   it("renders Nav.js without crashing", () => {
     const nav = shallow(
-      <ThemeProvider>
-        <GalleryProvider>
-          <UserProvider>
-            <CardProvider>
-              <PubCardProvider>
-                <ROUTER>
-                  <Nav />
-                </ROUTER>
-              </PubCardProvider>
-            </CardProvider>
-          </UserProvider>
-        </GalleryProvider>
-      </ThemeProvider>
+      <UserProvider>
+        <ROUTER>
+          <Nav />
+        </ROUTER>
+      </UserProvider>
     );
     act(() => {
       const div = document.createElement("div");
