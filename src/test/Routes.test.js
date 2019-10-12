@@ -39,6 +39,14 @@ afterAll(() => {
 });
 
 describe("Components Within Router Components Sub-Directory", () => {
+  afterEach(() => {
+    const originalError = console.log("Ignore Context Warning");
+    console.error = jest.fn();
+
+    // test code here
+
+    console.error = originalError;
+  });
   it("renders Landing page route without crashing", () => {
     const landing = shallow(
       <ROUTER>

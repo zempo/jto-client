@@ -28,6 +28,14 @@ afterAll(() => {
 });
 
 describe("Main App", () => {
+  afterEach(() => {
+    const originalError = console.log("Ignore Context Warning");
+    console.error = jest.fn();
+
+    // test code here
+
+    console.error = originalError;
+  });
   it("renders app -- given a context", () => {
     const app = shallow(
       <ThemeProvider>
@@ -50,6 +58,14 @@ describe("Main App", () => {
 });
 
 describe("3 Modal Containers", () => {
+  afterEach(() => {
+    const originalError = console.log("Ignore Context Warning");
+    console.error = jest.fn();
+
+    // test code here
+
+    console.error = originalError;
+  });
   it("renders Modal.js", () => {
     const modal = shallow(<Modal />);
     const div = document.createElement("div");

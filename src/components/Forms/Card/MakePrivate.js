@@ -37,7 +37,7 @@ const MakePrivate = ({ item, cancel }) => {
         <button className="modal-btn" onClick={cancel}>
           Cancel
         </button>
-        <button className="modal-btn" onClick={handlePrivacy}>
+        <button className="modal-btn action" onClick={handlePrivacy}>
           Hide Occasion
         </button>
       </div>

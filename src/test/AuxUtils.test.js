@@ -7,6 +7,33 @@ import { shallow, configure } from "enzyme";
 // components to test
 import Nav from "../components/Static/Nav";
 import Footer from "../components/Static/Footer";
+import {
+  // loaders, alerts, spinners
+  Loader,
+  SkeletonLoader,
+  SkeletonLoader2,
+  RevolvingWords,
+  JtoNotification,
+  // common semantics
+  JtoSection,
+  TimeStamp,
+  ThemesList,
+  EditThemesList,
+  Required,
+  CheckCard,
+  Hyph,
+  // menus
+  MenuOption,
+  ModalOption,
+  DotMenuOption,
+  // buttons and pagination
+  AddBtn,
+  BackBtn,
+  PaginateCardFaces,
+  PaginateCards,
+  CardPages
+} from "../components/Utils/Utils";
+
 import { UserContextProvider as UserProvider } from "../contexts/UserContext";
 
 configure({ adapter: new Adapter() });
@@ -20,7 +47,7 @@ afterAll(() => {
   console.error = originalError;
 });
 
-describe("Static Components", () => {
+describe("Loaders", () => {
   afterEach(() => {
     const originalError = console.log("Ignore Context Warning");
     console.error = jest.fn();
