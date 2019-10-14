@@ -154,9 +154,9 @@ describe("Components Within Router Components Sub-Directory", () => {
       </ROUTER>
     );
 
-    const div = document.createElement("div");
-    ReactDOM.render(guide, div);
-    ReactDOM.unmountComponentAtNode(div);
+    let exists = guide.exists();
+
+    console.log(exists);
   });
 
   it("renders FAQs route without crashing", () => {
