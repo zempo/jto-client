@@ -75,30 +75,58 @@ const Guide = () => {
         <li>Create</li>
         <ul>
           <li>
-            <Required met="true"></Required> Prepare your custom message (and image, if desired).
+            <Required met="true"></Required> Click "create", then scroll down and click on the "+" button.
           </li>
           <li>
-            <Required met="true"></Required> Click the "add-occasion" button
+            <Required met="true"></Required> Prepare your custom greeting on the front. And a custom message inside.
           </li>
           <li>
-            <Required met="true"></Required> Add your messages and pictures
+            <Required met="true"></Required> Don't add your signature just yet! You might want to customize it later!
           </li>
           <li>
-            {" "}
-            <Required met="true"></Required> Done{" "}
+            <Required met="true"></Required> Add an image on the front and inside (Optional).
           </li>
         </ul>
       </ol>
       <h2 className="animated-h2">Send</h2>
       <ol className="jto-list">
         <li>Click on a card.</li>
-        <li>Click the download icon.</li>
-        <p>Or...</p>
-        <li>Access the download menu when viewing a card.</li>
         <ul>
-          <li>Download will let you save a copy of the card.</li>
-          <li>Copy will copy the card to your homepage.</li>
-          <li>Email will email a card to someone (feature is coming soon).</li>
+          <li>
+            <Required met="true"></Required> "View" lets you observe the occasion.
+          </li>
+          <li>
+            <Required met="true"></Required> "Edit" lets you make changes to your card.
+          </li>
+          <li>
+            <Required met="true"></Required> "Publish" sends your card to the public gallery.
+          </li>
+          <li>
+            <Required met="true"></Required> "Make Private" sends your card back to your homepage.
+          </li>
+          <li>
+            <Required met="true"></Required> "Delete" erases an occasion permanently.
+          </li>
+          <br />
+
+          <li>
+            <Required met="true"></Required> "Download" lets you do a few more things...
+          </li>
+        </ul>
+        <li>So you clicked the download icon?</li>
+        <p>Or...</p>
+        <br />
+        <li>Accessed the download menu when viewing a card?</li>
+        <ul>
+          <li>
+            <Required met="true"></Required> Download will let you save a copy of the card.
+          </li>
+          <li>
+            <Required met="true"></Required> Copy will copy the card to your homepage.
+          </li>
+          <li>
+            <Required met="true"></Required> Email will email a card to someone (feature is coming soon).
+          </li>
         </ul>
       </ol>
       <h2 className="animated-h2">Download</h2>
@@ -109,21 +137,28 @@ const Guide = () => {
             <Required met="true"></Required> Customize border, background, size, and text.
           </li>
           <li>
-            <Required met="true"></Required> Add your messages and pictures
+            <Required met="true"></Required> Click "Save the Occasion"
           </li>
-          <img
-            className="guide-img"
-            src="https://www.cardsforcauses.com/product_images/uploaded_images/greeting-card-sizes-infographic-1-.png"
-            alt="card sizes guide."
-            srcset=""
-          />
           <li>
-            Source:
-            <a href="https://www.cardsforcauses.com" className="guide-link" target="_blank" rel="noopener noreferrer">
-              &nbsp;Card For Causes
-            </a>
+            <Required met="true"></Required> Download the resulting pdf
+          </li>
+          <li>
+            <Required met="true"></Required> Cut and paste on a paper!
           </li>
         </ul>
+        <li>Sizing Guide</li>
+        <img
+          className="guide-img"
+          src="https://www.cardsforcauses.com/product_images/uploaded_images/greeting-card-sizes-infographic-1-.png"
+          alt="card sizes guide."
+          srcset=""
+        />
+        <p>
+          Source:&nbsp;
+          <a href="https://www.cardsforcauses.com" className="guide-link" target="_blank" rel="noopener noreferrer">
+            Card For Causes
+          </a>
+        </p>
       </ol>
     </JtoSection>
   );
