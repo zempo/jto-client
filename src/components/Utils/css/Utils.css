@@ -250,7 +250,8 @@ div[id="500"] h3 {
   color: rgb(248, 245, 245);
 }
 
-.bottom-pagination .page-btn {
+.bottom-pagination .page-btn,
+.top-pagination .page-btn {
   background: rgb(48, 58, 69);
   border: 2px solid rgb(48, 58, 69, 0);
   color: rgb(248, 245, 245);
