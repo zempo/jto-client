@@ -72,7 +72,7 @@ const Guide = () => {
             </a>{" "}
           </li>
         </ul>
-        <li>Design Process</li>
+        <li>Create</li>
         <ul>
           <li>
             <Required met="true"></Required> Prepare your custom message (and image, if desired).
@@ -94,30 +94,37 @@ const Guide = () => {
         <li>Click on a card.</li>
         <li>Click the download icon.</li>
         <p>Or...</p>
-        <li>Access the download menu, here.</li>
+        <li>Access the download menu when viewing a card.</li>
         <ul>
           <li>Download will let you save a copy of the card.</li>
           <li>Copy will copy the card to your homepage.</li>
           <li>Email will email a card to someone (feature is coming soon).</li>
         </ul>
       </ol>
-      <h2 className="animated-h2">Prepare</h2>
-      <li>Clicking download will take you to the editor. Add any last-minute styles.</li>
-      <ul>
-        <li>You can customize a card's borders, background, size, and text.</li>
-        <li>
-          Read more,
-          <a
-            href="https://www.calendarlabs.com/holidays/countries/"
-            className="guide-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            here
-          </a>
-        </li>
-      </ul>
       <h2 className="animated-h2">Download</h2>
+      <ol className="jto-list">
+        <li>Final Touches</li>
+        <ul>
+          <li>
+            <Required met="true"></Required> Customize border, background, size, and text.
+          </li>
+          <li>
+            <Required met="true"></Required> Add your messages and pictures
+          </li>
+          <img
+            className="guide-img"
+            src="https://www.cardsforcauses.com/product_images/uploaded_images/greeting-card-sizes-infographic-1-.png"
+            alt="card sizes guide."
+            srcset=""
+          />
+          <li>
+            Source:
+            <a href="https://www.cardsforcauses.com" className="guide-link" target="_blank" rel="noopener noreferrer">
+              &nbsp;Card For Causes
+            </a>
+          </li>
+        </ul>
+      </ol>
     </JtoSection>
   );
 };

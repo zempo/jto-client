@@ -5,10 +5,6 @@
   margin-bottom: 7rem;
 }
 
-.jto-guide {
-  text-align: justify;
-}
-
 .jto-faqs p {
   text-align: center;
 }
@@ -35,6 +31,11 @@
   -moz-animation-fill-mode: backwards;
   -webkit-animation-fill-mode: backwards;
   animation-fill-mode: backwards;
+}
+
+.jto-guide .guide-img {
+  text-align: center;
+  max-width: 30%;
 }
 
 .jto-list {
