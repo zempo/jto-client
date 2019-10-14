@@ -84,10 +84,10 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  -o-animation: expandOut 0.3s;
-  -moz-animation: expandOut 0.3s;
-  -webkit-animation: expandOut 0.3s;
-  animation: expandOut 0.5s ease;
+  -o-animation: expandOut 0.25s ease;
+  -moz-animation: expandOut 0.25s ease;
+  -webkit-animation: expandOut 0.25s ease;
+  animation: expandOut 0.25s ease;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
