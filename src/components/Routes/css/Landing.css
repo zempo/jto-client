@@ -25,10 +25,10 @@
   -moz-animation: fadeInUp 1s;
   -webkit-animation: fadeInUp 1s;
   animation: fadeInUp 1s;
-  -o-animation-fill-mode: backwards;
-  -moz-animation-fill-mode: backwards;
-  -webkit-animation-fill-mode: backwards;
-  animation-fill-mode: backwards;
+  -o-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
 
 .landing-img {
