@@ -270,7 +270,7 @@ export const BackBtn = ({ history }) => {
   return (
     <>
       <button className="btn btn-back" title="go back" onClick={() => history.goBack()}>
-        <span>&#8592;</span>
+        <span className="back-arrow">&#8592;</span>
       </button>
     </>
   );

@@ -198,9 +198,21 @@
   font-size: 0em;
 }
 
-.card-toggle:checked + .card-container .fa-stack-text {
-  padding-top: 0.15em;
-  font-size: 0.6em;
+.card-toggle:checked + .card-container .fa-stack:nth-child(1) .fa-stack-text {
+  padding-top: 25%;
+  padding-right: 0;
+  font-size: 0.45em;
+}
+
+.card-toggle:checked + .card-container .fa-stack:nth-child(2) .fa-stack-text {
+  padding-top: 18%;
+  font-size: 0.45em;
+}
+
+.card-toggle:checked + .card-container .fa-stack:nth-child(3) .fa-stack-text {
+  padding-top: 30%;
+  padding-right: 0%;
+  font-size: 0.45em;
 }
 
 .jto-counter {

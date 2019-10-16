@@ -204,6 +204,15 @@ div[id="500"] h3 {
   margin: 0;
   width: 5rem;
   height: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .btn-back span {
@@ -664,12 +673,12 @@ div[id="500"] h3 {
     margin: 0;
     width: 4rem;
     height: 4rem;
+    display: flex;
   }
 
   .btn-back span {
-    position: relative;
     font-weight: bold;
-    top: -1.25rem;
+    top: -1.35rem;
   }
 }
 

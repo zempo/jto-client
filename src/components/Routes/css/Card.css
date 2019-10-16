@@ -270,4 +270,14 @@ h3 {
   .paginate-cards .page-btn {
     font-size: 1rem;
   }
+  .jto-comment {
+    width: 95%;
+    margin-left: 2.5%;
+  }
+  .jto-reactions button,
+  .jto-reactions .far,
+  .jto-reactions .fa-file-download,
+  .jto-reactions .heart-button {
+    margin: 1rem 2.2rem;
+  }
 }
