@@ -77,7 +77,7 @@ const LoginForm = (props) => {
           ref={pwdRef}
           placeholder="Secret@123"
           name="password"
-          type="text"
+          type="password"
           id={2}
           value={values.password}
           onChange={handleChange}

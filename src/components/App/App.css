@@ -195,6 +195,7 @@ body,
 }
 
 input[type="text"],
+input[type="password"],
 textarea {
   border: 1px solid rgb(48, 58, 69);
   text-indent: 5px;
