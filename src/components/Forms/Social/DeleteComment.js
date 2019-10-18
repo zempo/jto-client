@@ -5,7 +5,7 @@ import { PublicCardContext as CardContext } from "../../../contexts/PublicCardCo
 
 const DeleteComment = ({ item, cancel }) => {
   const {
-    value: { cardComments, deleteCardComment }
+    value: { deleteCardComment }
   } = useContext(CardContext);
   // eslint-disable-next-line
   const [error, setError] = useState(false);
@@ -19,6 +19,7 @@ const DeleteComment = ({ item, cancel }) => {
       let commentToDelete = await readComment.get(`/${item}`);
       let deleted = await deleteComment.delete(`/${item}`);
       let commentsResult = await listCardComments.get(`/${commentToDelete.data.card_id}`);
+      // eslint-disable-next-line
       let deletedComments = await deleteCardComment(commentsResult.data);
 
       setResStatus(deleted.status);

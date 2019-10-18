@@ -1,5 +1,4 @@
 import React from "react";
-import { GalleryContext } from "../../../contexts/GalleryContext";
 import { useModal } from "../../../hooks/use-modal";
 import Modal from "../../../modals/Modal";
 import { MenuOption, ProcessMsg } from "../Utils";

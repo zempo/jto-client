@@ -1,68 +1,63 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Just The Occasion
 
-## Available Scripts
+_The Greeting Card Platfrom_
 
-In the project directory, you can run:
+## Links
 
-### `npm start`
+- Live App, [here](https://just-the-occasion.netlify.com/)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Back End, [here](https://github.com/zempo/jto-server)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Mission
 
-### `npm test`
+We spend too much time finding the right greeting cards.
+Imagine being able to create a greeting card -- ready to print and paste on paper -- within a minute!
+Then, imagine being able to share, publish, edit, and download your own occasion.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+"Just the Occasion" is built for all your moments.
 
-### `npm run build`
+## Guide
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+If there are any lingering questions, click on the "Start" link.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+1. Create an Account (Email for Emailing Cards)
+2. Explore the "Create" page for your own cards.
+3. After creating a card, hover over and click on a card to open the mini menu.
+   ![Second Screenshot of the Browse page](https://imgur.com/IavzIBb.jpg)
+4. You can view, update, delete, publish/unpublish, or download
+5. The download mini menu lets you copy other public cards to your gallery, or download a pdf (Email service is coming this December!).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Screenshots
 
-### `npm run eject`
+### Create &#10231; Edit &#10231; Delete
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Gif of Creating an Occasion](https://imgur.com/CiQOguJ.gif)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Download
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![Gif of the Download Editor](https://imgur.com/9iSEW7r.gif)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Browse
 
-## Learn More
+![Screenshot of the Browse page](https://imgur.com/yFK3SUT.jpg)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Socialize
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Screenshot of public card](https://imgur.com/OU96jhI.jpg)
 
-### Code Splitting
+### Main
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+![Screenshot of the landing page](https://imgur.com/em2AP1z.jpg)
 
-### Analyzing the Bundle Size
+## Technologies Used For FrontEnd
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Reactjs (v16): useState, useEffect, useRef, useContext hooks
+- font awesome + custom logos
+- 3 custom-built hooks for the following: form data binding, onchange validation, and modals
+- Axios + axios custom endpoints
+- Custom-built form validators
+- jwt decoder
+- date-fns
+- react-to-print
+- 13 prepackaged typefaces
+- Jest + Enzyme for tests

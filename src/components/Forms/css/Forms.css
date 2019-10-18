@@ -116,7 +116,13 @@ p.preview {
   color: rgb(48, 58, 69, 0.6);
   max-width: 80%;
   margin-left: 10%;
-  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
 }
 
 #add-card-btn,
