@@ -46,9 +46,6 @@ a.action {
 
 button:active,
 .download-btn:active {
-  /* color: rgb(48, 58, 69);
-  background: #f8f5f5;
-  border: 2px solid rgb(48, 58, 69); */
   -moz-transform: scaleX(1.05);
   -o-transform: scaleX(1.05);
   -ms-transform: scaleX(1.05);
