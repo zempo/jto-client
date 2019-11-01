@@ -21,6 +21,7 @@ const SearchGallery = () => {
   const handleRadio = (e) => setArrange(e.target.name);
 
   const themeRef = useRef();
+  const buttonRef = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,6 +36,27 @@ const SearchGallery = () => {
       const sortedSelect = await arrangeBySelection(sortedTheme, arrange);
 
       setSearchCards(sortedSelect);
+
+      let posY = buttonRef.current.offsetTop;
+      let uA = navigator.userAgent;
+      if (
+        uA.toLowerCase().includes("compatible") ||
+        uA.toLowerCase().includes("edge") ||
+        uA.includes("MSIE") ||
+        uA.includes("Trident/")
+      ) {
+      }
+
+      if (!uA.toLowerCase().includes("chrome") && !uA.toLowerCase().includes("gecko/")) {
+        window.scrollTo(0, posY);
+      }
+
+      window.scrollTo({
+        top: posY,
+        left: 0,
+        behavior: "smooth"
+      });
+
       reset();
     } catch (error) {
       console.log(error);
@@ -103,7 +125,9 @@ const SearchGallery = () => {
           </div>
         </fieldset>
       </div>
-      <button className="browse-btn action">Browse</button>
+      <button ref={buttonRef} className="browse-btn action">
+        Browse
+      </button>
     </form>
   );
 };
