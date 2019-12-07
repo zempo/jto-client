@@ -7,6 +7,20 @@ header {
   background: #f8f5f5;
 }
 
+.sig-p {
+  /* text-align: right; */
+  /* font-size: 20px; */
+  margin-bottom: 40px;
+}
+
+.signature img {
+  height: 60px;
+  cursor: pointer;
+  margin-left: 20px;
+  position: relative;
+  top: 20px;
+}
+
 .jto-nav-menu {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -171,6 +185,7 @@ header {
   background: rgb(48, 58, 69);
   min-height: 5rem;
 }
+.jto-footer h1,
 .jto-footer h2,
 .jto-footer h3,
 .jto-footer p {
