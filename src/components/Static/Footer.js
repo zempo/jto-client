@@ -7,8 +7,8 @@ const Footer = () => {
   return (
     <footer className="jto-footer">
       <h1>Just the Occasion</h1>
-      <h2 className="sig-p">
-        From
+      <h3 className="sig-p">
+        &copy; 2020, All Rights Reserved &nbsp; Website By
         <a
           className="signature"
           href="https://solomonzelenko.com/"
@@ -17,7 +17,7 @@ const Footer = () => {
         >
           <img src={Signature} alt="Solomon Zelenko" />
         </a>
-      </h2>
+      </h3>
     </footer>
   );
 };
