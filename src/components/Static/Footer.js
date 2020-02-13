@@ -11,7 +11,7 @@ const Footer = () => {
         From
         <a
           className="signature"
-          href="https://github.com/zempo"
+          href="https://solomonzelenko.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
