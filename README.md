@@ -2,6 +2,8 @@
 
 _The Greeting Card Platfrom_
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8421aaff-8118-4366-abdd-b977f17c7076/deploy-status)](https://app.netlify.com/sites/just-the-occasion/deploys)
+
 ## Links
 
 - Live App, [here](https://just-the-occasion.netlify.com/)
