@@ -11,7 +11,7 @@ import { JtoNotification, Required } from "../../Utils/Utils";
 import "../css/Forms.css";
 import "./css/Auth.css";
 
-const Register = (props) => {
+const Register = props => {
   const { values, errors, handleChange, reset } = useForm(
     { username: "", fullname: "", email: "", password: "" },
     { 1: [], 2: [], 3: [], 4: [] },
@@ -27,14 +27,19 @@ const Register = (props) => {
   const [resStatus, setResStatus] = useState(0);
 
   useEffect(() => {
-    if (errors["1"].length > 0 || errors["2"].length > 0 || errors["3"].length > 0 || errors["4"].length > 0) {
+    if (
+      errors["1"].length > 0 ||
+      errors["2"].length > 0 ||
+      errors["3"].length > 0 ||
+      errors["4"].length > 0
+    ) {
       return setValidReq(false);
     } else {
       return setValidReq(true);
     }
   }, [errors]);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async event => {
     event.preventDefault();
     const { password, email, username, fullname } = values;
     let newUser = { password, email };
@@ -62,8 +67,14 @@ const Register = (props) => {
 
   return (
     <>
-      <form className="jto-form register-form" onSubmit={handleSubmit} autoComplete="off">
-        {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
+      <form
+        className="jto-form register-form"
+        onSubmit={handleSubmit}
+        autoComplete="off"
+      >
+        {resStatus === 0 ? null : (
+          <JtoNotification type={resStatus} msg={resMsg} />
+        )}
         <fieldset>
           <ul>
             {errors["2"].map((err, i) => (
@@ -117,7 +128,7 @@ const Register = (props) => {
           <br />
           <input
             ref={emailRef}
-            type="text"
+            type="email"
             name="email"
             placeholder="ecardman@gmail.com"
             id={3}
@@ -137,7 +148,7 @@ const Register = (props) => {
           <br />
           <input
             ref={pwdRef}
-            type="text"
+            type="password"
             name="password"
             placeholder="Password1@"
             id={4}
