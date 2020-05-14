@@ -16,9 +16,6 @@ const Footer = () => {
         >
           <img src='https://i.imgur.com/LlMXxEm.png' alt="Solomon Zelenko" />
         </a>
-        <br/>
-        <br/>
-        All Rights Reserved.
       </h3>
     </footer>
   );
