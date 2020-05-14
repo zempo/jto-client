@@ -14,11 +14,11 @@ header {
 }
 
 .signature img {
-  height: 40px;
+  max-height: 35px;
   cursor: pointer;
   margin-left: 10px;
   position: relative;
-  top: 15px;
+  top: 10px;
 }
 
 .jto-nav-menu {

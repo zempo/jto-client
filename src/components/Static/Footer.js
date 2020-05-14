@@ -1,22 +1,24 @@
 import React from "react";
-import Signature from "../../images/signature.svg";
 
 const Footer = () => {
   // add a scroll to top button, additional map menu, eventual site map, and custom signature
 
   return (
     <footer className="jto-footer">
-      <h1>Just the Occasion</h1>
+      <h2>Just the Occasion</h2>
       <h3 className="sig-p">
-        &copy; 2020, All Rights Reserved &nbsp; Website By
+        &copy; 2020
         <a
           className="signature"
-          href="https://solomonzelenko.com/"
+          href="https://solomonzelenko.dev/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={Signature} alt="Solomon Zelenko" />
+          <img src='https://i.imgur.com/LlMXxEm.png' alt="Solomon Zelenko" />
         </a>
+        <br/>
+        <br/>
+        All Rights Reserved.
       </h3>
     </footer>
   );
