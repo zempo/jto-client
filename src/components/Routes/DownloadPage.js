@@ -48,8 +48,6 @@ const DownloadPage = (props) => {
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
-    console.log(e.currentTarget);
-
     if (type === "checkbox") {
       setSize(checked);
     } else if (name === "frontTxt") {

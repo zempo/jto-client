@@ -1,21 +1,23 @@
 import React from "react";
-import Signature from "../../images/signature.svg";
 
 const Footer = () => {
+  const scrollUp = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   // add a scroll to top button, additional map menu, eventual site map, and custom signature
 
   return (
     <footer className="jto-footer">
-      <h1>Just the Occasion</h1>
+      <h2 style={{cursor: 'pointer'}} onClick={scrollUp}>Just the Occasion</h2>
       <h3 className="sig-p">
-        &copy; 2020, All Rights Reserved &nbsp; Website By
+        &copy; 2020
         <a
           className="signature"
-          href="https://solomonzelenko.com/"
+          href="https://solomonzelenko.dev/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={Signature} alt="Solomon Zelenko" />
+          <img src='https://i.imgur.com/LlMXxEm.png' alt="Solomon Zelenko" />
         </a>
       </h3>
     </footer>
