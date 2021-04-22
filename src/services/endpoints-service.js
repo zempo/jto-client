@@ -7,41 +7,41 @@ export const register = axios.create({
   baseURL: `${Config.API_ENDPOINT}/users`,
   method: "POST",
   headers: {
-    "content-type": "application/json"
-  }
+    "content-type": "application/json",
+  },
 });
 
 export const login = axios.create({
   baseURL: `${Config.API_ENDPOINT}/auth/login`,
   method: "POST",
   headers: {
-    "content-type": "application/json"
-  }
+    "content-type": "application/json",
+  },
 });
 
 export const refresh = axios.create({
   baseURL: `${Config.API_ENDPOINT}/auth/refresh`,
   method: "POST",
   headers: {
-    authorization: `Bearer ${TokenService.getAuthToken()}`
-  }
+    authorization: `Bearer ${TokenService.getAuthToken()}`,
+  },
 });
 
 // CREATE CONTENT (C)
 export const newImages = axios.create({
-  baseURL: `${Config.API_ENDPOINT}/private/images`,
+  baseURL: `${Config.API_ENDPOINT}/dashboard/images`,
   headers: {
-    authorization: `Bearer ${TokenService.getAuthToken()}`
-  }
+    authorization: `Bearer ${TokenService.getAuthToken()}`,
+  },
 });
 
 export const newCard = axios.create({
-  baseURL: `${Config.API_ENDPOINT}/private/cards/${TokenService.getId()}`,
+  baseURL: `${Config.API_ENDPOINT}/dashboard/cards/${TokenService.getId()}`,
   method: "POST",
   headers: {
     "content-type": "application/json",
-    authorization: `Bearer ${TokenService.getAuthToken()}`
-  }
+    authorization: `Bearer ${TokenService.getAuthToken()}`,
+  },
 });
 
 export const newComment = axios.create({
@@ -49,8 +49,8 @@ export const newComment = axios.create({
   method: "POST",
   headers: {
     "content-type": "application/json",
-    authorization: `Bearer ${TokenService.getAuthToken()}`
-  }
+    authorization: `Bearer ${TokenService.getAuthToken()}`,
+  },
 });
 
 // READ CONTENT (R)
@@ -58,76 +58,76 @@ export const readUser = axios.create({
   baseURL: `${Config.API_ENDPOINT}/users/${TokenService.getId()}`,
   method: "GET",
   headers: {
-    authorization: `Bearer ${TokenService.getAuthToken()}`
-  }
+    authorization: `Bearer ${TokenService.getAuthToken()}`,
+  },
 });
 
 export const readComment = axios.create({
   baseURL: `${Config.API_ENDPOINT}/comments`,
   method: "GET",
   headers: {
-    authorization: `Bearer ${TokenService.getAuthToken()}`
-  }
+    authorization: `Bearer ${TokenService.getAuthToken()}`,
+  },
 });
 
 export const readPublicUser = axios.create({
   baseURL: `${Config.API_ENDPOINT}/users/public`,
-  method: "GET"
+  method: "GET",
 });
 
 export const listUserCards = axios.create({
-  baseURL: `${Config.API_ENDPOINT}/private/cards/${TokenService.getId()}`,
+  baseURL: `${Config.API_ENDPOINT}/dashboard/cards/${TokenService.getId()}`,
   method: "GET",
   headers: {
-    authorization: `Bearer ${TokenService.getAuthToken()}`
-  }
+    authorization: `Bearer ${TokenService.getAuthToken()}`,
+  },
 });
 
 export const listCards = axios.create({
-  baseURL: `${Config.API_ENDPOINT}/cards`,
-  method: "GET"
+  baseURL: `${Config.API_ENDPOINT}/gallery`,
+  method: "GET",
 });
 
 export const listCardComments = axios.create({
-  baseURL: `${Config.API_ENDPOINT}/cards/comments`
+  baseURL: `${Config.API_ENDPOINT}/gallery/comments`,
 });
 
-export const listReactions = axios.create({
-  baseURL: `${Config.API_ENDPOINT}/reactions`,
-  method: "GET"
+export const listActions = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/actions`,
+  method: "GET",
 });
 
-export const listCardReacts = axios.create({
-  baseURL: `${Config.API_ENDPOINT}/reactions/hearts`,
+export const listCardActions = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/actions/likes`,
   method: "GET",
   headers: {
-    authorization: `Bearer ${TokenService.getAuthToken()}`
-  }
+    authorization: `Bearer ${TokenService.getAuthToken()}`,
+  },
 });
 
-export const listHearts = axios.create({
-  baseURL: `${Config.API_ENDPOINT}/reactions/hearts`,
+export const listLikes = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/actions/likes`,
   method: "GET",
   headers: {
-    authorization: `Bearer ${TokenService.getAuthToken()}`
-  }
+    authorization: `Bearer ${TokenService.getAuthToken()}`,
+  },
 });
 
-export const listShares = axios.create({
-  baseURL: `${Config.API_ENDPOINT}/reactions/shares`,
+export const listSaves = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/actions/saves`,
   method: "GET",
   headers: {
-    authorization: `Bearer ${TokenService.getAuthToken()}`
-  }
+    authorization: `Bearer ${TokenService.getAuthToken()}`,
+  },
 });
 
 // UPDATE CONTENT (U)
 export const updateCard = axios.create({
-  baseURL: `${Config.API_ENDPOINT}/cards`,
+  baseURL: `${Config.API_ENDPOINT}/gallery`,
   method: "PATCH",
   headers: {
-    authorization: `Bearer ${TokenService.getAuthToken()}`
-  }
+    authorization: `Bearer ${TokenService.getAuthToken()}`,
+  },
 });
 
 export const updateComment = axios.create({
@@ -135,65 +135,65 @@ export const updateComment = axios.create({
   method: "PATCH",
   headers: {
     "content-type": "application/json",
-    authorization: `Bearer ${TokenService.getAuthToken()}`
-  }
+    authorization: `Bearer ${TokenService.getAuthToken()}`,
+  },
 });
 
 export const updateUserCard = axios.create({
-  baseURL: `${Config.API_ENDPOINT}/private/cards/${TokenService.getId()}`,
+  baseURL: `${Config.API_ENDPOINT}/dashboard/cards/${TokenService.getId()}`,
   method: "PATCH",
   headers: {
-    authorization: `Bearer ${TokenService.getAuthToken()}`
-  }
+    authorization: `Bearer ${TokenService.getAuthToken()}`,
+  },
 });
 
 export const makePublic = axios.create({
-  baseURL: `${Config.API_ENDPOINT}/private/make-public/${TokenService.getId()}`,
+  baseURL: `${Config.API_ENDPOINT}/dashboard/publish/${TokenService.getId()}`,
   method: "PATCH",
   headers: {
-    authorization: `Bearer ${TokenService.getAuthToken()}`
-  }
+    authorization: `Bearer ${TokenService.getAuthToken()}`,
+  },
 });
 
-export const makePrivate = axios.create({
-  baseURL: `${Config.API_ENDPOINT}/cards/make-private`,
+export const makeDashboard = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/gallery/unpublish`,
   method: "PATCH",
   headers: {
-    authorization: `Bearer ${TokenService.getAuthToken()}`
-  }
+    authorization: `Bearer ${TokenService.getAuthToken()}`,
+  },
 });
 
-export const toggleShare = axios.create({
-  baseURL: `${Config.API_ENDPOINT}/reactions/shares`,
+export const toggleSave = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/actions/saves`,
   method: "PATCH",
   headers: {
-    authorization: `Bearer ${TokenService.getAuthToken()}`
-  }
+    authorization: `Bearer ${TokenService.getAuthToken()}`,
+  },
 });
 
 export const toggleLike = axios.create({
-  baseURL: `${Config.API_ENDPOINT}/reactions/hearts`,
+  baseURL: `${Config.API_ENDPOINT}/actions/likes`,
   method: "PATCH",
   headers: {
-    authorization: `Bearer ${TokenService.getAuthToken()}`
-  }
+    authorization: `Bearer ${TokenService.getAuthToken()}`,
+  },
 });
 
 // DELETE CONTENT (D)
 export const deleteCard = axios.create({
-  baseURL: `${Config.API_ENDPOINT}/cards`,
+  baseURL: `${Config.API_ENDPOINT}/gallery`,
   method: "DELETE",
   headers: {
-    authorization: `Bearer ${TokenService.getAuthToken()}`
-  }
+    authorization: `Bearer ${TokenService.getAuthToken()}`,
+  },
 });
 
 export const deleteUserCard = axios.create({
-  baseURL: `${Config.API_ENDPOINT}/private/cards/${TokenService.getId()}`,
+  baseURL: `${Config.API_ENDPOINT}/dashboard/cards/${TokenService.getId()}`,
   method: "DELETE",
   headers: {
-    authorization: `Bearer ${TokenService.getAuthToken()}`
-  }
+    authorization: `Bearer ${TokenService.getAuthToken()}`,
+  },
 });
 
 export const deleteComment = axios.create({
@@ -201,6 +201,6 @@ export const deleteComment = axios.create({
   method: "DELETE",
   headers: {
     "content-type": "application/json",
-    authorization: `Bearer ${TokenService.getAuthToken()}`
-  }
+    authorization: `Bearer ${TokenService.getAuthToken()}`,
+  },
 });

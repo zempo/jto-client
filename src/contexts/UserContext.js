@@ -17,8 +17,8 @@ export const UserContextProvider = (props) => {
         const result = await readUser.get("/");
 
         setLoading(false);
-        setUser(result.data);
-        setFullName(result.data.full_name);
+        setUser(result.data.payload);
+        setFullName(result.data.payload.full_name);
         setError(0);
       } catch (err) {
         setError(err.response.status);
@@ -32,7 +32,7 @@ export const UserContextProvider = (props) => {
     try {
       const result = await readPublicUser.get(`/${id}`);
 
-      return result.data;
+      return result.data.payload;
     } catch (err2) {
       console.log(err2);
     }
@@ -49,8 +49,12 @@ export const UserContextProvider = (props) => {
     fullName,
     firstName,
     error,
-    loading
+    loading,
   };
 
-  return <UserContext.Provider value={{ value }}>{props.children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider value={{ value }}>
+      {props.children}
+    </UserContext.Provider>
+  );
 };

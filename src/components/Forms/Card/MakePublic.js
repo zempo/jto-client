@@ -20,28 +20,30 @@ const MakePublic = ({ item, cancel }) => {
     } catch (err) {
       setError(true);
       setResStatus(err.response.status);
-      setResMsg(Object.values(err.response.data.error));
+      setResMsg(Object.values(err.response.data.message));
     }
   };
 
   return (
-    <div className="jto-privacy">
+    <div className='jto-privacy'>
       <h2>Publish Your Occasion?</h2>
       <p>
         Click the button to share your occasion
         <br />
         You can toggle your occasion's privacy anytime!
       </p>
-      {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
-      <div className="modal-controls">
-        <button className="modal-btn" onClick={cancel}>
+      {resStatus === 0 ? null : (
+        <JtoNotification type={resStatus} msg={resMsg} />
+      )}
+      <div className='modal-controls'>
+        <button className='modal-btn' onClick={cancel}>
           Cancel
         </button>
-        <button className="modal-btn action" onClick={handlePrivacy}>
+        <button className='modal-btn action' onClick={handlePrivacy}>
           Publish Occasion
         </button>
       </div>
-      <button className="close-modal" onClick={cancel}>
+      <button className='close-modal' onClick={cancel}>
         X
       </button>
     </div>

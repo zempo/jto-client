@@ -13,7 +13,7 @@ class Nav extends Component {
   constructor() {
     super();
     this.state = {
-      showing: false
+      showing: false,
     };
     this.toggleModal = this.toggleModal.bind(this);
   }
@@ -43,12 +43,14 @@ class Nav extends Component {
     const { user_name } = this.context.value.user;
 
     return (
-      <div className="logged-in auth-link">
+      <div className='logged-in auth-link'>
         <h3>
-          <i className="far fa-user-circle"></i> &nbsp;
-          {user_name && user_name.length > 10 ? `${user_name.slice(0, 10)}...` : user_name}
+          <i className='far fa-user-circle'></i> &nbsp;
+          {user_name && user_name.length > 10
+            ? `${user_name.slice(0, 10)}...`
+            : user_name}
           <Hyph />
-          <Link onClick={this.handleLogoutClick} to="/">
+          <Link onClick={this.handleLogoutClick} to='/'>
             Logout
           </Link>
         </h3>
@@ -60,13 +62,13 @@ class Nav extends Component {
     // window.location.reload();
     // console.log("reload");
     return (
-      <div className="logged-out auth-link">
+      <div className='logged-out auth-link'>
         <h3>
-          <NavLink exact activeClassName="active-auth" to="/login">
+          <NavLink exact activeClassName='active-auth' to='/login'>
             Login
           </NavLink>
           <Hyph />
-          <NavLink exact activeClassName="active-auth" to="/register">
+          <NavLink exact activeClassName='active-auth' to='/register'>
             Register
           </NavLink>
         </h3>
@@ -80,24 +82,30 @@ class Nav extends Component {
 
     return (
       <>
-        <nav className="jto-nav-menu">
-          <NavLink exact activeClassName="active" to="/">
-            <img className="logo-link" src={Logo} alt="homepage" width="70" height="70" />
+        <nav className='jto-nav-menu'>
+          <NavLink exact activeClassName='active' to='/'>
+            <img
+              className='logo-link'
+              src={Logo}
+              alt='homepage'
+              width='70'
+              height='70'
+            />
           </NavLink>
-          <div className="nav-menu-mini" onClick={this.toggleModal}>
-            <img src={MenuIcon} alt="menu-icon" width="50" height="50" />
+          <div className='nav-menu-mini' onClick={this.toggleModal}>
+            <img src={MenuIcon} alt='menu-icon' width='50' height='50' />
           </div>
-          <div className="nav-menu">
-            <NavLink exact activeClassName="active" to="/guide">
-              <h3>Start</h3>
+          <div className='nav-menu'>
+            <NavLink exact activeClassName='active' to='/guide'>
+              <h3>Guide</h3>
             </NavLink>
-            <NavLink exact activeClassName="active" to="/private">
-              <h3>Create</h3>
+            <NavLink exact activeClassName='active' to='/gallery'>
+              <h3>Gallery</h3>
             </NavLink>
-            <NavLink exact activeClassName="active" to="/gallery">
-              <h3>Browse</h3>
+            <NavLink exact activeClassName='active' to='/dashboard'>
+              <h3>Dashboard</h3>
             </NavLink>
-            <NavLink exact activeClassName="active" to="/support">
+            <NavLink exact activeClassName='active' to='/support'>
               <h3>Support</h3>
             </NavLink>
             {TokenService.hasAuthToken() && this.context.value.error !== 401

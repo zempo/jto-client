@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { JtoNotification } from "../../Utils/Utils";
-import { makePrivate } from "../../../services/endpoints-service";
+import { makeDashboard } from "../../../services/endpoints-service";
 
 const MakePrivate = ({ item, cancel }) => {
   // eslint-disable-next-line
@@ -12,7 +12,7 @@ const MakePrivate = ({ item, cancel }) => {
     setResStatus(0);
     setResMsg("");
     try {
-      const deleted = await makePrivate.patch(`/${item}`);
+      const deleted = await makeDashboard.patch(`/${item}`);
 
       setResStatus(deleted.status);
       setResMsg("Occasion Unpublished");
@@ -20,28 +20,36 @@ const MakePrivate = ({ item, cancel }) => {
     } catch (err) {
       setError(true);
       setResStatus(err.response.status);
-      setResMsg(Object.values(err.response.data.error));
+      setResMsg(Object.values(err.response.data.message));
     }
   };
 
   return (
-    <div className={resStatus === 0 || resStatus === 204 ? "jto-privacy" : "jto-privacy shake"}>
+    <div
+      className={
+        resStatus === 0 || resStatus === 204
+          ? "jto-privacy"
+          : "jto-privacy shake"
+      }
+    >
       <h2>Make Occasion Private?</h2>
       <p>
         Click the button to hide your occasion
         <br />
         You can bring your occasion back here, anytime!
       </p>
-      {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
-      <div className="modal-controls">
-        <button className="modal-btn" onClick={cancel}>
+      {resStatus === 0 ? null : (
+        <JtoNotification type={resStatus} msg={resMsg} />
+      )}
+      <div className='modal-controls'>
+        <button className='modal-btn' onClick={cancel}>
           Cancel
         </button>
-        <button className="modal-btn action" onClick={handlePrivacy}>
+        <button className='modal-btn action' onClick={handlePrivacy}>
           Hide Occasion
         </button>
       </div>
-      <button className="close-modal" onClick={cancel}>
+      <button className='close-modal' onClick={cancel}>
         X
       </button>
     </div>

@@ -26,24 +26,26 @@ const DeleteUserCard = ({ item, cancel }) => {
     } catch (err) {
       setError(true);
       setResStatus(err.response.status);
-      setResMsg(Object.values(err.response.data.error));
+      setResMsg(Object.values(err.response.data.message));
     }
   };
 
   return (
     <div className={resStatus === 0 || resStatus === 204 ? null : "shake"}>
-      {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
+      {resStatus === 0 ? null : (
+        <JtoNotification type={resStatus} msg={resMsg} />
+      )}
       <h2>Are you sure you want to delete your occasion?</h2>
       <p>Once you delete an Occasion, this action cannot be undone.</p>
-      <div className="modal-controls">
-        <button className="modal-btn" onClick={cancel}>
+      <div className='modal-controls'>
+        <button className='modal-btn' onClick={cancel}>
           Cancel
         </button>
-        <button className="modal-btn action" onClick={handleDelete}>
+        <button className='modal-btn action' onClick={handleDelete}>
           Delete
         </button>
       </div>
-      <button className="close-modal" onClick={cancel}>
+      <button className='close-modal' onClick={cancel}>
         X
       </button>
     </div>

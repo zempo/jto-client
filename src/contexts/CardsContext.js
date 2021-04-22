@@ -23,7 +23,7 @@ export const CardsContextProvider = (props) => {
         const result = await listUserCards.get("/");
 
         setLoading(false);
-        setCards(result.data);
+        setCards(result.data.payload);
       } catch (err) {
         setLoading(false);
         setError(true);
@@ -43,8 +43,12 @@ export const CardsContextProvider = (props) => {
     let cardToEdit = [updatedCard];
     let cardsToEdit = currentCards;
     let searchCardsToEdit = currentSearchCards;
-    let editedCards = cardsToEdit.map((obj) => cardToEdit.find((o) => o.id === obj.id) || obj);
-    let editedSearchCards = searchCardsToEdit.map((obj) => cardToEdit.find((o) => o.id === obj.id) || obj);
+    let editedCards = cardsToEdit.map(
+      (obj) => cardToEdit.find((o) => o.id === obj.id) || obj
+    );
+    let editedSearchCards = searchCardsToEdit.map(
+      (obj) => cardToEdit.find((o) => o.id === obj.id) || obj
+    );
     // let editted = removeOld.push(commentToEdit);
     setCards(editedCards);
     setSearchCards(editedSearchCards);
@@ -86,7 +90,10 @@ export const CardsContextProvider = (props) => {
 
   let indexOfLastSearch = currentSearchPg * searchCardsPerPg;
   let indexOfFirstSearch = indexOfLastSearch - searchCardsPerPg;
-  let currentSearchCards = searchCards.slice(indexOfFirstSearch, indexOfLastSearch);
+  let currentSearchCards = searchCards.slice(
+    indexOfFirstSearch,
+    indexOfLastSearch
+  );
   let lastSearchPg = Math.ceil(searchCards.length / searchCardsPerPg);
 
   const paginate = (e) => {
@@ -214,8 +221,12 @@ export const CardsContextProvider = (props) => {
     moveOrDeleteCard,
     makePublic,
     loading,
-    error
+    error,
   };
 
-  return <CardsContext.Provider value={{ value }}>{props.children}</CardsContext.Provider>;
+  return (
+    <CardsContext.Provider value={{ value }}>
+      {props.children}
+    </CardsContext.Provider>
+  );
 };

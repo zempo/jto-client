@@ -1,12 +1,22 @@
-import React, { useState, useEffect, useLayoutEffect, useContext, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useContext,
+  useRef,
+} from "react";
 import { GalleryContext } from "../../../contexts/GalleryContext";
 import {
   validateFrontMessage,
   validateTheme,
-  validateInsideMessage
+  validateInsideMessage,
 } from "../../../services/validation/card-validation";
 import { useForm } from "../../../hooks/get-files";
-import { listCards, updateCard, newImages } from "../../../services/endpoints-service";
+import {
+  listCards,
+  updateCard,
+  newImages,
+} from "../../../services/endpoints-service";
 import { JtoNotification, Loader, EditThemesList } from "../../Utils/Utils";
 import "../css/Forms.css";
 
@@ -19,10 +29,16 @@ const EditPublicCard = ({ item, cancel }) => {
     { frontMessage: "", insideMessage: "", theme: "" },
     { 1: [], 3: [], 5: [] },
     { frontImage: "", insideImage: "" },
-    { 1: validateFrontMessage, 2: "", 3: validateInsideMessage, 4: "", 5: validateTheme }
+    {
+      1: validateFrontMessage,
+      2: "",
+      3: validateInsideMessage,
+      4: "",
+      5: validateTheme,
+    }
   );
   const {
-    value: { editPublicCard, cards, searchCards }
+    value: { editPublicCard, cards, searchCards },
   } = useContext(GalleryContext);
   const [validReq, setValidReq] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -45,12 +61,12 @@ const EditPublicCard = ({ item, cancel }) => {
         // setLoading(true);
         try {
           const cardResult = await listCards.get(`/${item}`);
-          setCard(cardResult.data);
-          setCardTheme(cardResult.data.theme);
+          setCard(cardResult.data.payload);
+          setCardTheme(cardResult.data.payload.theme);
         } catch (err) {
           setError(true);
           setResStatus(err.response.status);
-          setResMsg(Object.values(err.response.data.error));
+          setResMsg(Object.values(err.response.data.message));
         }
       };
 
@@ -106,7 +122,11 @@ const EditPublicCard = ({ item, cancel }) => {
       let sendFullData = await updateCard.patch(`/${item}`, fullData);
       let cardToUpdate = await listCards.get(`/${item}`);
       // eslint-disable-next-line
-      let editedCard = await editPublicCard(cards, searchCards, cardToUpdate.data);
+      let editedCard = await editPublicCard(
+        cards,
+        searchCards,
+        cardToUpdate.data.payload
+      );
 
       setResMsg("Occasion Updated");
       reset();
@@ -119,7 +139,7 @@ const EditPublicCard = ({ item, cancel }) => {
     } catch (err) {
       setLoading(false);
       setResStatus(err.response.status);
-      setResMsg(Object.values(err.response.data.error));
+      setResMsg(Object.values(err.response.data.message));
       setTimeout(() => {
         setResStatus(0);
       }, 5000);
@@ -137,72 +157,88 @@ const EditPublicCard = ({ item, cancel }) => {
 
   return (
     <>
-      <form className="jto-form edit-card-form" onSubmit={handleSubmit}>
-        {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} done={unmounted.current} />}
-        <fieldset className={resStatus === 0 || resStatus === 204 ? null : "shake"}>
-          <div className="question-text">
-            <label htmlFor="frontMessage">Did Your Occasion Change?</label>
+      <form className='jto-form edit-card-form' onSubmit={handleSubmit}>
+        {resStatus === 0 ? null : (
+          <JtoNotification
+            type={resStatus}
+            msg={resMsg}
+            done={unmounted.current}
+          />
+        )}
+        <fieldset
+          className={resStatus === 0 || resStatus === 204 ? null : "shake"}
+        >
+          <div className='question-text'>
+            <label htmlFor='frontMessage'>Did Your Occasion Change?</label>
             <ul>
               {errors["1"].map((err, i) => (
                 <li key={i}>{err}</li>
               ))}
             </ul>
             <input
-              type="text"
-              placeholder="Happy Occasion Day!"
+              type='text'
+              placeholder='Happy Occasion Day!'
               id={1}
-              name="frontMessage"
+              name='frontMessage'
               onChange={handleChange}
               defaultValue={card.front_message}
             />
           </div>
-          <div className="question-file">
-            <label htmlFor="frontImage">New Front Pic?</label>
+          <div className='question-file'>
+            <label htmlFor='frontImage'>New Front Pic?</label>
             <br />
             <input
-              type="file"
-              placeholder="URL for image that can be stretched/shrunk to 400px width and 500px height"
-              name="frontImage"
+              type='file'
+              placeholder='URL for image that can be stretched/shrunk to 400px width and 500px height'
+              name='frontImage'
               id={2}
               onChange={handleChange}
             />
           </div>
-          <div className="question-text">
-            <label htmlFor="insideMessage">New Message Inside?</label>
+          <div className='question-text'>
+            <label htmlFor='insideMessage'>New Message Inside?</label>
             <ul>
               {errors["3"].map((err, i) => (
                 <li key={i}>{err}</li>
               ))}
             </ul>
-            <button id="preview-btn" onClick={handlePreview}>
+            <button id='preview-btn' onClick={handlePreview}>
               {showing ? "▲ Hide" : "▼ Show"} Last Message
             </button>
             <br />
-            {showing ? <p className="preview">"{card.inside_message}"</p> : null}
+            {showing ? (
+              <p className='preview'>"{card.inside_message}"</p>
+            ) : null}
             <textarea
-              placeholder="type something to change message..."
-              name="insideMessage"
+              placeholder='type something to change message...'
+              name='insideMessage'
               onChange={handleChange}
               id={3}
               defaultValue={card.inside_message}
             />
           </div>
-          <div className="question-file">
-            <i className="fas fa-cloud-upload-alt fa-2x"></i>
+          <div className='question-file'>
+            <i className='fas fa-cloud-upload-alt fa-2x'></i>
             <br />
-            <label htmlFor="frontImage">New Inside Pic?</label>
+            <label htmlFor='frontImage'>New Inside Pic?</label>
             <br />
-            <input type="file" placeholder="choose file" name="insideImage" id={4} onChange={handleChange} />
+            <input
+              type='file'
+              placeholder='choose file'
+              name='insideImage'
+              id={4}
+              onChange={handleChange}
+            />
           </div>
           <br />
-          <div className="question-select">
-            <label htmlFor="themes">New Font?</label>
+          <div className='question-select'>
+            <label htmlFor='themes'>New Font?</label>
             <br />
             <select
-              className="themes"
+              className='themes'
               defaultValue={card.theme}
               defaultChecked={card.theme}
-              name="theme"
+              name='theme'
               id={5}
               onChange={handleChange}
             >
@@ -212,16 +248,21 @@ const EditPublicCard = ({ item, cancel }) => {
         </fieldset>
         {loading ? <Loader loading={loading} status={resStatus} /> : null}
         <button
-          id="edit-card-btn"
-          className="action"
-          disabled={!validReq || errors["1"].length > 0 || errors["3"].length > 0 || errors["5"].length > 0}
-          type="submit"
+          id='edit-card-btn'
+          className='action'
+          disabled={
+            !validReq ||
+            errors["1"].length > 0 ||
+            errors["3"].length > 0 ||
+            errors["5"].length > 0
+          }
+          type='submit'
         >
           Edit Occasion
         </button>
       </form>
       {/* <button onClick={cancel}>cancel</button> */}
-      <button className="close-modal" onClick={cancel}>
+      <button className='close-modal' onClick={cancel}>
         X
       </button>
     </>

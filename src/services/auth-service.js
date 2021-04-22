@@ -11,13 +11,14 @@ export const AuthService = {
     return login
       .post("/", JSON.stringify(creds))
       .then((res) => {
-        if (res.status !== 200) {
+        if (res.status !== 201) {
           return res.data.then((e) => Promise.reject(e));
         }
-        return res.data;
+        return res.data.token;
       })
       .then((res) => {
-        TokenService.saveAuthToken(res.authToken);
+        console.log(res);
+        TokenService.saveAuthToken(res);
         IdleService.regiserIdleTimerResets();
         TokenService.queueCallbackBeforeExpiry(() => {
           AuthService.postRefreshToken();
@@ -33,19 +34,19 @@ export const AuthService = {
         if (!res.statusText) {
           res.data.then((e) => Promise.reject(e));
         }
-        TokenService.saveAuthToken(res.data.authToken);
+        TokenService.saveAuthToken(res.data.token);
         TokenService.queueCallbackBeforeExpiry(() => {
-          AuthService.postRefreshToken2();
+          AuthService.postRefreshToken();
         });
         return res.data;
       })
       .catch((err) => {
         // clear the local storage if the refresh doesn't work!
-        TokenService.clearAuthToken()
+        TokenService.clearAuthToken();
         TokenService.clearCallbackBeforeExpiry();
         IdleService.unRegisterIdleResets();
         console.log("Your session has expired. Please log back in.", err);
         console.error(err);
       });
-  }
+  },
 };

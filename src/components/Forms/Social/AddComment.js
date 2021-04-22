@@ -7,10 +7,15 @@ import { PublicCardContext as CardContext } from "../../../contexts/PublicCardCo
 
 const AddComment = ({ item, cancel }) => {
   const {
-    value: { cardComments, addToComments }
+    value: { cardComments, addToComments },
   } = useContext(CardContext);
   // eslint-disable-next-line
-  const { values, files, errors, handleChange, reset } = useForm({ body: "" }, { 1: [] }, {}, { 1: validateBody });
+  const { values, files, errors, handleChange, reset } = useForm(
+    { body: "" },
+    { 1: [] },
+    {},
+    { 1: validateBody }
+  );
   const [validReq, setValidReq] = useState(false);
   // eslint-disable-next-line
   const [loading, setLoading] = useState(false);
@@ -41,7 +46,10 @@ const AddComment = ({ item, cancel }) => {
       let fullData = { card_id: item, body };
       let sendFullData = await newComment.post("/", fullData);
       // eslint-disable-next-line
-      let updatedComments = await addToComments(cardComments, sendFullData.data);
+      let updatedComments = await addToComments(
+        cardComments,
+        sendFullData.data.payload
+      );
 
       setResStatus(sendFullData.status);
       setResMsg("Added Comment");
@@ -51,23 +59,26 @@ const AddComment = ({ item, cancel }) => {
     } catch (error) {
       setLoading(false);
       setResStatus(error.response.status);
-      setResMsg(Object.values(error.response.data.error));
+      setResMsg(Object.values(error.response.data.message));
     }
   };
 
   return (
     <>
-      <form className="jto-comment-form add-comment-form" onSubmit={handleSubmit}>
+      <form
+        className='jto-comment-form add-comment-form'
+        onSubmit={handleSubmit}
+      >
         <fieldset>
-          <label htmlFor="body">
+          <label htmlFor='body'>
             <Required met={values.body.length === 0 ? false : true} />
           </label>
           <textarea
             ref={bodyRef}
-            type="text"
-            placeholder="Write a comment..."
+            type='text'
+            placeholder='Write a comment...'
             id={1}
-            name="body"
+            name='body'
             onChange={handleChange}
             value={values.body}
           />
@@ -77,11 +88,15 @@ const AddComment = ({ item, cancel }) => {
             ))}
           </ul>
         </fieldset>
-        <button className="action" disabled={!validReq || bodyRef.current.value.length === 0} type="submit">
+        <button
+          className='action'
+          disabled={!validReq || bodyRef.current.value.length === 0}
+          type='submit'
+        >
           Comment
         </button>
       </form>
-      <button className="close-modal" onClick={cancel}>
+      <button className='close-modal' onClick={cancel}>
         X
       </button>
     </>

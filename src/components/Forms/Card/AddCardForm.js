@@ -2,12 +2,17 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import {
   validateFrontMessage,
   validateTheme,
-  validateInsideMessage
+  validateInsideMessage,
 } from "../../../services/validation/card-validation";
 import { CardsContext } from "../../../contexts/CardsContext";
 import { useForm } from "../../../hooks/get-files";
 import { newImages, newCard } from "../../../services/endpoints-service";
-import { JtoNotification, Required, Loader, ThemesList } from "../../Utils/Utils";
+import {
+  JtoNotification,
+  Required,
+  Loader,
+  ThemesList,
+} from "../../Utils/Utils";
 import "../css/Forms.css";
 
 function AddCard({ item, cancel }) {
@@ -16,10 +21,16 @@ function AddCard({ item, cancel }) {
     { frontMessage: "", insideMessage: "", theme: "" },
     { 1: [], 3: [], 5: [] },
     { frontImage: "", insideImage: "" },
-    { 1: validateFrontMessage, 2: "", 3: validateInsideMessage, 4: "", 5: validateTheme }
+    {
+      1: validateFrontMessage,
+      2: "",
+      3: validateInsideMessage,
+      4: "",
+      5: validateTheme,
+    }
   );
   const {
-    value: { addToCards, cards, searchCards }
+    value: { addToCards, cards, searchCards },
   } = useContext(CardsContext);
   // cloudinary call
   // eslint-disable-next-line
@@ -72,7 +83,11 @@ function AddCard({ item, cancel }) {
       fullData.inside_message = insideMessage;
       let sendFullData = await newCard.post("/", fullData);
       // eslint-disable-next-line
-      let addedToCards = await addToCards(cards, searchCards, sendFullData.data);
+      let addedToCards = await addToCards(
+        cards,
+        searchCards,
+        sendFullData.data.payload
+      );
 
       setResMsg("New Occasion Created");
       reset();
@@ -85,7 +100,7 @@ function AddCard({ item, cancel }) {
     } catch (error) {
       setLoading(false);
       setResStatus(error.response.status);
-      setResMsg(Object.values(error.response.data.error));
+      setResMsg(Object.values(error.response.data.message));
       setTimeout(() => {
         setResStatus(0);
       }, 5000);
@@ -94,11 +109,15 @@ function AddCard({ item, cancel }) {
 
   return (
     <>
-      <form className="jto-form add-card-form" onSubmit={handleSubmit}>
-        {resStatus === 0 ? null : <JtoNotification type={resStatus} msg={resMsg} />}
-        <fieldset className={resStatus === 0 || resStatus === 201 ? null : "shake"}>
-          <div className="question-text">
-            <label htmlFor="frontMessage">
+      <form className='jto-form add-card-form' onSubmit={handleSubmit}>
+        {resStatus === 0 ? null : (
+          <JtoNotification type={resStatus} msg={resMsg} />
+        )}
+        <fieldset
+          className={resStatus === 0 || resStatus === 201 ? null : "shake"}
+        >
+          <div className='question-text'>
+            <label htmlFor='frontMessage'>
               <Required met={values.frontMessage.length === 0 ? false : true} />
               What's the Occassion?
             </label>
@@ -109,26 +128,35 @@ function AddCard({ item, cancel }) {
             </ul>
             <input
               ref={frontMsgRef}
-              type="text"
-              placeholder="Happy Occasion Day!"
+              type='text'
+              placeholder='Happy Occasion Day!'
               id={1}
-              name="frontMessage"
+              name='frontMessage'
               onChange={handleChange}
               value={values.frontMessage}
             />
           </div>
-          <div className="question-file">
-            <i className="fas fa-cloud-upload-alt fa-2x"></i>
+          <div className='question-file'>
+            <i className='fas fa-cloud-upload-alt fa-2x'></i>
             <br />
-            <label htmlFor="frontImage">
-              Front Picture? <span className="met">Optional</span>
+            <label htmlFor='frontImage'>
+              Front Picture? <span className='met'>Optional</span>
             </label>
             <br />
-            <input type="file" placeholder="Pick Img" name="frontImage" id={2} onChange={handleChange} />
+            <input
+              type='file'
+              placeholder='Pick Img'
+              name='frontImage'
+              id={2}
+              onChange={handleChange}
+            />
           </div>
-          <div className="question-text">
-            <label htmlFor="insideMessage">
-              <Required met={values.insideMessage.length === 0 ? false : true} />A Message Inside?
+          <div className='question-text'>
+            <label htmlFor='insideMessage'>
+              <Required
+                met={values.insideMessage.length === 0 ? false : true}
+              />
+              A Message Inside?
             </label>
             <ul>
               {errors["3"].map((err, i) => (
@@ -137,38 +165,44 @@ function AddCard({ item, cancel }) {
             </ul>
             <textarea
               ref={insideMsgRef}
-              placeholder="From yours, truly!"
-              name="insideMessage"
+              placeholder='From yours, truly!'
+              name='insideMessage'
               onChange={handleChange}
               id={3}
               value={values.insideMessage}
             />
           </div>
-          <div className="question-file">
-            <i className="fas fa-cloud-upload-alt fa-2x"></i>
+          <div className='question-file'>
+            <i className='fas fa-cloud-upload-alt fa-2x'></i>
             <br />
-            <label htmlFor="frontImage">
-              Inside Picture? <span className="met">Optional</span>
+            <label htmlFor='frontImage'>
+              Inside Picture? <span className='met'>Optional</span>
             </label>
             <br />
-            <input type="file" placeholder="Pick Img" name="insideImage" id={4} onChange={handleChange} />
+            <input
+              type='file'
+              placeholder='Pick Img'
+              name='insideImage'
+              id={4}
+              onChange={handleChange}
+            />
           </div>
-          <div className="question-select">
-            <label htmlFor="theme">
+          <div className='question-select'>
+            <label htmlFor='theme'>
               <Required met={values.theme.length === 0 ? false : true} />
               Font
             </label>
             <br />
             <select
               ref={themeRef}
-              className="themes"
+              className='themes'
               value={values.theme}
-              name="theme"
+              name='theme'
               id={5}
               onChange={handleChange}
               required
             >
-              <option value="" disabled>
+              <option value='' disabled>
                 Font?
               </option>
               <ThemesList />
@@ -177,20 +211,20 @@ function AddCard({ item, cancel }) {
         </fieldset>
         {loading ? <Loader loading={loading} status={resStatus} /> : null}
         <button
-          id="add-card-btn"
-          className="action"
+          id='add-card-btn'
+          className='action'
           disabled={
             !validReq ||
             frontMsgRef.current.value.length === 0 ||
             insideMsgRef.current.value.length === 0 ||
             themeRef.current.value.length === 0
           }
-          type="submit"
+          type='submit'
         >
           Create Occasion
         </button>
       </form>
-      <button className="close-modal" onClick={cancel}>
+      <button className='close-modal' onClick={cancel}>
         X
       </button>
     </>

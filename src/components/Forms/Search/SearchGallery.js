@@ -1,14 +1,21 @@
 import React, { useContext, useRef, useState } from "react";
 import { useForm } from "../../../hooks/get-files";
 import { GalleryContext } from "../../../contexts/GalleryContext";
-import { listCards, listReactions } from "../../../services/endpoints-service";
+import { listActions, listCards } from "../../../services/endpoints-service";
 import { validationSpacer } from "../../../services/validation/auth-validation";
 import { ThemesList } from "../../Utils/Utils";
 import "./css/SearchForm.css";
 
 const SearchGallery = () => {
   const {
-    value: { mergeResults, arrangeByKeyword, arrangeBySelection, arrangeByTheme, setSearching, setSearchCards }
+    value: {
+      mergeResults,
+      arrangeByKeyword,
+      arrangeBySelection,
+      arrangeByTheme,
+      setSearching,
+      setSearchCards,
+    },
   } = useContext(GalleryContext);
 
   const { values, handleChange, reset } = useForm(
@@ -29,8 +36,11 @@ const SearchGallery = () => {
     setSearching(true);
     try {
       const resetCards = await listCards.get("/");
-      const resetReactions = await listReactions.get("/");
-      const mergedData = await mergeResults(resetCards.data, resetReactions.data);
+      const resetActions = await listActions.get("/");
+      const mergedData = await mergeResults(
+        resetCards.data.payload,
+        resetActions.data.payload
+      );
       const sortedKeyword = await arrangeByKeyword(mergedData, values.keyword);
       const sortedTheme = await arrangeByTheme(sortedKeyword, values.themeSort);
       const sortedSelect = await arrangeBySelection(sortedTheme, arrange);
@@ -47,14 +57,17 @@ const SearchGallery = () => {
       ) {
       }
 
-      if (!uA.toLowerCase().includes("chrome") && !uA.toLowerCase().includes("gecko/")) {
+      if (
+        !uA.toLowerCase().includes("chrome") &&
+        !uA.toLowerCase().includes("gecko/")
+      ) {
         window.scrollTo(0, posY);
       }
 
       window.scrollTo({
         top: posY,
         left: 0,
-        behavior: "smooth"
+        behavior: "smooth",
       });
 
       reset();
@@ -64,68 +77,92 @@ const SearchGallery = () => {
   };
 
   return (
-    <form className="jto-form search-form" onSubmit={handleSubmit}>
-      <h2 className="animated-h2">Explore the Gallery</h2>
-      <div className="search-fields">
-        <fieldset className="search-term">
+    <form className='jto-form search-form' onSubmit={handleSubmit}>
+      <h2 className='animated-h2'>Explore the Gallery</h2>
+      <div className='search-fields'>
+        <fieldset className='search-term'>
           <legend>Term</legend>
           <input
-            type="text"
-            className="keyword"
-            placeholder="International Lefthanders Day"
-            name="keyword"
+            type='text'
+            className='keyword'
+            placeholder='International Lefthanders Day'
+            name='keyword'
             id={1}
             value={values.keyword}
             onChange={handleChange}
           />
         </fieldset>
-        <fieldset className="theme-select">
+        <fieldset className='theme-select'>
           <legend>Font</legend>
           <select
             ref={themeRef}
-            className="themes"
-            name="themeSort"
+            className='themes'
+            name='themeSort'
             id={2}
             value={values.themeSort}
             onChange={handleChange}
           >
-            <option value="Any">Any</option>
+            <option value='Any'>Any</option>
             <ThemesList />
           </select>
         </fieldset>
-        <fieldset className="sort-by">
+        <fieldset className='sort-by'>
           <legend>Category</legend>
-          <div className="sort-fields">
-            <label htmlFor="new">
+          <div className='sort-fields'>
+            <label htmlFor='new'>
               New <br />
-              <input type="radio" name="new" value="new" checked={arrange === "new"} onChange={handleRadio} />
+              <input
+                type='radio'
+                name='new'
+                value='new'
+                checked={arrange === "new"}
+                onChange={handleRadio}
+              />
             </label>
             <label>
               Likes <br />
-              <input type="radio" name="hearts" value="hearts" checked={arrange === "hearts"} onChange={handleRadio} />
+              <input
+                type='radio'
+                name='hearts'
+                value='hearts'
+                checked={arrange === "hearts"}
+                onChange={handleRadio}
+              />
             </label>
             <label>
               Comments <br />
               <input
-                type="radio"
-                name="comments"
-                value="comments"
+                type='radio'
+                name='comments'
+                value='comments'
                 checked={arrange === "comments"}
                 onChange={handleRadio}
               />
             </label>
             <label>
               Shares <br />
-              <input type="radio" name="shares" value="shares" checked={arrange === "shares"} onChange={handleRadio} />
+              <input
+                type='radio'
+                name='shares'
+                value='shares'
+                checked={arrange === "shares"}
+                onChange={handleRadio}
+              />
             </label>
             <label>
               Old <br />
-              <input type="radio" name="old" value="old" checked={arrange === "old"} onChange={handleRadio} />
+              <input
+                type='radio'
+                name='old'
+                value='old'
+                checked={arrange === "old"}
+                onChange={handleRadio}
+              />
             </label>
           </div>
         </fieldset>
       </div>
-      <button ref={buttonRef} className="browse-btn action">
+      <button ref={buttonRef} className='browse-btn action'>
         Browse
       </button>
     </form>

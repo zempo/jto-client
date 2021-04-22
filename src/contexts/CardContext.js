@@ -19,8 +19,8 @@ export const CardContextProvider = (props) => {
         const downloadCard = await listCards.get(`/any/${anyCardId}`);
 
         // setCardMax(cardsResult.data.length)
-        setAnyCard(downloadCard.data);
-        setUserName(downloadCard.data.user.user_name);
+        setAnyCard(downloadCard.data.payload);
+        setUserName(downloadCard.data.payload.user.user_name);
       } catch (err) {
         console.log("error");
         console.log(err);
@@ -42,8 +42,12 @@ export const CardContextProvider = (props) => {
     anyCardId,
     setAnyCardId,
     userName,
-    updateId
+    updateId,
   };
 
-  return <CardContext.Provider value={{ value }}>{props.children}</CardContext.Provider>;
+  return (
+    <CardContext.Provider value={{ value }}>
+      {props.children}
+    </CardContext.Provider>
+  );
 };

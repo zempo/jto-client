@@ -1,15 +1,23 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { validateBody } from "../../../services/validation/comment-validation";
 import { useForm } from "../../../hooks/get-files";
-import { updateComment, readComment } from "../../../services/endpoints-service";
+import {
+  updateComment,
+  readComment,
+} from "../../../services/endpoints-service";
 import { PublicCardContext as CardContext } from "../../../contexts/PublicCardContext";
 
 const EditComment = ({ item, payload, cancel }) => {
   const {
-    value: { cardComments, editComment }
+    value: { cardComments, editComment },
   } = useContext(CardContext);
   // eslint-disable-next-line
-  const { values, files, errors, handleChange, reset } = useForm({ body: payload }, { 1: [] }, {}, { 1: validateBody });
+  const { values, files, errors, handleChange, reset } = useForm(
+    { body: payload },
+    { 1: [] },
+    {},
+    { 1: validateBody }
+  );
   const [validReq, setValidReq] = useState(false);
   // eslint-disable-next-line
   const [loading, setLoading] = useState(false);
@@ -45,7 +53,10 @@ const EditComment = ({ item, payload, cancel }) => {
       let sendFullData = await updateComment.patch(`/${item}`, fullData);
       let commentToUpdate = await readComment.get(`/${item}`);
       // eslint-disable-next-line
-      let updatedComments = await editComment(cardComments, commentToUpdate.data);
+      let updatedComments = await editComment(
+        cardComments,
+        commentToUpdate.data.payload
+      );
 
       setResStatus(sendFullData.status);
       setResMsg("Updated Comment");
@@ -53,13 +64,16 @@ const EditComment = ({ item, payload, cancel }) => {
     } catch (error) {
       setLoading(false);
       setResStatus(error.response.status);
-      setResMsg(Object.values(error.response.data.error));
+      setResMsg(Object.values(error.response.data.message));
     }
   };
 
   return (
     <>
-      <form className="jto-comment-form add-comment-form" onSubmit={handleSubmit}>
+      <form
+        className='jto-comment-form add-comment-form'
+        onSubmit={handleSubmit}
+      >
         <fieldset>
           <ul>
             {errors["1"].map((err, i) => (
@@ -68,22 +82,26 @@ const EditComment = ({ item, payload, cancel }) => {
           </ul>
           <textarea
             ref={bodyRef}
-            type="text"
+            type='text'
             placeholder={payload}
             id={1}
-            name="body"
+            name='body'
             onChange={handleChange}
             value={values.body}
           />
         </fieldset>
-        <button className="modal-btn" onClick={cancel}>
+        <button className='modal-btn' onClick={cancel}>
           Cancel
         </button>
-        <button className="modal-btn action" disabled={!validReq || bodyRef.current.value.length === 0} type="submit">
+        <button
+          className='modal-btn action'
+          disabled={!validReq || bodyRef.current.value.length === 0}
+          type='submit'
+        >
           Edit
         </button>
       </form>
-      <button className="close-modal" onClick={cancel}>
+      <button className='close-modal' onClick={cancel}>
         X
       </button>
     </>

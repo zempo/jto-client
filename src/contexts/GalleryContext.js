@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import { listCards, listReactions } from "../services/endpoints-service";
+import { listActions, listCards } from "../services/endpoints-service";
 
 export const GalleryContext = createContext();
 
@@ -22,8 +22,12 @@ export const GalleryContextProvider = (props) => {
       try {
         const cardsResult = await listCards.get("/");
         // filter and map results based on their id
-        const reactsResult = await listReactions.get("/");
-        const mergeData = await mergeResults(cardsResult.data, reactsResult.data);
+        const reactsResult = await listActions.get("/");
+
+        const mergeData = await mergeResults(
+          cardsResult.data.payload,
+          reactsResult.data.payload
+        );
 
         setLoading(false);
         setCards(mergeData);
@@ -42,7 +46,7 @@ export const GalleryContextProvider = (props) => {
     for (let i = 0; i < cardsValue.length; i++) {
       mergeValues.push({
         ...cardsValue[i],
-        ...reactionsValue.find((itmInner) => itmInner.id === cardsValue[i].id)
+        ...reactionsValue.find((itmInner) => itmInner.id === cardsValue[i].id),
       });
     }
     return mergeValues;
@@ -57,8 +61,12 @@ export const GalleryContextProvider = (props) => {
     let cardToEdit = [updatedCard];
     let cardsToEdit = currentCards;
     let searchCardsToEdit = currentSearchCards;
-    let editedCards = cardsToEdit.map((obj) => cardToEdit.find((o) => o.id === obj.id) || obj);
-    let editedSearchCards = searchCardsToEdit.map((obj) => cardToEdit.find((o) => o.id === obj.id) || obj);
+    let editedCards = cardsToEdit.map(
+      (obj) => cardToEdit.find((o) => o.id === obj.id) || obj
+    );
+    let editedSearchCards = searchCardsToEdit.map(
+      (obj) => cardToEdit.find((o) => o.id === obj.id) || obj
+    );
     // let editted = removeOld.push(commentToEdit);
     setCards(editedCards);
     setSearchCards(editedSearchCards);
@@ -93,7 +101,10 @@ export const GalleryContextProvider = (props) => {
 
   let indexOfLastSearch = currentSearchPg * searchCardsPerPg;
   let indexOfFirstSearch = indexOfLastSearch - searchCardsPerPg;
-  let currentSearchCards = searchCards.slice(indexOfFirstSearch, indexOfLastSearch);
+  let currentSearchCards = searchCards.slice(
+    indexOfFirstSearch,
+    indexOfLastSearch
+  );
   let lastSearchPg = Math.ceil(searchCards.length / searchCardsPerPg);
 
   const paginate = (e) => {
@@ -168,8 +179,8 @@ export const GalleryContextProvider = (props) => {
       }
       return comparison * -1;
     };
-    const compareReactions = (key, order = "asc") => {
-      return function(a, b) {
+    const compareActions = (key, order = "asc") => {
+      return function (a, b) {
         if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
           // property doesn't exist on either object
           return 0;
@@ -190,14 +201,20 @@ export const GalleryContextProvider = (props) => {
     if (selection === "new") {
       let sortedGallery = cardsValue.sort(compareDatesDesc);
       return sortedGallery;
-    } else if (selection === "hearts") {
-      let sortByHearts = cardsValue.sort(compareReactions("number_of_hearts", "desc"));
-      return sortByHearts;
-    } else if (selection === "shares") {
-      let sortByShares = cardsValue.sort(compareReactions("number_of_shares", "desc"));
-      return sortByShares;
+    } else if (selection === "likes") {
+      let sortByLikes = cardsValue.sort(
+        compareActions("number_of_likes", "desc")
+      );
+      return sortByLikes;
+    } else if (selection === "saves") {
+      let sortBySaves = cardsValue.sort(
+        compareActions("number_of_saves", "desc")
+      );
+      return sortBySaves;
     } else if (selection === "comments") {
-      let sortByComments = cardsValue.sort(compareReactions("number_of_comments", "desc"));
+      let sortByComments = cardsValue.sort(
+        compareActions("number_of_comments", "desc")
+      );
       return sortByComments;
     } else if (selection === "old") {
       let sortedGallery = cardsValue.sort(compareDatesAsc);
@@ -249,8 +266,12 @@ export const GalleryContextProvider = (props) => {
     editPublicCard,
     moveOrDeletePublicCard,
     loading,
-    error
+    error,
   };
 
-  return <GalleryContext.Provider value={{ value }}>{props.children}</GalleryContext.Provider>;
+  return (
+    <GalleryContext.Provider value={{ value }}>
+      {props.children}
+    </GalleryContext.Provider>
+  );
 };
