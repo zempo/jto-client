@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useContext, useRef } from "react";
 import { CardsContext } from "../../../contexts/CardsContext";
 import { useForm } from "../../../hooks/get-files";
