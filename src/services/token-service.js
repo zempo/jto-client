@@ -14,7 +14,7 @@ const TokenService = {
   },
   clearAuthToken() {
     window.localStorage.removeItem(Config.TOKEN_KEY);
-    // window.location.reload();
+    window.location.reload();
   },
   hasAuthToken() {
     return !!TokenService.getAuthToken();

@@ -17,12 +17,12 @@ export const AuthService = {
         return res.data.token;
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         TokenService.saveAuthToken(res);
-        IdleService.regiserIdleTimerResets();
-        TokenService.queueCallbackBeforeExpiry(() => {
-          AuthService.postRefreshToken();
-        });
+        // IdleService.regiserIdleTimerResets();
+        // TokenService.queueCallbackBeforeExpiry(() => {
+        //   AuthService.postRefreshToken();
+        // });
         return res;
       });
   },
@@ -38,7 +38,7 @@ export const AuthService = {
         TokenService.queueCallbackBeforeExpiry(() => {
           AuthService.postRefreshToken();
         });
-        return res.data;
+        return res.data.token;
       })
       .catch((err) => {
         // clear the local storage if the refresh doesn't work!

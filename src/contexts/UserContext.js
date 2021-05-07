@@ -39,7 +39,7 @@ export const UserContextProvider = (props) => {
   };
 
   const firstName = (word) => {
-    let stop = word.indexOf(" ");
+    let stop = word.indexOf(" ") === -1 ? word.length : word.indexOf(" ");
     return word.slice(0, stop);
   };
 

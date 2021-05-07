@@ -32,8 +32,8 @@ class Nav extends Component {
 
   handleLogoutClick = () => {
     TokenService.clearAuthToken();
-    TokenService.clearCallbackBeforeExpiry();
-    IdleService.unRegisterIdleResets();
+    // TokenService.clearCallbackBeforeExpiry();
+    // IdleService.unRegisterIdleResets();
   };
 
   renderLogoutLink() {
@@ -108,7 +108,7 @@ class Nav extends Component {
             <NavLink exact activeClassName='active' to='/support'>
               <h3>Support</h3>
             </NavLink>
-            {TokenService.hasAuthToken() && this.context.value.error !== 401
+            {TokenService.hasAuthToken()
               ? this.renderLogoutLink()
               : this.renderLoginLink()}
           </div>

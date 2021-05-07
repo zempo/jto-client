@@ -5,13 +5,17 @@ import { JtoSection } from "../Utils/Utils";
 const Login = (props) => {
   const handleLoginSuccess = () => {
     const { location, history } = props;
-    const destination = (location.state || {}).from || "/";
-    history.push(destination);
+    const destination = (location.state || {}).from || "/dashboard";
+
+    history.push({
+      state: { new: true },
+      pathname: "/dashboard",
+    });
   };
 
   return (
-    <JtoSection className="jto-page login-page">
-      <h1 className="animated-h1">Login</h1>
+    <JtoSection className='jto-page login-page'>
+      <h1 className='animated-h1'>Login</h1>
       <LoginForm onLoginSuccess={handleLoginSuccess} />
     </JtoSection>
   );
@@ -20,8 +24,8 @@ const Login = (props) => {
 Login.defaultProps = {
   location: {},
   history: {
-    push: () => {}
-  }
+    push: () => {},
+  },
 };
 
 export default Login;
