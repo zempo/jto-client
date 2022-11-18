@@ -16,7 +16,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "^3.4.1",
+    "react-scripts": "^5.0.1",
     "react-to-print": "^2.6.3",
     "typeface-amatic-sc": "0.0.72",
     "typeface-cedarville-cursive": "0.0.71",
